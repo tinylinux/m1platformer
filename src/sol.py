@@ -22,12 +22,12 @@ SCREEN_WIDTH = 1000  #largeur fenêtre
 SCREEN_HEIGHT = 600 #hauteur fenêtre
 SPEED = 5           #vitesse initiale de défilement du sol
 SOL_HAUT = (SCREEN_HEIGHT - 117)      #La hauteur du sol en général
-SOL_LONG = 923      #La longueur d'un bloc du sol en général
-SOL_IMG = "plantes.png"
+SOL_LONG = 609      #La longueur d'un bloc du sol en général
+SOL_IMG = "../assets/img/plantes.png"
 #LIST_SOL = []   #Contient la liste des plateformes qui sont en ce moment à l'écran
 
 #Écran avec fond
-background = pygame.image.load("fond.jpg")
+background = pygame.image.load("../assets/img/fond.jpg")
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Game")
 
