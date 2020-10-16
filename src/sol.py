@@ -49,7 +49,7 @@ class plateforme(pygame.sprite.Sprite):
         self.rect.move_ip(-SPEED,0)
         #Défile à la vitesse SPEED (positive, donc on met un - pour aller à gauche)
         if self.rect.right < 0:     #si on est sorti de l'écran
-            sol.remove(self)          #on le supprime
+            self.kill()               #on le supprime
         if SCREEN_WIDTH - self.long < self.rect.right < SCREEN_WIDTH:
             #si le dernier ne couvre plus tout sur la droite, il faut ajouter un nouveau
             plateforme(self.rect.right)    #On en met un nouveau juste après
