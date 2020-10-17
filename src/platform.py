@@ -1,7 +1,9 @@
+""" Gère la création et les déplacements des plateformes """
 import pygame
 import src.conf as cf
 
-class plateforme(pygame.sprite.Sprite):
+class platform(pygame.sprite.Sprite):
+    """ Gère les plateformes """
     def __init__(self, x = 1, y = cf.SOL_HAUT, haut = cf.SOL_HAUT, length = cf.SOL_LONG, image = cf.SOL_IMG):
         super().__init__()
         self.haut = haut
@@ -14,12 +16,14 @@ class plateforme(pygame.sprite.Sprite):
         self.pasencorecree = True
 
     def move(self):
-        print(cf.SPEED)
+        """ Fait se déplacer la plateforme selon la variable SPEED du module conf.
+        Suprrime la plateforme si celle-ci sort de l'écran, et demande la création d'une
+        nouvelle plateforme si nécessaire"""
         self.rect.move_ip(-cf.SPEED, 0)
         #Défile à la vitesse SPEED (positive, donc on met un - pour aller à gauche)
         if self.rect.right < 0:     #si on est sorti de l'écran
             self.kill()              #on le supprime
         if cf.SCREEN_WIDTH - self.length < self.rect.right < cf.SCREEN_WIDTH and self.pasencorecree:
             #si le dernier ne couvre plus tout sur la droite, il faut ajouter un nouveau
-            plateforme(self.rect.right)
+            platform(self.rect.right)
             self.pasencorecree = False    #On en met un nouveau juste après

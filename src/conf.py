@@ -1,3 +1,4 @@
+""" Stocke des variables partagées entre les différents fichiers """
 import pygame
 
 ch, cw = pygame.display.Info().current_h, pygame.display.Info().current_w
