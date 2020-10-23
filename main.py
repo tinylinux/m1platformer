@@ -17,11 +17,14 @@ wrld.initgen(0)
 INC_SPEED = pygame.USEREVENT + 1        #Crée un nouvel event, le +1 sert à avorir un nouvel ID
 pygame.time.set_timer(INC_SPEED, 1000)  #Toutes les secondes on augmente la vitesse
 
+state = 1 # Etat actuel du jeu (1 : dans le menu principal)
+
 while True:
     # print('OK : ', pygame.time.get_ticks())
     for event in pygame.event.get():
         if event.type == INC_SPEED:
-            cf.SPEED += 0.5
+            if state == 2: # Si on est in game
+                cf.SPEED += 0.5
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
