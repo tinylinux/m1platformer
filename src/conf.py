@@ -12,6 +12,7 @@ SOL_IMG = "assets/img/plantes.png"
 
 ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 sol = pygame.sprite.Group()
+player_sprite = pygame.sprite.Group()
 
 background = pygame.image.load("assets/img/fond.jpg")
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))

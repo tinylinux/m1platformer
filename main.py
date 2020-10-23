@@ -3,11 +3,11 @@ import pygame, sys
 from pygame.locals import *
 import random, time
 
-
 pygame.init()
 
 import src.conf as cf
 import src.worldgen as wrld
+import src.player as plyr
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
@@ -16,6 +16,8 @@ pygame.display.set_caption("Platformer")
 wrld.initgen(0)
 INC_SPEED = pygame.USEREVENT + 1        #Crée un nouvel event, le +1 sert à avorir un nouvel ID
 pygame.time.set_timer(INC_SPEED, 1000)  #Toutes les secondes on augmente la vitesse
+P = plyr.Player()
+cf.player_sprite.add(P)
 
 while True:
     # print('OK : ', pygame.time.get_ticks())
@@ -26,6 +28,12 @@ while True:
             pygame.quit()
             sys.exit()
 
+    cf.DISPLAYSURF.fill((0,0,0))
+
+    for p in cf.player_sprite:
+        cf.DISPLAYSURF.blit(p.image, p.shape)
+
+    P.move()
     wrld.update_sol()
 
     pygame.display.update()

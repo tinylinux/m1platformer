@@ -12,7 +12,6 @@ def initgen(longueur_totale):
         pltfrm.platform(longueur_totale)      #On en met un nouveau à la position x = longueur_totale.
         longueur_totale += cf.SOL_LONG
 
-
 def update_sol():
     """ Met le sol à jour """
     for bloc in cf.sol :
