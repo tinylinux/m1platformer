@@ -1,39 +1,9 @@
 ##modules
 
-from random import randint
 from tkinter import * 
 from tkinter.messagebox import *
 
 ##global variables
-
-global pix
-global rap
-globals() ["pix"] = 16    #Taille d'une case en pixels (nombre pair)
-globals() ["rap"] = 0.9    #rapport taille obstacle / taille case
-
-global Lnp
-global Leffacer
-global Lmur
-global Lobstacles
-global tabrecap
-global Lbutton
-global fenetre
-global value
-global valentree    #C'est le texte qu'on tape dans la case
-global entree
-global lignes
-global colonnes
-global carre
-global bouton1
-global boutondes
-global Lbutton
-global fenetre2
-global canvas
-global value2
-global mur
-global effacer
-
-global recommencer
 
 #permet de définir la dimension d'une salle
 def faire_quadrillage():
@@ -41,13 +11,12 @@ def faire_quadrillage():
     globals()["Leffacer"]=[0,0]
     globals()["Lmur"]=[0,0]
     globals()["Lgroupe"]=[0,0]
-    globals()["Lbutton"]=[1,2,3]    #Une ID par bouton à l'écran
     globals()["Lobstacles"]=[]
     globals()["tabrecap"]=[]        #Le + important ! C'est le tableau où l'on stocke les données saisies à l'écran
     
     globals()["fenetre"] = Tk()
     
-    globals()["value"]= StringVar(fenetre,"3") 
+    globals()["value"]= StringVar(fenetre,"3")
     
     globals()["valentree"]=StringVar(fenetre,"20")
 
@@ -78,11 +47,11 @@ def faire_quadrillage():
 
 #on récupère les infos de n et p
 def recupere():
-    if Lbutton[int(value.get())-1]==1:    #nbre de lignes
+    if int(value.get())==1:    #nbre de lignes
         Lnp[0]=int(entree.get())
-    elif Lbutton[int(value.get())-1]==2:  #nbre de colonnes
+    elif int(value.get())==2:  #nbre de colonnes
         Lnp[1]=int(entree.get())
-    elif Lbutton[int(value.get())-1]==3:  #carré
+    elif int(value.get())==3:  #carré
         Lnp[0]=Lnp[1]=int(entree.get())
 
 #permet de quitter la fenêtre principale et d'en afficher une autre
@@ -100,10 +69,10 @@ def quitter():
 #définir les portes, obstacles et personnes dans la salle
 def seconde_fenetre():
     
-    globals()["Lbutton"]=[1,2,3,4]
-    globals()["fenetre2"]= Tk()
+    globals() ["pix"] = 16    #Taille d'une case en pixels (nombre pair)
+    globals() ["rap"] = 0.9    #rapport taille obstacle / taille case
     
-
+    globals()["fenetre2"]= Tk()
     
     #utilise callback, creermur
     globals()["canvas"] = Canvas(fenetre2, width=Lnp[0]*pix+20, height=Lnp[1]*pix+20)
@@ -157,10 +126,10 @@ def callback(event):
     x-=(x%pix)      #On se ramène à en haut à gauche de la case, 
     y-=(y%pix)      #quelque soit le pixel exact qu'on ait cliqué
     
-    if Lbutton[int(value2.get())-1]==4:               #effacer
+    if int(value2.get())==4:               #effacer
         Leffacer[0],Leffacer[1]=(x//pix)-1,(y//pix)-1
     
-    elif Lbutton[int(value2.get())-1]==2:               #obstacle
+    elif int(value2.get())==2:               #obstacle
         if x>=pix and x<=Lnp[0]*pix and y>=pix and y<=Lnp[1]*pix:
             Lmur[0],Lmur[1]=(x//pix)-1,(y//pix)-1
 
@@ -169,7 +138,7 @@ def creermur(event):
     y=int(event.y)
     x-=(x%pix)
     y-=(y%pix)
-    if Lbutton[int(value2.get())-1]==2:                     #obstacles
+    if int(value2.get())==2:                     #obstacles
         #vérifie que c'est dans la grille et on le place
         if x>=pix and x<=Lnp[0]*pix and y>=pix and y<=Lnp[1]*pix:
             if (Lmur[0]*pix+pix)>x:
@@ -185,7 +154,7 @@ def creermur(event):
                     if tabrecap[e][i]!=[] and ((e+1)*pix,(i+1)*pix) == (tabrecap[e][i][1],tabrecap[e][i][2]):
                         canvas.delete(tabrecap[e][i][0])
                     tabrecap[e][i]=[canvas.create_rectangle((i+2-rap)*pix,(e+2-rap)*pix,(i+1+rap)*pix,(e+1+rap)*pix,fill="red"),(e+1)*pix,(i+1)*pix,-1]
-    if Lbutton[int(value2.get())-1]==4:                         #effacer
+    if int(value2.get())==4:                         #effacer
         #vérifie que c'est dans la grille
         if x>=pix and x<=Lnp[0]*pix and y>=pix and y<=Lnp[1]*pix:
             if (Leffacer[0]*pix+pix)>x:
@@ -202,7 +171,6 @@ def creermur(event):
                         canvas.delete(tabrecap[e][i][0])
                     tabrecap[e][i]=[]
         
- 
 ##DEBUT (fenetre tkinter)
 faire_quadrillage()
 
