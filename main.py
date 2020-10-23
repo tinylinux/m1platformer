@@ -1,6 +1,7 @@
 """ Gestion du jeu """
 import pygame, sys
 from pygame.locals import *
+import pygame_menu
 import random, time
 
 pygame.init()
