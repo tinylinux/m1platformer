@@ -1,27 +1,35 @@
+""" Gestion du jeu """
 import pygame, sys
 from pygame.locals import *
 import random, time
 
+
 pygame.init()
+
+import src.conf as cf
+import src.worldgen as wrld
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
-
-# Display configuration for user
-ch, cw = pygame.display.Info().current_h, pygame.display.Info().current_w
-
-SCREEN_WIDTH = (cw * 5)//7
-SCREEN_HEIGHT = min((ch * 8)//9, 9*SCREEN_WIDTH//16)
-
-ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
 pygame.display.set_caption("Platformer")
+
+wrld.initgen(0)
+INC_SPEED = pygame.USEREVENT + 1        #Crée un nouvel event, le +1 sert à avorir un nouvel ID
+pygame.time.set_timer(INC_SPEED, 1000)  #Toutes les secondes on augmente la vitesse
+
+state = 1 # Etat actuel du jeu (1 : dans le menu principal)
 
 while True:
     # print('OK : ', pygame.time.get_ticks())
     for event in pygame.event.get():
+        if event.type == INC_SPEED:
+            if state == 2: # Si on est in game
+                cf.SPEED += 0.5
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
-            
+
+    wrld.update_sol()
+
+    pygame.display.update()
     FramePerSec.tick(FPS)
