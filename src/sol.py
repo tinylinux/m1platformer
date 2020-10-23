@@ -66,7 +66,7 @@ INC_SPEED = pygame.USEREVENT + 1        #Crée un nouvel event, le +1 sert à av
 pygame.time.set_timer(INC_SPEED, 1000)  #Toutes les secondes on augmente la vitesse
 
 #Game Loop
-#while True :
+while True :
 #    for event in pygame.event.get():  
 #        if event.type == INC_SPEED: 
 #              SPEED += 0.5      #Augmente la vitesse de 0.5
@@ -75,11 +75,11 @@ pygame.time.set_timer(INC_SPEED, 1000)  #Toutes les secondes on augmente la vite
 #            sys.exit()   
             
     #redessine l'écran        
-#    DISPLAYSURF.blit(background, (0,0))
+    DISPLAYSURF.blit(background, (0,0))
     
-#    for bloc in sol :
-#        bloc.move()     #On déplace chaque bloc
-#        DISPLAYSURF.blit(bloc.image, bloc.rect) #affiche l'image du bloc dans sa hitbox
+    for bloc in sol :
+        bloc.move()     #On déplace chaque bloc
+        DISPLAYSURF.blit(bloc.image, bloc.rect) #affiche l'image du bloc dans sa hitbox
         
-#    pygame.display.update()
+    pygame.display.update()
 #    FramePerSec.tick(FPS)
