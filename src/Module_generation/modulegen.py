@@ -94,9 +94,11 @@ class ModuleGenerator(tk.Tk):
         j = mouse.x // self.taille_carreaux
 
         if self.clic1:
-            self.clic_coords[0] = i
-            self.clic_coords[1] = j
-            self.clic1 = False
+            if not self.occupation_carreaux[i][j]:
+                self.canvas.itemconfigure(self.carreaux[i][j], fill = "green")
+                self.clic_coords[0] = i
+                self.clic_coords[1] = j
+                self.clic1 = False
         else:
             self.clic_coords[2] = i
             self.clic_coords[3] = j
@@ -106,12 +108,39 @@ class ModuleGenerator(tk.Tk):
     def plateforme_creation(self):
         i0,j0 = self.clic_coords[0], self.clic_coords[1]
         i1,j1 = self.clic_coords[2], self.clic_coords[3]
-        print("une plateforme de ("+str(i0)+","+str(j0)+") à ("+str(i1)+","+str(j1)+")")
+        self.canvas.itemconfigure(self.carreaux[i0][j0], fill = "white")
+        isfree = True
+        for i in range(min(i0,i1), max(i0,i1) + 1):
+            for j in range(min(j0,j1), max(j0,j1) + 1):
+                if self.occupation_carreaux[i][j]:
+                    isfree = False
+        if isfree:
+            for i in range(min(i0,i1), max(i0,i1) + 1):
+                for j in range(min(j0,j1), max(j0,j1) + 1):
+                    self.occupation_carreaux[i][j] = True
+                    self.canvas.itemconfigure(self.carreaux[i][j], fill = "yellow")
+            print("une plateforme est créée de ("+str(i0)+","+str(j0)+") à ("+str(i1)+","+str(j1)+")")
+        else:
+            print("Collision: Impossible de créer la plateforme")
+        
 
     def batiment_creation(self):
         i0,j0 = self.clic_coords[0], self.clic_coords[1]
         i1,j1 = self.clic_coords[2], self.clic_coords[3]
-        print("un bâtiment de "+str(j0)+" à "+str(j1)+" à la hauteur "+str(i0))
+        self.canvas.itemconfigure(self.carreaux[i0][j0], fill = "white")
+        isfree = True
+        for i in range(i0, self.nb_lignes):
+            for j in range(min(j0,j1), max(j0,j1) + 1):
+                if self.occupation_carreaux[i][j]:
+                    isfree = False
+        if isfree:
+            for i in range(i0, self.nb_lignes):
+                for j in range(min(j0,j1), max(j0,j1) + 1):
+                    self.occupation_carreaux[i][j] = True
+                    self.canvas.itemconfigure(self.carreaux[i][j], fill = "grey")
+            print("un bâtiment est créé de "+str(j0)+" à "+str(j1)+" à la hauteur "+str(i0))
+        else:
+            print("Collision: Impossible de créer le bâtiment")
 
 
 
