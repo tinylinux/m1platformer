@@ -14,8 +14,10 @@ FramePerSec = pygame.time.Clock()
 pygame.display.set_caption("Platformer")
 
 wrld.initgen(0)
-INC_SPEED = pygame.USEREVENT + 1        #Crée un nouvel event, le +1 sert à avorir un nouvel ID
-pygame.time.set_timer(INC_SPEED, 1000)  #Toutes les secondes on augmente la vitesse
+# Crée un nouvel event, le +1 sert à avoir un nouvel ID
+INC_SPEED = pygame.USEREVENT + 1
+# Toutes les secondes on augmente la vitesse
+pygame.time.set_timer(INC_SPEED, 1000)
 P = plyr.Player()
 cf.player_sprite.add(P)
 
@@ -25,19 +27,19 @@ while True:
     # print('OK : ', pygame.time.get_ticks())
     for event in pygame.event.get():
         if event.type == INC_SPEED:
-            if state == 2: # Si on est in game
+            if state == 2:  # Si on est in game
                 cf.SPEED += 0.5
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
-    cf.DISPLAYSURF.fill((0,0,0))
+    cf.DISPLAYSURF.fill((0, 0, 0))
 
-    for p in cf.player_sprite:
-        cf.DISPLAYSURF.blit(p.image, p.shape)
+    wrld.update_sol()
 
     P.move()
-    wrld.update_sol()
+    for p in cf.player_sprite:
+        cf.DISPLAYSURF.blit(p.image, p.shape)
 
     pygame.display.update()
     FramePerSec.tick(FPS)

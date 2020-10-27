@@ -18,13 +18,35 @@ V_JMP = 100
 # Accélération initiale
 A_0 = 0
 # Accélération due à la gravité
-G = 10
+G = 1
+
+
+def collide(pos1, pos2, rect):
+    """Vérifie la collision avec l'objet rect, étant donné la position
+    à l'instant précédent, et la position prévue pour l'instant suivant.
+    Renvoie une position corrigée s'il y a collision.
+    Suppose un mouvement vertical du joueur."""
+    # On ne tient pas compte du cas dans lequel le joueur traverserait
+    # une plateforme dans sa longueur entre deux positions, il ne serait
+    # de toutes façons pas possible de jouer dans ce cas.
+    if pos2.x + WIDTH <= rect.left or pos2.x >= rect.right:
+        return (False, None)
+    if pos1.y + HEIGHT <= rect.top:
+        if pos2.y + HEIGHT <= rect.top:
+            return (False, None)
+        return (True, vec(pos2.x, rect.top - HEIGHT))
+    if pos1.y <= rect.bottom:
+        if pos2.y <= rect.bottom:
+            return (False, None)
+        return (True, vec(pos2.x, rect.bottom))
+    return None
+
 
 class Player(pygame.sprite.Sprite):
     """Gestion du personnage, par les méthodes jump(self) et move(self)."""
     def __init__(self):
         # Initialisation de la classe parent
-        #pygame.sprite.Sprite.__init__(self, cf.player_sprite)
+        # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
         super().__init__()
         # Dimensions et couleur de l'objet
         self.image = pygame.Surface([WIDTH, HEIGHT])
@@ -46,7 +68,18 @@ class Player(pygame.sprite.Sprite):
         self.vel.y -= V_JMP
 
     def move(self):
-        """Modifie les vecteurs position, vitesse et accélération si nécessaire."""
+        """Modifie les vecteurs position,
+        vitesse et accélération si nécessaire."""
         self.vel += self.acc
-        self.pos += self.vel + 0.5 * self.acc
-        self.shape.midbottom = self.pos
+        posnext = self.pos + self.vel + 0.5 * self.acc
+        flag = False
+        # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
+        for plat in cf.sol:
+            coll = collide(self.pos, posnext, plat.rect)
+            if coll[0]:
+                self.pos = coll[1]
+                self.vel.y = 0
+                flag = True
+        if not flag:
+            self.pos = posnext
+        self.shape.topleft = self.pos
