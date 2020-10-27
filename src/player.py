@@ -9,16 +9,18 @@ vec = pygame.math.Vector2
 WIDTH = 20
 HEIGHT = 30
 # Position initiale
-X_INIT = 100
-Y_INIT = 100
+X_INIT = cf.SCREEN_WIDTH/2
+Y_INIT = cf.SOL_HAUT - HEIGHT
 # Vitesse initiale
 V_0 = 0
 # Vitesse initiale lors d'un saut
-V_JMP = 100
+V_JMP = 25
 # Accélération initiale
 A_0 = 0
 # Accélération due à la gravité
 G = 1
+# Drapeau de disponibilité du saut
+FLAG_JUMP = False
 
 
 def collide(pos1, pos2, rect):
@@ -26,6 +28,7 @@ def collide(pos1, pos2, rect):
     à l'instant précédent, et la position prévue pour l'instant suivant.
     Renvoie une position corrigée s'il y a collision.
     Suppose un mouvement vertical du joueur."""
+    global FLAG_JUMP
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
     # de toutes façons pas possible de jouer dans ce cas.
@@ -34,6 +37,7 @@ def collide(pos1, pos2, rect):
     if pos1.y + HEIGHT <= rect.top:
         if pos2.y + HEIGHT <= rect.top:
             return (False, None)
+        FLAG_JUMP = True
         return (True, vec(pos2.x, rect.top - HEIGHT))
     if pos1.y <= rect.bottom:
         if pos2.y <= rect.bottom:
@@ -65,7 +69,10 @@ class Player(pygame.sprite.Sprite):
 
     def jump(self):
         """Lance le saut du personnage."""
-        self.vel.y -= V_JMP
+        global FLAG_JUMP
+        if FLAG_JUMP:
+            FLAG_JUMP = False
+            self.vel.y -= V_JMP
 
     def move(self):
         """Modifie les vecteurs position,

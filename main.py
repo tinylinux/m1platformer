@@ -33,9 +33,15 @@ while True:
             pygame.quit()
             sys.exit()
 
+
     cf.DISPLAYSURF.fill((0, 0, 0))
 
     wrld.update_sol()
+
+    pressed_keys = pygame.key.get_pressed()
+
+    if pressed_keys[K_SPACE]:
+        P.jump()
 
     P.move()
     for p in cf.player_sprite:
