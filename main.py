@@ -8,6 +8,7 @@ pygame.init()
 import src.conf as cf
 import src.worldgen as wrld
 import src.player as plyr
+import src.background as bg
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
@@ -19,7 +20,8 @@ INC_SPEED = pygame.USEREVENT + 1
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
 P = plyr.Player()
-cf.player_sprite.add(P)
+
+bg = bg.Background()
 
 state = 1 # Etat actuel du jeu (1 : dans le menu principal)
 
@@ -34,7 +36,7 @@ while True:
             sys.exit()
 
 
-    cf.DISPLAYSURF.fill((0, 0, 0))
+    bg.update()
 
     wrld.update_sol()
 
@@ -44,8 +46,6 @@ while True:
         P.jump()
 
     P.move()
-    for p in cf.player_sprite:
-        cf.DISPLAYSURF.blit(p.image, p.shape)
 
     pygame.display.update()
     FramePerSec.tick(FPS)

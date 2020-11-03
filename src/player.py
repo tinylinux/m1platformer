@@ -90,3 +90,4 @@ class Player(pygame.sprite.Sprite):
         if not flag:
             self.pos = posnext
         self.shape.topleft = self.pos
+        cf.DISPLAYSURF.blit(self.image, self.shape)
