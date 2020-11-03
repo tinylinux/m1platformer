@@ -1,4 +1,3 @@
-from pathlib import Path
 import pygame
 import src.conf as cf
 

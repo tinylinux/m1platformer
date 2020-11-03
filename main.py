@@ -23,6 +23,14 @@ P = plyr.Player()
 
 bg = bg.Background()
 
+def score(n):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Score: " + str(n), True, (255, 255, 255))
+    cf.DISPLAYSURF.blit(text,(0,0))
+
+seconds = 0
+count_frames = 0
+
 state = 1 # Etat actuel du jeu (1 : dans le menu principal)
 
 while True:
@@ -35,9 +43,17 @@ while True:
             pygame.quit()
             sys.exit()
 
+    if cf.JMP_COOLDOWN != 0:
+        cf.JMP_COOLDOWN -= 1
 
     bg.update()
 
+    count_frames += 1
+    if count_frames == 60:
+        count_frames = 0
+        seconds += 1
+    score(seconds)
+    
     wrld.update_sol()
 
     pressed_keys = pygame.key.get_pressed()
