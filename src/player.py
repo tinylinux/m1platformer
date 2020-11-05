@@ -14,13 +14,15 @@ Y_INIT = cf.SOL_HAUT - HEIGHT
 # Vitesse initiale
 V_0 = 0
 # Vitesse initiale lors d'un saut
-V_JMP = 25
+V_JMP = 15
 # Accélération initiale
 A_0 = 0
 # Accélération due à la gravité
 G = 1
 # Drapeau de disponibilité du saut
 FLAG_JUMP = False
+# Drapeau de disponibilité du second saut
+FLAG_JUMP_2 = False
 
 
 def collide(pos1, pos2, rect):
@@ -70,9 +72,15 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         """Lance le saut du personnage."""
         global FLAG_JUMP
-        if FLAG_JUMP:
+        global FLAG_JUMP_2
+        if FLAG_JUMP :
             FLAG_JUMP = False
-            self.vel.y -= V_JMP
+            cf.JMP_COOLDOWN = 15
+            self.vel.y = -V_JMP
+            FLAG_JUMP_2 = True
+        elif FLAG_JUMP_2 and cf.JMP_COOLDOWN == 0:
+            self.vel.y = -V_JMP
+            FLAG_JUMP_2 = False
 
     def move(self):
         """Modifie les vecteurs position,
@@ -90,3 +98,4 @@ class Player(pygame.sprite.Sprite):
         if not flag:
             self.pos = posnext
         self.shape.topleft = self.pos
+        cf.DISPLAYSURF.blit(self.image, self.shape)
