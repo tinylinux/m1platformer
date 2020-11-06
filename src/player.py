@@ -44,15 +44,15 @@ def collide(pos_prev, pos_next, rect_next):
         FLAG_JUMP = True
         return (True, False, vec(pos_next.x, rect_next.top - HEIGHT))
     if pos_prev.y >= rect_next.bottom:
-        if pos_next.y <= rect_next.bottom:
+        if pos_next.y >= rect_next.bottom:
             return (False, False, None)
         return (True, False, vec(pos_next.x, rect_next.bottom))
     # pos_prev.y + HEIGHT > rect_next.top and pos_prev.y < rect_next.bottom
     if pos_next.y + HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
-        (False, False, None)
+        return (False, False, None)
     # On ne considère que les collisions à gauche des plateformes
-    (False, True, vec(rect_next.left, pos_next.y))
-    return None
+    return (False, True, vec(rect_next.left, pos_next.y))
+
 
 
 class Player(pygame.sprite.Sprite):
