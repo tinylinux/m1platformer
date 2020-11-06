@@ -18,7 +18,7 @@ V_JMP = 15
 # Accélération initiale
 A_0 = 0
 # Accélération due à la gravité
-G = 1
+G = 0.4
 # Drapeau de disponibilité du saut
 FLAG_JUMP = False
 # Drapeau de disponibilité du second saut

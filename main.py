@@ -62,8 +62,6 @@ while True:
 
     pressed_keys = pygame.key.get_pressed()
 
-    if pressed_keys[K_q]:
-        state = 2
     if pressed_keys[K_SPACE]:
         P.jump()
 
