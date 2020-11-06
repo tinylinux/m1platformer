@@ -1,10 +1,12 @@
 ﻿import tkinter as tk
 
-NB_LIGNES = 30
+SCREEN_HEIGHT = 300
+
+TAILLE_CARREAUX = 10
+NB_LIGNES = SCREEN_HEIGHT// TAILLE_CARREAUX
 NB_COLONNES = 20
 NB_COLONNES_MAX = 30
 NB_COLONNES_MIN = 2
-TAILLE_CARREAUX = 10
 
 def minmax(a,b):
     return min(a,b),max(a,b)
@@ -103,6 +105,13 @@ class ModuleGenerator(tk.Tk):
             # Affichage de la liste des obstacles
         self.obstacles_button = tk.Button(self.fenetre_principale, text = "Liste obstacles", command = self.liste_obstacles)
         self.obstacles_button.pack(side = tk.TOP, padx = 5, pady = 5)
+
+            # Enregistrement module
+        self.nom_module = tk.StringVar(self.fenetre_principale, "module")
+        self.entree_nom_module = tk.Entry(self.fenetre_principale, textvariable = self.nom_module)
+        self.entree_nom_module.pack(side = tk.TOP, padx = 5, pady = 5)
+        self.enregistrement = tk.Button(self.fenetre_principale, text = "Enregistrer", command = self.enregistrement)
+        self.enregistrement.pack(side = tk.TOP, padx = 5, pady = 5)
 
 
             # Mémoire des clics de la souris
@@ -203,6 +212,18 @@ class ModuleGenerator(tk.Tk):
             for j in range(j0, j1+1):
                 self.occupation_carreaux[i][j] = -1
        
+    def enregistrement(self):
+        print(self.nom_module.get())
+        liste0 = list(self.obstacles.values())
+        liste0 = sorted(liste0, key = lambda obstacle: obstacle[1][1])
+        yfirst, xmin= liste0[0][1]
+        liste0 = [[plft[0], (plft[1][0], plft[1][1] - xmin), (plft[2][0], plft[2][1] - xmin)] for plft in liste0]
+        ylast = max(enumerate(liste0), key = lambda obstacle : (obstacle[1][2][1], obstacle[1][1][0]))[1][1][0]
+        string = "\n".join([";".join([str(a) for a in li]) for li in liste0])
+        file = open("src/modules/"+ str(yfirst)+ "_" + str(ylast) + "_" + self.nom_module.get()+".mdl", "w")
+        file.write(str(self.nb_lignes)+"\n")
+        file.write(string)
+        file.close()
 
 if __name__ == "__main__":
     app = ModuleGenerator()
