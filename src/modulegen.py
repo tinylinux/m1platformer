@@ -119,7 +119,7 @@ class ModuleGenerator(tk.Tk):
         self.clic1 = True
 
         self.canvas.bind('<Button-1>', self.clic_left_canvas)
-        self.canvas.bind('<Button-3>', self.cancel_selection)
+        #self.canvas.bind('<Button-3>', self.cancel_selection)
 
         self.fenetre_principale.mainloop()
 
@@ -158,6 +158,8 @@ class ModuleGenerator(tk.Tk):
                 self.canvas.itemconfigure(self.carreaux[self.clic_coords[0]][self.clic_coords[1]], fill = "white")
                 self.obstacle_creation[self.obstacle_current.get()]()
                 self.clic1 = True
+        else:
+            self.cancel_selection(mouse)
 
     def plateforme_creation(self):
         i0,i1 = minmax(self.clic_coords[0], self.clic_coords[2])

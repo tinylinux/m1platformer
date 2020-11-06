@@ -11,7 +11,7 @@ SOL_LONG = 609      # La longueur d'un bloc du sol en général
 SOL_IMG = "assets/img/plantes.png"
 JMP_COOLDOWN = 0
 
-ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+#ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 sol = pygame.sprite.Group()
 
 background = pygame.image.load("assets/img/fond.jpg")
