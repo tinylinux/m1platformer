@@ -218,13 +218,14 @@ class ModuleGenerator(tk.Tk):
         print(self.nom_module.get())
         liste0 = list(self.obstacles.values())
         liste0 = sorted(liste0, key = lambda obstacle: obstacle[1][1])
-        yfirst, xmin= liste0[0][1]
-        liste0 = [[plft[0], (plft[1][0], plft[1][1] - xmin), (plft[2][0], plft[2][1] - xmin)] for plft in liste0]
+        xmin= liste0[0][1][1]
+        liste0 = [[plft[0], (plft[1][0] * TAILLE_CARREAUX, (plft[1][1] - xmin) * TAILLE_CARREAUX), (plft[2][0] * TAILLE_CARREAUX, (plft[2][1] - xmin) * TAILLE_CARREAUX)] for plft in liste0]
+        yfirst = liste0[0][1][0]
         ylast = max(enumerate(liste0), key = lambda obstacle : (obstacle[1][2][1], obstacle[1][1][0]))[1][1][0]
         string = "\n".join([";".join([str(a) for a in li]) for li in liste0])
         file = open("src/modules/"+ str(yfirst)+ "_" + str(ylast) + "_" + self.nom_module.get()+".mdl", "w")
         file.write(str(self.nb_lignes)+"\n")
-        file.write(string)
+        file.write(string + "\n")
         file.close()
 
 if __name__ == "__main__":
