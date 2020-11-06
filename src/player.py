@@ -103,6 +103,9 @@ class Player(pygame.sprite.Sprite):
                 if coll[0]:
                     self.vel.y = 0
                     flag = True
+                if coll[1]:
+                    self.vel.x = 0
+                    flag = True
         if not flag:
             self.pos = posnext
         self.shape.topleft = self.pos
