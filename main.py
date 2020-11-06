@@ -51,11 +51,12 @@ while True:
 
     bg.update()
 
-    count_frames += 1
-    if count_frames == 60:
-        count_frames = 0
-        seconds += 1
-    score(seconds)
+    if state == 2:
+        count_frames += 1
+        if count_frames == 60:
+            count_frames = 0
+            seconds += 1
+        score(seconds)
 
     P.move()
     wrld.update_sol()
