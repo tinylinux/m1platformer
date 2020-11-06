@@ -10,7 +10,7 @@ SOL_HAUT = (SCREEN_HEIGHT - 117)      #La hauteur du sol en général
 SOL_LONG = 609      #La longueur d'un bloc du sol en général
 SOL_IMG = "assets/img/plantes.png"
 
-ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+#ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 sol = pygame.sprite.Group()
 player_sprite = pygame.sprite.Group()
 

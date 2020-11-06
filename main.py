@@ -9,6 +9,7 @@ pygame.init()
 import src.conf as cf
 import src.worldgen as wrld
 import src.player as plyr
+import src.menu as mn
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
@@ -24,6 +25,7 @@ state = 1 # Etat actuel du jeu (1 : dans le menu principal)
 
 while True:
     # print('OK : ', pygame.time.get_ticks())
+
     for event in pygame.event.get():
         if event.type == INC_SPEED:
             if state == 2: # Si on est in game
@@ -39,6 +41,12 @@ while True:
 
     P.move()
     wrld.update_sol()
+
+    if state == 1:
+        try:
+            mn.menu.mainloop(cf.DISPLAYSURF, disable_loop=True)
+        except:
+            state = 2
 
     pygame.display.update()
     FramePerSec.tick(FPS)
