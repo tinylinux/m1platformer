@@ -51,19 +51,18 @@ while True:
 
     bg.update()
 
-    count_frames += 1
-    if count_frames == 60:
-        count_frames = 0
-        seconds += 1
-    score(seconds)
+    if state == 2:
+        count_frames += 1
+        if count_frames == 60:
+            count_frames = 0
+            seconds += 1
+        score(seconds)
 
     P.move()
     wrld.update_sol()
 
     pressed_keys = pygame.key.get_pressed()
 
-    if pressed_keys[K_q]:
-        state = 2
     if pressed_keys[K_SPACE]:
         P.jump()
 
