@@ -6,12 +6,13 @@ import src.conf as cf
 class Platform(pygame.sprite.Sprite):
     """ Gère les plateformes """
     def __init__(self, x=1, y=1, haut=3,
-                 length=8, image=cf.SOL_IMG):
+                 length=8, image=cf.PLTFRM_IMG):
         super().__init__()
         self.haut = haut
         self.length = length
         self.surf = pygame.Surface((length, haut))        # Hit-box
         self.image = pygame.image.load(image)  # Image de la plateforme
+        self.image = pygame.transform.scale(self.image, (length, haut))
         self.rect = self.surf.get_rect(topleft=(x, y))
         pygame.sprite.Sprite.__init__(self, cf.sol)
         # Ajoute notre plateforme au groupe "sol".
