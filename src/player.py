@@ -1,6 +1,6 @@
 """Contient la classe Player, permettant de gérer le personnage."""
 
-import pygame
+import pygame, sys
 import src.conf as cf
 # Pour créer des vecteurs de dimension 2
 vec = pygame.math.Vector2
