@@ -87,9 +87,9 @@ class ModuleGenerator(tk.Tk):
 
             # Création du sélecteur d'obstacle
         self.obstacle_creation = {"Plateforme" : self.plateforme_creation,
-                                    "Bâtiment" : self.batiment_creation}
+                                    "Batiment" : self.batiment_creation}
         self.obstacle_suppression = {"Plateforme" : self.plateforme_suppression,
-                                    "Bâtiment" : self.batiment_suppression}
+                                    "Batiment" : self.batiment_suppression}
         self.select_obstacle = tk.Frame(self.fenetre_principale)
         self.select_obstacle.pack(side = tk.TOP, padx = 5, pady = 5)
         self.obstacle_current = tk.StringVar(self.fenetre_principale, "Plateforme")
@@ -193,15 +193,15 @@ class ModuleGenerator(tk.Tk):
                 if self.occupation_carreaux[i][j] != -1:
                     isfree = False
         if isfree:
-            print("un bâtiment est créé de "+str(j0)+" à "+str(j1)+" à la hauteur "+str(i0))
+            print("un batiment est créé de "+str(j0)+" à "+str(j1)+" à la hauteur "+str(i0))
             rect = self.canvas.create_rectangle(j0 * self.taille_carreaux, i0 * self.taille_carreaux,
                                                 (j1 + 1) * self.taille_carreaux, self.nb_lignes * self.taille_carreaux, fill = "grey")
             for i in range(i0, self.nb_lignes):
                 for j in range(j0, j1 + 1):
                     self.occupation_carreaux[i][j] = rect
-            self.obstacles[rect] =["Bâtiment", (i0, j0), (i0, j1)]
+            self.obstacles[rect] =["Batiment", (i0, j0), (i0, j1)]
         else:
-            print("Collision: Impossible de créer le bâtiment")
+            print("Collision: Impossible de créer le batiment")
 
     def plateforme_suppression(self,obstacle):
         i0, j0 = obstacle[1]
@@ -226,7 +226,7 @@ class ModuleGenerator(tk.Tk):
         yfirst = liste0[0][1][0]
         ylast = max(enumerate(liste0), key = lambda obstacle : (obstacle[1][2][1], obstacle[1][1][0]))[1][1][0]
         string = "\n".join([";".join([str(a) for a in li]) for li in liste0])
-        file = open("src/modules/"+ str(yfirst)+ "_" + str(ylast) + "_" + self.nom_module.get()+".mdl", "w")
+        file = open("modules/"+ str(yfirst)+ "_" + str(ylast) + "_" + self.nom_module.get()+".mdl", "w")
         file.write(str(self.nb_lignes * SCALE_FACTOR_Y)+"\n")
         file.write(string + "\n")
         file.close()
