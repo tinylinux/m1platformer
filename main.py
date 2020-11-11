@@ -1,4 +1,6 @@
 """ Gestion du jeu """
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame, sys
 from pygame.locals import *
 #import pygame_menu
