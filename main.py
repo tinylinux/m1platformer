@@ -61,7 +61,9 @@ while True:
         score(seconds)
 
     P.move()
-    wrld.update()
+
+    wrld.update(state)
+
 
     pressed_keys = pygame.key.get_pressed()
 

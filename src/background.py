@@ -3,7 +3,7 @@ import src.conf as cf
 
 class Nuage(cf.GameObject):
     def __init__(self,x,y,i):
-        super().__init__(x,y,0.2,cf.nuage_img[i],cf.SCREEN_WIDTH*0.8)
+        super().__init__(x,y,0.2*random.random()+0.1,cf.nuage_img[i])
         pygame.sprite.Sprite.__init__(self, cf.nuages)
         
     def update(self):
@@ -11,7 +11,7 @@ class Nuage(cf.GameObject):
         Suprrime la plateforme si celle-ci sort de l'écran, et demande
         la création d'une nouvelle plateforme si nécessaire"""
         super().update()
-        if self.rect.right < cf.SCREEN_WIDTH and self.pasencorecree:
+        if self.rect.right < cf.SCREEN_WIDTH*0.8 and self.pasencorecree:
             i = random.randint(0,3)
             x = random.randint(cf.SCREEN_WIDTH,int(cf.SCREEN_WIDTH*1.4))
             y = random.randint(0,cf.SCREEN_HEIGHT//2)

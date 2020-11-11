@@ -10,6 +10,7 @@ SPEED = 1           # vitesse initiale de défilement du sol
 SOL_HAUT = (SCREEN_HEIGHT - 69)      # La hauteur du sol en général
 SOL_LONG = 576      # La longueur d'un bloc du sol en général
 SOL_IMG = pygame.image.load("assets/img/sol.png")
+PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
 JMP_COOLDOWN = 0
 
 BlueSky = (0,170,251)
@@ -34,7 +35,7 @@ pygame.display.set_caption("Game")
 class GameObject(pygame.sprite.Sprite):
     """Utilisé pour tous les objets du monde, genre le sol, les plateformes,
         les nuages, les bâtiments, etc. qui se déplacent de droite à gauche"""
-    def __init__(self,x,y,scroll,img,lim):
+    def __init__(self,x,y,scroll,img):
         super().__init__()
         self.pos = vec((x,y))
         self.scroll = scroll
@@ -44,7 +45,6 @@ class GameObject(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft = self.pos)
         #limite à partir de laquelle on génère un nouvel objet sur sa droite
         #pasencorecree est un flag pour ne génèrer qu'un seul nouvel objet
-        self.limite = lim
         self.pasencorecree = True
         
     def update(self):

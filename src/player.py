@@ -116,6 +116,6 @@ class Player(pygame.sprite.Sprite):
         self.img+=0.03*cf.SPEED
         #faire par fraction permet d'update plus lentement que le FPS classique
         #le *cf.SPEED permet d'accélérer les pédales
-        if int(self.img)==len(self.images) :
+        if int(self.img)>=len(self.images) :
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
