@@ -10,6 +10,7 @@ SOL_HAUT = (SCREEN_HEIGHT - 117)      # La hauteur du sol en général
 SOL_LONG = 609      # La longueur d'un bloc du sol en général
 SOL_IMG = "assets/img/plantes.png"
 PLTFRM_IMG = "assets/img/pltfrm.png"
+BAT_IMG = "assets/img/bat.png"
 JMP_COOLDOWN = 0
 
 #ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

@@ -12,8 +12,30 @@ modules = os.listdir("./src/modules")
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 
-MAX_JUMP = 10000 # La hateur maximale entre la dernière plateforme d'un module
-# et la première d'un nouveau module
+MAX_JUMP = 1500 # La hateur maximale entre la dernière plateforme d'un module
+# et la première d'un nouveau module (à changer)
+
+# Fonctions de création
+def platform_creation(bloc, xoffset, yoffset):
+    top_left = bloc[1][1:-1].split(',')
+    top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
+    bot_right = bloc[2][1:-2].split(',')
+    bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
+    pltfrm.Platform(x = top_left_x + xoffset,
+                    y = top_left_y + yoffset,
+                    haut = (bot_right_y - top_left_y),
+                    length = (bot_right_x - top_left_x))
+
+def batiment_creation(bloc, xoffset, yoffset):
+    top_left = bloc[1][1:-1].split(',')
+    top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
+    bot_right = bloc[2][1:-2].split(',')
+    bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
+    pltfrm.Batiment(x = top_left_x + xoffset,
+                    y = top_left_y + yoffset,
+                    length = (bot_right_x - top_left_x))
+
+creation_functions = {"Plateforme" : platform_creation, "Bâtiment" : batiment_creation}
 
 def initgen(longueur_totale):
     """ Lance la création du sol """
@@ -27,9 +49,9 @@ def initgen(longueur_totale):
 def genere_module(last_pltfrm):
     """ Choisit et affiche un nouveau module à la fin de l'écran"""
     # Début du nouveau module
-    xoffset = last_pltfrm.rect.right + 0
+    xoffset = last_pltfrm.rect.right + 30
     # Sélection des modules possibles
-    modules_possibles = [mod for mod in modules if abs(mod[0] - last_pltfrm.rect.top) < MAX_JUMP]
+    modules_possibles = [mod for mod in modules if last_pltfrm.rect.bottom - mod[0] < MAX_JUMP]
     # Choix aléatoire d'un module
     module = rd.choice(modules_possibles)
     # Chargement du module
@@ -40,11 +62,8 @@ def genere_module(last_pltfrm):
     yoffset = cf.SCREEN_HEIGHT - module_height
     for line in lines[1:]:
         bloc = line.split(';')
-        top_left = bloc[1][1:-1].split(',')
-        top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
-        bot_right = bloc[2][1:-2].split(',')
-        bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
-        pltfrm.Platform(top_left_x + xoffset, top_left_y + yoffset, (bot_right_y - top_left_y), (bot_right_x - top_left_x))
+        bloc_type =  bloc[0]
+        creation_functions[bloc_type](bloc, xoffset, yoffset)
     module_file.close()
 
 def update_sol(state):
@@ -59,5 +78,4 @@ def update_sol(state):
                 bloc.stop_creation()
     last_pltfrm = max(cf.sol, key = lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
-        print("Enter generation module")
         genere_module(last_pltfrm)
