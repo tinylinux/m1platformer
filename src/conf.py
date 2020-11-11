@@ -4,8 +4,8 @@ vec = pygame.math.Vector2
 
 ch, cw = pygame.display.Info().current_h, pygame.display.Info().current_w
 
-SCREEN_WIDTH = (cw * 5)//7
-SCREEN_HEIGHT = min((ch * 8)//9, 9*SCREEN_WIDTH//16)
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
 
 SPEED = 1           # vitesse initiale de défilement du sol
 SOL_HAUT = (SCREEN_HEIGHT - 69)      # La hauteur du sol en général

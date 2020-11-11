@@ -35,7 +35,7 @@ def score(n):
 seconds = 0
 count_frames = 0
 
-state = 2 # Etat actuel du jeu (1 : dans le menu principal)
+state = 1 # Etat actuel du jeu (1 : dans le menu principal)
 
 while True:
     # print('OK : ', pygame.time.get_ticks())

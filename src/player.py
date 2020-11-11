@@ -18,7 +18,7 @@ V_0 = 0
 V_JMP = 15
 # Accélération initiale
 A_0 = 0
-# Accélération due �  la gravité
+# Accélération due �  la gravité
 G = 0.4
 # Drapeau de disponibilité du saut
 FLAG_JUMP = False
@@ -28,7 +28,7 @@ FLAG_JUMP_2 = False
 
 def collide(pos_prev, pos_next, rect_next):
     # """Vérifie la collision avec l'objet rect, étant donné la position
-    # �  l'instant précédent, et la position prévue pour l'instant suivant.
+    # �  l'instant précédent, et la position prévue pour l'instant suivant.
     # Renvoie une position corrigée s'il y a collision.
     # Suppose un mouvement vertical du joueur.
     # Renvoie un triplet (collision verticale, collision horizontale,
@@ -51,8 +51,8 @@ def collide(pos_prev, pos_next, rect_next):
     # pos_prev.y + HEIGHT > rect_next.top and pos_prev.y < rect_next.bottom
     if pos_next.y + HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
         return (False, False, None)
-    # On ne considère que les collisions �  gauche des plateformes
-    return (False, True, vec(rect_next.left, pos_next.y))
+    # On ne considère que les collisions à gauche des plateformes
+    return (False, True, vec(rect_next.left - WIDTH, pos_next.y))
 
 
 
@@ -65,7 +65,7 @@ class Player(pygame.sprite.Sprite):
         # Liste d'images de l'objet, et indice de cette liste
         self.images = []
         for i in range(8) :
-            self.images.append(pygame.image.load("assets/img/mono/mono"+str(i)+".png"))
+            self.images.append(pygame.image.load("assets/img/mono/Mono"+str(i)+".png"))
         self.img = 0
         # Création de l'objet
         self.shape = self.images[0].get_rect()
@@ -85,7 +85,7 @@ class Player(pygame.sprite.Sprite):
         global FLAG_JUMP_2
         if FLAG_JUMP :
             FLAG_JUMP = False
-            cf.JMP_COOLDOWN = 15
+            cf.JMP_COOLDOWN = 10
             self.vel.y = -V_JMP
             FLAG_JUMP_2 = True
         elif FLAG_JUMP_2 and cf.JMP_COOLDOWN == 0:
@@ -98,7 +98,7 @@ class Player(pygame.sprite.Sprite):
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
         flag = False
-        # On suppose qu'il ne peut y avoir qu'une seule collision �  la fois
+        # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
@@ -112,10 +112,14 @@ class Player(pygame.sprite.Sprite):
         if not flag:
             self.pos = posnext
         self.shape.topleft = self.pos
+        # On vérifie la mort
+        if self.pos.y > cf.SCREEN_HEIGHT or self.pos.x + WIDTH < 0:
+            pygame.quit()
+            sys.exit()
         #On change l'image
         self.img+=0.03*cf.SPEED
         #faire par fraction permet d'update plus lentement que le FPS classique
-        #le *cf.SPEED permet d'acc�l�rer les p�dales
+        #le *cf.SPEED permet d'accélérer les pédales
         if int(self.img)>=len(self.images) :
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
