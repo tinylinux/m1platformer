@@ -9,21 +9,21 @@ pygame.init()
 import src.conf as cf
 import src.worldgen as wrld
 import src.player as plyr
-import src.background as bg
+#import src.background as bg
 import src.menu as mn
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
 pygame.display.set_caption("Platformer")
 
-wrld.initgen(0)
+wrld.initgen()
 # Crée un nouvel event, le +1 sert à avoir un nouvel ID
 INC_SPEED = pygame.USEREVENT + 1
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
 
 P = plyr.Player()
-bg = bg.Background()
+#bg = bg.Background()
 
 def score(n):
     font = pygame.font.SysFont(None, 25)
@@ -33,7 +33,7 @@ def score(n):
 seconds = 0
 count_frames = 0
 
-state = 1 # Etat actuel du jeu (1 : dans le menu principal)
+state = 2 # Etat actuel du jeu (1 : dans le menu principal)
 
 while True:
     # print('OK : ', pygame.time.get_ticks())
@@ -49,7 +49,9 @@ while True:
     if cf.JMP_COOLDOWN != 0:
         cf.JMP_COOLDOWN -= 1
 
-    bg.update()
+    #bg.update()
+    cf.DISPLAYSURF.fill(cf.BlueSky)
+    
 
     if state == 2:
         count_frames += 1
@@ -59,7 +61,7 @@ while True:
         score(seconds)
 
     P.move()
-    wrld.update_sol()
+    wrld.update()
 
     pressed_keys = pygame.key.get_pressed()
 
