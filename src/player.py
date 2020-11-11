@@ -10,7 +10,7 @@ vec = pygame.math.Vector2
 WIDTH = 63
 HEIGHT = 90
 # Position initiale
-X_INIT = cf.SCREEN_WIDTH//8
+X_INIT = cf.SCREEN_WIDTH//2
 Y_INIT = cf.SOL_HAUT - HEIGHT
 # Vitesse initiale
 V_0 = 0

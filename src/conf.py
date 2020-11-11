@@ -6,11 +6,10 @@ ch, cw = pygame.display.Info().current_h, pygame.display.Info().current_w
 
 SCREEN_WIDTH = (cw * 5)//7
 SCREEN_HEIGHT = min((ch * 8)//9, 9*SCREEN_WIDTH//16)
+
 SPEED = 1           # vitesse initiale de défilement du sol
 SOL_HAUT = (SCREEN_HEIGHT - 69)      # La hauteur du sol en général
 SOL_LONG = 576      # La longueur d'un bloc du sol en général
-SOL_IMG = pygame.image.load("assets/img/sol.png")
-PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
 JMP_COOLDOWN = 0
 
 BlueSky = (0,170,251)
@@ -19,8 +18,9 @@ BlueSky = (0,170,251)
 nuage_img = []
 for i in range(4) :
     nuage_img.append(pygame.image.load("assets/img/nuages/nuage"+str(i)+".png"))
-bat_img = []
-plt_img = []
+SOL_IMG = pygame.image.load("assets/img/sol.png")
+PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
+BAT_IMG = pygame.image.load("assets/img/bat.png")
 
 
 #ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
