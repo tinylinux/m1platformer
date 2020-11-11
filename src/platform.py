@@ -65,10 +65,10 @@ class Platform(cf.GameObject):
         pygame.sprite.Sprite.__init__(self, cf.sol)
         # self.speed = speed
 
-    def update(self):
-        """ Fait se déplacer la plateforme à la vitesse speed.
-        Suprrime la plateforme si celle-ci sort de l'écran"""
-        super().update()
+    # def update(self):
+    #     """ Fait se déplacer la plateforme à la vitesse speed.
+    #     Suprrime la plateforme si celle-ci sort de l'écran"""
+    #     super().update()
         # self.rect.move_ip(-self.speed, 0)
 
 
