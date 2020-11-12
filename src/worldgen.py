@@ -41,6 +41,18 @@ def batiment_creation(bloc, xoffset, yoffset):
 creation_functions = {"Plateforme" : platform_creation, "Batiment" : batiment_creation}
 
 def initgen():
+    #Crée quelques nuages
+    for k in range(4) :
+        x = random.randint(0,cf.SCREEN_WIDTH)
+        y = random.randint(0,cf.SCREEN_HEIGHT//2)
+        i = random.randint(0,cf.n_nuage-1)
+        bg.Nuage(x,y,i)
+    #Crée quelques arbres
+    for k in range(4) :
+        x = random.randint(0,cf.SCREEN_WIDTH)
+        i = random.randint(0,cf.n_arbre-1)
+        bg.Arbre(x,i)        
+        
     #Lance la création du sol
     
     # on rajoute des bouts de sol, on additionne leur longueur
@@ -50,12 +62,7 @@ def initgen():
         # On en met un nouveau à la position x = longueur_totale.
         pltfrm.Sol(longueur_totale)
         longueur_totale += cf.SOL_LONG
-    #Crée quelques nuages
-    for k in range(4) :
-        x = random.randint(0,cf.SCREEN_WIDTH)
-        y = random.randint(0,cf.SCREEN_HEIGHT//2)
-        i = random.randint(0,3)
-        bg.Nuage(x,y,i)
+
 
 
         
@@ -90,6 +97,8 @@ def genere_module(last_pltfrm):
 def update(state):
     for nuage in cf.nuages :
         nuage.update()
+    for arbre in cf.arbres :
+        arbre.update()
     for bloc in cf.sol:
         bloc.update()     # On déplace chaque bloc
     

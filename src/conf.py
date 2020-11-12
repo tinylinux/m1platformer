@@ -1,5 +1,5 @@
 """ Stocke des variables partagées entre les différents fichiers """
-import pygame
+import pygame, os
 vec = pygame.math.Vector2
 
 ch, cw = pygame.display.Info().current_h, pygame.display.Info().current_w
@@ -15,9 +15,16 @@ JMP_COOLDOWN = 0
 BlueSky = (0,170,251)
 
 #IMAGES
+n_nuage = len(os.listdir("./assets/img/nuages")) - 1
 nuage_img = []
-for i in range(4) :
+for i in range(n_nuage) :
     nuage_img.append(pygame.image.load("assets/img/nuages/nuage"+str(i)+".png"))
+    
+n_arbre = len(os.listdir("./assets/img/arbres")) - 1
+arbre_img = []
+for i in range(n_arbre) :
+    arbre_img.append(pygame.image.load("assets/img/arbres/arbre"+str(i)+".png"))
+    
 SOL_IMG = pygame.image.load("assets/img/sol.png")
 PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
 BAT_IMG = pygame.image.load("assets/img/bat.png")
@@ -26,6 +33,7 @@ BAT_IMG = pygame.image.load("assets/img/bat.png")
 #ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 sol = pygame.sprite.Group()
 nuages = pygame.sprite.Group()
+arbres = pygame.sprite.Group()
 
 #background = pygame.image.load("assets/img/fond.jpg")
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
