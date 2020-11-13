@@ -8,7 +8,7 @@ vec = pygame.math.Vector2
 
 # Dimensions
 WIDTH = 63
-HEIGHT = 90
+HEIGHT = 96
 # Position initiale
 X_INIT = cf.SCREEN_WIDTH//2
 Y_INIT = cf.SOL_HAUT - HEIGHT
@@ -51,7 +51,7 @@ def collide(pos_prev, pos_next, rect_next):
     # pos_prev.y + HEIGHT > rect_next.top and pos_prev.y < rect_next.bottom
     if pos_next.y + HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
         return (False, False, None)
-    # On ne considère que les collisions à gauche des plateformes
+    # On ne considère que les collisions �  gauche des plateformes
     return (False, True, vec(rect_next.left - WIDTH, pos_next.y))
 
 
@@ -96,7 +96,6 @@ class Player(pygame.sprite.Sprite):
         vitesse et accélération si nécessaire."""
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
-
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:

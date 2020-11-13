@@ -21,7 +21,7 @@ def update_window_size():
 
 INITIAL_SPEED = 1
 SPEED = INITIAL_SPEED           # vitesse initiale de défilement du sol
-SOL_HAUT = (SCREEN_HEIGHT - 69)      # La hauteur du sol en général
+SOL_HAUT = (SCREEN_HEIGHT - 63)      # La hauteur du sol en général
 SOL_LONG = 576      # La longueur d'un bloc du sol en général
 
 BlueSky = (0,170,251)
