@@ -12,6 +12,7 @@ import src.conf as cf
 import src.worldgen as wrld
 import src.player as plyr
 import src.menu as mn
+import src.score as scre
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
@@ -74,19 +75,22 @@ while True:
         if count_frames == 60:
             count_frames = 0
             seconds += 1
-        mn.score(seconds)
+        scre.score(seconds)
 
     if state <= 2:
         P.move()
 
-    if P.death():
+    if P.death() and state == 2:
         state = 3
+        newhs = scre.maj(seconds)
 
     if state == 1:
         mn.start_button.print(pygame.mouse.get_pos())
 
     if state == 3:
-        cf.DISPLAYSURF.blit(pygame.image.load("assets/img/ui/gameover.png"), (395,140))
+        if newhs:
+            cf.DISPLAYSURF.blit(pygame.image.load("assets/img/ui/highscore.png"), (428,350))
+        cf.DISPLAYSURF.blit(pygame.image.load("assets/img/ui/gameover.png"), (395,100))
         mn.restart_button.print(pygame.mouse.get_pos())
 
     pygame.display.flip()
