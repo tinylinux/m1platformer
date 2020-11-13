@@ -18,7 +18,7 @@ V_0 = 0
 V_JMP = 15
 # Accélération initiale
 A_0 = 0
-# Accélération due �  la gravité
+# Accélération due à la gravité
 G = 0.4
 # Drapeau de disponibilité du saut
 FLAG_JUMP = False
@@ -28,7 +28,7 @@ FLAG_JUMP_2 = False
 
 def collide(pos_prev, pos_next, rect_next):
     # """Vérifie la collision avec l'objet rect, étant donné la position
-    # �  l'instant précédent, et la position prévue pour l'instant suivant.
+    # à l'instant précédent, et la position prévue pour l'instant suivant.
     # Renvoie une position corrigée s'il y a collision.
     # Suppose un mouvement vertical du joueur.
     # Renvoie un triplet (collision verticale, collision horizontale,
@@ -96,25 +96,17 @@ class Player(pygame.sprite.Sprite):
         vitesse et accélération si nécessaire."""
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
-        flag = False
-        # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
+
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
-                self.pos = coll[2]
+                posnext = coll[2]
                 if coll[0]:
                     self.vel.y = 0
-                    flag = True
                 if coll[1]:
                     self.vel.x = 0
-                    flag = True
-        if not flag:
-            self.pos = posnext
+        self.pos = posnext
         self.shape.topleft = self.pos
-        # On vérifie la mort
-        if self.pos.y > cf.SCREEN_HEIGHT or self.pos.x + WIDTH < 0:
-            pygame.quit()
-            sys.exit()
         #On change l'image
         self.img+=0.03*cf.SPEED
         #faire par fraction permet d'update plus lentement que le FPS classique
@@ -122,3 +114,7 @@ class Player(pygame.sprite.Sprite):
         if int(self.img)>=len(self.images) :
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
+    
+    def death(self):
+        """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
+        return(self.pos.y > cf.SCREEN_HEIGHT + 50 or self.pos.x + WIDTH < 0)
