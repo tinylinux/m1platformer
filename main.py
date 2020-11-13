@@ -25,7 +25,6 @@ INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
 
 P = plyr.Player()
-#bg = bg.Background()
 
 def score(n):
     font = pygame.font.SysFont(None, 25)
