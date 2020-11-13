@@ -3,11 +3,12 @@
 import pygame
 import src.conf as cf
 
-
 white = (255,255,255)
 idle = (170,170,170)
 hover = (100,100,100)
 font = pygame.font.SysFont(None,35)
+chars = "azertyuiopqsdfghjklmwxcvbn1234567890"
+Chars = "AZERTYUIOPQSDFGHJKLMWXCVBN1234567890"
 
 def mouse_on_button(mouse, button_pos, button_size):
     return(button_pos[0] <= mouse[0] <= button_pos[0] + button_size[0]\
@@ -52,6 +53,35 @@ class Button_image(Button):
             cf.DISPLAYSURF.blit(pygame.image.load(self.image_hover), self.position)
         else:
             cf.DISPLAYSURF.blit(pygame.image.load(self.image), self.position)
+
+class Input_zone(Button):
+    """Classe des zones dans lesquelles on peut entrer du texte"""
+    def __init__(self, position, size):
+        super().__init__(position, size)
+        self.input = ""
+        self.selected = False
+        self.text_position = (position[0] + 10, position[1] + 10)
+
+    def print(self):
+        """Affiche la zone et le texte entré"""
+        pygame.draw.rect(cf.DISPLAYSURF, idle, self.rect)
+        cf.DISPLAYSURF.blit(font.render(self.input, True, white), self.text_position)
+
+    def select(self):
+        self.selected = True
+    
+    def deselect(self):
+        self.selected = False
+
+    def read(self, key):
+        if self.selected:
+            key_name = pygame.key.name(key)
+            if key_name in chars:
+                self.input += Chars[chars.index(key_name)]
+            elif key == pygame.K_SPACE:
+                self.input += " "
+            elif key == pygame.K_BACKSPACE and self.input != "":
+                self.input = self.input[:-1]
 
 start_button = Button_image((440,300), (401,123), "assets/img/ui/begin.png", "assets/img/ui/beginpushed.png")
 
