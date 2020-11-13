@@ -46,6 +46,7 @@ def collide(pos_prev, pos_next, rect_next):
         return (True, False, vec(pos_next.x, rect_next.bottom))
     if pos_next.y + cf.p_HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
         return (False, False, None)
+
     # On ne considère que les collisions à gauche des plateformes
     return (False, True, vec(rect_next.left - cf.p_WIDTH, pos_next.y))
 
@@ -89,6 +90,7 @@ class Player(pygame.sprite.Sprite):
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
         flag = False
+
         # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
@@ -107,7 +109,7 @@ class Player(pygame.sprite.Sprite):
         if int(self.img)>=len(self.images) :
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
-    
+
     def death(self):
         """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
         return(self.pos.y > cf.SCREEN_HEIGHT + 50 or self.pos.x + cf.p_WIDTH < 0)

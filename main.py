@@ -86,6 +86,7 @@ while True:
         mn.start_button.print(pygame.mouse.get_pos())
 
     if state == 3:
+        cf.DISPLAYSURF.blit(pygame.image.load("assets/img/ui/gameover.png"), (395,140))
         mn.restart_button.print(pygame.mouse.get_pos())
 
     pygame.display.flip()
