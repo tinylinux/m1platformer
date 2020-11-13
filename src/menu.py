@@ -7,7 +7,7 @@ import src.conf as cf
 white = (255,255,255) 
 light = (170,170,170) 
 dark = (100,100,100)
-smallfont = pygame.font.SysFont('Corbel',35)
+smallfont = pygame.font.SysFont(None,35)
 
 def mouse_on_button(mouse, button_pos, button_size):
     return(int(button_pos[0] - button_size[0]/2) <= mouse[0] <= int(button_pos[0] + button_size[0]/2)\
