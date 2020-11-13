@@ -14,8 +14,8 @@ V_0 = 0
 V_JMP = 15
 # Accélération initiale
 A_0 = 0
-# Accélération due �  la gravité
-G = 0.4
+# Accélération due à la gravité
+G = 0.8
 # Drapeau de disponibilité du saut
 FLAG_JUMP = False
 # Drapeau de disponibilité du second saut
@@ -32,7 +32,7 @@ def collide(pos_prev, pos_next, rect_next):
     global FLAG_JUMP
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
-    # de toutes fa�ons pas possible de jouer dans ce cas.
+    # de toutes façons pas possible de jouer dans ce cas.
     if pos_next.x + cf.p_WIDTH <= rect_next.left or pos_next.x >= rect_next.right:
         return (False, False, None)
     if pos_prev.y + cf.p_HEIGHT <= rect_next.top:
@@ -46,7 +46,8 @@ def collide(pos_prev, pos_next, rect_next):
         return (True, False, vec(pos_next.x, rect_next.bottom))
     if pos_next.y + cf.p_HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
         return (False, False, None)
-    # On ne consid�re que les collisions � gauche des plateformes
+
+    # On ne considère que les collisions à gauche des plateformes
     return (False, True, vec(rect_next.left - cf.p_WIDTH, pos_next.y))
 
 
@@ -89,7 +90,8 @@ class Player(pygame.sprite.Sprite):
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
         flag = False
-        # On suppose qu'il ne peut y avoir qu'une seule collision �  la fois
+
+        # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
