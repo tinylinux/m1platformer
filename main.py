@@ -84,6 +84,7 @@ while True:
     P.move()
 
     if P.death():
+        del P
         state = 3
 
     if state == 1:
