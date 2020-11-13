@@ -136,3 +136,6 @@ dmypy.json
 .DS_Store
 
 /.vs/ProjectSettings.json
+
+# Les fichiers textes
+.txt
