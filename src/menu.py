@@ -55,7 +55,12 @@ class Button_image(Button):
 
 start_button = Button_image((440,300), (401,123), "assets/img/ui/begin.png", "assets/img/ui/beginpushed.png")
 
-restart_button = Button_image((440,450), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
+restart_button = Button_image((440,500), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
+
+def score(n):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Score: " + str(n), True, (255, 255, 255))
+    cf.DISPLAYSURF.blit(text,(0,0))
 
 def print_image(image, position):
     """Affiche une image à une position donnée.
