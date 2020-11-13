@@ -1,8 +1,8 @@
-#Contient la classe Player, permettant de gérer le personnage.
+"""Contient la classe Player, permettant de gerer le personnage."""
 
 import pygame, sys
 import src.conf as cf
-# Pour créer des vecteurs de dimension 2
+# Pour crÃ©er des vecteurs de dimension 2
 vec = pygame.math.Vector2
 
 # Position initiale
@@ -12,23 +12,23 @@ Y_INIT = cf.SOL_HAUT - cf.p_HEIGHT
 V_0 = 0
 # Vitesse initiale lors d'un saut
 V_JMP = 15
-# Accélération initiale
+# AccÃ©lÃ©ration initiale
 A_0 = 0
-# Accélération due à la gravité
+# AccÃ©lÃ©ration due Ã  la gravitÃ©
 G = 0.4
-# Drapeau de disponibilité du saut
+# Drapeau de disponibilitÃ© du saut
 FLAG_JUMP = False
-# Drapeau de disponibilité du second saut
+# Drapeau de disponibilitÃ© du second saut
 FLAG_JUMP_2 = False
 
 
 def collide(pos_prev, pos_next, rect_next):
-    # """Vérifie la collision avec l'objet rect, étant donné la position
-    # à l'instant précédent, et la position prévue pour l'instant suivant.
-    # Renvoie une position corrigée s'il y a collision.
-    # Suppose un mouvement vertical du joueur.
-    # Renvoie un triplet (collision verticale, collision horizontale,
-    # modification de position nécessaire)"""
+    """Verifie la collision avec l'objet rect, etant donne la position
+    A l'instant precedent, et la position prevue pour l'instant suivant.
+    Renvoie une position corrigee s'il y a collision.
+    Suppose un mouvement vertical du joueur.
+    Renvoie un triplet (collision verticale, collision horizontale,
+    modification de position necessaire)"""
     global FLAG_JUMP
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
@@ -52,7 +52,7 @@ def collide(pos_prev, pos_next, rect_next):
 
 
 class Player(pygame.sprite.Sprite):
-    #Gestion du personnage, par les méthodes jump(self) et move(self).
+    """Gestion du personnage, par les mÃ©thodes jump(self) et move(self)."""
     def __init__(self):
         # Initialisation de la classe parent
         # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
@@ -60,7 +60,7 @@ class Player(pygame.sprite.Sprite):
         # Liste d'images de l'objet, et indice de cette liste
         self.images = cf.mono_img
         self.img = 0
-        # Création de l'objet
+        # CrÃ©ation de l'objet
         self.shape = self.images[0].get_rect()
 
         # Position
@@ -69,11 +69,11 @@ class Player(pygame.sprite.Sprite):
 
         # Vitesse
         self.vel = vec(V_0, 0)
-        # Accélération
+        # AccÃ©lÃ©ration
         self.acc = vec(A_0, G)
 
     def jump(self):
-        #Lance le saut du personnage.
+        """Lance le saut du personnage."""
         global FLAG_JUMP
         global FLAG_JUMP_2
         if FLAG_JUMP :
@@ -85,11 +85,11 @@ class Player(pygame.sprite.Sprite):
             FLAG_JUMP_2 = False
 
     def move(self):
-        #Modifie les vecteurs position, vitesse et accélération si nécessaire.
+        """Modifie les vecteurs position, vitesse et accÃ©lÃ©ration si nÃ©cessaire."""
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
         flag = False
-        # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
+        # On suppose qu'il ne peut y avoir qu'une seule collision Ã  la fois
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
@@ -107,7 +107,7 @@ class Player(pygame.sprite.Sprite):
         #On change l'image
         self.img+=0.03*cf.SPEED
         #faire par fraction permet d'update plus lentement que le FPS classique
-        #le *cf.SPEED permet d'accélérer les pédales
+        #le *cf.SPEED permet d'accÃ©lÃ©rer les pÃ©dales
         if int(self.img)>=len(self.images) :
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
