@@ -10,7 +10,6 @@ SCREEN_HEIGHT = 720
 SPEED = 1           # vitesse initiale de défilement du sol
 SOL_HAUT = (SCREEN_HEIGHT - 69)      # La hauteur du sol en général
 SOL_LONG = 576      # La longueur d'un bloc du sol en général
-JMP_COOLDOWN = 0
 
 BlueSky = (0,170,251)
 
@@ -23,7 +22,7 @@ for i in range(n_nuage) :
 n_arbre = len(os.listdir("./assets/img/arbres")) - 1
 arbre_img = []
 for i in range(n_arbre) :
-    arbre_img.append(pygame.image.load("assets/img/arbres/arbre"+str(i)+".png"))
+    arbre_img.append(pygame.image.load("assets/img/arbres/Arbre"+str(i)+".png"))
     
 SOL_IMG = pygame.image.load("assets/img/sol.png")
 PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
@@ -64,4 +63,3 @@ class GameObject(pygame.sprite.Sprite):
             self.kill()              # on le supprime
         #On update l'image
         DISPLAYSURF.blit(self.image, self.rect)
-        

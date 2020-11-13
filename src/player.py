@@ -85,10 +85,9 @@ class Player(pygame.sprite.Sprite):
         global FLAG_JUMP_2
         if FLAG_JUMP :
             FLAG_JUMP = False
-            cf.JMP_COOLDOWN = 10
             self.vel.y = -V_JMP
             FLAG_JUMP_2 = True
-        elif FLAG_JUMP_2 and cf.JMP_COOLDOWN == 0:
+        elif FLAG_JUMP_2:
             self.vel.y = -V_JMP
             FLAG_JUMP_2 = False
 

@@ -44,16 +44,14 @@ while True:
         if event.type == INC_SPEED:
             if state == 2: # Si on est in game
                 cf.SPEED += 0.5
+        if event.type == pygame.KEYDOWN:
+            if state == 2 and event.key == K_SPACE:
+                P.jump()
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
-    if cf.JMP_COOLDOWN != 0:
-        cf.JMP_COOLDOWN -= 1
-
-    #bg.update()
     cf.DISPLAYSURF.fill(cf.BlueSky)
-    
 
     if state == 2:
         count_frames += 1
@@ -62,16 +60,10 @@ while True:
             seconds += 1
         score(seconds)
 
-    P.move()
-
     wrld.update(state)
 
 
     pressed_keys = pygame.key.get_pressed()
-
-    if pressed_keys[K_SPACE]:
-        P.jump()
-
     P.move()
 
     if state == 1:
