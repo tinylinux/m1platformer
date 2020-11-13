@@ -1,14 +1,14 @@
 ﻿import tkinter as tk
 
-SCREEN_HEIGHT = 800
+SCREEN_HEIGHT = 720
 
 TAILLE_CARREAUX = 10
-NB_LIGNES = SCREEN_HEIGHT// TAILLE_CARREAUX - 20
+NB_LIGNES = (SCREEN_HEIGHT - 90)// TAILLE_CARREAUX
 NB_COLONNES = 50
 NB_COLONNES_MAX = 130
 NB_COLONNES_MIN = 2
 
-SCALE_FACTOR_Y = 30
+SCALE_FACTOR_Y = TAILLE_CARREAUX
 SCALE_FACTOR_X = 40
 
 def minmax(a,b):
@@ -179,7 +179,7 @@ class ModuleGenerator(tk.Tk):
             for i in range(i0, i1 + 1):
                 for j in range(j0, j1 + 1):
                     self.occupation_carreaux[i][j] = rect
-            self.obstacles[rect] = ["Plateforme", (i0, j0), (i1, j1)]
+            self.obstacles[rect] = ["Plateforme", (i0, j0), (i1 + 1, j1 + 1)]
         else:
             print("Collision: Impossible de créer la plateforme")
         
@@ -199,26 +199,25 @@ class ModuleGenerator(tk.Tk):
             for i in range(i0, self.nb_lignes):
                 for j in range(j0, j1 + 1):
                     self.occupation_carreaux[i][j] = rect
-            self.obstacles[rect] =["Batiment", (i0, j0), (i0, j1)]
+            self.obstacles[rect] =["Batiment", (i0, j0), (i0 + 1, j1 + 1)]
         else:
             print("Collision: Impossible de créer le batiment")
 
     def plateforme_suppression(self,obstacle):
         i0, j0 = obstacle[1]
         i1, j1 = obstacle[2]
-        for i in range(i0, i1 + 1):
-            for j in range(j0, j1 + 1):
+        for i in range(i0, i1):
+            for j in range(j0, j1):
                 self.occupation_carreaux[i][j] = -1
 
     def batiment_suppression(self,obstacle):
         i0, j0 = obstacle[1]
         j1 = obstacle[2][1]
         for i in range(i0, self.nb_lignes):
-            for j in range(j0, j1+1):
+            for j in range(j0, j1):
                 self.occupation_carreaux[i][j] = -1
        
     def enregistrement(self):
-        print(self.nom_module.get())
         liste0 = list(self.obstacles.values())
         liste0 = sorted(liste0, key = lambda obstacle: obstacle[1][1])
         xmin= liste0[0][1][1]
@@ -226,7 +225,8 @@ class ModuleGenerator(tk.Tk):
         yfirst = liste0[0][1][0]
         ylast = max(enumerate(liste0), key = lambda obstacle : (obstacle[1][2][1], obstacle[1][1][0]))[1][1][0]
         string = "\n".join([";".join([str(a) for a in li]) for li in liste0])
-        file = open("modules/"+ str(yfirst)+ "_" + str(ylast) + "_" + self.nom_module.get()+".mdl", "w")
+        print("Enregistrement de " + "src/modules/"+ str(yfirst)+ "_" + str(ylast) + "_" + self.nom_module.get()+".mdl")
+        file = open("src/modules/"+ str(yfirst)+ "_" + str(ylast) + "_" + self.nom_module.get()+".mdl", "w")
         file.write(str(self.nb_lignes * SCALE_FACTOR_Y)+"\n")
         file.write(string + "\n")
         file.close()
