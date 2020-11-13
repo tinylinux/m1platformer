@@ -61,3 +61,6 @@ start_button = Button_text((int(1280/2 - 160/2), int(720/2 - 40/2)),\
 restart_button = Button_text((int(1280/2 - 185/2), int(720/2 - 40/2)),\
     (185, 40),\
     font.render('Recommencer' , True , white))
+
+def print_image(image, position):
+    cf.DISPLAYSURF.blit(pygame.image.load(image), position)
