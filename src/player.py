@@ -1,24 +1,20 @@
-"""Contient la classe Player, permettant de gérer le personnage."""
+"""Contient la classe Player, permettant de gerer le personnage."""
 
 import pygame, sys
 import src.conf as cf
 # Pour créer des vecteurs de dimension 2
 vec = pygame.math.Vector2
 
-
-# Dimensions
-WIDTH = 63
-HEIGHT = 96
 # Position initiale
 X_INIT = cf.SCREEN_WIDTH//2
-Y_INIT = cf.SOL_HAUT - HEIGHT
+Y_INIT = cf.SOL_HAUT - cf.p_HEIGHT
 # Vitesse initiale
 V_0 = 0
 # Vitesse initiale lors d'un saut
 V_JMP = 15
 # Accélération initiale
 A_0 = 0
-# Accélération due à la gravité
+# Accélération due �  la gravité
 G = 0.4
 # Drapeau de disponibilité du saut
 FLAG_JUMP = False
@@ -27,32 +23,31 @@ FLAG_JUMP_2 = False
 
 
 def collide(pos_prev, pos_next, rect_next):
-    """Vérifie la collision avec l'objet rect, étant donné la position
-    à l'instant précédent, et la position prévue pour l'instant suivant.
-    Renvoie une position corrigée s'il y a collision.
+    """Verifie la collision avec l'objet rect, etant donne la position
+    A l'instant precedent, et la position prevue pour l'instant suivant.
+    Renvoie une position corrigee s'il y a collision.
     Suppose un mouvement vertical du joueur.
     Renvoie un triplet (collision verticale, collision horizontale,
-    modification de position nécessaire)"""
+    modification de position necessaire)"""
     global FLAG_JUMP
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
-    # de toutes façons pas possible de jouer dans ce cas.
-    if pos_next.x + WIDTH <= rect_next.left or pos_next.x >= rect_next.right:
+    # de toutes fa�ons pas possible de jouer dans ce cas.
+    if pos_next.x + cf.p_WIDTH <= rect_next.left or pos_next.x >= rect_next.right:
         return (False, False, None)
-    if pos_prev.y + HEIGHT <= rect_next.top:
-        if pos_next.y + HEIGHT <= rect_next.top:
+    if pos_prev.y + cf.p_HEIGHT <= rect_next.top:
+        if pos_next.y + cf.p_HEIGHT <= rect_next.top:
             return (False, False, None)
         FLAG_JUMP = True
-        return (True, False, vec(pos_next.x, rect_next.top - HEIGHT))
+        return (True, False, vec(pos_next.x, rect_next.top - cf.p_HEIGHT))
     if pos_prev.y >= rect_next.bottom:
         if pos_next.y >= rect_next.bottom:
             return (False, False, None)
         return (True, False, vec(pos_next.x, rect_next.bottom))
-    # pos_prev.y + HEIGHT > rect_next.top and pos_prev.y < rect_next.bottom
-    if pos_next.y + HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
+    if pos_next.y + cf.p_HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
         return (False, False, None)
-    # On ne considère que les collisions à gauche des plateformes
-    return (False, True, vec(rect_next.left - WIDTH, pos_next.y))
+    # On ne consid�re que les collisions � gauche des plateformes
+    return (False, True, vec(rect_next.left - cf.p_WIDTH, pos_next.y))
 
 
 
@@ -63,9 +58,7 @@ class Player(pygame.sprite.Sprite):
         # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
         super().__init__()
         # Liste d'images de l'objet, et indice de cette liste
-        self.images = []
-        for i in range(8) :
-            self.images.append(pygame.image.load("assets/img/mono/Mono"+str(i)+".png"))
+        self.images = cf.mono_img
         self.img = 0
         # Création de l'objet
         self.shape = self.images[0].get_rect()
@@ -96,7 +89,7 @@ class Player(pygame.sprite.Sprite):
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
         flag = False
-        # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
+        # On suppose qu'il ne peut y avoir qu'une seule collision �  la fois
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
@@ -107,6 +100,10 @@ class Player(pygame.sprite.Sprite):
                     self.vel.x = 0
         self.pos = posnext
         self.shape.topleft = self.pos
+        # On v�rifie la mort
+        if self.pos.y > cf.SCREEN_HEIGHT or self.pos.x + cf.p_WIDTH < 0:
+            pygame.quit()
+            sys.exit()
         #On change l'image
         self.img+=0.03*cf.SPEED
         #faire par fraction permet d'update plus lentement que le FPS classique
@@ -117,4 +114,4 @@ class Player(pygame.sprite.Sprite):
     
     def death(self):
         """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
-        return(self.pos.y > cf.SCREEN_HEIGHT + 50 or self.pos.x + WIDTH < 0)
+        return(self.pos.y > cf.SCREEN_HEIGHT + 50 or self.pos.x + cf.p_WIDTH < 0)
