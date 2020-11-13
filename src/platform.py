@@ -4,7 +4,6 @@ import src.conf as cf
 
 class Sol(cf.GameObject):
     def __init__(self,x):
-        #self.surf = pygame.Surface((cf.SOL_LONG, cf.SOL_HAUT))        # Hit-box
         super().__init__(x,cf.SOL_HAUT,1,cf.SOL_IMG)
         pygame.sprite.Sprite.__init__(self, cf.sol)
         
@@ -24,15 +23,13 @@ class Sol(cf.GameObject):
 
 class Platform(cf.GameObject):
     """ Gère les plateformes """
-    def __init__(self, x=1, y=1, haut=3,length=8, img=cf.PLTFRM_IMG):#,speed=cf.SPEED):
+    def __init__(self, x=1, y=1, haut=3,length=8, img=cf.PLTFRM_IMG):
         img = pygame.transform.scale(img, (length, haut))
         super().__init__(x,y,1,img)
         pygame.sprite.Sprite.__init__(self, cf.sol)
 
-    def stop_creation(self):
-        self.pasencorecree = False
 
 class Batiment(Platform):
-    def __init__(self, x=1, y=1, haut=cf.SCREEN_HEIGHT, length=8, image=cf.BAT_IMG):#, speed=cf.SPEED):
+    def __init__(self, x=1, y=1, haut=cf.SCREEN_HEIGHT, length=8, image=cf.BAT_IMG):
         super().__init__(x, y, haut,length, image)
 
