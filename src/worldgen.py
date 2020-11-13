@@ -68,8 +68,11 @@ def initgen():
         
 def genere_module(last_pltfrm):
     """ Choisit et affiche un nouveau module à la fin de l'écran"""
+    # Offset dépendant de la vitesse
+    module_offset = cf.SPEED * 5
+    pltfrm_offset = cf.SPEED * 3
     # Début du nouveau module
-    xoffset = last_pltfrm.rect.right + 30
+    xoffset = last_pltfrm.rect.right + module_offset
     # Sélection des modules possibles
     modules_possibles = [mod for mod in modules if last_pltfrm.rect.bottom - mod[0] < MAX_JUMP]
     # Choix aléatoire d'un module
@@ -83,10 +86,17 @@ def genere_module(last_pltfrm):
     for line in lines[1:]:
         bloc = line.split(';')
         bloc_type =  bloc[0]
+        xoffset += pltfrm_offset
         creation_functions[bloc_type](bloc, xoffset, yoffset)
     module_file.close()
 
-def update(state):
+def stop_sol():
+    """Stop la création infinie du sol"""
+    for bloc in cf.sol:
+        if isinstance(bloc, pltfrm.Sol):
+            bloc.stop_creation()
+
+def update():
     for nuage in cf.nuages :
         nuage.update()
     for arbre in cf.arbres :
@@ -94,11 +104,6 @@ def update(state):
     for bloc in cf.sol:
         bloc.update()     # On déplace chaque bloc
     
-    if state == 2:
-
-        for bloc in cf.sol:
-            if isinstance(bloc, pltfrm.Sol):
-                bloc.stop_creation()
     last_pltfrm = max(cf.sol, key = lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
         genere_module(last_pltfrm)
