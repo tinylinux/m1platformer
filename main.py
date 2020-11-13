@@ -62,6 +62,7 @@ while True:
                 count_frames = 0
                 cf.sol = pygame.sprite.Group()
                 cf.nuages = pygame.sprite.Group()
+                cf.arbres = pygame.sprite.Group()
                 wrld.initgen()
                 state = 2
                 wrld.stop_sol()
