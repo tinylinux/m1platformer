@@ -57,10 +57,18 @@ start_button = Button_image((440,300), (401,123), "assets/img/ui/begin.png", "as
 
 restart_button = Button_image((440,450), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
 
-def score(n):
-    font = pygame.font.SysFont(None, 25)
-    text = font.render("Score: " + str(n), True, (255, 255, 255))
-    cf.DISPLAYSURF.blit(text,(0,0))
-
 def print_image(image, position):
+    """Affiche une image à une position donnée.
+    image : string, le chemin vers l'image dans les fichiers
+    position : int * int, les coordonnées du coin supérieur gauche"""
     cf.DISPLAYSURF.blit(pygame.image.load(image), position)
+
+def print_text(text, position_center, color = white, font = pygame.font.SysFont(None, 25)):
+    """Affiche une surface de texte centrée sur une position.
+    text : string, le texte à afficher
+    position_center : int * int, la position du centre du texte
+    color : int * int * int, la couleur
+    font : pygame.font.Font, la fonte"""
+    size_text = font.size(text)
+    position = (int(position_center[0] - size_text[0]/2), int(position_center[1] - size_text[1]/2))
+    cf.DISPLAYSURF.blit(font.render(text, True, color), position)
