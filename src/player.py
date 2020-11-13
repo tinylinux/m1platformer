@@ -100,15 +100,12 @@ class Player(pygame.sprite.Sprite):
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
-                self.pos = coll[2]
+                posnext = coll[2]
                 if coll[0]:
                     self.vel.y = 0
-                    flag = True
                 if coll[1]:
                     self.vel.x = 0
-                    flag = True
-        if not flag:
-            self.pos = posnext
+        self.pos = posnext
         self.shape.topleft = self.pos
         # On vérifie la mort
         if self.pos.y > cf.SCREEN_HEIGHT or self.pos.x + WIDTH < 0:
@@ -121,3 +118,7 @@ class Player(pygame.sprite.Sprite):
         if int(self.img)>=len(self.images) :
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
+    
+    def death(self):
+        """Renvoie si le joueur sort (suffisamment) de l'Ã©cran ou non"""
+        return(self.pos.y > cf.SCREEN_HEIGHT + 50 or self.pos.x + WIDTH < 0)
