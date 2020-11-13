@@ -14,7 +14,7 @@ V_0 = 0
 V_JMP = 15
 # Acc√©l√©ration initiale
 A_0 = 0
-# Acc√©l√©ration due √  la gravit√©
+# Acc√©l√©ration due ÔøΩ  la gravit√©
 G = 0.4
 # Drapeau de disponibilit√© du saut
 FLAG_JUMP = False
@@ -32,7 +32,7 @@ def collide(pos_prev, pos_next, rect_next):
     global FLAG_JUMP
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
-    # de toutes faÁons pas possible de jouer dans ce cas.
+    # de toutes faÔøΩons pas possible de jouer dans ce cas.
     if pos_next.x + cf.p_WIDTH <= rect_next.left or pos_next.x >= rect_next.right:
         return (False, False, None)
     if pos_prev.y + cf.p_HEIGHT <= rect_next.top:
@@ -46,7 +46,7 @@ def collide(pos_prev, pos_next, rect_next):
         return (True, False, vec(pos_next.x, rect_next.bottom))
     if pos_next.y + cf.p_HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
         return (False, False, None)
-    # On ne considËre que les collisions ‡ gauche des plateformes
+    # On ne considÔøΩre que les collisions ÔøΩ gauche des plateformes
     return (False, True, vec(rect_next.left - cf.p_WIDTH, pos_next.y))
 
 
@@ -89,7 +89,7 @@ class Player(pygame.sprite.Sprite):
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
         flag = False
-        # On suppose qu'il ne peut y avoir qu'une seule collision √  la fois
+        # On suppose qu'il ne peut y avoir qu'une seule collision ÔøΩ  la fois
         for plat in cf.sol:
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
@@ -100,10 +100,6 @@ class Player(pygame.sprite.Sprite):
                     self.vel.x = 0
         self.pos = posnext
         self.shape.topleft = self.pos
-        # On vÈrifie la mort
-        if self.pos.y > cf.SCREEN_HEIGHT or self.pos.x + cf.p_WIDTH < 0:
-            pygame.quit()
-            sys.exit()
         #On change l'image
         self.img+=0.03*cf.SPEED
         #faire par fraction permet d'update plus lentement que le FPS classique
@@ -111,7 +107,7 @@ class Player(pygame.sprite.Sprite):
         if int(self.img)>=len(self.images) :
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
-    
+
     def death(self):
         """Renvoie si le joueur sort (suffisamment) de l'√©cran ou non"""
         return(self.pos.y > cf.SCREEN_HEIGHT + 50 or self.pos.x + cf.p_WIDTH < 0)

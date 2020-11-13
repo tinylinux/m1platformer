@@ -53,7 +53,9 @@ class Button_image(Button):
         else:
             cf.DISPLAYSURF.blit(pygame.image.load(self.image), self.position)
 
-
 start_button = Button_image((440,300), (401,123), "assets/img/ui/begin.png", "assets/img/ui/beginpushed.png")
 
 restart_button = Button_image((440,450), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
+
+def print_image(image, position):
+    cf.DISPLAYSURF.blit(pygame.image.load(image), position)
