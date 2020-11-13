@@ -3,6 +3,8 @@
 import pygame
 import src.conf as cf
 
+font_pixel = "assets/font/punk_rockf.ttf"
+
 white = (255,255,255)
 idle = (170,170,170)
 hover = (100,100,100)
@@ -69,7 +71,7 @@ class Input_zone(Button):
 
     def select(self):
         self.selected = True
-    
+
     def deselect(self):
         self.selected = False
 
@@ -83,14 +85,10 @@ class Input_zone(Button):
             elif key == pygame.K_BACKSPACE and self.input != "":
                 self.input = self.input[:-1]
 
+
 start_button = Button_image((440,300), (401,123), "assets/img/ui/begin.png", "assets/img/ui/beginpushed.png")
 
 restart_button = Button_image((440,500), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
-
-def score(n):
-    font = pygame.font.SysFont(None, 25)
-    text = font.render("Score: " + str(n), True, (255, 255, 255))
-    cf.DISPLAYSURF.blit(text,(0,0))
 
 def print_image(image, position):
     """Affiche une image à une position donnée.
@@ -98,12 +96,15 @@ def print_image(image, position):
     position : int * int, les coordonnées du coin supérieur gauche"""
     cf.DISPLAYSURF.blit(pygame.image.load(image), position)
 
-def print_text(text, position_center, color = white, font = pygame.font.SysFont(None, 25)):
+def print_text(text, position_center, color = white, font = pygame.font.SysFont(None, 25), bold = False):
     """Affiche une surface de texte centrée sur une position.
     text : string, le texte à afficher
     position_center : int * int, la position du centre du texte
     color : int * int * int, la couleur
     font : pygame.font.Font, la fonte"""
+    if bold:
+        font.set_bold(True)
     size_text = font.size(text)
     position = (int(position_center[0] - size_text[0]/2), int(position_center[1] - size_text[1]/2))
-    cf.DISPLAYSURF.blit(font.render(text, True, color), position)
+    txtgen = font.render(text, True, color)
+    cf.DISPLAYSURF.blit(txtgen, position)
