@@ -35,7 +35,11 @@ def score(n):
 seconds = 0
 count_frames = 0
 
-state = 1 # Etat actuel du jeu (1 : dans le menu principal)
+# États du jeu :
+# 1 : menu de départ
+# 2 : jeu en cours
+# 3 : menu de fin (scores)
+state = 1
 
 while True:
     # print('OK : ', pygame.time.get_ticks())
@@ -44,6 +48,19 @@ while True:
         if event.type == INC_SPEED:
             if state == 2: # Si on est in game
                 cf.SPEED += 0.5
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if state == 1 and mn.start_button.click(pygame.mouse.get_pos()):
+                state = 2
+            elif state == 3 and mn.restart_button.click(pygame.mouse.get_pos()):
+                # On réinitialise le monde
+                P = plyr.Player()
+                cf.SPEED = cf.INITIAL_SPEED
+                seconds = 0
+                count_frames = 0
+                cf.sol = pygame.sprite.Group()
+                cf.nuages = pygame.sprite.Group()
+                wrld.initgen()
+                state = 2
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
@@ -53,7 +70,8 @@ while True:
 
     #bg.update()
     cf.DISPLAYSURF.fill(cf.BlueSky)
-    
+
+    wrld.update(state)
 
     if state == 2:
         count_frames += 1
@@ -62,23 +80,21 @@ while True:
             seconds += 1
         score(seconds)
 
-    P.move()
+        pressed_keys = pygame.key.get_pressed()
 
-    wrld.update(state)
+        if pressed_keys[K_SPACE]:
+            P.jump()
 
+        P.move()
 
-    pressed_keys = pygame.key.get_pressed()
-
-    if pressed_keys[K_SPACE]:
-        P.jump()
-
-    P.move()
+        if P.death():
+            state = 3
 
     if state == 1:
-        try:
-            mn.menu.mainloop(cf.DISPLAYSURF, disable_loop=True)
-        except:
-            state = 2
+        mn.start_button.print(pygame.mouse.get_pos())
 
-    pygame.display.update()
+    if state == 3:
+        mn.restart_button.print(pygame.mouse.get_pos())
+
+    pygame.display.flip()
     FramePerSec.tick(FPS)

@@ -2,12 +2,25 @@
 import pygame
 vec = pygame.math.Vector2
 
-ch, cw = pygame.display.Info().current_h, pygame.display.Info().current_w
+
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
+WINDOW_WIDTH = 0
+WINDOW_HEIGHT = 0
 
-SPEED = 1           # vitesse initiale de défilement du sol
+def update_window_size():
+    global WINDOW_HEIGHT, WINDOW_WIDTH
+    ch, cw = pygame.display.Info().current_h, pygame.display.Info().current_w
+    if ch * 16 > cw * 9:
+        WINDOW_WIDTH = cw
+        WINDOW_HEIGHT = 9 * cw
+    else:
+        WINDOW_HEIGHT = ch
+        WINDOW_WIDTH = 16 * ch
+
+INITIAL_SPEED = 1
+SPEED = INITIAL_SPEED           # vitesse initiale de défilement du sol
 SOL_HAUT = (SCREEN_HEIGHT - 69)      # La hauteur du sol en général
 SOL_LONG = 576      # La longueur d'un bloc du sol en général
 JMP_COOLDOWN = 0
@@ -28,8 +41,8 @@ sol = pygame.sprite.Group()
 nuages = pygame.sprite.Group()
 
 #background = pygame.image.load("assets/img/fond.jpg")
-DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Game")
+DISPLAYSURF = pygame.display.set_mode((1280, 720))
+WINDOWSURF = None
 
 
 class GameObject(pygame.sprite.Sprite):
