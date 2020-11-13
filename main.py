@@ -53,6 +53,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if state == 1 and mn.start_button.click(pygame.mouse.get_pos()):
                 state = 2
+                wrld.stop_sol()
             elif state == 3 and mn.restart_button.click(pygame.mouse.get_pos()):
                 # On réinitialise le monde
                 P = plyr.Player()
@@ -64,13 +65,14 @@ while True:
                 cf.arbres = pygame.sprite.Group()
                 wrld.initgen()
                 state = 2
+                wrld.stop_sol()
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
     cf.DISPLAYSURF.fill(cf.BlueSky)
 
-    wrld.update(state)
+    wrld.update()
 
     if state == 2:
         count_frames += 1
