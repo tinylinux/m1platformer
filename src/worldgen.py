@@ -82,16 +82,8 @@ def genere_module(last_pltfrm):
     yoffset = cf.SCREEN_HEIGHT - module_height
     for line in lines[1:]:
         bloc = line.split(';')
-# <<<<<<< HEAD
-#         top_left = bloc[1][1:-1].split(',')
-#         top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
-#         bot_right = bloc[2][1:-2].split(',')
-#         bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
-#         plt.Platform(top_left_x + xoffset, top_left_y + yoffset, (bot_right_y - top_left_y), (bot_right_x - top_left_x))
-# =======
         bloc_type =  bloc[0]
         creation_functions[bloc_type](bloc, xoffset, yoffset)
-# >>>>>>> 9ee9c72483ea4759d32fc520aab7a44b648f572b
     module_file.close()
 
 def update(state):
@@ -103,17 +95,10 @@ def update(state):
         bloc.update()     # On déplace chaque bloc
     
     if state == 2:
-# <<<<<<< HEAD
-#         last_pltfrm = max(cf.sol, key = lambda bloc: bloc.rect.right)
-#         #print(last_pltfrm.rect.right)
-#         if last_pltfrm.rect.right <= cf.SCREEN_WIDTH:
-#             print("Enter generation module")
-#             genere_module(last_pltfrm)
-# =======
+
         for bloc in cf.sol:
             if isinstance(bloc, pltfrm.Sol):
                 bloc.stop_creation()
     last_pltfrm = max(cf.sol, key = lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
         genere_module(last_pltfrm)
-# >>>>>>> 9ee9c72483ea4759d32fc520aab7a44b648f572b

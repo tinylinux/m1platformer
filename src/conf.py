@@ -41,13 +41,10 @@ SOL_IMG = pygame.image.load("assets/img/sol.png")
 PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
 BAT_IMG = pygame.image.load("assets/img/bat.png")
 
-
-#ecran = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 sol = pygame.sprite.Group()
 nuages = pygame.sprite.Group()
 arbres = pygame.sprite.Group()
 
-#background = pygame.image.load("assets/img/fond.jpg")
 DISPLAYSURF = pygame.display.set_mode((1280, 720))
 WINDOWSURF = None
 
