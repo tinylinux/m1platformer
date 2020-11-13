@@ -8,7 +8,7 @@ SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
 SPEED = 1           # vitesse initiale de défilement du sol
-SOL_HAUT = (SCREEN_HEIGHT - 69)      # La hauteur du sol en général
+SOL_HAUT = (SCREEN_HEIGHT - 63)      # La hauteur du sol en général
 SOL_LONG = 576      # La longueur d'un bloc du sol en général
 
 BlueSky = (0,170,251)
