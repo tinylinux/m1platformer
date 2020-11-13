@@ -11,13 +11,13 @@ pygame.init()
 import src.conf as cf
 import src.worldgen as wrld
 import src.player as plyr
-#import src.background as bg
 import src.menu as mn
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
 pygame.display.set_caption("Platformer")
 
+# Initialisation du monde
 wrld.initgen()
 # Crée un nouvel event, le +1 sert à avoir un nouvel ID
 INC_SPEED = pygame.USEREVENT + 1
@@ -25,11 +25,6 @@ INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
 
 P = plyr.Player()
-
-def score(n):
-    font = pygame.font.SysFont(None, 25)
-    text = font.render("Score: " + str(n), True, (255, 255, 255))
-    cf.DISPLAYSURF.blit(text,(0,0))
 
 seconds = 0
 count_frames = 0
@@ -79,12 +74,12 @@ while True:
         if count_frames == 60:
             count_frames = 0
             seconds += 1
-        score(seconds)
+        mn.score(seconds)
 
-    P.move()
+    if state <= 2:
+        P.move()
 
     if P.death():
-        P.kill()
         state = 3
 
     if state == 1:

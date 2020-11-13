@@ -59,5 +59,10 @@ start_button = Button_text((int(1280/2 - 160/2), int(720/2 - 40/2)),\
 
 restart_button = Button_image((440,450), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
 
+def score(n):
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Score: " + str(n), True, (255, 255, 255))
+    cf.DISPLAYSURF.blit(text,(0,0))
+
 def print_image(image, position):
     cf.DISPLAYSURF.blit(pygame.image.load(image), position)
