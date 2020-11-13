@@ -88,6 +88,7 @@ while True:
         mn.start_button.print(pygame.mouse.get_pos())
 
     if state == 3:
+        scre.score_endgame(seconds)
         if newhs:
             cf.DISPLAYSURF.blit(pygame.image.load("assets/img/ui/highscore.png"), (428,350))
         cf.DISPLAYSURF.blit(pygame.image.load("assets/img/ui/gameover.png"), (395,100))

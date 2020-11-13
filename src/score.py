@@ -1,13 +1,18 @@
 import os
 import pygame
 import src.conf as cf
+import src.menu as mn
 
 file = "score.txt"
 
 def score(n):
-    font = pygame.font.SysFont(None, 25)
+    font = pygame.font.Font(mn.font_pixel, 25)
+    font.set_bold(True)
     text = font.render("Score: " + str(n), True, (255, 255, 255))
     cf.DISPLAYSURF.blit(text,(0,0))
+
+def score_endgame(n):
+    mn.print_text("Score : " + str(n), (640, 300), (240,240,240), pygame.font.Font(mn.font_pixel, 50), True)
 
 if not os.path.isfile(file):
     with open(file, "w") as f:
