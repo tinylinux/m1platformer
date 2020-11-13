@@ -4,8 +4,8 @@ import pygame
 import src.conf as cf
 
 
-white = (255,255,255) 
-idle = (170,170,170) 
+white = (255,255,255)
+idle = (170,170,170)
 hover = (100,100,100)
 font = pygame.font.SysFont(None,35)
 
@@ -30,7 +30,7 @@ class Button_text(Button):
         super().__init__(position, size)
         self.text = text
         self.text_position = (position[0] + 10, position[1] + 10)
-    
+
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
@@ -45,19 +45,17 @@ class Button_image(Button):
         super().__init__(position, size)
         self.image = image
         self.image_hover = image_hover
-    
+
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
-            cf.DISPLAYSURF.blit(self.image_hover, self.position)
+            cf.DISPLAYSURF.blit(pygame.image.load(self.image_hover), self.position)
         else:
-            cf.DISPLAYSURF.blit(self.image, self.position)
+            cf.DISPLAYSURF.blit(pygame.image.load(self.image), self.position)
 
 
 start_button = Button_text((int(1280/2 - 160/2), int(720/2 - 40/2)),\
     (160, 40),\
     font.render('Commencer' , True , white))
 
-restart_button = Button_text((int(1280/2 - 185/2), int(720/2 - 40/2)),\
-    (185, 40),\
-    font.render('Recommencer' , True , white))
+restart_button = Button_image((440,450), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
