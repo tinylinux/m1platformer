@@ -18,7 +18,7 @@ class Nuage(cf.GameObject):
 class Arbre(cf.GameObject):
     def __init__(self,x,i):
         img = cf.arbre_img[i]
-        l,h = img.get_rect().size
+        w,h = img.get_rect().size
         super().__init__(x,cf.SCREEN_HEIGHT-h,0.6,img)
         pygame.sprite.Sprite.__init__(self, cf.arbres)
         

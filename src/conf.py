@@ -21,12 +21,15 @@ def update_window_size():
 
 INITIAL_SPEED = 1
 SPEED = INITIAL_SPEED           # vitesse initiale de défilement du sol
-SOL_HAUT = (SCREEN_HEIGHT - 63)      # La hauteur du sol en général
-SOL_LONG = 576      # La longueur d'un bloc du sol en général
 
 BlueSky = (0,170,251)
 
 #IMAGES
+n_mono = len(os.listdir("./assets/img/mono")) - 1
+mono_img = []
+for i in range(n_mono) :
+    mono_img.append(pygame.image.load("assets/img/mono/Mono"+str(i)+".png"))
+
 n_nuage = len(os.listdir("./assets/img/nuages")) - 1
 nuage_img = []
 for i in range(n_nuage) :
@@ -40,6 +43,12 @@ for i in range(n_arbre) :
 SOL_IMG = pygame.image.load("assets/img/sol.png")
 PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
 BAT_IMG = pygame.image.load("assets/img/bat.png")
+
+# Dimensions
+p_WIDTH,p_HEIGHT = mono_img[0].get_rect().size
+w,h = SOL_IMG.get_rect().size
+SOL_HAUT = (SCREEN_HEIGHT - h)      # La hauteur du sol en général
+SOL_LONG = w      # La longueur d'un bloc du sol en général
 
 sol = pygame.sprite.Group()
 nuages = pygame.sprite.Group()
