@@ -19,7 +19,7 @@ def update_window_size():
         WINDOW_HEIGHT = ch
         WINDOW_WIDTH = 16 * ch
 
-INITIAL_SPEED = 1
+INITIAL_SPEED = 5
 SPEED = INITIAL_SPEED           # vitesse initiale de défilement du sol
 
 BlueSky = (0,170,251)
