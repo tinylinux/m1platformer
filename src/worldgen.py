@@ -13,7 +13,7 @@ modules = os.listdir("./src/modules")
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 
-MAX_JUMP = 100 # La hateur maximale entre la dernière plateforme d'un module
+MAX_JUMP = 200 # La hateur maximale entre la dernière plateforme d'un module
 # et la première d'un nouveau module (à changer)
 
 # Fonctions de création
