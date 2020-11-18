@@ -13,7 +13,7 @@ modules = os.listdir("./src/modules")
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 
-MAX_JUMP = 1500 # La hateur maximale entre la dernière plateforme d'un module
+MAX_JUMP = 200 # La hateur maximale entre la dernière plateforme d'un module
 # et la première d'un nouveau module (à changer)
 
 # Fonctions de création
@@ -69,12 +69,12 @@ def initgen():
 def genere_module(last_pltfrm):
     """ Choisit et affiche un nouveau module à la fin de l'écran"""
     # Offset dépendant de la vitesse
-    module_offset = cf.SPEED * 5
-    pltfrm_offset = cf.SPEED * 3
+    module_offset = cf.SPEED * 10
+    xoffset = cf.SPEED * 10
     # Début du nouveau module
     xoffset = last_pltfrm.rect.right + module_offset
     # Sélection des modules possibles
-    modules_possibles = [mod for mod in modules if last_pltfrm.rect.bottom - mod[0] < MAX_JUMP]
+    modules_possibles = [mod for mod in modules if last_pltfrm.rect.top - mod[0] < MAX_JUMP]
     # Choix aléatoire d'un module
     module = rd.choice(modules_possibles)
     # Chargement du module
@@ -86,7 +86,7 @@ def genere_module(last_pltfrm):
     for line in lines[1:]:
         bloc = line.split(';')
         bloc_type =  bloc[0]
-        xoffset += pltfrm_offset
+        #xoffset += pltfrm_offset
         creation_functions[bloc_type](bloc, xoffset, yoffset)
     module_file.close()
 
