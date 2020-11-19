@@ -5,8 +5,12 @@ import src.conf as cf
 
 
 class Nuage(cf.GameObject):
+    """Gère les nuages dans l'arrière-plan', par la méthode update(self)"""
     def __init__(self, position, i):
-        super().__init__(position, 0.2*random.random() + 0.1, cf.nuage_img[i])
+        """ position : int * int, position du nuage
+            i : quel type de nuage (y a plusieurs images)"""
+        scroll = 0.2*random.random() + 0.1
+        super().__init__(position, scroll, cf.nuage_img[i])
         pygame.sprite.Sprite.__init__(self, cf.nuages)
 
     def update(self):
@@ -21,9 +25,12 @@ class Nuage(cf.GameObject):
 
 class Arbre(cf.GameObject):
     def __init__(self, pos_x, i):
+        """ pos_x : int, position sur l'axe des x de l'arbre
+            i : quel type de nuage (y a plusieurs images)"""
         img = cf.arbre_img[i]
         _, height = img.get_rect().size
-        super().__init__((pos_x, cf.SCREEN_HEIGHT - height), 0.6, img)
+        scroll = 0.6
+        super().__init__((pos_x, cf.SCREEN_HEIGHT + 60 - height), scroll, img)
         pygame.sprite.Sprite.__init__(self, cf.arbres)
 
     def update(self):
