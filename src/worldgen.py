@@ -17,6 +17,8 @@ MAX_JUMP = 200  # La hateur maximale entre la dernière plateforme d'un module
 
 # Fonctions de création
 def platform_creation(bloc, xoffset, yoffset):
+    """Crée la plateforme décrite dans [bloc]
+    avec un [xoffset] et un [yoffset]"""
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
@@ -28,6 +30,8 @@ def platform_creation(bloc, xoffset, yoffset):
 
 
 def batiment_creation(bloc, xoffset, yoffset):
+    """Crée le bâtiment décrit dans [bloc]
+    avec un [xoffset] et un [yoffset]"""
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
@@ -43,7 +47,7 @@ creation_functions = {"Plateforme": platform_creation,
 
 
 def initgen():
-    """Crée l'écran de départ, avec quelques nuages, des arbres et le sol"""
+    """Initialise le monde (notemment à l'écran d'accueil)"""
     # Crée quelques nuages
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
@@ -100,7 +104,8 @@ def stop_sol():
 
 
 def update():
-    """Déplace les éléments du monde et les redessine à l'écran"""
+    """Update tous les objets du monde autres que player"""
+    
     cf.DISPLAYSURF.fill(cf.BlueSky) # Le ciel
     for nuage in cf.nuages:         #Les nuages
         nuage.update()

@@ -1,4 +1,6 @@
-﻿import tkinter as tk
+﻿"""Module de l'application de création de modules de terrain"""
+
+import tkinter as tk
 
 SCREEN_HEIGHT = 720
 
@@ -18,6 +20,10 @@ def minmax(fst, snd):
 
 
 class ModuleGenerator:
+    """Application de création de modules de terrain"""
+
+    # pylint: disable=too-many-instance-attributes
+
     def __init__(self):
         """Constructeur de l'application"""
 
@@ -105,7 +111,7 @@ class ModuleGenerator:
         self.obstacle_current = tk.StringVar(self.fenetre_principale,
                                              "Plateforme")
 
-        for obstacle in self.obstacle_creation.keys():
+        for obstacle in self.obstacle_creation:
             button = tk.Radiobutton(self.select_obstacle, text=obstacle,
                                     variable=self.obstacle_current,
                                     value=obstacle)
@@ -145,9 +151,11 @@ class ModuleGenerator:
         self.fenetre_principale.mainloop()
 
     def liste_obstacles(self):
+        """Affiche la liste des obstacles présents"""
         print(self.obstacles)
 
     def cancel_selection(self, mouse):
+        """Annule la sélection du premier clique"""
         self.canvas.itemconfigure(
             self.carreaux[self.clic_coords[0]][self.clic_coords[1]],
             fill="white")
@@ -189,6 +197,7 @@ class ModuleGenerator:
             self.cancel_selection(mouse)
 
     def plateforme_creation(self):
+        """Création d'une plateforme aux coordonnées self.clic_coords"""
         i_0, i_1 = minmax(self.clic_coords[0], self.clic_coords[2])
         j_0, j_1 = minmax(self.clic_coords[1], self.clic_coords[3])
         isfree = True
@@ -213,6 +222,7 @@ class ModuleGenerator:
             print("Collision: Impossible de créer la plateforme")
 
     def batiment_creation(self):
+        """Création d'un batiment aux coordonnées self.clic_coords"""
         i_0 = self.clic_coords[0]
         j_0, j_1 = minmax(self.clic_coords[1], self.clic_coords[3])
         isfree = True
@@ -236,6 +246,7 @@ class ModuleGenerator:
             print("Collision: Impossible de créer le batiment")
 
     def plateforme_suppression(self, obstacle):
+        """Suppression de la plateforme [obstacle]"""
         i_0, j_0 = obstacle[1]
         i_1, j_1 = obstacle[2]
         for i in range(i_0, i_1):
@@ -243,6 +254,7 @@ class ModuleGenerator:
                 self.occupation_carreaux[i][j] = -1
 
     def batiment_suppression(self, obstacle):
+        """Suppression du bâtiment [obstacle]"""
         i_0, j_0 = obstacle[1]
         j_1 = obstacle[2][1]
         for i in range(i_0, self.nb_lignes):
@@ -250,6 +262,7 @@ class ModuleGenerator:
                 self.occupation_carreaux[i][j] = -1
 
     def enregistrement(self):
+        """Enregistre le module du canvas vers un fichier .mdl"""
         liste0 = list(self.obstacles.values())
         liste0 = sorted(liste0, key=lambda obstacle: obstacle[1][1])
         xmin = liste0[0][1][1]

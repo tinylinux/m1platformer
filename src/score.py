@@ -12,6 +12,9 @@ if not os.path.isfile(FILE):
 
 
 def score(pts):
+    """
+    Afficher le score actuel durant la partie en cours
+    """
     font = pygame.font.Font(mn.FONT_PIXEL, 25)
     font.set_bold(True)
     text = font.render("Score: " + str(pts), True, (255, 255, 255))
@@ -19,6 +22,9 @@ def score(pts):
 
 
 def score_endgame(pts):
+    """
+    Affiche le score à la fin de la partie
+    """
     mn.print_text("Score : " + str(pts), (640, 300), (240, 240, 240),
                   pygame.font.Font(mn.FONT_PIXEL, 50), True)
 
