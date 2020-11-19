@@ -17,7 +17,8 @@ MAX_JUMP = 200  # La hateur maximale entre la dernière plateforme d'un module
 
 # Fonctions de création
 def platform_creation(bloc, xoffset, yoffset):
-    """Crée la plateforme décrite dans [bloc] avec un [xoffset] et un [yoffset]"""
+    """Crée la plateforme décrite dans [bloc]
+    avec un [xoffset] et un [yoffset]"""
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
@@ -29,7 +30,8 @@ def platform_creation(bloc, xoffset, yoffset):
 
 
 def batiment_creation(bloc, xoffset, yoffset):
-    """Crée le bâtiment décrit dans [bloc] avec un [xoffset] et un [yoffset]"""
+    """Crée le bâtiment décrit dans [bloc]
+    avec un [xoffset] et un [yoffset]"""
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
