@@ -20,4 +20,4 @@ jobs:
         pip install pytest hypothesis
     - name: Running tests
       run: |
-        pytest src/player.py
+        python -m pytest src/player.py
