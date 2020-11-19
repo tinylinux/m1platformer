@@ -79,8 +79,6 @@ while True:  # Boucle du jeu
             pygame.quit()
             sys.exit()
 
-    cf.DISPLAYSURF.fill(cf.BlueSky)  # Fond
-
     wrld.update()  # Mise à jour de l'environnement
 
     if STATE == 1:  # On est dans le menu

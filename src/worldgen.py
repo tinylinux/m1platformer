@@ -43,6 +43,7 @@ creation_functions = {"Plateforme": platform_creation,
 
 
 def initgen():
+    """Crée l'écran de départ, avec quelques nuages, des arbres et le sol"""
     # Crée quelques nuages
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
@@ -99,12 +100,14 @@ def stop_sol():
 
 
 def update():
-    for nuage in cf.nuages:
+    """Déplace les éléments du monde et les redessine à l'écran"""
+    cf.DISPLAYSURF.fill(cf.BlueSky) # Le ciel
+    for nuage in cf.nuages:         #Les nuages
         nuage.update()
-    for arbre in cf.arbres:
+    for arbre in cf.arbres:         #Les arbres
         arbre.update()
-    for bloc in cf.sol:
-        bloc.update()     # On déplace chaque bloc
+    for bloc in cf.sol:             #Le sol
+        bloc.update()
 
     last_pltfrm = max(cf.sol, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
