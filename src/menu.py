@@ -104,7 +104,7 @@ class InputZone(Button):
                 self.input = self.input[:-1]
 
 
-start_button = ButtonImage((440, 300), (401, 123), "assets/img/ui/begin.png",
+start_button = ButtonImage((440, 390), (401, 123), "assets/img/ui/begin.png",
                            "assets/img/ui/beginpushed.png")
 
 restart_button = ButtonImage((440, 500), (401, 123),

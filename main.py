@@ -82,6 +82,8 @@ while True:  # Boucle du jeu
     wrld.update()  # Mise à jour de l'environnement
 
     if STATE == 1:  # On est dans le menu
+        cf.DISPLAYSURF.blit(pygame.image.load
+                            ("assets/img/ui/title.png"), (357, 207))
         mn.start_button.print(pygame.mouse.get_pos())
         P.move()
 
