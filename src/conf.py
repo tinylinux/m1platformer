@@ -46,11 +46,13 @@ w, h = SOL_IMG.get_rect().size
 SOL_HAUT = (SCREEN_HEIGHT - h)      # La hauteur du sol en général
 SOL_LONG = w      # La longueur d'un bloc du sol en général
 
+# Groupes
 sol = pygame.sprite.Group()
 nuages = pygame.sprite.Group()
 arbres = pygame.sprite.Group()
 
-DISPLAYSURF = pygame.display.set_mode((1280, 720))
+# La fenêtre principale
+DISPLAYSURF = None
 WINDOWSURF = None
 
 
@@ -70,7 +72,7 @@ class GameObject(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect(topleft=self.pos)
         # Limite à partir de laquelle on génère un nouvel objet sur sa droite
-        # pasencorecree est un flag pour ne génèrer qu'un seul nouvel objet
+        # pasencorecree est un flag pour ne générer qu'un seul nouvel objet
         self.pasencorecree = True
 
     def update(self):
