@@ -13,6 +13,8 @@ import src.menu as mn  # noqa: E402
 import src.score as scre  # noqa: E402
 # pylint: enable=wrong-import-position
 
+# Initialisation de la fenêtre
+cf.DISPLAYSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
 
 FPS = 60
 FramePerSec = pygame.time.Clock()

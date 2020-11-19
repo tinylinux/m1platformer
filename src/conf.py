@@ -52,7 +52,7 @@ nuages = pygame.sprite.Group()
 arbres = pygame.sprite.Group()
 
 # La fenêtre principale
-DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+DISPLAYSURF = None
 WINDOWSURF = None
 
 
