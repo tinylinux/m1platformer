@@ -34,4 +34,3 @@ class Platform(cf.GameObject):
         img = pygame.transform.scale(img, dim)
         super().__init__(pos, 1, img)
         pygame.sprite.Sprite.__init__(self, cf.sol)
-
