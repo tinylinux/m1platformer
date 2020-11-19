@@ -46,12 +46,12 @@ w, h = SOL_IMG.get_rect().size
 SOL_HAUT = (SCREEN_HEIGHT - h)      # La hauteur du sol en général
 SOL_LONG = w      # La longueur d'un bloc du sol en général
 
-#Groupes
+# Groupes
 sol = pygame.sprite.Group()
 nuages = pygame.sprite.Group()
 arbres = pygame.sprite.Group()
 
-#La fenêtre principale
+# La fenêtre principale
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 WINDOWSURF = None
 
