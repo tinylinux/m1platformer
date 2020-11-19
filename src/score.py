@@ -46,6 +46,6 @@ def maj(pts):
     Si non, il retourne False
     """
     if get_best_score() < pts:
-        set_best_score(score)
+        set_best_score(pts)
         return True
     return False
