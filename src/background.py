@@ -31,7 +31,7 @@ class Arbre(cf.GameObject):
         img = cf.arbre_img[i]
         _, height = img.get_rect().size
         scroll = 0.6
-        super().__init__((pos_x, cf.SCREEN_HEIGHT + 60 - height), scroll, img)
+        super().__init__((pos_x, cf.SCREEN_HEIGHT - height), scroll, img)
         pygame.sprite.Sprite.__init__(self, cf.arbres)
 
     def update(self):
