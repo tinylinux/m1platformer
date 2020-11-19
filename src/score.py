@@ -6,6 +6,7 @@ import src.menu as mn
 
 FILE = "score.txt"
 
+
 def init_best_score():
     """
     Initialiser le fichier score.txt
@@ -43,7 +44,7 @@ def get_best_score():
     with open(FILE) as board:
         try:
             int(board.read().strip().replace("\n", ""))
-        except Exception as _:
+        except:
             board.close()
             init_best_score()
         else:
