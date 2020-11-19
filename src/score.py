@@ -45,9 +45,9 @@ def get_best_score():
         try:
             int(board.read().strip().replace("\n", ""))
         except ValueError:
-                board.close()
-                init_best_score()
-                easter_egg_ok()
+            board.close()
+            init_best_score()
+            easter_egg_ok()
         else:
             return int(board.read().strip().replace("\n", ""))
 
