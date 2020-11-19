@@ -44,11 +44,9 @@ def get_best_score():
     with open(FILE) as board:
         try:
             int(board.read().strip().replace("\n", ""))
-        except Exception as error_of_type:
-            if error_of_type == ValueError:
+        except ValueError:
                 board.close()
                 init_best_score()
-            else:
                 easter_egg_ok()
         else:
             return int(board.read().strip().replace("\n", ""))
