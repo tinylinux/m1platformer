@@ -105,12 +105,14 @@ def stop_sol():
 
 def update():
     """Update tous les objets du monde autres que player"""
-    for nuage in cf.nuages:
+    
+    cf.DISPLAYSURF.fill(cf.BlueSky) # Le ciel
+    for nuage in cf.nuages:         #Les nuages
         nuage.update()
-    for arbre in cf.arbres:
+    for arbre in cf.arbres:         #Les arbres
         arbre.update()
-    for bloc in cf.sol:
-        bloc.update()     # On déplace chaque bloc
+    for bloc in cf.sol:             #Le sol
+        bloc.update()
 
     last_pltfrm = max(cf.sol, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
