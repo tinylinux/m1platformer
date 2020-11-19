@@ -1,9 +1,10 @@
 """Contient la classe Player, permettant de gerer le personnage."""
 
-import pygame, sys
+import pygame
 import src.conf as cf
+
 # Pour créer des vecteurs de dimension 2
-vec = pygame.math.Vector2
+Vec = pygame.math.Vector2
 
 # Position initiale
 X_INIT = cf.SCREEN_WIDTH//2
@@ -16,44 +17,47 @@ V_JMP = 15
 A_0 = 0
 # Accélération due à la gravité
 G = 0.8
-# Drapeau de disponibilité du saut
-FLAG_JUMP = False
-# Drapeau de disponibilité du second saut
-FLAG_JUMP_2 = False
 
 
-def collide(pos_prev, pos_next, rect_next):
-    """Verifie la collision avec l'objet rect, etant donne la position
-    A l'instant precedent, et la position prevue pour l'instant suivant.
-    Renvoie une position corrigee s'il y a collision.
-    Suppose un mouvement vertical du joueur.
+def collide(pos_prev, pos_next, rect):
+    """Gestion des collisions.
+    pos_prev : Vector2, position précédente du joueur
+    pos_next : Vector2, position suivante du joueur
+    rect : Rect, l'objet possiblement en collision avec le joueur
     Renvoie un triplet (collision verticale, collision horizontale,
-    modification de position necessaire)"""
-    global FLAG_JUMP
+    modification de position necessaire) (de type bool * bool * Vector2)"""
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
     # de toutes façons pas possible de jouer dans ce cas.
-    if pos_next.x + cf.p_WIDTH <= rect_next.left or pos_next.x >= rect_next.right:
-        return (False, False, None)
-    if pos_prev.y + cf.p_HEIGHT <= rect_next.top:
-        if pos_next.y + cf.p_HEIGHT <= rect_next.top:
-            return (False, False, None)
-        FLAG_JUMP = True
-        return (True, False, vec(pos_next.x, rect_next.top - cf.p_HEIGHT))
-    if pos_prev.y >= rect_next.bottom:
-        if pos_next.y >= rect_next.bottom:
-            return (False, False, None)
-        return (True, False, vec(pos_next.x, rect_next.bottom))
-    if pos_next.y + cf.p_HEIGHT <= rect_next.top or pos_next.y >= rect_next.bottom:
-        return (False, False, None)
+    if pos_next.x + cf.p_WIDTH > rect.left\
+            and pos_next.x < rect.right:
+        # Dans la plateforme horizontalement
 
-    # On ne considère que les collisions à gauche des plateformes
-    return (False, True, vec(rect_next.left - cf.p_WIDTH, pos_next.y))
+        if pos_prev.y + cf.p_HEIGHT <= rect.top:
+            # Position initale au-dessus de la plateforme
+            if pos_next.y + cf.p_HEIGHT > rect.top:
+                # Nouvelle position dans ou sous la plateforme
+                cf.FLAG_JUMP = True
+                return (True, False, Vec(pos_next.x, rect.top - cf.p_HEIGHT))
 
+        elif pos_prev.y >= rect.bottom:
+            # Position initiale en-dessous de la plateforme
+            if pos_next.y < rect.bottom:
+                # Nouvelle position dans ou au-dessus de la plateforme
+                return (True, False, Vec(pos_next.x, rect.bottom))
+
+        elif pos_next.y + cf.p_HEIGHT > rect.top\
+                and pos_next.y < rect.bottom:
+            # On ne considère que les collisions à gauche des plateformes
+            return (False, True, Vec(rect.left - cf.p_WIDTH, pos_next.y))
+
+    return(False, False, None)
 
 
 class Player(pygame.sprite.Sprite):
-    """Gestion du personnage, par les méthodes jump(self) et move(self)."""
+    """Gestion du personnage, par les méthodes jump(self), move(self)
+    et death(self)."""
+
     def __init__(self):
         # Initialisation de la classe parent
         # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
@@ -65,34 +69,31 @@ class Player(pygame.sprite.Sprite):
         self.shape = self.images[0].get_rect()
 
         # Position
-        self.pos = vec(X_INIT, Y_INIT)
+        self.pos = Vec(X_INIT, Y_INIT)
         self.shape.midbottom = self.pos
 
         # Vitesse
-        self.vel = vec(V_0, 0)
+        self.vel = Vec(V_0, 0)
         # Accélération
-        self.acc = vec(A_0, G)
+        self.acc = Vec(A_0, G)
 
     def jump(self):
         """Lance le saut du personnage."""
-        global FLAG_JUMP
-        global FLAG_JUMP_2
-        if FLAG_JUMP :
-            FLAG_JUMP = False
+        if cf.FLAG_JUMP:
+            cf.FLAG_JUMP = False
             self.vel.y = -V_JMP
-            FLAG_JUMP_2 = True
-        elif FLAG_JUMP_2:
+            cf.FLAG_JUMP_2 = True
+        elif cf.FLAG_JUMP_2:
             self.vel.y = -V_JMP
-            FLAG_JUMP_2 = False
+            cf.FLAG_JUMP_2 = False
 
     def move(self):
-        """Modifie les vecteurs position, vitesse et accélération si nécessaire."""
+        """Modifie les vecteurs position, vitesse
+        et accélération si nécessaire."""
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
-        flag = False
 
-        # On suppose qu'il ne peut y avoir qu'une seule collision à la fois
-        for plat in cf.sol:
+        for plat in cf.sol:  # Gestion des collisions
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
                 posnext = coll[2]
@@ -101,15 +102,16 @@ class Player(pygame.sprite.Sprite):
                 if coll[1]:
                     self.vel.x = 0
         self.pos = posnext
-        self.shape.topleft = self.pos
-        #On change l'image
-        self.img+=0.03*cf.SPEED
-        #faire par fraction permet d'update plus lentement que le FPS classique
-        #le *cf.SPEED permet d'accélérer les pédales
-        if int(self.img)>=len(self.images) :
+        self.shape.topleft = self.pos  # Mise à jour de la position
+
+        # On change le sprite du joueur
+        self.img += 0.03 * cf.SPEED
+        # Faire par fraction permet d'accélérer plus lentement les pédales
+        if int(self.img) >= len(self.images):
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
 
     def death(self):
         """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
-        return(self.pos.y > cf.SCREEN_HEIGHT + 50 or self.pos.x + cf.p_WIDTH < 0)
+        return(self.pos.y > cf.SCREEN_HEIGHT + 50
+               or self.pos.x + cf.p_WIDTH < 0)

@@ -1,16 +1,18 @@
 """ Fichier principal du jeu """
 
 import os
-import pygame
 import sys
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+# pylint: disable=wrong-import-position
+import pygame  # noqa: E402
 pygame.init()
 import src.conf as cf  # noqa: E402
 import src.worldgen as wrld  # noqa: E402
 import src.player as plyr  # noqa: E402
 import src.menu as mn  # noqa: E402
 import src.score as scre  # noqa: E402
+# pylint: enable=wrong-import-position
 
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
@@ -29,46 +31,46 @@ pygame.time.set_timer(INC_SPEED, 1000)
 P = plyr.Player()
 
 # Compteurs pour le score
-seconds = 0
-count_frames = 0
+SECONDS = 0
+FRAMES = 0
 
 # États du jeu :
 # 1 : menu de départ
 # 2 : jeu en cours
 # 3 : menu de fin (scores)
-state = 1
+STATE = 1
 
 while True:  # Boucle du jeu
 
     for event in pygame.event.get():
 
         if event.type == INC_SPEED:
-            if state == 2:  # Si on est in game
+            if STATE == 2:  # Si on est in game
                 cf.SPEED += 0.5
 
         if event.type == pygame.KEYDOWN:
-            if state == 2 and event.key == pygame.K_SPACE:  # Saut
+            if STATE == 2 and event.key == pygame.K_SPACE:  # Saut
                 P.jump()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
 
-            if state == 1 and mn.start_button.click(pygame.mouse.get_pos()):
+            if STATE == 1 and mn.start_button.click(pygame.mouse.get_pos()):
                 # Clic de la souris sur le bouton "Commencer"
-                state = 2
+                STATE = 2
                 wrld.stop_sol()  # Arrêt de la création du sol du menu
 
-            elif state == 3 and\
+            elif STATE == 3 and\
                     mn.restart_button.click(pygame.mouse.get_pos()):
                 # Clic sur recommencer, on réinitialise le monde
                 P = plyr.Player()
                 cf.SPEED = cf.INITIAL_SPEED
-                seconds = 0
-                count_frames = 0
+                SECONDS = 0
+                FRAMES = 0
                 cf.sol = pygame.sprite.Group()
                 cf.nuages = pygame.sprite.Group()
                 cf.arbres = pygame.sprite.Group()
                 wrld.initgen()
-                state = 2
+                STATE = 2
                 wrld.stop_sol()
 
         if event.type == pygame.QUIT:
@@ -79,31 +81,31 @@ while True:  # Boucle du jeu
 
     wrld.update()  # Mise à jour de l'environnement
 
-    if state == 1:  # On est dans le menu
+    if STATE == 1:  # On est dans le menu
         mn.start_button.print(pygame.mouse.get_pos())
         P.move()
 
-    elif state == 2:  # On est en jeu
+    elif STATE == 2:  # On est en jeu
 
         # Décompte des secondes
-        count_frames += 1
-        if count_frames == 60:
-            count_frames = 0
-            seconds += 1
-        scre.score(seconds)
+        FRAMES += 1
+        if FRAMES == 60:
+            FRAMES = 0
+            SECONDS += 1
+        scre.score(SECONDS)
 
         # Déplacement du joueur
         P.move()
 
         # Gestion de la mort
         if P.death():
-            state = 3
-            newhs = scre.maj(seconds)
+            STATE = 3
+            NEWHS = scre.maj(SECONDS)
 
-    elif state == 3:  # Menu de fin
+    elif STATE == 3:  # Menu de fin
 
-        scre.score_endgame(seconds)
-        if newhs:  # Nouveau record
+        scre.score_endgame(SECONDS)
+        if NEWHS:  # Nouveau record
             cf.DISPLAYSURF.blit(pygame.image.load
                                 ("assets/img/ui/highscore.png"), (428, 350))
         cf.DISPLAYSURF.blit(pygame.image.load

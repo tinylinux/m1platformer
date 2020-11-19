@@ -136,6 +136,7 @@ dmypy.json
 .DS_Store
 
 /.vs/ProjectSettings.json
+/.vscode/*
 
 # Les fichiers textes
 *.txt

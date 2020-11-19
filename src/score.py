@@ -1,46 +1,51 @@
+""" Gestion du score """
 import os
 import pygame
 import src.conf as cf
 import src.menu as mn
 
-file = "score.txt"
+FILE = "score.txt"
 
-def score(n):
-    font = pygame.font.Font(mn.font_pixel, 25)
+if not os.path.isfile(FILE):
+    with open(FILE, "w") as empty_board:
+        empty_board.write("0")
+
+
+def score(pts):
+    font = pygame.font.Font(mn.FONT_PIXEL, 25)
     font.set_bold(True)
-    text = font.render("Score: " + str(n), True, (255, 255, 255))
-    cf.DISPLAYSURF.blit(text,(0,0))
+    text = font.render("Score: " + str(pts), True, (255, 255, 255))
+    cf.DISPLAYSURF.blit(text, (0, 0))
 
-def score_endgame(n):
-    mn.print_text("Score : " + str(n), (640, 300), (240,240,240), pygame.font.Font(mn.font_pixel, 50), True)
 
-if not os.path.isfile(file):
-    with open(file, "w") as f:
-        f.write("0")
+def score_endgame(pts):
+    mn.print_text("Score : " + str(pts), (640, 300), (240, 240, 240),
+                  pygame.font.Font(mn.FONT_PIXEL, 50), True)
+
 
 def get_best_score():
     """
     Récuperer le score sauvegardé dans le scoreboard
     """
-    global file
-    with open(file) as f:
-        return int(f.read().strip().replace("\n", ""))
+    with open(FILE) as board:
+        return int(board.read().strip().replace("\n", ""))
+
 
 def set_best_score(value):
     """
     Met à jour le score dans le fichier défini
     """
-    global file
-    with open(file, "w") as f:
-        f.write(str(value))
+    with open(FILE, "w") as board:
+        board.write(str(value))
 
-def maj(score):
+
+def maj(pts):
     """
     Check si le score obtenu est un High-score
     Si oui, il retourne True et modifie le High-Score
     Si non, il retourne False
     """
-    if get_best_score() < score:
+    if get_best_score() < pts:
         set_best_score(score)
         return True
     return False

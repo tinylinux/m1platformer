@@ -3,20 +3,26 @@
 import pygame
 import src.conf as cf
 
-font_pixel = "assets/font/punk_rockf.ttf"
+FONT_PIXEL = "assets/font/punk_rockf.ttf"
 
-white = (255,255,255)
-idle = (170,170,170)
-hover = (100,100,100)
-font = pygame.font.SysFont(None,35)
-chars = "azertyuiopqsdfghjklmwxcvbn1234567890"
-Chars = "AZERTYUIOPQSDFGHJKLMWXCVBN1234567890"
+white = (255, 255, 255)
+idle = (170, 170, 170)
+hover = (100, 100, 100)
+
+CHARS_LOW = "azertyuiopqsdfghjklmwxcvbn1234567890"
+CHARS_CAP = "AZERTYUIOPQSDFGHJKLMWXCVBN1234567890"
+
 
 def mouse_on_button(mouse, button_pos, button_size):
-    return(button_pos[0] <= mouse[0] <= button_pos[0] + button_size[0]\
-        and button_pos[1] <= mouse[1] <= button_pos[1] + button_size[1])
+    """Renvoie si la souris est située sur le bouton.
+    mouse : int * int, position de la souris
+    button_pos : int * int, position du bouton
+    button_size : int * int, largeur * hauteur du bouton"""
+    return(button_pos[0] <= mouse[0] <= button_pos[0] + button_size[0]
+           and button_pos[1] <= mouse[1] <= button_pos[1] + button_size[1])
 
-class Button:
+
+class Button:  # pylint: disable=too-few-public-methods
     """ Classe des boutons pour les menus"""
     def __init__(self, position, size):
         self.position = position
@@ -25,9 +31,10 @@ class Button:
 
     def click(self, mouse):
         """Renvoie si la souris est sur le bouton"""
-        return(mouse_on_button(mouse, self.position, self.size))
+        return mouse_on_button(mouse, self.position, self.size)
 
-class Button_text(Button):
+
+class ButtonText(Button):
     """Classe des boutons affichant du texte"""
     def __init__(self, position, size, text):
         super().__init__(position, size)
@@ -42,7 +49,8 @@ class Button_text(Button):
             pygame.draw.rect(cf.DISPLAYSURF, idle, self.rect)
         cf.DISPLAYSURF.blit(self.text, self.text_position)
 
-class Button_image(Button):
+
+class ButtonImage(Button):
     """Classe des boutons affichant une image"""
     def __init__(self, position, size, image, image_hover):
         super().__init__(position, size)
@@ -52,43 +60,57 @@ class Button_image(Button):
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
-            cf.DISPLAYSURF.blit(pygame.image.load(self.image_hover), self.position)
+            cf.DISPLAYSURF.blit(pygame.image.load(self.image_hover),
+                                self.position)
         else:
             cf.DISPLAYSURF.blit(pygame.image.load(self.image), self.position)
 
-class Input_zone(Button):
+
+class InputZone(Button):
     """Classe des zones dans lesquelles on peut entrer du texte"""
-    def __init__(self, position, size):
+    def __init__(self, position, size, font=pygame.font.SysFont(None, 35)):
+        """position : int * int, position du bouton
+        size : int * int, largeur * hauteur du bouton
+        font : Font, la fonte"""
         super().__init__(position, size)
         self.input = ""
         self.selected = False
         self.text_position = (position[0] + 10, position[1] + 10)
+        self.font = font
 
     def print(self):
         """Affiche la zone et le texte entré"""
         pygame.draw.rect(cf.DISPLAYSURF, idle, self.rect)
-        cf.DISPLAYSURF.blit(font.render(self.input, True, white), self.text_position)
+        cf.DISPLAYSURF.blit(self.font.render(self.input, True, white),
+                            self.text_position)
 
     def select(self):
+        """Active la sélection de la zone"""
         self.selected = True
 
     def deselect(self):
+        """Désactive la sélection de la zone"""
         self.selected = False
 
     def read(self, key):
+        """Lit les caractères entrés"""
         if self.selected:
             key_name = pygame.key.name(key)
-            if key_name in chars:
-                self.input += Chars[chars.index(key_name)]
+            if key_name in CHARS_LOW:
+                self.input += CHARS_CAP[CHARS_LOW.index(key_name)]
             elif key == pygame.K_SPACE:
                 self.input += " "
             elif key == pygame.K_BACKSPACE and self.input != "":
                 self.input = self.input[:-1]
 
 
-start_button = Button_image((440,300), (401,123), "assets/img/ui/begin.png", "assets/img/ui/beginpushed.png")
+start_button = ButtonImage((440, 300), (401, 123), "assets/img/ui/begin.png",
+                           "assets/img/ui/beginpushed.png")
 
-restart_button = Button_image((440,500), (401,123), "assets/img/ui/playagain.png", "assets/img/ui/playagainpushed.png")
+restart_button = ButtonImage((440, 500), (401, 123),
+                             "assets/img/ui/playagain.png",
+                             "assets/img/ui/playagainpushed.png")
+
 
 def print_image(image, position):
     """Affiche une image à une position donnée.
@@ -96,15 +118,19 @@ def print_image(image, position):
     position : int * int, les coordonnées du coin supérieur gauche"""
     cf.DISPLAYSURF.blit(pygame.image.load(image), position)
 
-def print_text(text, position_center, color = white, font = pygame.font.SysFont(None, 25), bold = False):
+
+def print_text(text, position_center, color=white,
+               font=pygame.font.SysFont(None, 25), bold=False):
     """Affiche une surface de texte centrée sur une position.
     text : string, le texte à afficher
     position_center : int * int, la position du centre du texte
     color : int * int * int, la couleur
-    font : pygame.font.Font, la fonte"""
+    font : pygame.font.Font, la fonte
+    bold : bool, si la fonte doit être en gras"""
     if bold:
         font.set_bold(True)
     size_text = font.size(text)
-    position = (int(position_center[0] - size_text[0]/2), int(position_center[1] - size_text[1]/2))
+    position = (int(position_center[0] - size_text[0]/2),
+                int(position_center[1] - size_text[1]/2))
     txtgen = font.render(text, True, color)
     cf.DISPLAYSURF.blit(txtgen, position)
