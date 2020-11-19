@@ -26,7 +26,8 @@ def platform_creation(bloc, xoffset, yoffset):
     pltfrm.Platform((top_left_x + xoffset,
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
-                    bot_right_y - top_left_y))
+                    bot_right_y - top_left_y),
+                    cf.PLTFRM_IMG)
 
 
 def batiment_creation(bloc, xoffset, yoffset):
@@ -36,10 +37,11 @@ def batiment_creation(bloc, xoffset, yoffset):
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     bot_right_x = int(bot_right[1])
-    pltfrm.Batiment((top_left_x + xoffset,
+    pltfrm.Platform((top_left_x + xoffset,
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
-                    cf.SCREEN_HEIGHT))
+                    cf.SCREEN_HEIGHT),
+                    cf.BAT_IMG)
 
 
 creation_functions = {"Plateforme": platform_creation,

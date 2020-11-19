@@ -35,9 +35,3 @@ class Platform(cf.GameObject):
         super().__init__(pos, 1, img)
         pygame.sprite.Sprite.__init__(self, cf.sol)
 
-
-class Batiment(Platform):
-    """ Gère les bâtiments """
-    def __init__(self, pos=(1, 1), dim=(8, cf.SCREEN_HEIGHT),
-                 image=cf.BAT_IMG):
-        super().__init__(pos, dim, image)

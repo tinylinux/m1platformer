@@ -43,13 +43,11 @@ def get_best_score():
     """
     with open(FILE) as board:
         try:
-            int(board.read().strip().replace("\n", ""))
+            return int(board.read().strip().replace("\n", ""))
         except ValueError:
             board.close()
             init_best_score()
             easter_egg_ok()
-        else:
-            return int(board.read().strip().replace("\n", ""))
 
 
 def easter_egg_ok():
