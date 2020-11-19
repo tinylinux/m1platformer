@@ -49,12 +49,12 @@ def get_best_score():
                 board.close()
                 init_best_score()
             else:
-                ok()
+                easter_egg_ok()
         else:
             return int(board.read().strip().replace("\n", ""))
 
 
-def ok():
+def easter_egg_ok():
     """
     Bravo vous avez réussi à avoir un EasterEgg
     """
