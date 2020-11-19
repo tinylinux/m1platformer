@@ -34,7 +34,12 @@ def get_best_score():
     Récuperer le score sauvegardé dans le scoreboard
     """
     with open(FILE) as board:
-        return int(board.read().strip().replace("\n", ""))
+        try:
+            int(board.read().strip().replace("\n", ""))
+        except Exception as _:
+            return 0
+        else:
+            return int(board.read().strip().replace("\n", ""))
 
 
 def set_best_score(value):
