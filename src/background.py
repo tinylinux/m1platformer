@@ -24,6 +24,7 @@ class Nuage(cf.GameObject):
 
 
 class Arbre(cf.GameObject):
+    """Gère les arbres dans l'arrière-plan', par la méthode update(self)"""
     def __init__(self, pos_x, i):
         """ pos_x : int, position sur l'axe des x de l'arbre
             i : quel type de nuage (y a plusieurs images)"""
