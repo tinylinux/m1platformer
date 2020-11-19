@@ -47,15 +47,7 @@ def get_best_score():
         except ValueError:
             board.close()
             init_best_score()
-            easter_egg_ok()
-
-
-def easter_egg_ok():
-    """
-    Bravo vous avez réussi à avoir un EasterEgg
-    """
-    print("On t'a vu petit malin !")
-    pygame.quit()
+            return 0
 
 
 def set_best_score(value):
