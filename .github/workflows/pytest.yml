@@ -1,4 +1,4 @@
-name: Flake8
+name: Pytest
 
 on: [push]
 
@@ -18,6 +18,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
-    - name: Analysing the code with pylint
+    - name: Running tests
       run: |
-        pytest /src/player.py
+        pytest src/player.py
