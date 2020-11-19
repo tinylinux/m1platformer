@@ -138,5 +138,5 @@ dmypy.json
 /.vs/ProjectSettings.json
 /.vscode/*
 
-# Les fichiers textes
-*.txt
+# Le fichier de score
+score.txt
