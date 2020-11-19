@@ -6,9 +6,16 @@ import src.menu as mn
 
 FILE = "score.txt"
 
-if not os.path.isfile(FILE):
+def init_best_score():
+    """
+    Initialiser le fichier score.txt
+    """
     with open(FILE, "w") as empty_board:
         empty_board.write("0")
+
+
+if not os.path.isfile(FILE):
+    init_best_score()
 
 
 def score(pts):
@@ -37,7 +44,8 @@ def get_best_score():
         try:
             int(board.read().strip().replace("\n", ""))
         except Exception as _:
-            return 0
+            board.close()
+            init_best_score()
         else:
             return int(board.read().strip().replace("\n", ""))
 
