@@ -107,6 +107,9 @@ class InputZone(Button):
 start_button = ButtonImage((440, 390), (401, 123), "assets/img/ui/begin.png",
                            "assets/img/ui/beginpushed.png")
 
+records_button = ButtonImage((440, 600), (401, 123), "assets/img/ui/records.png",
+                           "assets/img/ui/recordspushed.png")
+
 restart_button = ButtonImage((440, 500), (401, 123),
                              "assets/img/ui/playagain.png",
                              "assets/img/ui/playagainpushed.png")
