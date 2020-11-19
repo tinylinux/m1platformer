@@ -45,7 +45,7 @@ def get_best_score():
         try:
             int(board.read().strip().replace("\n", ""))
         except Exception as error_of_type:
-            if error_of_type = ValueError:
+            if error_of_type == ValueError:
                 board.close()
                 init_best_score()
             else:
