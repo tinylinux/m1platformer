@@ -16,7 +16,7 @@ FLAG_JUMP = False
 # Drapeau de disponibilité du second saut
 FLAG_JUMP_2 = False
 
-#couleur du ciel
+# Couleur du ciel
 BlueSky = (0, 170, 251)
 
 # IMAGES
