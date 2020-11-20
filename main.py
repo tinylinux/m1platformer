@@ -18,7 +18,10 @@ cf.DISPLAYSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
-pygame.display.set_caption("Platformer")
+
+pygame.display.set_icon(
+    pygame.image.load("assets/img/mono/Mono3.png"))
+pygame.display.set_caption("Roll 'n' jump")
 
 # Initialisation du monde
 wrld.initgen()
