@@ -66,6 +66,10 @@ while True:  # Boucle du jeu
                 # Clic de la souris sur le bouton "Records"
                 STATE = 4
 
+            elif STATE > 1 and mn.return_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Records"
+                STATE = 1
+
             elif STATE == 3 and\
                     mn.restart_button.click(pygame.mouse.get_pos()):
                 # Clic sur recommencer, on réinitialise le monde
@@ -88,7 +92,7 @@ while True:  # Boucle du jeu
 
     if STATE == 1:  # On est dans le menu
         cf.DISPLAYSURF.blit(pygame.image.load
-                            ("assets/img/ui/title.png"), (357, 207))
+                            ("assets/img/ui/title.png"), (357, 132))
         P.move()
         mn.start_button.print(pygame.mouse.get_pos())
         mn.records_button.print(pygame.mouse.get_pos())
@@ -119,20 +123,26 @@ while True:  # Boucle du jeu
         cf.DISPLAYSURF.blit(pygame.image.load
                             ("assets/img/ui/gameover.png"), (395, 100))
         mn.restart_button.print(pygame.mouse.get_pos())
+        mn.return_button.print(pygame.mouse.get_pos())
 
     elif STATE == 4: # Affichage des meilleurs scores
 
         # Récupération des meilleurs scores
         records = scre.get_scores()
         number_scores = len(records)
-        size_height = 36 * 2 * number_scores - 36
+        size_height = 36 * 2 * number_scores
         print(number_scores)
         print(records)
-        for best_score in range(number_scores):
-            position_score = 360 - (size_height//2) + best_score*2 + 18
-            print(position_score)
-            mn.print_text(records[best_score][1] + " : " + str(records[best_score][0]), (640, position_score), (240, 240, 240),
+        if number_scores == 0:
+            mn.print_text("Pas de scores", (640, 360), (240, 240, 240),
                           pygame.font.Font(mn.FONT_PIXEL, 36), True)
+        else:
+            for best_score in range(number_scores):
+                position_score = 360 - (size_height//2) + best_score*2*36 + 18
+                print(position_score)
+                mn.print_text(records[best_score][1] + " : " + str(records[best_score][0]), (640, position_score), (240, 240, 240),
+                              pygame.font.Font(mn.FONT_PIXEL, 36), True)
+        mn.return_button.print(pygame.mouse.get_pos())
 
     pygame.display.flip()
     FramePerSec.tick(FPS)
