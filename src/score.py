@@ -72,7 +72,6 @@ def get_scores():
                 return []
             scores[0] = scores[0].split(";")
             scores[1] = scores[1].split(";")
-            print(scores[0], scores[1])
             ordered_list = []
             for duo in range(len(scores[0])):
                 if onlydigits(scores[1][duo]) != '':
@@ -107,7 +106,6 @@ def set_best_score(value):
         if len(scores_board) == 0:
             board.write(PLAYER + "\n" + str(value))
         else:
-            print(scores_board)
             for i in range(min(len(scores_board), 4)):
                 if must_be_added and scores_board[i][0] < value:
                     new_scores += str(value) + ";"

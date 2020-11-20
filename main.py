@@ -143,8 +143,6 @@ while True:  # Boucle du jeu
         records = scre.get_scores()
         number_scores = len(records)
         size_height = 36 * 2 * number_scores
-        print(number_scores)
-        print(records)
         if number_scores == 0:
             mn.print_text("Pas de scores", (640, 360), (240, 240, 240),
                           pygame.font.Font(mn.FONT_PIXEL, 36), True)
