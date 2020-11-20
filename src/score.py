@@ -108,7 +108,7 @@ def set_best_score(value):
             board.write(PLAYER + "\n" + str(value))
         else:
             print(scores_board)
-            for i in range(len(scores_board)):
+            for i in range(min(len(scores_board), 4)):
                 if must_be_added and scores_board[i][0] < value:
                     new_scores += str(value) + ";"
                     new_players += PLAYER + ";"
