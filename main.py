@@ -140,7 +140,8 @@ while True:  # Boucle du jeu
             for best_score in range(number_scores):
                 position_score = 360 - (size_height//2) + best_score*2*36 + 18
                 print(position_score)
-                mn.print_text(records[best_score][1] + " : " + str(records[best_score][0]), (640, position_score), (240, 240, 240),
+                mn.print_text(records[best_score][1] + " : " + str(records[best_score][0]),
+                              (640, position_score), (240, 240, 240),
                               pygame.font.Font(mn.FONT_PIXEL, 36), True)
         mn.return_button.print(pygame.mouse.get_pos())
 

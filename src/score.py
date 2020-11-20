@@ -1,23 +1,34 @@
 """ Gestion du score """
 import os
+import re
 import pygame
 import src.conf as cf
 import src.menu as mn
-import re
 
 FILE = "score.txt"
 PLAYER = "Player"
 
 
 def onlydigits(value):
+    """
+    Fonction qui permet de filtrer uniquement les caractères chiffres,
+    Cela va permettre de retirer toutes les sauts de lignes présents
+    dans le fichier score.txt
+    """
     final_chain = ""
     for i in value:
         if '0' <= i <= '9':
             final_chain += i
     return final_chain
 
+
 def onlyalphanum(value):
+    """
+    Fonction qui permet de filtrer uniquement les caractères
+    alphanumériques (pour le nom du joueur)
+    """
     return re.sub(r'[^A-Za-z0-9]+', '', value)
+
 
 def init_best_score():
     """
@@ -65,7 +76,8 @@ def get_scores():
             ordered_list = []
             for duo in range(len(scores[0])):
                 if onlydigits(scores[1][duo]) != '':
-                    ordered_list.append((int(onlydigits(scores[1][duo])), onlyalphanum(scores[0][duo])))
+                    element = (int(onlydigits(scores[1][duo])), onlyalphanum(scores[0][duo]))
+                    ordered_list.append(element)
             ordered_list = list(reversed(sorted(ordered_list)))
             return ordered_list
         except ValueError:
@@ -92,7 +104,6 @@ def set_best_score(value):
         must_be_added = True
         new_scores = ""
         new_players = ""
-        new_score = 0
         if len(scores_board) == 0:
             board.write(PLAYER + "\n" + str(value))
         else:
@@ -116,7 +127,8 @@ def maj(pts):
     Si oui, il retourne True et modifie le High-Score
     Si non, il retourne False
     """
-    if len(get_scores()) < 5 or get_last_best_score() < pts:
+    minimal_score = get_last_best_score()
+    if len(get_scores()) < 5 or minimal_score < pts:
         set_best_score(pts)
         return True
     return False
