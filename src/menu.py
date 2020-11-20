@@ -107,16 +107,18 @@ class InputZone(Button):
 start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
                            "assets/img/ui/beginpushed.png")
 
-records_button = ButtonImage((440, 463), (401, 123), "assets/img/ui/records.png",
-                           "assets/img/ui/recordspushed.png")
+records_button = ButtonImage((440, 463), (401, 123),
+                            "assets/img/ui/records.png",
+                            "assets/img/ui/recordspushed.png")
 
 restart_button = ButtonImage((440, 500), (401, 123),
                              "assets/img/ui/playagain.png",
                              "assets/img/ui/playagainpushed.png")
 
 return_button = ButtonImage((20, 20), (123, 123),
-                             "assets/img/ui/return.png",
-                             "assets/img/ui/returnpushed.png")
+                            "assets/img/ui/return.png",
+                            "assets/img/ui/returnpushed.png")
+
 
 def print_image(image, position):
     """Affiche une image à une position donnée.

@@ -75,7 +75,9 @@ def get_scores():
             ordered_list = []
             for duo in range(len(scores[0])):
                 if onlydigits(scores[1][duo]) != '':
-                    element = (int(onlydigits(scores[1][duo])), onlyalphanum(scores[0][duo]))
+                    score_value = int(onlydigits(scores[1][duo]))
+                    score_name = onlyalphanum(scores[0][duo])
+                    element = (score_value, score_name)
                     ordered_list.append(element)
             ordered_list = list(reversed(sorted(ordered_list)))
             return ordered_list

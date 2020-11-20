@@ -62,7 +62,8 @@ while True:  # Boucle du jeu
                 STATE = 2
                 wrld.stop_sol()  # Arrêt de la création du sol du menu
 
-            elif STATE == 1 and mn.records_button.click(pygame.mouse.get_pos()):
+            elif STATE == 1 and\
+                    mn.records_button.click(pygame.mouse.get_pos()):
                 # Clic de la souris sur le bouton "Records"
                 STATE = 4
 
@@ -137,7 +138,7 @@ while True:  # Boucle du jeu
         mn.restart_button.print(pygame.mouse.get_pos())
         mn.return_button.print(pygame.mouse.get_pos())
 
-    elif STATE == 4: # Affichage des meilleurs scores
+    elif STATE == 4:  # Affichage des meilleurs scores
 
         # Récupération des meilleurs scores
         records = scre.get_scores()
@@ -149,7 +150,9 @@ while True:  # Boucle du jeu
         else:
             for best_score in range(number_scores):
                 position_score = 360 - (size_height//2) + best_score*2*36 + 18
-                mn.print_text(records[best_score][1] + " : " + str(records[best_score][0]),
+                text_display = records[best_score][1] + " : "
+                text_display += str(records[best_score][0])
+                mn.print_text(text_display,
                               (640, position_score), (240, 240, 240),
                               pygame.font.Font(mn.FONT_PIXEL, 36), True)
         mn.return_button.print(pygame.mouse.get_pos())
