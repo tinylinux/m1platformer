@@ -66,7 +66,19 @@ while True:  # Boucle du jeu
                 # Clic de la souris sur le bouton "Records"
                 STATE = 4
 
-            elif STATE > 1 and mn.return_button.click(pygame.mouse.get_pos()):
+            elif STATE == 3 and mn.return_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Retour"
+                P = plyr.Player()
+                cf.SPEED = cf.INITIAL_SPEED
+                SECONDS = 0
+                FRAMES = 0
+                cf.sol = pygame.sprite.Group()
+                cf.nuages = pygame.sprite.Group()
+                cf.arbres = pygame.sprite.Group()
+                wrld.initgen()
+                STATE = 1
+
+            elif STATE == 4 and mn.return_button.click(pygame.mouse.get_pos()):
                 # Clic de la souris sur le bouton "Records"
                 STATE = 1
 
@@ -139,7 +151,6 @@ while True:  # Boucle du jeu
         else:
             for best_score in range(number_scores):
                 position_score = 360 - (size_height//2) + best_score*2*36 + 18
-                print(position_score)
                 mn.print_text(records[best_score][1] + " : " + str(records[best_score][0]),
                               (640, position_score), (240, 240, 240),
                               pygame.font.Font(mn.FONT_PIXEL, 36), True)
