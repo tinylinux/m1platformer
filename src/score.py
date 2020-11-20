@@ -1,10 +1,33 @@
 """ Gestion du score """
 import os
+import re
 import pygame
 import src.conf as cf
 import src.menu as mn
 
 FILE = "score.txt"
+PLAYER = "Player"
+
+
+def onlydigits(value):
+    """
+    Fonction qui permet de filtrer uniquement les caractères chiffres,
+    Cela va permettre de retirer toutes les sauts de lignes présents
+    dans le fichier score.txt
+    """
+    final_chain = ""
+    for i in value:
+        if '0' <= i <= '9':
+            final_chain += i
+    return final_chain
+
+
+def onlyalphanum(value):
+    """
+    Fonction qui permet de filtrer uniquement les caractères
+    alphanumériques (pour le nom du joueur)
+    """
+    return re.sub(r'[^A-Za-z0-9]+', '', value)
 
 
 def init_best_score():
@@ -12,10 +35,11 @@ def init_best_score():
     Initialiser le fichier score.txt
     """
     with open(FILE, "w") as empty_board:
-        empty_board.write("0")
+        empty_board.write("")
 
 
 if not os.path.isfile(FILE):
+    print('fichier non trouvé')
     init_best_score()
 
 
@@ -37,25 +61,64 @@ def score_endgame(pts):
                   pygame.font.Font(mn.FONT_PIXEL, 50), True)
 
 
-def get_best_score():
+def get_scores():
     """
     Récuperer le score sauvegardé dans le scoreboard
     """
     with open(FILE) as board:
         try:
-            return int(board.read().strip().replace("\n", ""))
+            scores = board.readlines()
+            if len(scores) < 2:
+                return []
+            scores[0] = scores[0].split(";")
+            scores[1] = scores[1].split(";")
+            ordered_list = []
+            for duo in range(len(scores[0])):
+                if onlydigits(scores[1][duo]) != '':
+                    score_value = int(onlydigits(scores[1][duo]))
+                    score_name = onlyalphanum(scores[0][duo])
+                    element = (score_value, score_name)
+                    ordered_list.append(element)
+            ordered_list = list(reversed(sorted(ordered_list)))
+            return ordered_list
         except ValueError:
             board.close()
             init_best_score()
-            return 0
+            return []
+
+
+def get_last_best_score():
+    """Renvoie le plus petit score du leaderboard"""
+    scores = get_scores()
+    if len(scores) == 0:
+        return 0
+    last = min(scores)
+    return last[0]
 
 
 def set_best_score(value):
     """
     Met à jour le score dans le fichier défini
     """
+    scores_board = get_scores()
     with open(FILE, "w") as board:
-        board.write(str(value))
+        must_be_added = True
+        new_scores = ""
+        new_players = ""
+        if len(scores_board) == 0:
+            board.write(PLAYER + "\n" + str(value))
+        else:
+            for i in range(min(len(scores_board), 4)):
+                if must_be_added and scores_board[i][0] < value:
+                    new_scores += str(value) + ";"
+                    new_players += PLAYER + ";"
+                    must_be_added = False
+                new_scores += str(scores_board[i][0]) + ";"
+                new_players += scores_board[i][1] + ";"
+            if must_be_added:
+                new_scores += str(value)
+                new_players += PLAYER
+        board.write(new_players + "\n" + new_scores)
 
 
 def maj(pts):
@@ -64,7 +127,8 @@ def maj(pts):
     Si oui, il retourne True et modifie le High-Score
     Si non, il retourne False
     """
-    if get_best_score() < pts:
+    minimal_score = get_last_best_score()
+    if len(get_scores()) < 5 or minimal_score < pts:
         set_best_score(pts)
         return True
     return False

@@ -18,7 +18,10 @@ cf.DISPLAYSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
-pygame.display.set_caption("Platformer")
+
+pygame.display.set_icon(
+    pygame.image.load("assets/img/mono/Mono3.png"))
+pygame.display.set_caption("Roll 'n' jump")
 
 # Initialisation du monde
 wrld.initgen()
@@ -40,6 +43,7 @@ FRAMES = 0
 # 1 : menu de départ
 # 2 : jeu en cours
 # 3 : menu de fin (scores)
+# 4 : affichage des meilleurs scores
 STATE = 1
 
 while True:  # Boucle du jeu
@@ -60,6 +64,27 @@ while True:  # Boucle du jeu
                 # Clic de la souris sur le bouton "Commencer"
                 STATE = 2
                 wrld.stop_sol()  # Arrêt de la création du sol du menu
+
+            elif STATE == 1 and\
+                    mn.records_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Records"
+                STATE = 4
+
+            elif STATE == 3 and mn.return_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Retour"
+                P = plyr.Player()
+                cf.SPEED = cf.INITIAL_SPEED
+                SECONDS = 0
+                FRAMES = 0
+                cf.sol = pygame.sprite.Group()
+                cf.nuages = pygame.sprite.Group()
+                cf.arbres = pygame.sprite.Group()
+                wrld.initgen()
+                STATE = 1
+
+            elif STATE == 4 and mn.return_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Records"
+                STATE = 1
 
             elif STATE == 3 and\
                     mn.restart_button.click(pygame.mouse.get_pos()):
@@ -83,9 +108,10 @@ while True:  # Boucle du jeu
 
     if STATE == 1:  # On est dans le menu
         cf.DISPLAYSURF.blit(pygame.image.load
-                            ("assets/img/ui/title.png"), (357, 207))
-        mn.start_button.print(pygame.mouse.get_pos())
+                            ("assets/img/ui/title.png"), (357, 132))
         P.move()
+        mn.start_button.print(pygame.mouse.get_pos())
+        mn.records_button.print(pygame.mouse.get_pos())
 
     elif STATE == 2:  # On est en jeu
 
@@ -113,6 +139,26 @@ while True:  # Boucle du jeu
         cf.DISPLAYSURF.blit(pygame.image.load
                             ("assets/img/ui/gameover.png"), (395, 100))
         mn.restart_button.print(pygame.mouse.get_pos())
+        mn.return_button.print(pygame.mouse.get_pos())
+
+    elif STATE == 4:  # Affichage des meilleurs scores
+
+        # Récupération des meilleurs scores
+        records = scre.get_scores()
+        number_scores = len(records)
+        size_height = 36 * 2 * number_scores
+        if number_scores == 0:
+            mn.print_text("Pas de scores", (640, 360), (240, 240, 240),
+                          pygame.font.Font(mn.FONT_PIXEL, 36), True)
+        else:
+            for best_score in range(number_scores):
+                position_score = 360 - (size_height//2) + best_score*2*36 + 18
+                text_display = records[best_score][1] + " : "
+                text_display += str(records[best_score][0])
+                mn.print_text(text_display,
+                              (640, position_score), (240, 240, 240),
+                              pygame.font.Font(mn.FONT_PIXEL, 36), True)
+        mn.return_button.print(pygame.mouse.get_pos())
 
     pygame.display.flip()
     FramePerSec.tick(FPS)
