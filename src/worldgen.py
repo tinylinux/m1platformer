@@ -1,5 +1,5 @@
 """ Gère la génération du monde """
-import os
+#import os
 import random as rd
 # Import classes
 import src.platform as pltfrm
@@ -7,7 +7,7 @@ import src.conf as cf
 import src.background as bg
 
 # Indexation des modules
-modules = os.listdir("./src/modules")
+modules = cf.listdir("./src/modules")
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 

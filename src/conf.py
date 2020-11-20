@@ -3,6 +3,12 @@
 import os
 import pygame
 
+
+def listdir(path) :
+    """listdir sans fichiers cachés (genre les .DS_Store)"""
+    return [f for f in os.listdir(path) if not f.startswith('.')]
+
+
 Vec = pygame.math.Vector2
 
 SCREEN_WIDTH = 1280
@@ -20,22 +26,32 @@ FLAG_JUMP_2 = False
 BlueSky = (0, 170, 251)
 
 # IMAGES
-n_mono = len(os.listdir("./assets/img/mono")) - 1
+mono_factor = 3
+n_mono = len(listdir("./assets/img/mono"))
 mono_img = []
 for i in range(n_mono):
-    mono_img.append(pygame.image.load("assets/img/mono/Mono"+str(i)+".png"))
+    img = pygame.image.load("assets/img/mono/Mono"+str(i)+".png")
+    w, h = img.get_rect().size
+    img = pygame.transform.scale(img, (mono_factor*w,mono_factor*h))
+    mono_img.append(img)
 
-n_nuage = len(os.listdir("./assets/img/nuages")) - 1
+nuage_factor = 4
+n_nuage = len(listdir("./assets/img/nuages"))
 nuage_img = []
 for i in range(n_nuage):
-    nuage_img.append(pygame.image.load
-                     ("assets/img/nuages/nuage"+str(i)+".png"))
+    img = pygame.image.load("assets/img/nuages/nuage"+str(i)+".png")
+    w, h = img.get_rect().size
+    img = pygame.transform.scale(img, (nuage_factor*w,nuage_factor*h))
+    nuage_img.append(img)
 
-n_arbre = len(os.listdir("./assets/img/arbres")) - 1
+arbre_factor = 8
+n_arbre = len(listdir("./assets/img/arbres"))
 arbre_img = []
 for i in range(n_arbre):
-    arbre_img.append(pygame.image.load
-                     ("assets/img/arbres/Arbre"+str(i)+".png"))
+    img = pygame.image.load("assets/img/arbres/Arbre"+str(i)+".png")
+    w, h = img.get_rect().size
+    img = pygame.transform.scale(img, (arbre_factor*w,arbre_factor*h))
+    arbre_img.append(img)
 
 SOL_IMG = pygame.image.load("assets/img/sol.png")
 PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
