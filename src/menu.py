@@ -27,10 +27,10 @@ def mouse_on_button(mouse, button_pos, button_size):
     scale_factor_y = cf.SCREEN_HEIGHT/window_dimensions[1]
 
     # Position de la sourie ajustée
-    real_mouse = mouse[0] * scale_factor_x, mouse[1] * scale_factor_y
+    new_mouse = mouse[0] * scale_factor_x, mouse[1] * scale_factor_y
 
-    return(button_pos[0] <= real_mouse[0] <= button_pos[0]  + button_size[0]
-           and button_pos[1] <= real_mouse[1] <= button_pos[1] + button_size[1])
+    return(button_pos[0] <= new_mouse[0] <= button_pos[0] + button_size[0]
+           and button_pos[1] <= new_mouse[1] <= button_pos[1] + button_size[1])
 
 
 class Button:  # pylint: disable=too-few-public-methods

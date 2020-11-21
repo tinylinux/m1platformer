@@ -1,9 +1,10 @@
 """ Fichier principal du jeu """
 
+
+from math import ceil
 import os
 import sys
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-from math import ceil
 # pylint: disable=wrong-import-position
 import pygame  # noqa: E402
 pygame.init()
@@ -174,6 +175,6 @@ while True:  # Boucle du jeu
         mn.return_button.print(pygame.mouse.get_pos())
 
     dim = pygame.display.get_surface().get_size()
-    pygame.transform.scale(cf.DISPLAYSURF,dim , cf.WINDOWSURF)
+    pygame.transform.scale(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
     pygame.display.flip()
     FramePerSec.tick(FPS)
