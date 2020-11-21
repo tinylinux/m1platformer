@@ -21,7 +21,7 @@ def mouse_on_button(mouse, button_pos, button_size):
 
     # Récupération de la dimension de la fenêtre
     window_dimensions = pygame.display.get_surface().get_size()
-    
+
     # Calcul du facteur d'échelle
     scale_factor_x = cf.SCREEN_WIDTH/window_dimensions[0]
     scale_factor_y = cf.SCREEN_HEIGHT/window_dimensions[1]
