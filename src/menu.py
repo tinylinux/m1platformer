@@ -18,8 +18,19 @@ def mouse_on_button(mouse, button_pos, button_size):
     mouse : int * int, position de la souris
     button_pos : int * int, position du bouton
     button_size : int * int, largeur * hauteur du bouton"""
-    return(button_pos[0] <= mouse[0] <= button_pos[0] + button_size[0]
-           and button_pos[1] <= mouse[1] <= button_pos[1] + button_size[1])
+
+    # Récupération de la dimension de la fenêtre
+    window_dimensions = pygame.display.get_surface().get_size()
+    
+    # Calcul du facteur d'échelle
+    scale_factor_x = cf.SCREEN_WIDTH/window_dimensions[0]
+    scale_factor_y = cf.SCREEN_HEIGHT/window_dimensions[1]
+
+    # Position de la sourie ajustée
+    real_mouse = mouse[0] * scale_factor_x, mouse[1] * scale_factor_y
+
+    return(button_pos[0] <= real_mouse[0] <= button_pos[0]  + button_size[0]
+           and button_pos[1] <= real_mouse[1] <= button_pos[1] + button_size[1])
 
 
 class Button:  # pylint: disable=too-few-public-methods
