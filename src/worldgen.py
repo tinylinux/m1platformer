@@ -1,5 +1,5 @@
 """ Gère la génération du monde """
-#import os
+# import os
 import random as rd
 # Import classes
 import src.platform as pltfrm
