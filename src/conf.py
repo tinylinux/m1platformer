@@ -26,7 +26,6 @@ FLAG_JUMP_2 = False
 BlueSky = (0, 170, 251)
 
 # IMAGES
-<<<<<<< HEAD
 # d = {}
 # Nom = ["mono","nuage","arbre"]
 # mono_factor = 3
