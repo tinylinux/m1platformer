@@ -26,29 +26,48 @@ FLAG_JUMP_2 = False
 BlueSky = (0, 170, 251)
 
 # IMAGES
+# d = {}
+# Nom = ["mono","nuage","arbre"]
+# mono_factor = 3
+# nuage_factor = 4
+# arbre_factor = 8
+# for nom in Nom :
+#     d['n_'+nom] = len(listdir("./assets/img/"+nom))
+#     d[nom+'_img'] = []
+#     for i in range(d['n_'+nom]):
+#         img = pygame.image.load("assets/img/"+nom+"/"+nom+str(i)+".png")
+#         w, h = img.get_rect().size
+#         img = pygame.transform.scale(img, (d[nom+'_factor']*w,d[nom+'_factor']*h))
+#         d[nom+'_img'].append(img)
+
+
+
+
+
+
 mono_factor = 3
 n_mono = len(listdir("./assets/img/mono"))
 mono_img = []
 for i in range(n_mono):
-    img = pygame.image.load("assets/img/mono/Mono"+str(i)+".png")
+    img = pygame.image.load("assets/img/mono/mono"+str(i)+".png")
     w, h = img.get_rect().size
     img = pygame.transform.scale(img, (mono_factor*w,mono_factor*h))
     mono_img.append(img)
 
 nuage_factor = 4
-n_nuage = len(listdir("./assets/img/nuages"))
+n_nuage = len(listdir("./assets/img/nuage"))
 nuage_img = []
 for i in range(n_nuage):
-    img = pygame.image.load("assets/img/nuages/nuage"+str(i)+".png")
+    img = pygame.image.load("assets/img/nuage/nuage"+str(i)+".png")
     w, h = img.get_rect().size
     img = pygame.transform.scale(img, (nuage_factor*w,nuage_factor*h))
     nuage_img.append(img)
 
 arbre_factor = 8
-n_arbre = len(listdir("./assets/img/arbres"))
+n_arbre = len(listdir("./assets/img/arbre"))
 arbre_img = []
 for i in range(n_arbre):
-    img = pygame.image.load("assets/img/arbres/Arbre"+str(i)+".png")
+    img = pygame.image.load("assets/img/arbre/arbre"+str(i)+".png")
     w, h = img.get_rect().size
     img = pygame.transform.scale(img, (arbre_factor*w,arbre_factor*h))
     arbre_img.append(img)
