@@ -1,5 +1,7 @@
 """ Fichier principal du jeu """
 
+
+from math import ceil
 import os
 import sys
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
@@ -13,8 +15,11 @@ import src.menu as mn  # noqa: E402
 import src.score as scre  # noqa: E402
 # pylint: enable=wrong-import-position
 
+
 # Initialisation de la fenêtre
-cf.DISPLAYSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
+cf.DISPLAYSURF = pygame.Surface((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
+cf.WINDOWSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT),
+                                        flags=pygame.RESIZABLE)
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
@@ -100,6 +105,15 @@ while True:  # Boucle du jeu
                 STATE = 2
                 wrld.stop_sol()
 
+        if event.type == pygame.VIDEORESIZE:
+            screen_size = event.size
+            ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
+                        screen_size[1]/cf.SCREEN_HEIGHT)
+            new_screen_size = (ceil(ratio * cf.SCREEN_WIDTH),
+                               ceil(ratio * cf.SCREEN_HEIGHT))
+            cf.WINDOWSURF = pygame.display.set_mode(new_screen_size,
+                                                    flags=pygame.RESIZABLE)
+
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
@@ -160,5 +174,7 @@ while True:  # Boucle du jeu
                               pygame.font.Font(mn.FONT_PIXEL, 36), True)
         mn.return_button.print(pygame.mouse.get_pos())
 
+    dim = pygame.display.get_surface().get_size()
+    pygame.transform.scale(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
     pygame.display.flip()
     FramePerSec.tick(FPS)

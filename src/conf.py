@@ -4,7 +4,7 @@ import os
 import pygame
 
 
-def listdir(path) :
+def listdir(path):
     """listdir sans fichiers cachés (genre les .DS_Store)"""
     return [f for f in os.listdir(path) if not f.startswith('.')]
 
@@ -26,6 +26,7 @@ FLAG_JUMP_2 = False
 BlueSky = (0, 170, 251)
 
 # IMAGES
+<<<<<<< HEAD
 # d = {}
 # Nom = ["mono","nuage","arbre"]
 # mono_factor = 3
@@ -45,31 +46,33 @@ BlueSky = (0, 170, 251)
 
 
 
-mono_factor = 3
+MONO_FACTOR = 3
 n_mono = len(listdir("./assets/img/mono"))
 mono_img = []
 for i in range(n_mono):
     img = pygame.image.load("assets/img/mono/mono"+str(i)+".png")
     w, h = img.get_rect().size
-    img = pygame.transform.scale(img, (mono_factor*w,mono_factor*h))
+    img = pygame.transform.scale(img, (MONO_FACTOR*w, MONO_FACTOR*h))
     mono_img.append(img)
 
-nuage_factor = 4
+
+NUAGE_FACTOR = 4
 n_nuage = len(listdir("./assets/img/nuage"))
 nuage_img = []
 for i in range(n_nuage):
     img = pygame.image.load("assets/img/nuage/nuage"+str(i)+".png")
     w, h = img.get_rect().size
-    img = pygame.transform.scale(img, (nuage_factor*w,nuage_factor*h))
+    img = pygame.transform.scale(img, (NUAGE_FACTOR*w, NUAGE_FACTOR*h))
     nuage_img.append(img)
 
-arbre_factor = 8
+
+ARBRE_FACTOR = 8
 n_arbre = len(listdir("./assets/img/arbre"))
 arbre_img = []
 for i in range(n_arbre):
     img = pygame.image.load("assets/img/arbre/arbre"+str(i)+".png")
     w, h = img.get_rect().size
-    img = pygame.transform.scale(img, (arbre_factor*w,arbre_factor*h))
+    img = pygame.transform.scale(img, (ARBRE_FACTOR*w, ARBRE_FACTOR*h))
     arbre_img.append(img)
 
 SOL_IMG = pygame.image.load("assets/img/sol.png")
@@ -96,7 +99,7 @@ class GameObject(pygame.sprite.Sprite):
     # pylint: disable=too-few-public-methods
     """Utilisée pour tous les objets du monde, comme le sol, les plateformes,
         les nuages, les bâtiments, etc. qui se déplacent de droite à gauche"""
-    def __init__(self, position, scroll, img):
+    def __init__(self, position, scroll, image):
         """position : int * int, position de l'objet
         scroll : float/int, vitesse de déplacement
         img : sprite"""
@@ -105,7 +108,7 @@ class GameObject(pygame.sprite.Sprite):
         self.scroll = scroll
         # 0 si c'est loin et que ça bouge pas,
         # 1 si c'est près et que ça bouge à la vitesse du sol
-        self.image = img
+        self.image = image
         self.rect = self.image.get_rect(topleft=self.pos)
         # Limite à partir de laquelle on génère un nouvel objet sur sa droite
         # pasencorecree est un flag pour ne générer qu'un seul nouvel objet
