@@ -25,8 +25,6 @@ FLAG_JUMP_2 = False
 # Couleur du ciel
 BlueSky = (0, 170, 251)
 
-<<<<<<< HEAD
-
 #IMAGES
 d = {}
 Nom = ["mono","nuage","arbre"]
