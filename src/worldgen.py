@@ -54,12 +54,12 @@ def initgen():
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
                rd.randint(0, cf.SCREEN_HEIGHT//2))
-        i = rd.randint(0, cf.n_nuage-1)
+        i = rd.randint(0, cf.d["n_nuage"]-1)
         bg.Nuage(pos, i)
     # Crée quelques arbres
     for _ in range(4):
         pos_x = rd.randint(0, cf.SCREEN_WIDTH)
-        i = rd.randint(0, cf.n_arbre-1)
+        i = rd.randint(0, cf.d["n_arbre"]-1)
         bg.Arbre(pos_x, i)
 
     # Lance la création du sol

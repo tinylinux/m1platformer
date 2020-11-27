@@ -25,61 +25,62 @@ FLAG_JUMP_2 = False
 # Couleur du ciel
 BlueSky = (0, 170, 251)
 
-# IMAGES
-# d = {}
-# Nom = ["mono","nuage","arbre"]
-# mono_factor = 3
-# nuage_factor = 4
-# arbre_factor = 8
-# for nom in Nom :
-#     d['n_'+nom] = len(listdir("./assets/img/"+nom))
-#     d[nom+'_img'] = []
-#     for i in range(d['n_'+nom]):
-#         img = pygame.image.load("assets/img/"+nom+"/"+nom+str(i)+".png")
-#         w, h = img.get_rect().size
-#         img = pygame.transform.scale(img, (d[nom+'_factor']*w,d[nom+'_factor']*h))
-#         d[nom+'_img'].append(img)
+
+#IMAGES
+d = {}
+Nom = ["mono","nuage","arbre"]
+d["mono_factor"] = 3
+d["nuage_factor"] = 4
+d["arbre_factor"] = 8
+for nom in Nom :
+    d['n_'+nom] = len(listdir("./assets/img/"+nom))
+    d[nom+'_img'] = []
+    for i in range(d['n_'+nom]):
+        img = pygame.image.load("assets/img/"+nom+"/"+nom+str(i)+".png")
+        w, h = img.get_rect().size
+        img = pygame.transform.scale(img, (d[nom+'_factor']*w,d[nom+'_factor']*h))
+        d[nom+'_img'].append(img)
 
 
 
 
 
 
-MONO_FACTOR = 3
-n_mono = len(listdir("./assets/img/mono"))
-mono_img = []
-for i in range(n_mono):
-    img = pygame.image.load("assets/img/mono/mono"+str(i)+".png")
-    w, h = img.get_rect().size
-    img = pygame.transform.scale(img, (MONO_FACTOR*w, MONO_FACTOR*h))
-    mono_img.append(img)
+# MONO_FACTOR = 3
+# n_mono = len(listdir("./assets/img/mono"))
+# mono_img = []
+# for i in range(n_mono):
+#     img = pygame.image.load("assets/img/mono/mono"+str(i)+".png")
+#     w, h = img.get_rect().size
+#     img = pygame.transform.scale(img, (MONO_FACTOR*w, MONO_FACTOR*h))
+#     mono_img.append(img)
 
 
-NUAGE_FACTOR = 4
-n_nuage = len(listdir("./assets/img/nuage"))
-nuage_img = []
-for i in range(n_nuage):
-    img = pygame.image.load("assets/img/nuage/nuage"+str(i)+".png")
-    w, h = img.get_rect().size
-    img = pygame.transform.scale(img, (NUAGE_FACTOR*w, NUAGE_FACTOR*h))
-    nuage_img.append(img)
+# NUAGE_FACTOR = 4
+# n_nuage = len(listdir("./assets/img/nuage"))
+# nuage_img = []
+# for i in range(n_nuage):
+#     img = pygame.image.load("assets/img/nuage/nuage"+str(i)+".png")
+#     w, h = img.get_rect().size
+#     img = pygame.transform.scale(img, (NUAGE_FACTOR*w, NUAGE_FACTOR*h))
+#     nuage_img.append(img)
 
 
-ARBRE_FACTOR = 8
-n_arbre = len(listdir("./assets/img/arbre"))
-arbre_img = []
-for i in range(n_arbre):
-    img = pygame.image.load("assets/img/arbre/arbre"+str(i)+".png")
-    w, h = img.get_rect().size
-    img = pygame.transform.scale(img, (ARBRE_FACTOR*w, ARBRE_FACTOR*h))
-    arbre_img.append(img)
+# ARBRE_FACTOR = 8
+# n_arbre = len(listdir("./assets/img/arbre"))
+# arbre_img = []
+# for i in range(n_arbre):
+#     img = pygame.image.load("assets/img/arbre/arbre"+str(i)+".png")
+#     w, h = img.get_rect().size
+#     img = pygame.transform.scale(img, (ARBRE_FACTOR*w, ARBRE_FACTOR*h))
+#     arbre_img.append(img)
 
 SOL_IMG = pygame.image.load("assets/img/sol.png")
 PLTFRM_IMG = pygame.image.load("assets/img/pltfrm.png")
 BAT_IMG = pygame.image.load("assets/img/bat.png")
 
 # Dimensions
-p_WIDTH, p_HEIGHT = mono_img[0].get_rect().size
+p_WIDTH, p_HEIGHT = d["mono_img"][0].get_rect().size
 w, h = SOL_IMG.get_rect().size
 SOL_HAUT = (SCREEN_HEIGHT - h)      # La hauteur du sol en général
 SOL_LONG = w      # La longueur d'un bloc du sol en général

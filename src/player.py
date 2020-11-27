@@ -63,7 +63,7 @@ class Player(pygame.sprite.Sprite):
         # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
         super().__init__()
         # Liste d'images de l'objet, et indice de cette liste
-        self.images = cf.mono_img
+        self.images = cf.d["mono_img"]
         self.img = 0
         # Création de l'objet
         self.shape = self.images[0].get_rect()

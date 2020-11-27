@@ -25,7 +25,7 @@ FPS = 60
 FramePerSec = pygame.time.Clock()
 
 pygame.display.set_icon(
-    pygame.image.load("assets/img/mono/Mono3.png"))
+    pygame.image.load("assets/img/mono/mono3.png"))
 pygame.display.set_caption("Roll 'n' jump")
 
 # Initialisation du monde
