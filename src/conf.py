@@ -40,16 +40,11 @@ BlueSky = (0, 170, 251)
 #         img = pygame.transform.scale(img, (d[nom+'_factor']*w,d[nom+'_factor']*h))
 #         d[nom+'_img'].append(img)
 
-
-
-
-
-
 MONO_FACTOR = 3
 n_mono = len(listdir("./assets/img/mono"))
 mono_img = []
 for i in range(n_mono):
-    img = pygame.image.load("assets/img/mono/mono"+str(i)+".png")
+    img = pygame.image.load("assets/img/mono/Mono"+str(i)+".png")
     w, h = img.get_rect().size
     img = pygame.transform.scale(img, (MONO_FACTOR*w, MONO_FACTOR*h))
     mono_img.append(img)
