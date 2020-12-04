@@ -29,13 +29,19 @@ FLAG_JUMP = False
 # Drapeau de disponibilité du second saut
 FLAG_JUMP_2 = False
 
-# Couleur du ciel
+# Couleurs
+BLACK = (255, 255, 255)
+GREY = (240, 240, 240)
 BlueSky = (0, 170, 251)
+WHITE = (255, 255, 255)
+IDLE = (170, 170, 170)
+HOVER = (100, 100, 100)
 
 # Crée un nouvel event, le +1 sert à avoir un nouvel ID
 INC_SPEED = pygame.USEREVENT + 1
 
 # Toutes les secondes on augmente la vitesse
+FPS = 60
 pygame.time.set_timer(INC_SPEED, 1000)
 
 # Compteurs pour le score

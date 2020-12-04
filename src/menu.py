@@ -5,10 +5,6 @@ import src.conf as cf
 
 FONT_PIXEL = "assets/font/punk_rockf.ttf"
 
-white = (255, 255, 255)
-idle = (170, 170, 170)
-hover = (100, 100, 100)
-
 CHARS_LOW = "azertyuiopqsdfghjklmwxcvbn1234567890"
 CHARS_CAP = "AZERTYUIOPQSDFGHJKLMWXCVBN1234567890"
 
@@ -55,9 +51,9 @@ class ButtonText(Button):
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
-            pygame.draw.rect(cf.DISPLAYSURF, hover, self.rect)
+            pygame.draw.rect(cf.DISPLAYSURF, cf.HOVER, self.rect)
         else:
-            pygame.draw.rect(cf.DISPLAYSURF, idle, self.rect)
+            pygame.draw.rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
         cf.DISPLAYSURF.blit(self.text, self.text_position)
 
 
@@ -91,8 +87,8 @@ class InputZone(Button):
 
     def print(self):
         """Affiche la zone et le texte entré"""
-        pygame.draw.rect(cf.DISPLAYSURF, idle, self.rect)
-        cf.DISPLAYSURF.blit(self.font.render(self.input, True, white),
+        pygame.draw.rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
+        cf.DISPLAYSURF.blit(self.font.render(self.input, True, cf.WHITE),
                             self.text_position)
 
     def select(self):
@@ -138,7 +134,7 @@ def print_image(image, position):
     cf.DISPLAYSURF.blit(pygame.image.load(image), position)
 
 
-def print_text(text, position_center, color=white,
+def print_text(text, position_center, color=cf.WHITE,
                font=pygame.font.SysFont(None, cf.TEXT_FONT_SIZE), bold=False):
     """Affiche une surface de texte centrée sur une position.
     text : string, le texte à afficher

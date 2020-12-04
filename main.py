@@ -17,7 +17,6 @@ cf.DISPLAYSURF = pygame.Surface((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
 cf.WINDOWSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT),
                                         flags=pygame.RESIZABLE)
 
-FPS = 60
 FramePerSec = pygame.time.Clock()
 
 pygame.display.set_icon(
@@ -43,4 +42,4 @@ while True:  # Boucle du jeu
     dim = pygame.display.get_surface().get_size()
     pygame.transform.scale(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
     pygame.display.flip()
-    FramePerSec.tick(FPS)
+    FramePerSec.tick(cf.FPS)

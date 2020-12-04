@@ -26,7 +26,7 @@ def main_loop(players):
 
         # Décompte des secondes
         cf.FRAMES += 1
-        if cf.FRAMES == 60:
+        if cf.FRAMES == cf.FPS:
             cf.FRAMES = 0
             cf.SECONDS += 1
         scre.score(cf.SECONDS)
@@ -57,18 +57,22 @@ def main_loop(players):
         # Récupération des meilleurs scores
         records = scre.get_scores()
         number_scores = len(records)
-        size_height = 36 * 2 * number_scores
+        font_size = cf.HIGHTSCORES_FONT_SIZE
+        size_height = font_size * 2 * number_scores
         if number_scores == 0:
-            mn.print_text("Pas de scores", (640, 360), (240, 240, 240),
-                          pygame.font.Font(mn.FONT_PIXEL, cf.HIGHTSCORES_FONT_SIZE), True)
+            mn.print_text("Pas de scores", (640, 360), cf.GREY,
+                          pygame.font.Font(mn.FONT_PIXEL, font_size),
+                          True)
         else:
             for best_score in range(number_scores):
-                position_score = 360 - (size_height//2) + best_score* 2 * 36 + 18
+                position_score = 10 * font_size - (size_height // 2)\
+                                + best_score * 2 * font_size + font_size // 2
                 text_display = records[best_score][1] + " : "
                 text_display += str(records[best_score][0])
                 mn.print_text(text_display,
-                              (640, position_score), (240, 240, 240),
-                              pygame.font.Font(mn.FONT_PIXEL, cf.HIGHTSCORES_FONT_SIZE), True)
+                              (640, position_score), cf.GREY,
+                              pygame.font.Font(mn.FONT_PIXEL, font_size),
+                              True)
         mn.return_button.print(pygame.mouse.get_pos())
 
     return players

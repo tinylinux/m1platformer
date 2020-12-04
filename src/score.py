@@ -49,7 +49,7 @@ def score(pts):
     """
     font = pygame.font.Font(mn.FONT_PIXEL, cf.SCORE_FONT_SIZE)
     font.set_bold(True)
-    text = font.render("Score: " + str(pts), True, (255, 255, 255))
+    text = font.render("Score: " + str(pts), True, cf.BLACK)
     cf.DISPLAYSURF.blit(text, (0, 0))
 
 
@@ -57,7 +57,7 @@ def score_endgame(pts):
     """
     Affiche le score à la fin de la partie
     """
-    mn.print_text("Score : " + str(pts), (640, 300), (240, 240, 240),
+    mn.print_text("Score : " + str(pts), (640, 300), cf.GREY,
                   pygame.font.Font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
 
 
