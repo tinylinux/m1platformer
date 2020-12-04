@@ -10,7 +10,7 @@ import src.player as plyr
 import src.score as scre
 
 
-def main_loop(players):
+def main_loop(players, graphical):
     """ Applique les mises à jour nécessaires au jeu,
     et renvoie le nouvel objet joueur.
     P: joueur """
@@ -19,8 +19,10 @@ def main_loop(players):
                             ("assets/img/ui/title.png"), (357, 132))
         for P in players:
             P.move()
-        mn.start_button.print(pygame.mouse.get_pos())
-        mn.records_button.print(pygame.mouse.get_pos())
+
+        if graphical:
+            mn.start_button.print(pygame.mouse.get_pos())
+            mn.records_button.print(pygame.mouse.get_pos())
 
     elif cf.STATE == 2:  # On est en jeu
 
@@ -49,8 +51,10 @@ def main_loop(players):
                                 ("assets/img/ui/highscore.png"), (428, 350))
         cf.DISPLAYSURF.blit(pygame.image.load
                             ("assets/img/ui/gameover.png"), (395, 100))
-        mn.restart_button.print(pygame.mouse.get_pos())
-        mn.return_button.print(pygame.mouse.get_pos())
+
+        if graphical:
+            mn.restart_button.print(pygame.mouse.get_pos())
+            mn.return_button.print(pygame.mouse.get_pos())
 
     elif cf.STATE == 4:  # Affichage des meilleurs scores
 
@@ -74,7 +78,7 @@ def main_loop(players):
     return players
 
 
-def reset_world(nb_players = 1):
+def reset_world(nb_players=1):
     """ Réinitialise le monde """
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
@@ -86,7 +90,7 @@ def reset_world(nb_players = 1):
     return [plyr.Player() for _ in range(nb_players)]
 
 
-def event_handling(players, event):
+def event_handling(players, event, graphical):
     """ Effectue les mises à jour relatives à event,
     et renvoie le nouveau joueur.
     P: joueur
@@ -95,45 +99,47 @@ def event_handling(players, event):
         if cf.STATE == 2:  # Si on est in game
             cf.SPEED += 0.5
 
-    if event.type == pygame.KEYDOWN:
-        if cf.STATE == 2 and event.key == pygame.K_SPACE:  # Saut
-            players[0].jump()
+    if graphical:
+        if event.type == pygame.KEYDOWN:
+            if cf.STATE == 2 and event.key == pygame.K_SPACE:  # Saut
+                players[0].jump()
 
-    if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN:
 
-        if cf.STATE == 1 and mn.start_button.click(pygame.mouse.get_pos()):
-            # Clic de la souris sur le bouton "Commencer"
-            cf.STATE = 2
-            wrld.stop_sol()  # Arrêt de la création du sol du menu
-
-        elif cf.STATE == 1 and\
-                mn.records_button.click(pygame.mouse.get_pos()):
-            # Clic de la souris sur le bouton "Records"
-            cf.STATE = 4
-
-        elif cf.STATE == 3:
-            if mn.return_button.click(pygame.mouse.get_pos()):
-                # Clic de la souris sur le bouton "Retour"
-                players = reset_world(len(players))
-                cf.STATE = 1
-            if mn.restart_button.click(pygame.mouse.get_pos()):
-                # Clic sur recommencer, on réinitialise le monde
-                players = reset_world(len(players))
+            if cf.STATE == 1 and mn.start_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Commencer"
                 cf.STATE = 2
-                wrld.stop_sol()
+                wrld.stop_sol()  # Arrêt de la création du sol du menu
 
-        elif cf.STATE == 4 and mn.return_button.click(pygame.mouse.get_pos()):
-            # Clic de la souris sur le bouton "Records"
-            cf.STATE = 1
+            elif cf.STATE == 1 and\
+                    mn.records_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Records"
+                cf.STATE = 4
 
-    if event.type == pygame.VIDEORESIZE:
-        screen_size = event.size
-        ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
-                    screen_size[1]/cf.SCREEN_HEIGHT)
-        new_screen_size = (ceil(ratio * cf.SCREEN_WIDTH),
-                           ceil(ratio * cf.SCREEN_HEIGHT))
-        cf.WINDOWSURF = pygame.display.set_mode(new_screen_size,
-                                                flags=pygame.RESIZABLE)
+            elif cf.STATE == 3:
+                if mn.return_button.click(pygame.mouse.get_pos()):
+                    # Clic de la souris sur le bouton "Retour"
+                    players = reset_world(len(players))
+                    cf.STATE = 1
+                if mn.restart_button.click(pygame.mouse.get_pos()):
+                    # Clic sur recommencer, on réinitialise le monde
+                    players = reset_world(len(players))
+                    cf.STATE = 2
+                    wrld.stop_sol()
+
+            elif cf.STATE == 4 and\
+                    mn.return_button.click(pygame.mouse.get_pos()):
+                # Clic de la souris sur le bouton "Records"
+                cf.STATE = 1
+
+        if event.type == pygame.VIDEORESIZE:
+            screen_size = event.size
+            ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
+                        screen_size[1]/cf.SCREEN_HEIGHT)
+            new_screen_size = (ceil(ratio * cf.SCREEN_WIDTH),
+                               ceil(ratio * cf.SCREEN_HEIGHT))
+            cf.WINDOWSURF = pygame.display.set_mode(new_screen_size,
+                                                    flags=pygame.RESIZABLE)
 
     if event.type == pygame.QUIT:
         pygame.quit()
