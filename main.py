@@ -25,7 +25,7 @@ pygame.display.set_icon(
 pygame.display.set_caption("Roll 'n' jump")
 
 # Initialisation du joueur
-P = plyr.Player()
+players = [plyr.Player()]
 
 # Initialisation du monde
 wrld.initgen()
@@ -33,11 +33,11 @@ wrld.initgen()
 while True:  # Boucle du jeu
 
     for event in pygame.event.get():  # Gestion des événements
-        P = gml.event_handling(P, event)
+        players = gml.event_handling(players, event)
 
     wrld.update()  # Mise à jour de l'environnement
 
-    P = gml.main_loop(P)  # Mise à jour du jeu
+    players = gml.main_loop(players)  # Mise à jour du jeu
 
     # Gestion de l'affichage
     dim = pygame.display.get_surface().get_size()

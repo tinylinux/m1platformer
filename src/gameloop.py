@@ -10,14 +10,15 @@ import src.player as plyr
 import src.score as scre
 
 
-def main_loop(P):
+def main_loop(players):
     """ Applique les mises à jour nécessaires au jeu,
     et renvoie le nouvel objet joueur.
     P: joueur """
     if cf.STATE == 1:  # On est dans le menu
         cf.DISPLAYSURF.blit(pygame.image.load
                             ("assets/img/ui/title.png"), (357, 132))
-        P.move()
+        for P in players:
+            P.move()
         mn.start_button.print(pygame.mouse.get_pos())
         mn.records_button.print(pygame.mouse.get_pos())
 
@@ -30,13 +31,15 @@ def main_loop(P):
             cf.SECONDS += 1
         scre.score(cf.SECONDS)
 
-        # Déplacement du joueur
-        P.move()
+        # Déplacement des joueurs
+        for P in players:
+            P.move()
 
         # Gestion de la mort
-        if P.death():
-            cf.STATE = 3
-            cf.NEWHS = scre.maj(cf.SECONDS)
+        for P in players:
+            if P.death():
+                cf.STATE = 3
+                cf.NEWHS = scre.maj(cf.SECONDS)
 
     elif cf.STATE == 3:  # Menu de fin
 
@@ -68,10 +71,10 @@ def main_loop(P):
                               pygame.font.Font(mn.FONT_PIXEL, 36), True)
         mn.return_button.print(pygame.mouse.get_pos())
 
-    return P
+    return players
 
 
-def reset_world():
+def reset_world(nb_players = 1):
     """ Réinitialise le monde """
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
@@ -80,10 +83,10 @@ def reset_world():
     cf.nuages = pygame.sprite.Group()
     cf.arbres = pygame.sprite.Group()
     wrld.initgen()
-    return plyr.Player()
+    return [plyr.Player() for _ in range(nb_players)]
 
 
-def event_handling(P, event):
+def event_handling(players, event):
     """ Effectue les mises à jour relatives à event,
     et renvoie le nouveau joueur.
     P: joueur
@@ -94,7 +97,7 @@ def event_handling(P, event):
 
     if event.type == pygame.KEYDOWN:
         if cf.STATE == 2 and event.key == pygame.K_SPACE:  # Saut
-            P.jump()
+            players[0].jump()
 
     if event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -111,11 +114,11 @@ def event_handling(P, event):
         elif cf.STATE == 3:
             if mn.return_button.click(pygame.mouse.get_pos()):
                 # Clic de la souris sur le bouton "Retour"
-                P = reset_world()
+                players = reset_world(len(players))
                 cf.STATE = 1
             if mn.restart_button.click(pygame.mouse.get_pos()):
                 # Clic sur recommencer, on réinitialise le monde
-                P = reset_world()
+                players = reset_world(len(players))
                 cf.STATE = 2
                 wrld.stop_sol()
 
@@ -136,4 +139,4 @@ def event_handling(P, event):
         pygame.quit()
         sys.exit()
 
-    return P
+    return players
