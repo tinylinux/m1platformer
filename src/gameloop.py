@@ -74,7 +74,7 @@ def main_loop(players):
     return players
 
 
-def reset_world(nb_players = 1):
+def reset_world(nb_players=1):
     """ Réinitialise le monde """
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
