@@ -1,3 +1,5 @@
+""" Fonctions pour la boucle principale du jeu """
+
 import sys
 from math import ceil
 import pygame
@@ -9,6 +11,9 @@ import src.score as scre
 
 
 def main_loop(P):
+    """ Applique les mises à jour nécessaires au jeu,
+    et renvoie le nouvel objet joueur.
+    P: joueur """
     if cf.STATE == 1:  # On est dans le menu
         cf.DISPLAYSURF.blit(pygame.image.load
                             ("assets/img/ui/title.png"), (357, 132))
@@ -67,6 +72,7 @@ def main_loop(P):
 
 
 def reset_world():
+    """ Réinitialise le monde """
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
@@ -78,6 +84,10 @@ def reset_world():
 
 
 def event_handling(P, event):
+    """ Effectue les mises à jour relatives à event,
+    et renvoie le nouveau joueur.
+    P: joueur
+    event: événement """
     if event.type == cf.INC_SPEED:
         if cf.STATE == 2:  # Si on est in game
             cf.SPEED += 0.5
