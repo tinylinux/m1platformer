@@ -25,19 +25,37 @@ FLAG_JUMP_2 = False
 # Couleur du ciel
 BlueSky = (0, 170, 251)
 
-#IMAGES
+# Crée un nouvel event, le +1 sert à avoir un nouvel ID
+INC_SPEED = pygame.USEREVENT + 1
+
+# Toutes les secondes on augmente la vitesse
+pygame.time.set_timer(INC_SPEED, 1000)
+
+# Compteurs pour le score
+SECONDS = 0
+FRAMES = 0
+
+# États du jeu :
+# 1 : menu de départ
+# 2 : jeu en cours
+# 3 : menu de fin (scores)
+# 4 : affichage des meilleurs scores
+STATE = 1
+
+# IMAGES
 d = {}
-Nom = ["mono","nuage","arbre"]
+Nom = ["mono", "nuage", "arbre"]
 d["mono_factor"] = 3
 d["nuage_factor"] = 4
 d["arbre_factor"] = 8
-for nom in Nom :
+for nom in Nom:
     d['n_'+nom] = len(listdir("./assets/img/"+nom))
     d[nom+'_img'] = []
     for i in range(d['n_'+nom]):
         img = pygame.image.load("assets/img/"+nom+"/"+nom+str(i)+".png")
         w, h = img.get_rect().size
-        img = pygame.transform.scale(img, (d[nom+'_factor']*w,d[nom+'_factor']*h))
+        img = pygame.transform.scale(img, (d[nom+'_factor'] * w,
+                                     d[nom+'_factor'] * h))
         d[nom+'_img'].append(img)
 
 SOL_IMG = pygame.image.load("assets/img/sol.png")
