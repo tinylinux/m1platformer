@@ -1,0 +1,62 @@
+"""Gère l'abstraction de pygame par la (re)définition de fonctions"""
+
+import pygame
+
+def initialize():
+    """
+    Initialiser l'environnement Pygame
+    """
+    return pygame.init()
+
+
+def initialize_window(width, height):
+    """
+    Initialiser les variables d'environnement graphique
+    """
+    return (pygame.Surface((width, height)),
+            pygame.display.set_mode((width, height),
+                                            flags=pygame.RESIZABLE))
+
+
+def load_image(path):
+    """
+    Charger une image à partir de path
+    """
+    return pygame.image.load(path)
+
+
+def group_sprite_define():
+    """
+    Création d'une nouvelle instance de groupage de sprites
+    """
+    return pygame.sprite.Group()
+
+
+class GameObject(pygame.sprite.Sprite):
+    # pylint: disable=too-few-public-methods
+    """Utilisée pour tous les objets du monde, comme le sol, les plateformes,
+        les nuages, les bâtiments, etc. qui se déplacent de droite à gauche"""
+    def __init__(self, position, scroll, image):
+        """position : int * int, position de l'objet
+        scroll : float/int, vitesse de déplacement
+        img : sprite"""
+        super().__init__()
+        self.pos = Vec(position)
+        self.scroll = scroll
+        # 0 si c'est loin et que ça bouge pas,
+        # 1 si c'est près et que ça bouge à la vitesse du sol
+        self.image = image
+        self.rect = self.image.get_rect(topleft=self.pos)
+        # Limite à partir de laquelle on génère un nouvel objet sur sa droite
+        # pasencorecree est un flag pour ne générer qu'un seul nouvel objet
+        self.pasencorecree = True
+
+    def update(self):
+        """Modifie le vecteur position"""
+        posnext = self.pos + self.scroll * Vec(-SPEED, 0)
+        self.pos = posnext
+        self.rect.topleft = self.pos
+        if self.rect.right < 0:     # si l'objet sort de l'écran
+            self.kill()              # on le supprime
+        # On met à jour l'image
+        DISPLAYSURF.blit(self.image, self.rect)
