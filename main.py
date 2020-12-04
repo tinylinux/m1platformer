@@ -12,34 +12,44 @@ import src.gameloop as gml  # noqa: E402
 # pylint: enable=wrong-import-position
 
 
-# Initialisation de la fenêtre
-cf.DISPLAYSURF = pygame.Surface((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
-cf.WINDOWSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT),
-                                        flags=pygame.RESIZABLE)
+def main(graphical):
+    """ Fonction principale du jeu """
 
-FramePerSec = pygame.time.Clock()
+    # Initialisation de la fenêtre
+    cf.DISPLAYSURF = pygame.Surface((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
+    if graphical:
+        cf.WINDOWSURF = pygame.display.set_mode((cf.SCREEN_WIDTH,
+                                                cf.SCREEN_HEIGHT),
+                                                flags=pygame.RESIZABLE)
 
-pygame.display.set_icon(
-    pygame.image.load("assets/img/mono/mono3.png"))
-pygame.display.set_caption("Roll 'n' jump")
+    FramePerSec = pygame.time.Clock()
 
-# Initialisation du joueur
-players = [plyr.Player()]
+    pygame.display.set_icon(
+        pygame.image.load("assets/img/mono/mono3.png"))
+    pygame.display.set_caption("Roll 'n' jump")
 
-# Initialisation du monde
-wrld.initgen()
+    # Initialisation du joueur
+    players = [plyr.Player()]
 
-while True:  # Boucle du jeu
+    # Initialisation du monde
+    wrld.initgen()
 
-    for event in pygame.event.get():  # Gestion des événements
-        players = gml.event_handling(players, event)
+    while True:  # Boucle du jeu
 
-    wrld.update()  # Mise à jour de l'environnement
+        for event in pygame.event.get():  # Gestion des événements
+            players = gml.event_handling(players, event, graphical)
 
-    players = gml.main_loop(players)  # Mise à jour du jeu
+        wrld.update()  # Mise à jour de l'environnement
 
-    # Gestion de l'affichage
-    dim = pygame.display.get_surface().get_size()
-    pygame.transform.scale(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
-    pygame.display.flip()
-    FramePerSec.tick(cf.FPS)
+        players = gml.main_loop(players, graphical)  # Mise à jour du jeu
+
+        # Gestion de l'affichage
+        if graphical:
+            dim = pygame.display.get_surface().get_size()
+            pygame.transform.scale(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
+            pygame.display.flip()
+        FramePerSec.tick(cf.FPS)
+
+
+if __name__ == "__main__":
+    main(True)
