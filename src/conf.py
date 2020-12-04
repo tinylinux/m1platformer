@@ -14,6 +14,13 @@ Vec = pygame.math.Vector2
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
+# Font sizes
+HIGHTSCORES_FONT_SIZE = 36
+SCORE_FONT_SIZE = 25
+RESULT_FONT_SIZE = 50
+INPUT_FONT_SIZE = 35
+TEXT_FONT_SIZE = 25
+
 # vitesse initiale de défilement du sol
 INITIAL_SPEED = 5
 SPEED = INITIAL_SPEED
