@@ -4,7 +4,8 @@ import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 # pylint: disable=wrong-import-position
 import pygame  # noqa: E402
-pygame.init()
+import src.utilities as ut
+ut.initialize()
 import src.conf as cf  # noqa: E402
 import src.worldgen as wrld  # noqa: E402
 import src.player as plyr  # noqa: E402
@@ -13,9 +14,8 @@ import src.gameloop as gml  # noqa: E402
 
 
 # Initialisation de la fenêtre
-cf.DISPLAYSURF = pygame.Surface((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT))
-cf.WINDOWSURF = pygame.display.set_mode((cf.SCREEN_WIDTH, cf.SCREEN_HEIGHT),
-                                        flags=pygame.RESIZABLE)
+cf.DISPLAYSURF, cf.WINDOWSURF = ut.initialize_window(cf.SCREEN_WIDTH,
+                                                    cf.SCREEN_HEIGHT)
 
 FPS = 60
 FramePerSec = pygame.time.Clock()

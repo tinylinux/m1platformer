@@ -1,9 +1,10 @@
 """ Gère la création et les déplacements des plateformes """
 import pygame
 import src.conf as cf
+import src.utilities as ut
 
 
-class Sol(cf.GameObject):
+class Sol(ut.GameObject):
     """Gestion de la plateforme initiale (menu)"""
     def __init__(self, x):
         super().__init__((x, cf.SOL_HAUT), 1, cf.SOL_IMG)
@@ -25,7 +26,7 @@ class Sol(cf.GameObject):
         self.pasencorecree = False
 
 
-class Platform(cf.GameObject):
+class Platform(ut.GameObject):
     """ Gère les plateformes """
     def __init__(self, pos=(1, 1), dim=(8, 3), img=cf.PLTFRM_IMG):
         """pos : int * int, position de la plateforme
