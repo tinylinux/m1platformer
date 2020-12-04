@@ -75,7 +75,8 @@ class ButtonImage(Button):
 
 class InputZone(Button):
     """Classe des zones dans lesquelles on peut entrer du texte"""
-    def __init__(self, position, size, font=pygame.font.SysFont(None, cf.INPUT_FONT_SIZE)):
+    def __init__(self, position, size,
+                 font=pygame.font.SysFont(None, cf.INPUT_FONT_SIZE)):
         """position : int * int, position du bouton
         size : int * int, largeur * hauteur du bouton
         font : Font, la fonte"""
