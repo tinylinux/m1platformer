@@ -5,12 +5,17 @@ import src.conf as cf
 
 Vec = pygame.math.Vector2
 
+# Crée un nouvel event, le +1 sert à avoir un nouvel ID
+INC_SPEED = pygame.USEREVENT + 1
+
+# Toutes les secondes on augmente la vitesse
+pygame.time.set_timer(INC_SPEED, 1000)
+
 def initialize():
     """
     Initialiser l'environnement Pygame
     """
     return pygame.init()
-
 
 
 def load_image(path):
@@ -91,7 +96,7 @@ class GameObject(pygame.sprite.Sprite):
         scroll : float/int, vitesse de déplacement
         img : sprite"""
         super().__init__()
-        self.pos = cf.Vec(position)
+        self.pos = Vec(position)
         self.scroll = scroll
         # 0 si c'est loin et que ça bouge pas,
         # 1 si c'est près et que ça bouge à la vitesse du sol
@@ -103,7 +108,7 @@ class GameObject(pygame.sprite.Sprite):
 
     def update(self):
         """Modifie le vecteur position"""
-        posnext = self.pos + self.scroll * cf.Vec(-cf.SPEED, 0)
+        posnext = self.pos + self.scroll * Vec(-cf.SPEED, 0)
         self.pos = posnext
         self.rect.topleft = self.pos
         if self.rect.right < 0:     # si l'objet sort de l'écran

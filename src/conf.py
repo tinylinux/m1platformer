@@ -1,11 +1,5 @@
 """ Stocke des variables partagées entre les différents fichiers """
 
-import pygame
-import src.utilities as ut
-
-
-Vec = ut.Vec
-
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
@@ -19,12 +13,6 @@ FLAG_JUMP_2 = False
 
 # Couleur du ciel
 BlueSky = (0, 170, 251)
-
-# Crée un nouvel event, le +1 sert à avoir un nouvel ID
-INC_SPEED = pygame.USEREVENT + 1
-
-# Toutes les secondes on augmente la vitesse
-pygame.time.set_timer(INC_SPEED, 1000)
 
 # Compteurs pour le score
 SECONDS = 0
