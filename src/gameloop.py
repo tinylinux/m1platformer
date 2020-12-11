@@ -1,10 +1,8 @@
 """ Fonctions pour la boucle principale du jeu """
 
 import sys
-from math import ceil
 import pygame
 import src.conf as cf
-import src.sprites as spt
 import src.utilities as ut
 import src.menu as mn
 import src.worldgen as wrld
@@ -82,9 +80,9 @@ def reset_world(nb_players=1):
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
-    spt.sol = ut.group_sprite_define()
-    spt.nuages = ut.group_sprite_define()
-    spt.arbres = ut.group_sprite_define()
+    cf.ground = ut.group_sprite_define()
+    cf.clouds = ut.group_sprite_define()
+    cf.trees = ut.group_sprite_define()
     wrld.initgen()
     return [plyr.Player() for _ in range(nb_players)]
 
@@ -130,13 +128,8 @@ def event_handling(players, event):
             cf.STATE = 1
 
     if event.type == pygame.VIDEORESIZE:
-        screen_size = event.size
-        ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
-                    screen_size[1]/cf.SCREEN_HEIGHT)
-        new_screen_size = (ceil(ratio * cf.SCREEN_WIDTH),
-                           ceil(ratio * cf.SCREEN_HEIGHT))
-        cf.WINDOWSURF = pygame.display.set_mode(new_screen_size,
-                                                flags=pygame.RESIZABLE)
+        ut.resize_window(event.size)
+        
 
     if event.type == pygame.QUIT:
         pygame.quit()

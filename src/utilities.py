@@ -44,6 +44,8 @@ def initialize_window(icon, title, width, height):
 
 def resize_window(screen_size):
     """
+    Redimensionne la fenêtre, en gardant le ratio
+    screen_size : int*int, taille actuelle, mais pas au bon ratio.
     """
     ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
                 screen_size[1]/cf.SCREEN_HEIGHT)
