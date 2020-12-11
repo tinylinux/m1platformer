@@ -4,7 +4,9 @@ from hypothesis import given
 from hypothesis.strategies import integers
 import pygame
 import src.conf as cf
-from src.player import Vec, collide
+import src.sprites as spt
+from src.conf import Vec
+from src.player import collide
 
 
 # Test des collisions
@@ -24,7 +26,7 @@ def test_collisions(pos_prev_x, pos_prev_y,
                     width_plat, height_plat):
     """Test pour la fonction de vérification des collisions"""
     dummy_next = pygame.Rect(pos_next_x, pos_next_y,
-                             cf.p_WIDTH, cf.p_HEIGHT)
+                             spt.p_WIDTH, spt.p_HEIGHT)
     plat = pygame.Rect(pos_plat_x, pos_plat_y,
                        width_plat, height_plat)
     (vert, hor, new_pos) = collide(Vec((pos_prev_x, pos_prev_y)),

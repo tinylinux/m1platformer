@@ -1,6 +1,5 @@
 """ Stocke des variables partagées entre les différents fichiers """
 
-import os
 import pygame
 
 

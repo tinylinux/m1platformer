@@ -1,7 +1,6 @@
 """Contient la classe Player, permettant de gerer le personnage."""
 
 import pygame
-import src.utilities as ut
 import src.conf as cf
 import src.sprites as spt
 
