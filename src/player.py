@@ -37,7 +37,8 @@ def collide(pos_prev, pos_next, rect):
             if pos_next.y + spt.p_HEIGHT > rect.top:
                 # Nouvelle position dans ou sous la plateforme
                 cf.FLAG_JUMP = True
-                return (True, False, ut.Vec(pos_next.x, rect.top - spt.p_HEIGHT))
+                return (True, False, 
+                        ut.Vec(pos_next.x, rect.top - spt.p_HEIGHT))
 
         elif pos_prev.y >= rect.bottom:
             # Position initiale en-dessous de la plateforme
