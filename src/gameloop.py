@@ -80,9 +80,9 @@ def reset_world(nb_players=1):
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
-    cf.sol = ut.group_sprite_define()
-    cf.nuages = ut.group_sprite_define()
-    cf.arbres = ut.group_sprite_define()
+    cf.ground = ut.group_sprite_define()
+    cf.clouds = ut.group_sprite_define()
+    cf.trees = ut.group_sprite_define()
     wrld.initgen()
     return [plyr.Player() for _ in range(nb_players)]
 
@@ -105,7 +105,7 @@ def event_handling(players, event):
         if cf.STATE == 1 and mn.start_button.click(pygame.mouse.get_pos()):
             # Clic de la souris sur le bouton "Commencer"
             cf.STATE = 2
-            wrld.stop_sol()  # Arrêt de la création du sol du menu
+            wrld.stop_ground()  # Arrêt de la création du sol du menu
 
         elif cf.STATE == 1 and\
                 mn.records_button.click(pygame.mouse.get_pos()):
@@ -121,7 +121,7 @@ def event_handling(players, event):
                 # Clic sur recommencer, on réinitialise le monde
                 players = reset_world(len(players))
                 cf.STATE = 2
-                wrld.stop_sol()
+                wrld.stop_ground()
 
         elif cf.STATE == 4 and mn.return_button.click(pygame.mouse.get_pos()):
             # Clic de la souris sur le bouton "Records"

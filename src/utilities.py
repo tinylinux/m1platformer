@@ -103,8 +103,8 @@ class GameObject(pygame.sprite.Sprite):
         self.image = image
         self.rect = self.image.get_rect(topleft=self.pos)
         # Limite à partir de laquelle on génère un nouvel objet sur sa droite
-        # pasencorecree est un flag pour ne générer qu'un seul nouvel objet
-        self.pasencorecree = True
+        # FLAG_creation est un flag pour ne générer qu'un seul nouvel objet
+        self.FLAG_creation = True
 
     def update(self):
         """Modifie le vecteur position"""

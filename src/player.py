@@ -7,7 +7,7 @@ import src.utilities as ut
 
 # Position initiale
 X_INIT = cf.SCREEN_WIDTH//2
-Y_INIT = spt.SOL_HAUT - spt.p_HEIGHT
+Y_INIT = spt.GROUND_HEIGHT - spt.p_HEIGHT
 # Vitesse initiale
 V_0 = 0
 # Vitesse initiale lors d'un saut
@@ -92,7 +92,7 @@ class Player(pygame.sprite.Sprite):
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
 
-        for plat in spt.sol:  # Gestion des collisions
+        for plat in spt.ground:  # Gestion des collisions
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
                 posnext = coll[2]
