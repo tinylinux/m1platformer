@@ -1,6 +1,5 @@
 """Contient la classe Player, permettant de gerer le personnage."""
 
-import pygame
 import src.conf as cf
 import src.sprites as spt
 import src.utilities as ut
@@ -54,7 +53,7 @@ def collide(pos_prev, pos_next, rect):
     return(False, False, None)
 
 
-class Player(pygame.sprite.Sprite):
+class Player(ut.Sprite):
     """Gestion du personnage, par les méthodes jump(self), move(self)
     et death(self)."""
 

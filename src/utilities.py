@@ -1,6 +1,7 @@
 """Gère l'abstraction de pygame par la (re)définition de fonctions"""
 
 import pygame
+from math import ceil
 import src.conf as cf
 
 Vec = pygame.math.Vector2
@@ -10,6 +11,8 @@ INC_SPEED = pygame.USEREVENT + 1
 
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
+
+Sprite = pygame.sprite.Sprite
 
 
 def initialize():
@@ -38,6 +41,16 @@ def initialize_window(icon, title, width, height):
     return (pygame.Surface((width, height)),
             pygame.display.set_mode((width, height),
                                     flags=pygame.RESIZABLE))
+
+def resize_window(screen_size):
+    """
+    """
+    ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
+                screen_size[1]/cf.SCREEN_HEIGHT)
+    new_screen_size = (ceil(ratio * cf.SCREEN_WIDTH),
+                       ceil(ratio * cf.SCREEN_HEIGHT))
+    cf.WINDOWSURF = pygame.display.set_mode(new_screen_size,
+                                            flags=pygame.RESIZABLE)
 
 
 def initialize_clock():
@@ -105,7 +118,7 @@ def draw_rect(surface, color, objet):
     return pygame.draw.rect(surface, color, objet)
 
 
-class GameObject(pygame.sprite.Sprite):
+class GameObject(Sprite):
     # pylint: disable=too-few-public-methods
     """Utilisée pour tous les objets du monde, comme le sol, les plateformes,
         les nuages, les bâtiments, etc. qui se déplacent de droite à gauche"""
