@@ -53,8 +53,11 @@ def group_sprite_define():
     """
     return pygame.sprite.Group()
 
-def add_to_group(object,group):
-    pygame.sprite.Sprite.__init__(object, group)
+def add_to_group(sprite,group):
+    """
+    Ajoute un sprite à un groupe de sprites
+    """
+    pygame.sprite.Sprite.__init__(sprite, group)
 
 
 def resize(surface, dimensions, destination=None):
