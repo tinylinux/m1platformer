@@ -39,7 +39,7 @@ class Button:  # pylint: disable=too-few-public-methods
     def __init__(self, position, size):
         self.position = position
         self.size = size
-        self.rect = pygame.Rect([position[0], position[1], size[0], size[1]])
+        self.rect = ut.create_rect([position[0], position[1], size[0], size[1]])
 
     def click(self, mouse):
         """Renvoie si la souris est sur le bouton"""
@@ -56,9 +56,9 @@ class ButtonText(Button):
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
-            pygame.draw.rect(cf.DISPLAYSURF, hover, self.rect)
+            ut.draw_rect(cf.DISPLAYSURF, hover, self.rect)
         else:
-            pygame.draw.rect(cf.DISPLAYSURF, idle, self.rect)
+            ut.draw_rect(cf.DISPLAYSURF, idle, self.rect)
         cf.DISPLAYSURF.blit(self.text, self.text_position)
 
 
@@ -92,7 +92,7 @@ class InputZone(Button):
 
     def print(self):
         """Affiche la zone et le texte entré"""
-        pygame.draw.rect(cf.DISPLAYSURF, idle, self.rect)
+        ut.draw_rect(cf.DISPLAYSURF, idle, self.rect)
         cf.DISPLAYSURF.blit(self.font.render(self.input, True, white),
                             self.text_position)
 
