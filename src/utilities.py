@@ -91,6 +91,20 @@ def get_screen_size():
     return pygame.display.get_surface().get_size()
 
 
+def create_rect(array):
+    """
+    Creer l'objet rectangle
+    """
+    return pygame.Rect(array)
+
+
+def draw_rect(surface, color, objet):
+    """
+    Dessine l'objet rectangle sur une surface désignée
+    """
+    return pygame.draw.rect(surface, color, objet)
+
+
 class GameObject(pygame.sprite.Sprite):
     # pylint: disable=too-few-public-methods
     """Utilisée pour tous les objets du monde, comme le sol, les plateformes,
