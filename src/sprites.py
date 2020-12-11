@@ -23,7 +23,7 @@ for nom in Nom:
     for i in range(d['n_'+nom]):
         img = ut.load_image("assets/img/"+nom+"/"+nom+str(i)+".png")
         w, h = img.get_rect().size
-        img = pygame.transform.scale(img, (d[nom+'_factor'] * w,
+        img = ut.resize(img, (d[nom+'_factor'] * w,
                                      d[nom+'_factor'] * h))
         d[nom+'_img'].append(img)
 
