@@ -8,7 +8,7 @@ import src.menu as mn
 import src.worldgen as wrld
 import src.player as plyr
 import src.score as scre
-import src.utilities as ut
+import src.sprites as spt
 
 
 def main_loop(players):
@@ -80,9 +80,9 @@ def reset_world(nb_players=1):
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
-    cf.ground = ut.group_sprite_define()
-    cf.clouds = ut.group_sprite_define()
-    cf.trees = ut.group_sprite_define()
+    spt.ground = ut.group_sprite_define()
+    spt.clouds = ut.group_sprite_define()
+    spt.trees = ut.group_sprite_define()
     wrld.initgen()
     return [plyr.Player() for _ in range(nb_players)]
 

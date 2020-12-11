@@ -1,7 +1,6 @@
 """ Génération des sprites """
 
 import os
-import pygame
 import src.conf as cf
 import src.utilities as ut
 
@@ -24,7 +23,7 @@ for nom in Nom:
         img = ut.load_image("assets/img/"+nom+"/"+nom+str(i)+".png")
         w, h = img.get_rect().size
         img = ut.resize(img, (d[nom+'_factor'] * w,
-                                     d[nom+'_factor'] * h))
+                              d[nom+'_factor'] * h))
         d[nom+'_img'].append(img)
 
 GROUND_IMG = ut.load_image("assets/img/ground.png")
