@@ -19,7 +19,7 @@ A_0 = 0
 G = 0.8
 
 
-def collide(pos_prev, pos_next, rect):
+def collide(player, pos_next, rect):
     """Gestion des collisions.
     pos_prev : Vector2, position précédente du joueur
     pos_next : Vector2, position suivante du joueur
@@ -29,6 +29,7 @@ def collide(pos_prev, pos_next, rect):
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
     # de toutes façons pas possible de jouer dans ce cas.
+    pos_prev = player.pos
     if pos_next.x + cf.p_WIDTH > rect.left\
             and pos_next.x < rect.right:
         # Dans la plateforme horizontalement
@@ -37,7 +38,7 @@ def collide(pos_prev, pos_next, rect):
             # Position initale au-dessus de la plateforme
             if pos_next.y + cf.p_HEIGHT > rect.top:
                 # Nouvelle position dans ou sous la plateforme
-                cf.FLAG_JUMP = True
+                player.FLAG_JUMP = True
                 return (True, False, Vec(pos_next.x, rect.top - cf.p_HEIGHT))
 
         elif pos_prev.y >= rect.bottom:
@@ -77,15 +78,20 @@ class Player(pygame.sprite.Sprite):
         # Accélération
         self.acc = Vec(A_0, G)
 
+        # Drapeau de disponibilité du saut
+        self.FLAG_JUMP = True
+        # Drapeau de disponibilité du second saut
+        self.FLAG_JUMP_2 = False
+
     def jump(self):
         """Lance le saut du personnage."""
-        if cf.FLAG_JUMP:
-            cf.FLAG_JUMP = False
+        if self.FLAG_JUMP:
+            self.FLAG_JUMP = False
             self.vel.y = -V_JMP
-            cf.FLAG_JUMP_2 = True
-        elif cf.FLAG_JUMP_2:
+            self.FLAG_JUMP_2 = True
+        elif self.FLAG_JUMP_2:
             self.vel.y = -V_JMP
-            cf.FLAG_JUMP_2 = False
+            self.FLAG_JUMP_2 = False
 
     def move(self):
         """Modifie les vecteurs position, vitesse
@@ -94,7 +100,7 @@ class Player(pygame.sprite.Sprite):
         posnext = self.pos + self.vel + 0.5 * self.acc
 
         for plat in cf.sol:  # Gestion des collisions
-            coll = collide(self.pos, posnext, plat.rect)
+            coll = collide(self, posnext, plat.rect)
             if coll[0] or coll[1]:
                 posnext = coll[2]
                 if coll[0]:

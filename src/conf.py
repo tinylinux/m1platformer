@@ -24,10 +24,6 @@ TEXT_FONT_SIZE = 25
 # vitesse initiale de défilement du sol
 INITIAL_SPEED = 5
 SPEED = INITIAL_SPEED
-# Drapeau de disponibilité du saut
-FLAG_JUMP = False
-# Drapeau de disponibilité du second saut
-FLAG_JUMP_2 = False
 
 # Couleurs
 BLACK = (255, 255, 255)
