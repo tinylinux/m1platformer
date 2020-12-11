@@ -2,6 +2,7 @@
 
 import pygame
 import src.conf as cf
+import src.utilities as ut
 
 FONT_PIXEL = "assets/font/punk_rockf.ttf"
 

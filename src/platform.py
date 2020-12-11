@@ -2,13 +2,14 @@
 import pygame
 import src.conf as cf
 import src.utilities as ut
+import src.sprites as spt
 
 
 class Sol(ut.GameObject):
     """Gestion de la plateforme initiale (menu)"""
     def __init__(self, x):
-        super().__init__((x, cf.SOL_HAUT), 1, cf.SOL_IMG)
-        pygame.sprite.Sprite.__init__(self, cf.sol)
+        super().__init__((x, spt.SOL_HAUT), 1, spt.SOL_IMG)
+        pygame.sprite.Sprite.__init__(self, spt.sol)
 
     def update(self):
         """ Fait se déplacer la plateforme selon la variable SPEED du module conf.
@@ -28,10 +29,10 @@ class Sol(ut.GameObject):
 
 class Platform(ut.GameObject):
     """ Gère les plateformes """
-    def __init__(self, pos=(1, 1), dim=(8, 3), img=cf.PLTFRM_IMG):
+    def __init__(self, pos=(1, 1), dim=(8, 3), img=spt.PLTFRM_IMG):
         """pos : int * int, position de la plateforme
         dim : int * int, largeur * hauteur de la plateforme
         img : image"""
         img = pygame.transform.scale(img, dim)
         super().__init__(pos, 1, img)
-        pygame.sprite.Sprite.__init__(self, cf.sol)
+        pygame.sprite.Sprite.__init__(self, spt.sol)
