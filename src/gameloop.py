@@ -92,7 +92,7 @@ def event_handling(players, event):
     et renvoie le nouveau joueur.
     P: joueur
     event: événement """
-    if event.type == cf.INC_SPEED:
+    if event.type == ut.INC_SPEED:
         if cf.STATE == 2:  # Si on est in game
             cf.SPEED += 0.5
 
