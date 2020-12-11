@@ -1,5 +1,4 @@
 """ Gère la création et les déplacements des plateformes """
-import pygame
 import src.conf as cf
 import src.utilities as ut
 import src.sprites as spt
@@ -33,6 +32,6 @@ class Platform(ut.GameObject):
         """pos : int * int, position de la plateforme
         dim : int * int, largeur * hauteur de la plateforme
         img : image"""
-        img = pygame.transform.scale(img, dim)
+        img = ut.resize(img, dim)
         super().__init__(pos, 1, img)
         ut.add_to_group(self, spt.ground)

@@ -11,6 +11,7 @@ INC_SPEED = pygame.USEREVENT + 1
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
 
+
 def initialize():
     """
     Initialiser l'environnement Pygame
@@ -36,7 +37,7 @@ def initialize_window(icon, title, width, height):
     pygame.display.set_caption(title)
     return (pygame.Surface((width, height)),
             pygame.display.set_mode((width, height),
-                                            flags=pygame.RESIZABLE))
+                                    flags=pygame.RESIZABLE))
 
 
 def initialize_clock():
@@ -59,7 +60,8 @@ def group_sprite_define():
     """
     return pygame.sprite.Group()
 
-def add_to_group(sprite,group):
+
+def add_to_group(sprite, group):
     """
     Ajoute un sprite à un groupe de sprites
     """
@@ -70,6 +72,8 @@ def resize(surface, dimensions, destination=None):
     """
     Changer l'échelle de la surface en question
     """
+    if destination is None:
+        return pygame.transform.scale(surface, dimensions)
     return pygame.transform.scale(surface, dimensions, destination)
 
 

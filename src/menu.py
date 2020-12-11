@@ -21,7 +21,7 @@ def mouse_on_button(mouse, button_pos, button_size):
     button_size : int * int, largeur * hauteur du bouton"""
 
     # Récupération de la dimension de la fenêtre
-    window_dimensions = pygame.display.get_surface().get_size()
+    window_dimensions = ut.get_screen_size()
 
     # Calcul du facteur d'échelle
     scale_factor_x = cf.SCREEN_WIDTH/window_dimensions[0]
@@ -72,10 +72,10 @@ class ButtonImage(Button):
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
-            cf.DISPLAYSURF.blit(pygame.image.load(self.image_hover),
+            cf.DISPLAYSURF.blit(ut.load_image(self.image_hover),
                                 self.position)
         else:
-            cf.DISPLAYSURF.blit(pygame.image.load(self.image), self.position)
+            cf.DISPLAYSURF.blit(ut.load_image(self.image), self.position)
 
 
 class InputZone(Button):
@@ -136,7 +136,7 @@ def print_image(image, position):
     """Affiche une image à une position donnée.
     image : string, le chemin vers l'image dans les fichiers
     position : int * int, les coordonnées du coin supérieur gauche"""
-    cf.DISPLAYSURF.blit(pygame.image.load(image), position)
+    cf.DISPLAYSURF.blit(ut.load_image(image), position)
 
 
 def print_text(text, position_center, color=white,
