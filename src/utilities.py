@@ -1,5 +1,6 @@
 """Gère l'abstraction de pygame par la (re)définition de fonctions"""
 
+import sys
 import pygame
 from math import ceil
 import src.conf as cf
@@ -14,6 +15,19 @@ pygame.time.set_timer(INC_SPEED, 1000)
 
 Sprite = pygame.sprite.Sprite
 
+# pygame events
+KEYDOWN = pygame.KEYDOWN
+K_SPACE = pygame.K_SPACE
+K_BACKSPACE = pygame.K_BACKSPACE
+MOUSEBUTTONDOWN = pygame.MOUSEBUTTONDOWN
+VIDEORESIZE = pygame.VIDEORESIZE
+QUIT = pygame.QUIT
+
+def keyname(key):
+    """
+    Renvoie le nom de la touche pressée
+    """
+    return pygame.key.name(key)
 
 def initialize():
     """
@@ -118,6 +132,28 @@ def draw_rect(surface, color, objet):
     Dessine l'objet rectangle sur une surface désignée
     """
     return pygame.draw.rect(surface, color, objet)
+
+
+def mouse_pos():
+    """
+    Retourne la position de la souris
+    """
+    return pygame.mouse.get_pos()
+
+
+def quit():
+    """
+    Quitte le jeu quand on ferme la fenêtre.
+    """
+    pygame.quit()
+    sys.exit()
+
+
+def font(font,size):
+    """
+    Renvoie une police à la bonne taille
+    """
+    return pygame.font.Font(font, size)
 
 
 class GameObject(Sprite):

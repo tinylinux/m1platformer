@@ -1,6 +1,5 @@
 """Gestion des menus"""
 
-import pygame
 import src.conf as cf
 import src.utilities as ut
 
@@ -80,7 +79,7 @@ class ButtonImage(Button):
 
 class InputZone(Button):
     """Classe des zones dans lesquelles on peut entrer du texte"""
-    def __init__(self, position, size, font=pygame.font.SysFont(None, 35)):
+    def __init__(self, position, size, font=ut.font(None, 35)):
         """position : int * int, position du bouton
         size : int * int, largeur * hauteur du bouton
         font : Font, la fonte"""
@@ -107,12 +106,12 @@ class InputZone(Button):
     def read(self, key):
         """Lit les caractères entrés"""
         if self.selected:
-            key_name = pygame.key.name(key)
+            key_name = ut.keyname(key)
             if key_name in CHARS_LOW:
                 self.input += CHARS_CAP[CHARS_LOW.index(key_name)]
-            elif key == pygame.K_SPACE:
+            elif key == ut.K_SPACE:
                 self.input += " "
-            elif key == pygame.K_BACKSPACE and self.input != "":
+            elif key == ut.K_BACKSPACE and self.input != "":
                 self.input = self.input[:-1]
 
 
@@ -140,12 +139,12 @@ def print_image(image, position):
 
 
 def print_text(text, position_center, color=white,
-               font=pygame.font.SysFont(None, 25), bold=False):
+               font=ut.font(None, 25), bold=False):
     """Affiche une surface de texte centrée sur une position.
     text : string, le texte à afficher
     position_center : int * int, la position du centre du texte
     color : int * int * int, la couleur
-    font : pygame.font.Font, la fonte
+    font : ut.font, la fonte
     bold : bool, si la fonte doit être en gras"""
     if bold:
         font.set_bold(True)
