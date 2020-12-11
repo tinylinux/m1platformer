@@ -29,7 +29,7 @@ def main(graphical):
     pygame.display.set_caption("Roll 'n' jump")
 
     # Initialisation du joueur
-    players = [plyr.Player()]
+    players = [plyr.Player() for _ in range(cf.NB_PLAYERS)]
 
     # Initialisation du monde
     wrld.initgen()

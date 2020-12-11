@@ -86,6 +86,12 @@ arbres = pygame.sprite.Group()
 DISPLAYSURF = None
 WINDOWSURF = None
 
+# Nombre maximal de joueurs
+NB_PLAYERS_MAX = 2
+# Nombre de joueurs
+NB_PLAYERS = 2
+# Touches de saut des joueurs
+JUMP_KEYS = [pygame.K_SPACE, pygame.K_RETURN]
 
 class GameObject(pygame.sprite.Sprite):
     # pylint: disable=too-few-public-methods
