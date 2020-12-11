@@ -3,7 +3,6 @@
 from hypothesis import given
 from hypothesis.strategies import integers
 import pygame
-import src.conf as cf
 import src.sprites as spt
 from src.utilities import Vec
 from src.player import collide
