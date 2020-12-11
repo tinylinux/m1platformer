@@ -59,6 +59,8 @@ class Player(pygame.sprite.Sprite):
     """Gestion du personnage, par les méthodes jump(self), move(self)
     et death(self)."""
 
+    # pylint: disable=too-many-instance-attributes
+
     def __init__(self):
         # Initialisation de la classe parent
         # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
