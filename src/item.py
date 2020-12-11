@@ -1,8 +1,6 @@
 """ Gère la génération d'items"""
 
 import random as rd
-import pygame
-
 
 import src.conf as cf
 import src.utilities as ut
@@ -16,7 +14,7 @@ proba = 2
 
 ITEMS = ["fast","slow","big","little"]
 
-class item(cf.GameObject):
+class item(ut.GameObject):
     """Gère les items
         i = n° d'item :
             0 = fast

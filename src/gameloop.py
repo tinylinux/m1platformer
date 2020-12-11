@@ -129,7 +129,6 @@ def event_handling(players, event):
 
     if event.type == pygame.VIDEORESIZE:
         ut.resize_window(event.size)
-        
 
     if event.type == pygame.QUIT:
         pygame.quit()
