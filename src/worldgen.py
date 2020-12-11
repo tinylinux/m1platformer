@@ -5,6 +5,7 @@ import random as rd
 import src.platform as pltfrm
 import src.conf as cf
 import src.background as bg
+import src.item as it
 
 # Indexation des modules
 modules = cf.listdir("./src/modules")
@@ -23,7 +24,7 @@ def platform_creation(bloc, xoffset, yoffset):
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
-    pltfrm.Platform((top_left_x + xoffset,
+    return pltfrm.Platform((top_left_x + xoffset,
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
                     bot_right_y - top_left_y),
@@ -37,7 +38,7 @@ def batiment_creation(bloc, xoffset, yoffset):
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     bot_right_x = int(bot_right[1])
-    pltfrm.Platform((top_left_x + xoffset,
+    return pltfrm.Platform((top_left_x + xoffset,
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
                     cf.SCREEN_HEIGHT),
@@ -94,7 +95,10 @@ def genere_module(last_pltfrm):
         bloc = line.split(';')
         bloc_type = bloc[0]
         # xoffset += pltfrm_offset
-        creation_functions[bloc_type](bloc, xoffset, yoffset)
+        plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
+        # avec une chance sur 5 on fait apparaître un nouvel item
+        if rd.randint(1,it.proba) == 1 and (not it.FLAG_ITEM):
+            it.item(plt)
     module_file.close()
 
 
@@ -108,12 +112,10 @@ def stop_sol():
 def update():
     """Update tous les objets du monde autres que player"""
     cf.DISPLAYSURF.fill(cf.BlueSky)  # Le ciel
-    for nuage in cf.nuages:  # Les nuages
-        nuage.update()
-    for arbre in cf.arbres:  # Les arbres
-        arbre.update()
-    for bloc in cf.sol:  # Le sol
-        bloc.update()
+    cf.nuages.update()
+    cf.arbres.update()
+    cf.sol.update()
+    cf.items.update()
 
     last_pltfrm = max(cf.sol, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
