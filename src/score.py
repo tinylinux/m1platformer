@@ -1,7 +1,6 @@
 """ Gestion du score """
 import os
 import re
-import pygame
 import src.conf as cf
 import src.menu as mn
 import src.utilities as ut
