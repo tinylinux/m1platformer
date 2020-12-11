@@ -58,7 +58,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self):
         # Initialisation de la classe parent
-        # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
+        # ut.add_to_group(self, cf.player_sprite)
         super().__init__()
         # Liste d'images de l'objet, et indice de cette liste
         self.images = spt.d["mono_img"]

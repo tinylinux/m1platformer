@@ -38,6 +38,9 @@ def group_sprite_define():
     """
     return pygame.sprite.Group()
 
+def add_to_group(object,group):
+    pygame.sprite.Sprite.__init__(object, group)
+
 
 class GameObject(pygame.sprite.Sprite):
     # pylint: disable=too-few-public-methods
