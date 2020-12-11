@@ -4,7 +4,7 @@ import pygame
 import src.utilities as ut
 
 
-Vec = pygame.math.Vector2
+Vec = ut.Vec
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
