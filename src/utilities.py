@@ -68,6 +68,20 @@ def resize(surface, dimensions, destination=None):
     return pygame.transform.scale(surface, dimensions, destination)
 
 
+def update_screen():
+    """
+    Mettre à jour l'écran
+    """
+    return pygame.display.flip()
+
+
+def get_screen_size():
+    """
+    Avoir la taille de la fenêtre
+    """
+    return pygame.display.get_surface().get_size()
+
+
 class GameObject(pygame.sprite.Sprite):
     # pylint: disable=too-few-public-methods
     """Utilisée pour tous les objets du monde, comme le sol, les plateformes,

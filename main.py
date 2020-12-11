@@ -3,7 +3,6 @@
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 # pylint: disable=wrong-import-position
-import pygame  # noqa: E402
 import src.utilities as ut # noqa: E402
 ut.initialize()
 import src.conf as cf  # noqa: E402
@@ -38,7 +37,7 @@ while True:  # Boucle du jeu
     players = gml.main_loop(players)  # Mise à jour du jeu
 
     # Gestion de l'affichage
-    dim = pygame.display.get_surface().get_size()
+    dim = ut.get_screen_size()
     ut.resize(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
-    pygame.display.flip()
+    ut.update_screen()
     FramePerSec.tick(FPS)
