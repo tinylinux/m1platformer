@@ -20,7 +20,7 @@ cf.DISPLAYSURF, cf.WINDOWSURF = ut.initialize_window("assets/img/mono/mono3.png"
                                                         cf.SCREEN_HEIGHT)
 
 FPS = 60
-FramePerSec = pygame.time.Clock()
+FramePerSec = ut.initialize_clock()
 
 # Initialisation du joueur
 players = [plyr.Player()]
@@ -30,7 +30,7 @@ wrld.initgen()
 
 while True:  # Boucle du jeu
 
-    for event in pygame.event.get():  # Gestion des événements
+    for event in ut.get_events():  # Gestion des événements
         players = gml.event_handling(players, event)
 
     wrld.update()  # Mise à jour de l'environnement
@@ -39,6 +39,6 @@ while True:  # Boucle du jeu
 
     # Gestion de l'affichage
     dim = pygame.display.get_surface().get_size()
-    pygame.transform.scale(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
+    ut.resize(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
     pygame.display.flip()
     FramePerSec.tick(FPS)

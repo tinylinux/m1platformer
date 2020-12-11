@@ -11,19 +11,6 @@ def initialize():
     return pygame.init()
 
 
-def initialize_window(icon, title, width, height):
-    """
-    Initialiser les variables d'environnement graphique
-    et initialisation des paramètres
-    de fenêtre
-    """
-    pygame.display.set_icon(
-        pygame.image.load(icon))
-    pygame.display.set_caption(title)
-    return (pygame.Surface((width, height)),
-            pygame.display.set_mode((width, height),
-                                            flags=pygame.RESIZABLE))
-
 
 def load_image(path):
     """
@@ -32,11 +19,46 @@ def load_image(path):
     return pygame.image.load(path)
 
 
+def initialize_window(icon, title, width, height):
+    """
+    Initialiser les variables d'environnement graphique
+    et initialisation des paramètres
+    de fenêtre
+    """
+    pygame.display.set_icon(
+        load_image(icon))
+    pygame.display.set_caption(title)
+    return (pygame.Surface((width, height)),
+            pygame.display.set_mode((width, height),
+                                            flags=pygame.RESIZABLE))
+
+
+def initialize_clock():
+    """
+    Initialiser le temps
+    """
+    return pygame.time.Clock()
+
+
+def get_events():
+    """
+    Obtenir les évènements
+    """
+    return pygame.event.get()
+
+
 def group_sprite_define():
     """
     Création d'une nouvelle instance de groupage de sprites
     """
     return pygame.sprite.Group()
+
+
+def resize(surface, dimensions, destination=None):
+    """
+    Changer l'échelle de la surface en question
+    """
+    return pygame.transform.scale(surface, dimensions, destination)
 
 
 class GameObject(pygame.sprite.Sprite):
