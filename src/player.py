@@ -3,6 +3,7 @@
 import pygame
 import src.conf as cf
 import src.sprites as spt
+import src.utilities as ut
 
 # Position initiale
 X_INIT = cf.SCREEN_WIDTH//2
@@ -36,18 +37,18 @@ def collide(pos_prev, pos_next, rect):
             if pos_next.y + spt.p_HEIGHT > rect.top:
                 # Nouvelle position dans ou sous la plateforme
                 cf.FLAG_JUMP = True
-                return (True, False, cf.Vec(pos_next.x, rect.top - spt.p_HEIGHT))
+                return (True, False, ut.Vec(pos_next.x, rect.top - spt.p_HEIGHT))
 
         elif pos_prev.y >= rect.bottom:
             # Position initiale en-dessous de la plateforme
             if pos_next.y < rect.bottom:
                 # Nouvelle position dans ou au-dessus de la plateforme
-                return (True, False, cf.Vec(pos_next.x, rect.bottom))
+                return (True, False, ut.Vec(pos_next.x, rect.bottom))
 
         elif pos_next.y + spt.p_HEIGHT > rect.top\
                 and pos_next.y < rect.bottom:
             # On ne considère que les collisions à gauche des plateformes
-            return (False, True, cf.Vec(rect.left - spt.p_WIDTH, pos_next.y))
+            return (False, True, ut.Vec(rect.left - spt.p_WIDTH, pos_next.y))
 
     return(False, False, None)
 
@@ -67,13 +68,13 @@ class Player(pygame.sprite.Sprite):
         self.shape = self.images[0].get_rect()
 
         # Position
-        self.pos = cf.Vec(X_INIT, Y_INIT)
+        self.pos = ut.Vec(X_INIT, Y_INIT)
         self.shape.midbottom = self.pos
 
         # Vitesse
-        self.vel = cf.Vec(V_0, 0)
+        self.vel = ut.Vec(V_0, 0)
         # Accélération
-        self.acc = cf.Vec(A_0, G)
+        self.acc = ut.Vec(A_0, G)
 
     def jump(self):
         """Lance le saut du personnage."""

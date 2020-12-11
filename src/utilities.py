@@ -3,6 +3,7 @@
 import pygame
 import src.conf as cf
 
+Vec = pygame.math.Vector2
 
 def initialize():
     """
