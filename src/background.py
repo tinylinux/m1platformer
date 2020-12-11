@@ -4,6 +4,7 @@ import pygame
 import src.utilities as ut
 import src.conf as cf
 import src.sprites as spt
+import src.utilities as ut
 
 
 class Nuage(ut.GameObject):
@@ -14,7 +15,7 @@ class Nuage(ut.GameObject):
         scroll = 0.2*random.random() + 0.1
         img = spt.d["nuage_img"][i]
         super().__init__(position, scroll, img)
-        pygame.sprite.Sprite.__init__(self, spt.nuages)
+        ut.add_to_group(self, spt.nuages)
 
     def update(self):
         super().update()
@@ -35,7 +36,7 @@ class Arbre(ut.GameObject):
         _, height = img.get_rect().size
         scroll = 0.6
         super().__init__((pos_x, cf.SCREEN_HEIGHT - height), scroll, img)
-        pygame.sprite.Sprite.__init__(self, spt.arbres)
+        ut.add_to_group(self, spt.arbres)
 
     def update(self):
         super().update()
