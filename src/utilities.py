@@ -11,10 +11,15 @@ def initialize():
     return pygame.init()
 
 
-def initialize_window(width, height):
+def initialize_window(icon, title, width, height):
     """
     Initialiser les variables d'environnement graphique
+    et initialisation des paramètres
+    de fenêtre
     """
+    pygame.display.set_icon(
+        pygame.image.load(icon))
+    pygame.display.set_caption(title)
     return (pygame.Surface((width, height)),
             pygame.display.set_mode((width, height),
                                             flags=pygame.RESIZABLE))

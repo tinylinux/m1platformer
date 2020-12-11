@@ -14,15 +14,13 @@ import src.gameloop as gml  # noqa: E402
 
 
 # Initialisation de la fenêtre
-cf.DISPLAYSURF, cf.WINDOWSURF = ut.initialize_window(cf.SCREEN_WIDTH,
+cf.DISPLAYSURF, cf.WINDOWSURF = ut.initialize_window("assets/img/mono/mono3.png",
+                                                        "Roll 'n' jump",
+                                                        cf.SCREEN_WIDTH,
                                                         cf.SCREEN_HEIGHT)
 
 FPS = 60
 FramePerSec = pygame.time.Clock()
-
-pygame.display.set_icon(
-    pygame.image.load("assets/img/mono/mono3.png"))
-pygame.display.set_caption("Roll 'n' jump")
 
 # Initialisation du joueur
 players = [plyr.Player()]
