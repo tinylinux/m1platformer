@@ -70,10 +70,9 @@ def resize(surface, dimensions, destination=None):
     """
     Changer l'échelle de la surface en question
     """
-    if destination == None:
+    if destination is None:
         return pygame.transform.scale(surface, dimensions)
-    else:
-        return pygame.transform.scale(surface, dimensions, destination)
+    return pygame.transform.scale(surface, dimensions, destination)
 
 
 def update_screen():

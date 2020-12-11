@@ -1,10 +1,8 @@
 """ Gestion de l'arrière-plan """
 import random
-import pygame
 import src.utilities as ut
 import src.conf as cf
 import src.sprites as spt
-import src.utilities as ut
 
 
 class Nuage(ut.GameObject):
