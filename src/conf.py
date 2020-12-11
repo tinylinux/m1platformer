@@ -93,6 +93,7 @@ NB_PLAYERS = 2
 # Touches de saut des joueurs
 JUMP_KEYS = [pygame.K_SPACE, pygame.K_RETURN]
 
+
 class GameObject(pygame.sprite.Sprite):
     # pylint: disable=too-few-public-methods
     """Utilisée pour tous les objets du monde, comme le sol, les plateformes,

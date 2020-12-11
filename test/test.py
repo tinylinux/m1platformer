@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis.strategies import integers
 import pygame
 import src.conf as cf
-from src.player import Vec, collide
+from src.player import Vec, collide, Player
 
 
 # Test des collisions
@@ -23,11 +23,13 @@ def test_collisions(pos_prev_x, pos_prev_y,
                     pos_plat_x, pos_plat_y,
                     width_plat, height_plat):
     """Test pour la fonction de vérification des collisions"""
+    player = Player()
+    player.pos = Vec((pos_prev_x, pos_prev_y))
     dummy_next = pygame.Rect(pos_next_x, pos_next_y,
                              cf.p_WIDTH, cf.p_HEIGHT)
     plat = pygame.Rect(pos_plat_x, pos_plat_y,
                        width_plat, height_plat)
-    (vert, hor, new_pos) = collide(Vec((pos_prev_x, pos_prev_y)),
+    (vert, hor, new_pos) = collide(player,
                                    Vec((pos_next_x, pos_next_y)),
                                    plat)
     assert (vert or hor) == dummy_next.colliderect(plat)

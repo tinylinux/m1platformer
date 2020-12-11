@@ -106,9 +106,9 @@ def event_handling(players, event, graphical):
     if graphical:
         if event.type == pygame.KEYDOWN:
             if cf.STATE == 2 :
-                for i in range(len(players)):
+                for i,P in enumerate(players):
                     if event.key == cf.JUMP_KEYS[i]:  # Saut
-                        players[i].jump()
+                        P.jump()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
 
