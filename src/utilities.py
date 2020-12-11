@@ -1,6 +1,7 @@
 """Gère l'abstraction de pygame par la (re)définition de fonctions"""
 
 import pygame
+from math import ceil
 import src.conf as cf
 
 Vec = pygame.math.Vector2
@@ -40,6 +41,16 @@ def initialize_window(icon, title, width, height):
     return (pygame.Surface((width, height)),
             pygame.display.set_mode((width, height),
                                     flags=pygame.RESIZABLE))
+
+def resize_window(screen_size):
+    """
+    """
+    ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
+                screen_size[1]/cf.SCREEN_HEIGHT)
+    new_screen_size = (ceil(ratio * cf.SCREEN_WIDTH),
+                       ceil(ratio * cf.SCREEN_HEIGHT))
+    cf.WINDOWSURF = pygame.display.set_mode(new_screen_size,
+                                            flags=pygame.RESIZABLE)
 
 
 def initialize_clock():

@@ -9,6 +9,7 @@ import src.menu as mn
 import src.worldgen as wrld
 import src.player as plyr
 import src.score as scre
+import src.utilities as ut
 
 
 def main_loop(players):
@@ -16,7 +17,7 @@ def main_loop(players):
     et renvoie le nouvel objet joueur.
     P: joueur """
     if cf.STATE == 1:  # On est dans le menu
-        cf.DISPLAYSURF.blit(pygame.image.load
+        cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/title.png"), (357, 132))
         for P in players:
             P.move()
@@ -46,9 +47,9 @@ def main_loop(players):
 
         scre.score_endgame(cf.SECONDS)
         if cf.NEWHS:  # Nouveau record
-            cf.DISPLAYSURF.blit(pygame.image.load
+            cf.DISPLAYSURF.blit(ut.load_image
                                 ("assets/img/ui/highscore.png"), (428, 350))
-        cf.DISPLAYSURF.blit(pygame.image.load
+        cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/gameover.png"), (395, 100))
         mn.restart_button.print(pygame.mouse.get_pos())
         mn.return_button.print(pygame.mouse.get_pos())
