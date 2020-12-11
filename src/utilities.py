@@ -1,6 +1,8 @@
 """Gère l'abstraction de pygame par la (re)définition de fonctions"""
 
 import pygame
+import src.conf as cf
+
 
 def initialize():
     """
@@ -41,7 +43,7 @@ class GameObject(pygame.sprite.Sprite):
         scroll : float/int, vitesse de déplacement
         img : sprite"""
         super().__init__()
-        self.pos = Vec(position)
+        self.pos = cf.Vec(position)
         self.scroll = scroll
         # 0 si c'est loin et que ça bouge pas,
         # 1 si c'est près et que ça bouge à la vitesse du sol
@@ -53,10 +55,10 @@ class GameObject(pygame.sprite.Sprite):
 
     def update(self):
         """Modifie le vecteur position"""
-        posnext = self.pos + self.scroll * Vec(-SPEED, 0)
+        posnext = self.pos + self.scroll * cf.Vec(-cf.SPEED, 0)
         self.pos = posnext
         self.rect.topleft = self.pos
         if self.rect.right < 0:     # si l'objet sort de l'écran
             self.kill()              # on le supprime
         # On met à jour l'image
-        DISPLAYSURF.blit(self.image, self.rect)
+        cf.DISPLAYSURF.blit(self.image, self.rect)
