@@ -11,6 +11,8 @@ INC_SPEED = pygame.USEREVENT + 1
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
 
+Sprite = pygame.sprite.Sprite
+
 
 def initialize():
     """
@@ -91,7 +93,7 @@ def get_screen_size():
     return pygame.display.get_surface().get_size()
 
 
-class GameObject(pygame.sprite.Sprite):
+class GameObject(Sprite):
     # pylint: disable=too-few-public-methods
     """Utilisée pour tous les objets du monde, comme le sol, les plateformes,
         les nuages, les bâtiments, etc. qui se déplacent de droite à gauche"""
