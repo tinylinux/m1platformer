@@ -57,10 +57,11 @@ STATE = 1
 
 # IMAGES
 d = {}
-Nom = ["mono", "nuage", "arbre"]
+Nom = ["mono", "nuage", "arbre", "item"]
 d["mono_factor"] = 3
 d["nuage_factor"] = 4
 d["arbre_factor"] = 8
+d["item_factor"] = 2
 for nom in Nom:
     d['n_'+nom] = len(listdir("./assets/img/"+nom))
     d[nom+'_img'] = []
@@ -85,6 +86,7 @@ SOL_LONG = w      # La longueur d'un bloc du sol en général
 sol = pygame.sprite.Group()
 nuages = pygame.sprite.Group()
 arbres = pygame.sprite.Group()
+items = pygame.sprite.Group()
 
 # La fenêtre principale
 DISPLAYSURF = None

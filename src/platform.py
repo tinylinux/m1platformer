@@ -31,6 +31,7 @@ class Platform(cf.GameObject):
         """pos : int * int, position de la plateforme
         dim : int * int, largeur * hauteur de la plateforme
         img : image"""
+        self.dim = dim
         img = pygame.transform.scale(img, dim)
         super().__init__(pos, 1, img)
         pygame.sprite.Sprite.__init__(self, cf.sol)
