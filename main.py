@@ -3,7 +3,7 @@
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 # pylint: disable=wrong-import-position
-import src.utilities as ut # noqa: E402
+import src.utilities as ut  # noqa: E402
 ut.initialize()
 import src.conf as cf  # noqa: E402
 import src.worldgen as wrld  # noqa: E402
@@ -13,10 +13,11 @@ import src.gameloop as gml  # noqa: E402
 
 
 # Initialisation de la fenêtre
-cf.DISPLAYSURF, cf.WINDOWSURF = ut.initialize_window("assets/img/mono/mono3.png",
-                                                        "Roll 'n' jump",
-                                                        cf.SCREEN_WIDTH,
-                                                        cf.SCREEN_HEIGHT)
+cf.DISPLAYSURF, cf.WINDOWSURF = \
+    ut.initialize_window("assets/img/mono/mono3.png",
+                         "Roll 'n' jump",
+                         cf.SCREEN_WIDTH,
+                         cf.SCREEN_HEIGHT)
 
 FPS = 60
 FramePerSec = ut.initialize_clock()

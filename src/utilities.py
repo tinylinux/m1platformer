@@ -11,6 +11,9 @@ INC_SPEED = pygame.USEREVENT + 1
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
 
+Sprite = pygame.sprite.Sprite
+
+
 def initialize():
     """
     Initialiser l'environnement Pygame
@@ -36,7 +39,7 @@ def initialize_window(icon, title, width, height):
     pygame.display.set_caption(title)
     return (pygame.Surface((width, height)),
             pygame.display.set_mode((width, height),
-                                            flags=pygame.RESIZABLE))
+                                    flags=pygame.RESIZABLE))
 
 
 def initialize_clock():
@@ -59,7 +62,8 @@ def group_sprite_define():
     """
     return pygame.sprite.Group()
 
-def add_to_group(sprite,group):
+
+def add_to_group(sprite, group):
     """
     Ajoute un sprite à un groupe de sprites
     """
@@ -70,10 +74,9 @@ def resize(surface, dimensions, destination=None):
     """
     Changer l'échelle de la surface en question
     """
-    if destination == None:
+    if destination is None:
         return pygame.transform.scale(surface, dimensions)
-    else:
-        return pygame.transform.scale(surface, dimensions, destination)
+    return pygame.transform.scale(surface, dimensions, destination)
 
 
 def update_screen():
@@ -90,7 +93,7 @@ def get_screen_size():
     return pygame.display.get_surface().get_size()
 
 
-class GameObject(pygame.sprite.Sprite):
+class GameObject(Sprite):
     # pylint: disable=too-few-public-methods
     """Utilisée pour tous les objets du monde, comme le sol, les plateformes,
         les nuages, les bâtiments, etc. qui se déplacent de droite à gauche"""
@@ -106,8 +109,8 @@ class GameObject(pygame.sprite.Sprite):
         self.image = image
         self.rect = self.image.get_rect(topleft=self.pos)
         # Limite à partir de laquelle on génère un nouvel objet sur sa droite
-        # pasencorecree est un flag pour ne générer qu'un seul nouvel objet
-        self.pasencorecree = True
+        # FLAG_creation est un flag pour ne générer qu'un seul nouvel objet
+        self.FLAG_creation = True
 
     def update(self):
         """Modifie le vecteur position"""

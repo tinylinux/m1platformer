@@ -106,7 +106,7 @@ def event_handling(players, event):
         if cf.STATE == 1 and mn.start_button.click(pygame.mouse.get_pos()):
             # Clic de la souris sur le bouton "Commencer"
             cf.STATE = 2
-            wrld.stop_sol()  # Arrêt de la création du sol du menu
+            wrld.stop_ground()  # Arrêt de la création du sol du menu
 
         elif cf.STATE == 1 and\
                 mn.records_button.click(pygame.mouse.get_pos()):
@@ -122,7 +122,7 @@ def event_handling(players, event):
                 # Clic sur recommencer, on réinitialise le monde
                 players = reset_world(len(players))
                 cf.STATE = 2
-                wrld.stop_sol()
+                wrld.stop_ground()
 
         elif cf.STATE == 4 and mn.return_button.click(pygame.mouse.get_pos()):
             # Clic de la souris sur le bouton "Records"

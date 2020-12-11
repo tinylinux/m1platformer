@@ -4,26 +4,26 @@ import src.utilities as ut
 import src.sprites as spt
 
 
-class Sol(ut.GameObject):
+class Ground(ut.GameObject):
     """Gestion de la plateforme initiale (menu)"""
     def __init__(self, x):
-        super().__init__((x, spt.SOL_HAUT), 1, spt.SOL_IMG)
-        ut.add_to_group(self, spt.sol)
+        super().__init__((x, spt.GROUND_HEIGHT), 1, spt.GROUND_IMG)
+        ut.add_to_group(self, spt.ground)
 
     def update(self):
         """ Fait se déplacer la plateforme selon la variable SPEED du module conf.
         Suprrime la plateforme si celle-ci sort de l'écran, et demande
         la création d'une nouvelle plateforme si nécessaire"""
         super().update()
-        if self.rect.right < cf.SCREEN_WIDTH and self.pasencorecree:
+        if self.rect.right < cf.SCREEN_WIDTH and self.FLAG_creation:
             # si le dernier ne couvre plus tout sur la droite,
             # il faut ajouter un nouveau
-            Sol(self.rect.right)
+            Ground(self.rect.right)
             self.stop_creation()
 
     def stop_creation(self):
         """Arrête la création de ces plateformes"""
-        self.pasencorecree = False
+        self.FLAG_creation = False
 
 
 class Platform(ut.GameObject):
@@ -34,4 +34,4 @@ class Platform(ut.GameObject):
         img : image"""
         img = ut.resize(img, dim)
         super().__init__(pos, 1, img)
-        ut.add_to_group(self, spt.sol)
+        ut.add_to_group(self, spt.ground)

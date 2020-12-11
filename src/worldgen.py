@@ -55,13 +55,13 @@ def initgen():
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
                rd.randint(0, cf.SCREEN_HEIGHT//2))
-        i = rd.randint(0, spt.d["n_nuage"]-1)
-        bg.Nuage(pos, i)
+        i = rd.randint(0, spt.d["n_cloud"]-1)
+        bg.Cloud(pos, i)
     # Crée quelques arbres
     for _ in range(4):
         pos_x = rd.randint(0, cf.SCREEN_WIDTH)
-        i = rd.randint(0, spt.d["n_arbre"]-1)
-        bg.Arbre(pos_x, i)
+        i = rd.randint(0, spt.d["n_tree"]-1)
+        bg.Tree(pos_x, i)
 
     # Lance la création du sol
     # on rajoute des bouts de sol, on additionne leur longueur
@@ -69,8 +69,8 @@ def initgen():
     longueur_totale = 0
     while longueur_totale < cf.SCREEN_WIDTH:
         # On en met un nouveau à la position x = longueur_totale.
-        pltfrm.Sol(longueur_totale)
-        longueur_totale += spt.SOL_LONG
+        pltfrm.Ground(longueur_totale)
+        longueur_totale += spt.GROUND_WIDTH
 
 
 def genere_module(last_pltfrm):
@@ -99,23 +99,23 @@ def genere_module(last_pltfrm):
     module_file.close()
 
 
-def stop_sol():
+def stop_ground():
     """Stop la création infinie du sol"""
-    for bloc in spt.sol:
-        if isinstance(bloc, pltfrm.Sol):
+    for bloc in spt.ground:
+        if isinstance(bloc, pltfrm.Ground):
             bloc.stop_creation()
 
 
 def update():
     """Update tous les objets du monde autres que player"""
     cf.DISPLAYSURF.fill(cf.BlueSky)  # Le ciel
-    for nuage in spt.nuages:  # Les nuages
-        nuage.update()
-    for arbre in spt.arbres:  # Les arbres
-        arbre.update()
-    for bloc in spt.sol:  # Le sol
+    for cloud in spt.clouds:  # Les nuages
+        cloud.update()
+    for tree in spt.trees:  # Les arbres
+        tree.update()
+    for bloc in spt.ground:  # Le sol
         bloc.update()
 
-    last_pltfrm = max(spt.sol, key=lambda bloc: bloc.rect.right)
+    last_pltfrm = max(spt.ground, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
         genere_module(last_pltfrm)
