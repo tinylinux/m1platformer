@@ -4,6 +4,7 @@ import sys
 from math import ceil
 import pygame
 import src.conf as cf
+import src.sprites as spt
 import src.utilities as ut
 import src.menu as mn
 import src.worldgen as wrld
@@ -80,9 +81,9 @@ def reset_world(nb_players=1):
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
-    cf.sol = ut.group_sprite_define()
-    cf.nuages = ut.group_sprite_define()
-    cf.arbres = ut.group_sprite_define()
+    spt.sol = ut.group_sprite_define()
+    spt.nuages = ut.group_sprite_define()
+    spt.arbres = ut.group_sprite_define()
     wrld.initgen()
     return [plyr.Player() for _ in range(nb_players)]
 
