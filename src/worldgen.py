@@ -2,12 +2,13 @@
 # import os
 import random as rd
 # Import classes
+import src.sprites as spt
 import src.platform as pltfrm
 import src.conf as cf
 import src.background as bg
 
 # Indexation des modules
-modules = cf.listdir("./src/modules")
+modules = spt.listdir("./src/modules")
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 
@@ -27,7 +28,7 @@ def platform_creation(bloc, xoffset, yoffset):
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
                     bot_right_y - top_left_y),
-                    cf.PLTFRM_IMG)
+                    spt.PLTFRM_IMG)
 
 
 def batiment_creation(bloc, xoffset, yoffset):
@@ -41,7 +42,7 @@ def batiment_creation(bloc, xoffset, yoffset):
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
                     cf.SCREEN_HEIGHT),
-                    cf.BAT_IMG)
+                    spt.BAT_IMG)
 
 
 creation_functions = {"Plateforme": platform_creation,
@@ -54,13 +55,13 @@ def initgen():
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
                rd.randint(0, cf.SCREEN_HEIGHT//2))
-        i = rd.randint(0, cf.d["n_nuage"]-1)
-        bg.Nuage(pos, i)
+        i = rd.randint(0, spt.d["n_cloud"]-1)
+        bg.Cloud(pos, i)
     # Crée quelques arbres
     for _ in range(4):
         pos_x = rd.randint(0, cf.SCREEN_WIDTH)
-        i = rd.randint(0, cf.d["n_arbre"]-1)
-        bg.Arbre(pos_x, i)
+        i = rd.randint(0, spt.d["n_tree"]-1)
+        bg.Tree(pos_x, i)
 
     # Lance la création du sol
     # on rajoute des bouts de sol, on additionne leur longueur
@@ -68,8 +69,8 @@ def initgen():
     longueur_totale = 0
     while longueur_totale < cf.SCREEN_WIDTH:
         # On en met un nouveau à la position x = longueur_totale.
-        pltfrm.Sol(longueur_totale)
-        longueur_totale += cf.SOL_LONG
+        pltfrm.Ground(longueur_totale)
+        longueur_totale += spt.GROUND_WIDTH
 
 
 def genere_module(last_pltfrm):
@@ -98,23 +99,23 @@ def genere_module(last_pltfrm):
     module_file.close()
 
 
-def stop_sol():
+def stop_ground():
     """Stop la création infinie du sol"""
-    for bloc in cf.sol:
-        if isinstance(bloc, pltfrm.Sol):
+    for bloc in spt.ground:
+        if isinstance(bloc, pltfrm.Ground):
             bloc.stop_creation()
 
 
 def update():
     """Update tous les objets du monde autres que player"""
     cf.DISPLAYSURF.fill(cf.BlueSky)  # Le ciel
-    for nuage in cf.nuages:  # Les nuages
-        nuage.update()
-    for arbre in cf.arbres:  # Les arbres
-        arbre.update()
-    for bloc in cf.sol:  # Le sol
+    for cloud in spt.clouds:  # Les nuages
+        cloud.update()
+    for tree in spt.trees:  # Les arbres
+        tree.update()
+    for bloc in spt.ground:  # Le sol
         bloc.update()
 
-    last_pltfrm = max(cf.sol, key=lambda bloc: bloc.rect.right)
+    last_pltfrm = max(spt.ground, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
         genere_module(last_pltfrm)

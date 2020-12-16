@@ -1,7 +1,7 @@
 """Gestion des menus"""
 
-import pygame
 import src.conf as cf
+import src.utilities as ut
 
 FONT_PIXEL = "assets/font/punk_rockf.ttf"
 
@@ -16,7 +16,7 @@ def mouse_on_button(mouse, button_pos, button_size):
     button_size : int * int, largeur * hauteur du bouton"""
 
     # Récupération de la dimension de la fenêtre
-    window_dimensions = pygame.display.get_surface().get_size()
+    window_dimensions = ut.get_screen_size()
 
     # Calcul du facteur d'échelle
     scale_factor_x = cf.SCREEN_WIDTH/window_dimensions[0]
@@ -34,7 +34,8 @@ class Button:  # pylint: disable=too-few-public-methods
     def __init__(self, position, size):
         self.position = position
         self.size = size
-        self.rect = pygame.Rect([position[0], position[1], size[0], size[1]])
+        self.rect = ut.create_rect([position[0], position[1],
+                                    size[0], size[1]])
 
     def click(self, mouse):
         """Renvoie si la souris est sur le bouton"""
@@ -51,9 +52,9 @@ class ButtonText(Button):
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
-            pygame.draw.rect(cf.DISPLAYSURF, cf.HOVER, self.rect)
+            ut.draw_rect(cf.DISPLAYSURF, cf.HOVER, self.rect)
         else:
-            pygame.draw.rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
+            ut.draw_rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
         cf.DISPLAYSURF.blit(self.text, self.text_position)
 
 
@@ -67,16 +68,16 @@ class ButtonImage(Button):
     def print(self, mouse):
         """Affiche le bouton"""
         if mouse_on_button(mouse, self.position, self.size):
-            cf.DISPLAYSURF.blit(pygame.image.load(self.image_hover),
+            cf.DISPLAYSURF.blit(ut.load_image(self.image_hover),
                                 self.position)
         else:
-            cf.DISPLAYSURF.blit(pygame.image.load(self.image), self.position)
+            cf.DISPLAYSURF.blit(ut.load_image(self.image), self.position)
 
 
 class InputZone(Button):
     """Classe des zones dans lesquelles on peut entrer du texte"""
     def __init__(self, position, size,
-                 font=pygame.font.SysFont(None, cf.INPUT_FONT_SIZE)):
+                 font=ut.font(None, cf.INPUT_FONT_SIZE)):
         """position : int * int, position du bouton
         size : int * int, largeur * hauteur du bouton
         font : Font, la fonte"""
@@ -88,7 +89,7 @@ class InputZone(Button):
 
     def print(self):
         """Affiche la zone et le texte entré"""
-        pygame.draw.rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
+        ut.draw_rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
         cf.DISPLAYSURF.blit(self.font.render(self.input, True, cf.WHITE),
                             self.text_position)
 
@@ -103,12 +104,12 @@ class InputZone(Button):
     def read(self, key):
         """Lit les caractères entrés"""
         if self.selected:
-            key_name = pygame.key.name(key)
+            key_name = ut.keyname(key)
             if key_name in CHARS_LOW:
                 self.input += CHARS_CAP[CHARS_LOW.index(key_name)]
-            elif key == pygame.K_SPACE:
+            elif key == ut.K_SPACE:
                 self.input += " "
-            elif key == pygame.K_BACKSPACE and self.input != "":
+            elif key == ut.K_BACKSPACE and self.input != "":
                 self.input = self.input[:-1]
 
 
@@ -132,16 +133,16 @@ def print_image(image, position):
     """Affiche une image à une position donnée.
     image : string, le chemin vers l'image dans les fichiers
     position : int * int, les coordonnées du coin supérieur gauche"""
-    cf.DISPLAYSURF.blit(pygame.image.load(image), position)
+    cf.DISPLAYSURF.blit(ut.load_image(image), position)
 
 
 def print_text(text, position_center, color=cf.WHITE,
-               font=pygame.font.SysFont(None, cf.TEXT_FONT_SIZE), bold=False):
+               font=ut.font(None, cf.TEXT_FONT_SIZE), bold=False):
     """Affiche une surface de texte centrée sur une position.
     text : string, le texte à afficher
     position_center : int * int, la position du centre du texte
     color : int * int * int, la couleur
-    font : pygame.font.Font, la fonte
+    font : ut.font, la fonte
     bold : bool, si la fonte doit être en gras"""
     if bold:
         font.set_bold(True)

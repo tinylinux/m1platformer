@@ -1,14 +1,12 @@
 """Contient la classe Player, permettant de gerer le personnage."""
 
-import pygame
 import src.conf as cf
-
-# Pour créer des vecteurs de dimension 2
-Vec = pygame.math.Vector2
+import src.sprites as spt
+import src.utilities as ut
 
 # Position initiale
 X_INIT = cf.SCREEN_WIDTH//2
-Y_INIT = cf.SOL_HAUT - cf.p_HEIGHT
+Y_INIT = spt.GROUND_HEIGHT - spt.p_HEIGHT
 # Vitesse initiale
 V_0 = 0
 # Vitesse initiale lors d'un saut
@@ -29,53 +27,54 @@ def collide(pos_prev, pos_next, rect):
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
     # de toutes façons pas possible de jouer dans ce cas.
-    if pos_next.x + cf.p_WIDTH > rect.left\
+    if pos_next.x + spt.p_WIDTH > rect.left\
             and pos_next.x < rect.right:
         # Dans la plateforme horizontalement
 
-        if pos_prev.y + cf.p_HEIGHT <= rect.top:
+        if pos_prev.y + spt.p_HEIGHT <= rect.top:
             # Position initale au-dessus de la plateforme
-            if pos_next.y + cf.p_HEIGHT > rect.top:
+            if pos_next.y + spt.p_HEIGHT > rect.top:
                 # Nouvelle position dans ou sous la plateforme
                 cf.FLAG_JUMP = True
-                return (True, False, Vec(pos_next.x, rect.top - cf.p_HEIGHT))
+                return (True, False,
+                        ut.Vec(pos_next.x, rect.top - spt.p_HEIGHT))
 
         elif pos_prev.y >= rect.bottom:
             # Position initiale en-dessous de la plateforme
             if pos_next.y < rect.bottom:
                 # Nouvelle position dans ou au-dessus de la plateforme
-                return (True, False, Vec(pos_next.x, rect.bottom))
+                return (True, False, ut.Vec(pos_next.x, rect.bottom))
 
-        elif pos_next.y + cf.p_HEIGHT > rect.top\
+        elif pos_next.y + spt.p_HEIGHT > rect.top\
                 and pos_next.y < rect.bottom:
             # On ne considère que les collisions à gauche des plateformes
-            return (False, True, Vec(rect.left - cf.p_WIDTH, pos_next.y))
+            return (False, True, ut.Vec(rect.left - spt.p_WIDTH, pos_next.y))
 
     return(False, False, None)
 
 
-class Player(pygame.sprite.Sprite):
+class Player(ut.Sprite):
     """Gestion du personnage, par les méthodes jump(self), move(self)
     et death(self)."""
 
     def __init__(self):
         # Initialisation de la classe parent
-        # pygame.sprite.Sprite.__init__(self, cf.player_sprite)
+        # ut.add_to_group(self, cf.player_sprite)
         super().__init__()
         # Liste d'images de l'objet, et indice de cette liste
-        self.images = cf.d["mono_img"]
+        self.images = spt.d["mono_img"]
         self.img = 0
         # Création de l'objet
         self.shape = self.images[0].get_rect()
 
         # Position
-        self.pos = Vec(X_INIT, Y_INIT)
+        self.pos = ut.Vec(X_INIT, Y_INIT)
         self.shape.midbottom = self.pos
 
         # Vitesse
-        self.vel = Vec(V_0, 0)
+        self.vel = ut.Vec(V_0, 0)
         # Accélération
-        self.acc = Vec(A_0, G)
+        self.acc = ut.Vec(A_0, G)
 
     def jump(self):
         """Lance le saut du personnage."""
@@ -93,7 +92,7 @@ class Player(pygame.sprite.Sprite):
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
 
-        for plat in cf.sol:  # Gestion des collisions
+        for plat in spt.ground:  # Gestion des collisions
             coll = collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
                 posnext = coll[2]
@@ -114,4 +113,4 @@ class Player(pygame.sprite.Sprite):
     def death(self):
         """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
-               or self.pos.x + cf.p_WIDTH < 0)
+               or self.pos.x + spt.p_WIDTH < 0)
