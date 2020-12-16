@@ -1,8 +1,9 @@
 """Gère l'abstraction de pygame par la (re)définition de fonctions"""
 
+from math import ceil
+
 import sys
 import pygame
-from math import ceil
 import src.conf as cf
 
 Vec = pygame.math.Vector2
@@ -23,11 +24,13 @@ MOUSEBUTTONDOWN = pygame.MOUSEBUTTONDOWN
 VIDEORESIZE = pygame.VIDEORESIZE
 QUIT = pygame.QUIT
 
+
 def keyname(key):
     """
     Renvoie le nom de la touche pressée
     """
     return pygame.key.name(key)
+
 
 def initialize():
     """
@@ -55,6 +58,7 @@ def initialize_window(icon, title, width, height):
     return (pygame.Surface((width, height)),
             pygame.display.set_mode((width, height),
                                     flags=pygame.RESIZABLE))
+
 
 def resize_window(screen_size):
     """
@@ -149,11 +153,11 @@ def quit():
     sys.exit()
 
 
-def font(font,size):
+def font(font_name, size):
     """
     Renvoie une police à la bonne taille
     """
-    return pygame.font.Font(font, size)
+    return pygame.font.Font(font_name, size)
 
 
 class GameObject(Sprite):

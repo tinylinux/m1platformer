@@ -38,7 +38,8 @@ class Button:  # pylint: disable=too-few-public-methods
     def __init__(self, position, size):
         self.position = position
         self.size = size
-        self.rect = ut.create_rect([position[0], position[1], size[0], size[1]])
+        self.rect = ut.create_rect([position[0], position[1],
+                                    size[0], size[1]])
 
     def click(self, mouse):
         """Renvoie si la souris est sur le bouton"""

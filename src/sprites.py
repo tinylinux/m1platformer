@@ -40,3 +40,4 @@ GROUND_WIDTH = w      # La longueur d'un bloc du sol en général
 ground = ut.group_sprite_define()
 clouds = ut.group_sprite_define()
 trees = ut.group_sprite_define()
+items = ut.group_sprite_define()
