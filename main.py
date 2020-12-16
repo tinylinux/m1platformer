@@ -46,7 +46,7 @@ def main(graphical):
             dim = ut.get_screen_size()
             ut.resize(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
             ut.update_screen()
-        FramePerSec.tick(FPS)
+        FramePerSec.tick(cf.FPS)
 
 if __name__ == "__main__":
     main(True)

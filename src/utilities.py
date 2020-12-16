@@ -46,7 +46,7 @@ def load_image(path):
     return pygame.image.load(path)
 
 
-def initialize_window(icon, title, width, height):
+def initialize_window(icon, title, width, height, graphical):
     """
     Initialiser les variables d'environnement graphique
     et initialisation des paramètres
@@ -55,9 +55,12 @@ def initialize_window(icon, title, width, height):
     pygame.display.set_icon(
         load_image(icon))
     pygame.display.set_caption(title)
-    return (pygame.Surface((width, height)),
-            pygame.display.set_mode((width, height),
-                                    flags=pygame.RESIZABLE))
+    if graphical:
+        return (pygame.Surface((width, height)),
+                pygame.display.set_mode((width, height),
+                                        flags=pygame.RESIZABLE))
+    else:
+        return (pygame.Surface((width, height)),None)
 
 
 def resize_window(screen_size):
