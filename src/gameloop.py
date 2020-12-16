@@ -104,7 +104,7 @@ def event_handling(players, event, graphical):
         if event.type == ut.KEYDOWN:
             if cf.STATE == 2:
                 for i, P in enumerate(players):
-                    if event.key == cf.JUMP_KEYS[i]:  # Saut
+                    if event.key == plyr.JUMP_KEYS[i]:  # Saut
                         P.jump()
 
         if event.type == ut.MOUSEBUTTONDOWN:

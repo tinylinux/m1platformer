@@ -15,7 +15,8 @@ V_JMP = 15
 A_0 = 0
 # Accélération due à la gravité
 G = 0.8
-
+# Touches de saut des joueurs
+JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN]
 
 def collide(player, pos_next, rect):
     """Gestion des collisions.
