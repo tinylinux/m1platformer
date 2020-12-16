@@ -130,6 +130,5 @@ def event_handling(players, event):
 
     if event.type == ut.QUIT:
         ut.quit()
-        
-    return players
 
+    return players
