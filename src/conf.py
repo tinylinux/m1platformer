@@ -1,5 +1,7 @@
 """ Stocke des variables partagées entre les différents fichiers """
 
+import src.utilities as ut
+
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 FPS = 60
