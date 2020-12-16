@@ -42,4 +42,4 @@ NB_PLAYERS_MAX = 2
 # Nombre de joueurs
 NB_PLAYERS = 2
 # Touches de saut des joueurs
-JUMP_KEYS = [ut.key.SPACE, ut.key.RETURN]
+JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN]

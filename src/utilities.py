@@ -19,6 +19,7 @@ Sprite = pygame.sprite.Sprite
 # pygame events
 KEYDOWN = pygame.KEYDOWN
 K_SPACE = pygame.K_SPACE
+K_RETURN = pygame.K_RETURN
 K_BACKSPACE = pygame.K_BACKSPACE
 MOUSEBUTTONDOWN = pygame.MOUSEBUTTONDOWN
 VIDEORESIZE = pygame.VIDEORESIZE
