@@ -23,7 +23,6 @@ def main(graphical):
                              cf.SCREEN_HEIGHT,
                              graphical)
 
-
     FramePerSec = ut.initialize_clock()
 
     # Initialisation du joueur
@@ -47,6 +46,7 @@ def main(graphical):
             ut.resize(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
             ut.update_screen()
         FramePerSec.tick(cf.FPS)
+
 
 if __name__ == "__main__":
     main(True)

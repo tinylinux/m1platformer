@@ -59,8 +59,7 @@ def initialize_window(icon, title, width, height, graphical):
         return (pygame.Surface((width, height)),
                 pygame.display.set_mode((width, height),
                                         flags=pygame.RESIZABLE))
-    else:
-        return (pygame.Surface((width, height)),None)
+    return (pygame.Surface((width, height)), None)
 
 
 def resize_window(screen_size):
