@@ -129,6 +129,6 @@ def event_handling(players, event):
         ut.resize_window(event.size)
 
     if event.type == ut.QUIT:
-        ut.quit()
+        ut.quit_game()
 
     return players

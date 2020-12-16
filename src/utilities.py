@@ -145,7 +145,7 @@ def mouse_pos():
     return pygame.mouse.get_pos()
 
 
-def quit():
+def quit_game():
     """
     Quitte le jeu quand on ferme la fenêtre.
     """
