@@ -18,6 +18,7 @@ G = 0.8
 # Touches de saut des joueurs
 JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN]
 
+
 def collide(player, pos_next, rect):
     """Gestion des collisions.
     pos_prev : Vector2, position précédente du joueur
