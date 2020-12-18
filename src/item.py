@@ -1,4 +1,8 @@
-""" Gère la génération d'items"""
+"""Gère la génération d'items
+    fast : fait accélérer le joueur (sauf après les 2/3 de l'écran)
+    slow : fait ralentir le joueur (sauf s'il sort presque de l'écran)
+    big : fait grossir le joueur
+    little : fait rapetisser le joueur"""
 
 import random as rd
 import src.conf as cf
@@ -10,14 +14,13 @@ proba = 2
 
 ITEMS = ["fast", "slow", "big", "little"]
 
-
 class item(ut.GameObject):
     """Gère les items"""
     def __init__(self, plt):
         """Crée un item sur une plateforme
             plt : plateforme sur laquelle apparait l'item"""
         cf.FLAG_ITEM = True
-        i = rd.randint(0, spt.d["n_item"]-1)
+        i = rd.randint(0, 1) # spt.d["n_item"]-1)
         self.type = ITEMS[i]
         img = spt.d["item_img"][i]
         w, h = img.get_rect().size
