@@ -33,14 +33,14 @@ def main_loop(players, graphical):
 
         # Déplacement des joueurs
         for P in players:
-            P.move()
+            if P.alive:
+                P.move()
 
         # Gestion de la mort
-        nb_player_alive = cf.NB_PLAYERS
+        nb_player_alive = 0
         for P in players:
-            if P.death():
-                P.kill()
-                nb_player_alive -= 1
+            if P.alive:
+                nb_player_alive += 1
         if cf.NB_PLAYERS > 1 >= nb_player_alive:
             # Fin du mode multijoueur
             cf.STATE = 3

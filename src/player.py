@@ -68,6 +68,9 @@ class Player(ut.Sprite):
         # Création de l'objet
         self.shape = self.images[0].get_rect()
 
+        # Est vivant
+        self.alive = True
+
         # Position
         self.pos = ut.Vec(X_INIT, Y_INIT)
         self.shape.midbottom = self.pos
@@ -115,8 +118,10 @@ class Player(ut.Sprite):
         if int(self.img) >= len(self.images):
             self.img = 0
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
+        if self.in_death_position():
+            self.alive = False
 
-    def death(self):
+    def in_death_position(self):
         """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
                or self.pos.x + spt.p_WIDTH < 0)
