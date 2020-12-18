@@ -37,7 +37,13 @@ STATE = 1
 # La fenêtre principale
 DISPLAYSURF = None
 WINDOWSURF = None
+
 # Nombre maximal de joueurs
 NB_PLAYERS_MAX = 2
 # Nombre de joueurs
 NB_PLAYERS = 2
+
+# Vitesse initiale lors d'un saut
+V_JMP = 15
+# Accélération due à la gravité
+G = 0.8

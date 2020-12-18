@@ -9,12 +9,8 @@ X_INIT = cf.SCREEN_WIDTH//2
 Y_INIT = spt.GROUND_HEIGHT - spt.p_HEIGHT
 # Vitesse initiale
 V_0 = 0
-# Vitesse initiale lors d'un saut
-V_JMP = 15
 # Accélération initiale
 A_0 = 0
-# Accélération due à la gravité
-G = 0.8
 # Touches de saut des joueurs
 JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN]
 
@@ -79,7 +75,7 @@ class Player(ut.Sprite):
         # Vitesse
         self.vel = ut.Vec(V_0, 0)
         # Accélération
-        self.acc = ut.Vec(A_0, G)
+        self.acc = ut.Vec(A_0, cf.G)
 
         # Drapeau de disponibilité du saut
         self.FLAG_JUMP = True
@@ -90,10 +86,10 @@ class Player(ut.Sprite):
         """Lance le saut du personnage."""
         if self.FLAG_JUMP:
             self.FLAG_JUMP = False
-            self.vel.y = -V_JMP
+            self.vel.y = -cf.V_JMP
             self.FLAG_JUMP_2 = True
         elif self.FLAG_JUMP_2:
-            self.vel.y = -V_JMP
+            self.vel.y = -cf.V_JMP
             self.FLAG_JUMP_2 = False
 
     def move(self):
