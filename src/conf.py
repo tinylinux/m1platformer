@@ -33,6 +33,7 @@ HOVER = (100, 100, 100)
 SECONDS = 0
 FRAMES = 0
 
+
 # États du jeu
 class State(Enum):
     """
