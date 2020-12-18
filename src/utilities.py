@@ -112,6 +112,20 @@ def resize(surface, dimensions, destination=None):
     return pygame.transform.scale(surface, dimensions, destination)
 
 
+def resize_list(L, size):
+    """
+    Resize toutes les images d'une liste L à la taille size
+    """
+    for i in range(len(L)):
+        L[i] = pygame.transform.scale(L[i], size)
+
+
+def collide(sprite1, sprite2):
+    """
+    Renvoie True si y a une collision entre les deux sprites
+    """
+    return pygame.sprite.collide_rect(sprite1, sprite2)
+
 def update_screen():
     """
     Mettre à jour l'écran

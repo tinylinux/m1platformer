@@ -26,6 +26,15 @@ FLAG_ITEM = False
 # Dico avec la durée des effets des items (en nbre de frames)
 ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
 
+# vitesse à laquelle on accélère ou ralentit
+VEL = {'fast': 4, 'slow': -4}
+
+# facteur de resize du monocycle
+# après initialisation des images, ça n'est plus un facteur de resize
+# mais une size en pixels
+# par exemple SIZE['little'] vaudra (21,32)
+SIZE = {'little': 1, 'normal': 3, 'big': 8}
+
 # Couleurs
 BLACK = (255, 255, 255)
 GREY = (240, 240, 240)

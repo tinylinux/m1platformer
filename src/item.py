@@ -12,7 +12,7 @@ import src.sprites as spt
 # proba de faire apparaître nouvel item sur un plateforme
 proba = 2
 
-ITEMS = ["fast", "slow", "big", "little"]
+ITEMS = ["fast", "slow", "little", "big"]
 
 class item(ut.GameObject):
     """Gère les items"""
@@ -20,7 +20,7 @@ class item(ut.GameObject):
         """Crée un item sur une plateforme
             plt : plateforme sur laquelle apparait l'item"""
         cf.FLAG_ITEM = True
-        i = rd.randint(0, 1) # spt.d["n_item"]-1)
+        i = rd.randint(0, spt.d["n_item"]-1)
         self.type = ITEMS[i]
         img = spt.d["item_img"][i]
         w, h = img.get_rect().size

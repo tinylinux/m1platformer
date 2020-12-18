@@ -4,9 +4,6 @@ import src.conf as cf
 import src.sprites as spt
 import src.utilities as ut
 
-# Position initiale
-X_INIT = cf.SCREEN_WIDTH//2
-Y_INIT = spt.GROUND_HEIGHT - spt.p_HEIGHT
 # Vitesse initiale
 V_0 = 0
 # Vitesse initiale lors d'un saut
@@ -15,42 +12,6 @@ V_JMP = 15
 A_0 = 0
 # Accélération due à la gravité
 G = 0.8
-
-
-def collide(pos_prev, pos_next, rect):
-    """Gestion des collisions.
-    pos_prev : Vector2, position précédente du joueur
-    pos_next : Vector2, position suivante du joueur
-    rect : Rect, l'objet possiblement en collision avec le joueur
-    Renvoie un triplet (collision verticale, collision horizontale,
-    modification de position necessaire) (de type bool * bool * Vector2)"""
-    # On ne tient pas compte du cas dans lequel le joueur traverserait
-    # une plateforme dans sa longueur entre deux positions, il ne serait
-    # de toutes façons pas possible de jouer dans ce cas.
-    if pos_next.x + spt.p_WIDTH > rect.left\
-            and pos_next.x < rect.right:
-        # Dans la plateforme horizontalement
-
-        if pos_prev.y + spt.p_HEIGHT <= rect.top:
-            # Position initale au-dessus de la plateforme
-            if pos_next.y + spt.p_HEIGHT > rect.top:
-                # Nouvelle position dans ou sous la plateforme
-                cf.FLAG_JUMP = True
-                return (True, False,
-                        ut.Vec(pos_next.x, rect.top - spt.p_HEIGHT))
-
-        elif pos_prev.y >= rect.bottom:
-            # Position initiale en-dessous de la plateforme
-            if pos_next.y < rect.bottom:
-                # Nouvelle position dans ou au-dessus de la plateforme
-                return (True, False, ut.Vec(pos_next.x, rect.bottom))
-
-        elif pos_next.y + spt.p_HEIGHT > rect.top\
-                and pos_next.y < rect.bottom:
-            # On ne considère que les collisions à gauche des plateformes
-            return (False, True, ut.Vec(rect.left - spt.p_WIDTH, pos_next.y))
-
-    return(False, False, None)
 
 
 class Player(ut.Sprite):
@@ -65,11 +26,17 @@ class Player(ut.Sprite):
         self.images = spt.d["mono_img"]
         self.img = 0
         # Création de l'objet
-        self.shape = self.images[0].get_rect()
+        self.rect = self.images[0].get_rect()
+
+        self.width, self.height = cf.SIZE['normal']
 
         # Position
-        self.pos = ut.Vec(X_INIT, Y_INIT)
-        self.shape.midbottom = self.pos
+        # X : milieu de l'écran
+        # moins la largeur sur 2 pour être centré (car topleft)
+        x = cf.SCREEN_WIDTH//2 - self.width//2
+        y = spt.GROUND_HEIGHT - self.height
+        self.pos = ut.Vec(x, y)
+        self.rect.midbottom = self.pos
 
         # Vitesse
         self.vel = ut.Vec(V_0, 0)
@@ -106,22 +73,22 @@ class Player(ut.Sprite):
                 self.end_item()
 
             if self.state == "fast":
-                self.vel.x = 4
+                self.vel.x = cf.VEL['fast']
                 # si on arrive aux 2/3 de l'écran ça arrête d'avancer
                 if self.pos.x > (cf.SCREEN_WIDTH*2)//3:
                     self.end_item()
 
             elif self.state == "slow":
-                self.vel.x = -4
+                self.vel.x = cf.VEL['slow']
                 # si on sort presque de l'écran ça arrête de ralentir
-                if self.pos.x < spt.p_WIDTH:
+                if self.pos.x < self.width:
                     self.end_item()
 
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
 
         for plat in spt.ground:  # Gestion des collisions
-            coll = collide(self.pos, posnext, plat.rect)
+            coll = self.collide(self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
                 posnext = coll[2]
                 if coll[0]:
@@ -129,25 +96,26 @@ class Player(ut.Sprite):
                 if coll[1]:
                     self.vel.x = 0
 
-        for item in spt.items: # Gestion de la prise d'item
-            coll = collide(self.pos, posnext, item.rect)
-            if coll[0] or coll[1]:
-                self.change_state(item)
-
         self.pos = posnext
-        self.shape.topleft = self.pos  # Mise à jour de la position
+        self.rect.topleft = self.pos  # Mise à jour de la position
+
+        for item in spt.items: # Gestion de la prise d'item
+            if ut.collide(self, item):
+                print(self.rect)
+                self.change_state(item)
+                print(self.rect)
 
         # On change le sprite du joueur
         self.img += 0.03 * cf.SPEED
         # Faire par fraction permet d'accélérer plus lentement les pédales
         if int(self.img) >= len(self.images):
             self.img = 0
-        cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
+        cf.DISPLAYSURF.blit(self.images[int(self.img)], self.rect)
 
     def death(self):
         """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
-               or self.pos.x + spt.p_WIDTH < 0)
+               or self.pos.x + self.width < 0)
 
     def change_state(self, item):
         """Modifie l'état du joueur parce qu'il a pris un item"""
@@ -156,13 +124,68 @@ class Player(ut.Sprite):
         self.timer = cf.ITEM_TIME[item.type]
 
         # il faut resize la taille de l'image mais aussi le rect...
-        if self.state == "little":
-            pass
-        if self.state == "big":
-            pass
+        if self.state in ['little', 'big']:
+            ut.resize_list(self.images, cf.SIZE[self.state])
+            self.width, self.height = cf.SIZE[self.state]
+            for i in range(2):
+                self.pos[i] = self.pos[i] + cf.SIZE['normal'][i] - cf.SIZE[self.state][i]
+            self.rect = self.images[0].get_rect()
+            self.rect.midbottom = self.pos
+            # self.rect.fit(self.images[int(self.img)].get_rect())
+            # print(self.rect)
+            # ut.resize_rect(self.rect, cf.SIZE[self.state])
+            # print(self.rect)
 
     def end_item(self):
         """Quand on redevient normal"""
+
+        # On se remet à la bonne taille
+        if self.state in ['little', 'big']:
+            ut.resize_list(self.images, cf.SIZE['normal'])
+            self.width, self.height = cf.SIZE['normal']
+            for i in range(2):
+                self.pos[i] = self.pos[i] - cf.SIZE['normal'][i] + cf.SIZE[self.state][i]
+            self.rect = self.images[0].get_rect()
+            self.rect.midbottom = self.pos
+            # print(self.rect)
+            # ut.resize_rect(self.rect, cf.SIZE['normal'])
+            # print(self.rect)
+        # On se remet dans l'état normal, à la bonne vitesse, et on annule le FLAG_ITEM
         self.state = "normal"
         cf.FLAG_ITEM = False
         self.vel.x = 0
+
+    def collide(self, pos_prev, pos_next, rect):
+        """Gestion des collisions.
+        pos_prev : Vector2, position précédente du joueur
+        pos_next : Vector2, position suivante du joueur
+        rect : Rect, l'objet possiblement en collision avec le joueur
+        Renvoie un triplet (collision verticale, collision horizontale,
+        modification de position necessaire) (de type bool * bool * Vector2)"""
+        # On ne tient pas compte du cas dans lequel le joueur traverserait
+        # une plateforme dans sa longueur entre deux positions, il ne serait
+        # de toutes façons pas possible de jouer dans ce cas.
+        if pos_next.x + self.width > rect.left\
+                and pos_next.x < rect.right:
+            # Dans la plateforme horizontalement
+
+            if pos_prev.y + self.height <= rect.top:
+                # Position initale au-dessus de la plateforme
+                if pos_next.y + self.height > rect.top:
+                    # Nouvelle position dans ou sous la plateforme
+                    cf.FLAG_JUMP = True
+                    return (True, False,
+                            ut.Vec(pos_next.x, rect.top - self.height))
+
+            elif pos_prev.y >= rect.bottom:
+                # Position initiale en-dessous de la plateforme
+                if pos_next.y < rect.bottom:
+                    # Nouvelle position dans ou au-dessus de la plateforme
+                    return (True, False, ut.Vec(pos_next.x, rect.bottom))
+
+            elif pos_next.y + self.height > rect.top\
+                    and pos_next.y < rect.bottom:
+                # On ne considère que les collisions à gauche des plateformes
+                return (False, True, ut.Vec(rect.left - self.width, pos_next.y))
+
+        return(False, False, None)

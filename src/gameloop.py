@@ -81,6 +81,7 @@ def main_loop(players, graphical):
 
 def reset_world(nb_players=1):
     """ Réinitialise le monde """
+    ut.resize_list(spt.d['mono_img'], cf.SIZE['normal'])
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0

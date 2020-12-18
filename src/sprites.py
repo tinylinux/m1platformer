@@ -15,7 +15,7 @@ localdir = os.path.dirname(__file__)
 # IMAGES
 d = {}
 Nom = ["mono", "cloud", "tree", "item"]
-d["mono_factor"] = 3
+d["mono_factor"] = 1
 d["cloud_factor"] = 4
 d["tree_factor"] = 8
 d["item_factor"] = 2
@@ -39,10 +39,15 @@ BAT_IMG = ut.load_image(os.path.join(localdir, "..", "assets",
                                      "img", "bat.png"))
 
 # Dimensions
-p_WIDTH, p_HEIGHT = d["mono_img"][0].get_rect().size
 w, h = GROUND_IMG.get_rect().size
-GROUND_HEIGHT = (cf.SCREEN_HEIGHT - h)      # La hauteur du sol en général
-GROUND_WIDTH = w      # La longueur d'un bloc du sol en général
+GROUND_HEIGHT = (cf.SCREEN_HEIGHT - h)  # La hauteur du sol
+GROUND_WIDTH = w      # La longueur d'un bloc du sol
+
+w, h = d["mono_img"][0].get_rect().size
+for key in cf.SIZE:
+    cf.SIZE[key] = (w*cf.SIZE[key], h*cf.SIZE[key])
+ut.resize_list(d['mono_img'], cf.SIZE['normal'])
+p_WIDTH, p_HEIGHT = cf.SIZE['normal']
 
 # Groupes
 ground = ut.group_sprite_define()
