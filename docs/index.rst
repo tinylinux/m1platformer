@@ -16,7 +16,7 @@ Welcome to Roll \'n\' Jump's documentation!
    gameloop
    item
    menu
-   platform
+   platforms
    player
    score
    sprites

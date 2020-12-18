@@ -4,7 +4,7 @@ import os
 import random as rd
 # Import classes
 import src.sprites as spt
-import src.platform as pltfrm
+import src.platforms as pltfrm
 import src.conf as cf
 import src.background as bg
 
