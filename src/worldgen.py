@@ -31,7 +31,7 @@ def platform_creation(bloc, xoffset, yoffset):
                             top_left_y + yoffset),
                            (bot_right_x - top_left_x,
                             bot_right_y - top_left_y),
-                            spt.PLTFRM_IMG)
+                           spt.PLTFRM_IMG)
 
 
 def batiment_creation(bloc, xoffset, yoffset):
@@ -45,7 +45,7 @@ def batiment_creation(bloc, xoffset, yoffset):
                             top_left_y + yoffset),
                            (bot_right_x - top_left_x,
                             cf.SCREEN_HEIGHT),
-                            spt.BAT_IMG)
+                           spt.BAT_IMG)
 
 
 creation_functions = {"Plateforme": platform_creation,
@@ -100,7 +100,7 @@ def genere_module(last_pltfrm):
         # xoffset += pltfrm_offset
         plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
         # avec une chance sur 5 on fait apparaître un nouvel item
-        if rd.randint(1, it.proba) == 1 and (not it.FLAG_ITEM):
+        if rd.randint(1, it.proba) == 1 and (not cf.FLAG_ITEM):
             it.item(plt)
     module_file.close()
 
