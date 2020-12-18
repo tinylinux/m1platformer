@@ -36,10 +36,18 @@ def main_loop(players, graphical):
             P.move()
 
         # Gestion de la mort
+        nb_player_alive = cf.NB_PLAYERS
         for P in players:
             if P.death():
+                nb_player_alive -= 1
+        if cf.NB_PLAYERS > 1 and nb_player_alive <= 1:
+            # Fin du mode multijoueur
                 cf.STATE = 3
                 cf.NEWHS = scre.maj(cf.SECONDS)
+        elif nb_player_alive == 0:
+            # Fin du mode solo
+            cf.STATE = 3
+            cf.NEWHS = scre.maj(cf.SECONDS)
 
     elif cf.STATE == 3:  # Menu de fin
 
