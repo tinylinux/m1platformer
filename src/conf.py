@@ -19,6 +19,10 @@ FLAG_JUMP = False
 # Drapeau de disponibilité du second saut
 FLAG_JUMP_2 = False
 
+# Drapeau qui dit si y a un item à l'écran
+# ou qu'on est dans un état spécial à cause d'un item
+FLAG_ITEM = False
+
 # Couleurs
 BLACK = (255, 255, 255)
 GREY = (240, 240, 240)

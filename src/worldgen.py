@@ -99,8 +99,8 @@ def genere_module(last_pltfrm):
         bloc_type = bloc[0]
         # xoffset += pltfrm_offset
         plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
-        # avec une chance sur 5 on fait apparaître un nouvel item
-        if rd.randint(1,it.proba) == 1 and (not it.FLAG_ITEM):
+        # avec une chance sur it.proba on fait apparaître un nouvel item
+        if (not cf.FLAG_ITEM) and rd.randint(1, it.proba) == 1:
             it.item(plt)
     module_file.close()
 

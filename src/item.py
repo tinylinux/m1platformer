@@ -5,10 +5,6 @@ import src.conf as cf
 import src.utilities as ut
 import src.sprites as spt
 
-# Flag : true si y a un item à l'écran
-# ou qu'on est dans un état spécial à cause d'un item
-FLAG_ITEM = False
-
 # proba de faire apparaître nouvel item sur un plateforme
 proba = 2
 
@@ -16,16 +12,11 @@ ITEMS = ["fast", "slow", "big", "little"]
 
 
 class item(ut.GameObject):
-    """Gère les items
-        i = n° d'item :
-            0 = fast
-            1 = slow
-            2 = big
-            3 = little"""
+    """Gère les items"""
     def __init__(self, plt):
         """Crée un item sur une plateforme
             plt : plateforme sur laquelle apparait l'item"""
-        FLAG_ITEM = True
+        cf.FLAG_ITEM = True
         i = rd.randint(0, spt.d["n_item"]-1)
         self.type = ITEMS[i]
         img = spt.d["item_img"][i]
@@ -43,4 +34,4 @@ class item(ut.GameObject):
         """update l'item"""
         super().update()
         if self.rect.left < cf.SPEED:  # Si l'item va sortir de l'écran bientôt
-            FLAG_ITEM = False     # On annule le cf.FLAG_ITEM
+            cf.FLAG_ITEM = False     # On annule le cf.FLAG_ITEM
