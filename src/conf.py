@@ -52,3 +52,7 @@ STATE = State.menu
 # La fenêtre principale
 DISPLAYSURF = None
 WINDOWSURF = None
+
+# Flag : true si y a un item à l'écran
+# ou qu'on est dans un état spécial à cause d'un item
+FLAG_ITEM = False
