@@ -12,7 +12,7 @@ V_0 = 0
 # Accélération initiale
 A_0 = 0
 # Touches de saut des joueurs
-JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN]
+JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s]
 
 
 def collide(player, pos_next, rect):

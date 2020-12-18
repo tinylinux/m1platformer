@@ -39,9 +39,9 @@ DISPLAYSURF = None
 WINDOWSURF = None
 
 # Nombre maximal de joueurs
-NB_PLAYERS_MAX = 2
+NB_PLAYERS_MAX = 3
 # Nombre de joueurs
-NB_PLAYERS = 2
+NB_PLAYERS = 3
 
 # Vitesse initiale lors d'un saut
 V_JMP = 15

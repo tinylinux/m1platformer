@@ -20,6 +20,7 @@ Sprite = pygame.sprite.Sprite
 KEYDOWN = pygame.KEYDOWN
 K_SPACE = pygame.K_SPACE
 K_RETURN = pygame.K_RETURN
+K_s = pygame.K_s
 K_BACKSPACE = pygame.K_BACKSPACE
 MOUSEBUTTONDOWN = pygame.MOUSEBUTTONDOWN
 VIDEORESIZE = pygame.VIDEORESIZE
