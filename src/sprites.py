@@ -1,4 +1,4 @@
-""" Génération des sprites """
+"""Génération des sprites"""
 
 import os
 import src.conf as cf
@@ -10,6 +10,8 @@ def listdir(path):
     return [f for f in os.listdir(path) if not f.startswith('.')]
 
 
+localdir = os.path.dirname(__file__)
+
 # IMAGES
 d = {}
 Nom = ["mono", "cloud", "tree"]
@@ -17,18 +19,23 @@ d["mono_factor"] = 3
 d["cloud_factor"] = 4
 d["tree_factor"] = 8
 for nom in Nom:
-    d['n_'+nom] = len(listdir("./assets/img/"+nom))
-    d[nom+'_img'] = []
-    for i in range(d['n_'+nom]):
-        img = ut.load_image("assets/img/"+nom+"/"+nom+str(i)+".png")
+    d['n_' + nom] = len(listdir(os.path.join(localdir, "..", "assets",
+                                "img", nom)))
+    d[nom + '_img'] = []
+    for i in range(d['n_' + nom]):
+        img = ut.load_image(os.path.join(localdir, "..", "assets", "img",
+                                         nom, nom + str(i) + ".png"))
         w, h = img.get_rect().size
-        img = ut.resize(img, (d[nom+'_factor'] * w,
-                              d[nom+'_factor'] * h))
-        d[nom+'_img'].append(img)
+        img = ut.resize(img, (d[nom + '_factor'] * w,
+                              d[nom + '_factor'] * h))
+        d[nom + '_img'].append(img)
 
-GROUND_IMG = ut.load_image("assets/img/ground.png")
-PLTFRM_IMG = ut.load_image("assets/img/pltfrm.png")
-BAT_IMG = ut.load_image("assets/img/bat.png")
+GROUND_IMG = ut.load_image(os.path.join(localdir, "..", "assets",
+                                        "img", "ground.png"))
+PLTFRM_IMG = ut.load_image(os.path.join(localdir, "..", "assets",
+                                        "img", "pltfrm.png"))
+BAT_IMG = ut.load_image(os.path.join(localdir, "..", "assets",
+                                     "img", "bat.png"))
 
 # Dimensions
 p_WIDTH, p_HEIGHT = d["mono_img"][0].get_rect().size

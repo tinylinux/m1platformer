@@ -1,5 +1,6 @@
-""" Gère la génération du monde """
-# import os
+"""Gère la génération du monde"""
+
+import os
 import random as rd
 # Import classes
 import src.sprites as spt
@@ -8,7 +9,8 @@ import src.conf as cf
 import src.background as bg
 
 # Indexation des modules
-modules = spt.listdir("./src/modules")
+localdir = os.path.dirname(__file__)
+modules = spt.listdir(os.path.join(localdir, "modules"))
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 
@@ -54,13 +56,13 @@ def initgen():
     # Crée quelques nuages
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
-               rd.randint(0, cf.SCREEN_HEIGHT//2))
-        i = rd.randint(0, spt.d["n_cloud"]-1)
+               rd.randint(0, cf.SCREEN_HEIGHT // 2))
+        i = rd.randint(0, spt.d["n_cloud"] - 1)
         bg.Cloud(pos, i)
     # Crée quelques arbres
     for _ in range(4):
         pos_x = rd.randint(0, cf.SCREEN_WIDTH)
-        i = rd.randint(0, spt.d["n_tree"]-1)
+        i = rd.randint(0, spt.d["n_tree"] - 1)
         bg.Tree(pos_x, i)
 
     # Lance la création du sol
@@ -74,7 +76,7 @@ def initgen():
 
 
 def genere_module(last_pltfrm):
-    """ Choisit et affiche un nouveau module à la fin de l'écran"""
+    """Choisit et affiche un nouveau module à la fin de l'écran"""
     # Offset dépendant de la vitesse
     module_offset = cf.SPEED * 10
     xoffset = cf.SPEED * 10
