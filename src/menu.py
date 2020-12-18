@@ -113,18 +113,33 @@ class InputZone(Button):
                 self.input = self.input[:-1]
 
 
-start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
-                           "assets/img/ui/beginpushed.png")
+# start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
+#                            "assets/img/ui/beginpushed.png")
+oneplayer_button = ButtonImage((358, 323), (100, 100),
+                             "assets/img/ui/oneplayer.png",
+                             "assets/img/ui/oneplayerpushed.png")
 
-records_button = ButtonImage((440, 463), (401, 123),
-                             "assets/img/ui/records.png",
-                             "assets/img/ui/recordspushed.png")
+multiplayer_button = ButtonImage((591, 323), (100, 100),
+                             "assets/img/ui/multiplayer.png",
+                             "assets/img/ui/multiplayerpushed.png")
+
+settings_button = ButtonImage((824, 323), (100, 100),
+                             "assets/img/ui/settings.png",
+                             "assets/img/ui/settingspushed.png")
+
+records_button = ButtonImage((358, 460), (250, 75),
+                             "assets/img/ui/top5.png",
+                             "assets/img/ui/top5pushed.png")
+
+credits_button = ButtonImage((674, 460), (250, 75),
+                             "assets/img/ui/credits.png",
+                             "assets/img/ui/creditspushed.png")
 
 restart_button = ButtonImage((440, 500), (401, 123),
                              "assets/img/ui/playagain.png",
                              "assets/img/ui/playagainpushed.png")
 
-return_button = ButtonImage((20, 20), (123, 123),
+return_button = ButtonImage((20, 20), (100, 100),
                             "assets/img/ui/return.png",
                             "assets/img/ui/returnpushed.png")
 

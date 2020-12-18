@@ -20,8 +20,11 @@ def main_loop(players, graphical):
         for P in players:
             P.move()
         if graphical:
-            mn.start_button.print(ut.mouse_pos())
+            mn.oneplayer_button.print(ut.mouse_pos())
+            mn.multiplayer_button.print(ut.mouse_pos())
+            mn.settings_button.print(ut.mouse_pos())
             mn.records_button.print(ut.mouse_pos())
+            mn.credits_button.print(ut.mouse_pos())
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
@@ -120,7 +123,7 @@ def event_handling(players, event, graphical):
         if event.type == ut.MOUSEBUTTONDOWN:
 
             if cf.STATE == State.menu and\
-                    mn.start_button.click(ut.mouse_pos()):
+                    mn.oneplayer_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Commencer"
                 cf.STATE = State.ingame
                 wrld.stop_ground()  # Arrêt de la création du sol du menu
