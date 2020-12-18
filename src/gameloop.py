@@ -121,7 +121,8 @@ def event_handling(players, event):
                 cf.STATE = "in-game"
                 wrld.stop_ground()
 
-        elif cf.STATE == "highscore" and mn.return_button.click(ut.mouse_pos()):
+        elif cf.STATE == "highscore" and\
+                mn.return_button.click(ut.mouse_pos()):
             # Clic de la souris sur le bouton "Records"
             cf.STATE = "menu"
 

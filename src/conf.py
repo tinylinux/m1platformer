@@ -18,7 +18,7 @@ BlueSky = (0, 170, 251)
 SECONDS = 0
 FRAMES = 0
 
-# États du jeu : 
+# États du jeu :
 # {menu, in-game, gameover, highscore}
 STATE = 'menu'
 
