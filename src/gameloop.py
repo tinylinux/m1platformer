@@ -87,6 +87,7 @@ def reset_world(nb_players=1):
     spt.ground = ut.group_sprite_define()
     spt.clouds = ut.group_sprite_define()
     spt.trees = ut.group_sprite_define()
+    spt.items = ut.group_sprite_define()
     wrld.initgen()
     return [plyr.Player() for _ in range(nb_players)]
 
