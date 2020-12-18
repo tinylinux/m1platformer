@@ -1,9 +1,9 @@
 """ Gestion du score """
 import os
 import re
-import pygame
 import src.conf as cf
 import src.menu as mn
+import src.utilities as ut
 
 FILE = "score.txt"
 PLAYER = "Player"
@@ -47,7 +47,7 @@ def score(pts):
     """
     Afficher le score actuel durant la partie en cours
     """
-    font = pygame.font.Font(mn.FONT_PIXEL, cf.SCORE_FONT_SIZE)
+    font = ut.font(mn.FONT_PIXEL, cf.SCORE_FONT_SIZE)
     font.set_bold(True)
     text = font.render("Score: " + str(pts), True, cf.BLACK)
     cf.DISPLAYSURF.blit(text, (0, 0))
@@ -58,7 +58,7 @@ def score_endgame(pts):
     Affiche le score à la fin de la partie
     """
     mn.print_text("Score : " + str(pts), (640, 300), cf.GREY,
-                  pygame.font.Font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
+                  ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
 
 
 def get_scores():
