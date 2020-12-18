@@ -1,5 +1,5 @@
-platforms module
-================
+Platforms
+=========
 
 .. automodule:: platforms
    :members:

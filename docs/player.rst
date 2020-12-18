@@ -1,5 +1,5 @@
-player module
-=============
+Player
+======
 
 .. automodule:: player
    :members:

@@ -1,5 +1,5 @@
-menu module
-===========
+Menu
+====
 
 --.. automodule:: menu
 --   :members:

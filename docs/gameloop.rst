@@ -1,5 +1,5 @@
-gameloop module
-===============
+Gameloop
+========
 
 --.. automodule:: gameloop
    :members:

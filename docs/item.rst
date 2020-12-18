@@ -1,5 +1,5 @@
-item module
-===========
+Item
+====
 
 --.. automodule:: item
 --   :members:

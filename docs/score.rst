@@ -1,5 +1,5 @@
-score module
-============
+Score
+=====
 
 --.. automodule:: score
 --   :members:

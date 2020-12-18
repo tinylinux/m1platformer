@@ -22,11 +22,3 @@ Welcome to Roll \'n\' Jump's documentation!
    sprites
    utilities
    worldgen
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

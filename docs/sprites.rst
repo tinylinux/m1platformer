@@ -1,5 +1,5 @@
-sprites module
-==============
+Sprites
+=======
 
 .. automodule:: sprites
    :members:

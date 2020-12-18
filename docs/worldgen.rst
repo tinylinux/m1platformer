@@ -1,5 +1,5 @@
-worldgen module
-===============
+Worldgen
+========
 
 .. automodule:: worldgen
    :members:

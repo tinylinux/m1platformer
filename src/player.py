@@ -18,12 +18,24 @@ G = 0.8
 
 
 def collide(pos_prev, pos_next, rect):
-    """Gestion des collisions.
-    pos_prev : Vector2, position précédente du joueur
-    pos_next : Vector2, position suivante du joueur
-    rect : Rect, l'objet possiblement en collision avec le joueur
-    Renvoie un triplet (collision verticale, collision horizontale,
-    modification de position necessaire) (de type bool * bool * Vector2)"""
+    """
+    Gestion des collisions.
+
+    Parameters
+    ----------
+    pos_prev : Vector2
+        position précédente du joueur
+    pos_next : Vector2
+        position suivante du joueur
+    rect : Rect
+        l'objet potentiellement en collision avec le joueur
+
+    Returns
+    -------
+    bool * bool * Vector2
+        un triplet (collision verticale, collision horizontale,
+        modification de position necessaire)
+    """
     # On ne tient pas compte du cas dans lequel le joueur traverserait
     # une plateforme dans sa longueur entre deux positions, il ne serait
     # de toutes façons pas possible de jouer dans ce cas.

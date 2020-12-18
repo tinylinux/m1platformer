@@ -1,5 +1,5 @@
-background module
-=================
+Background
+==========
 
 .. automodule:: background
    :members:
