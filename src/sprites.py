@@ -14,10 +14,11 @@ localdir = os.path.dirname(__file__)
 
 # IMAGES
 d = {}
-Nom = ["mono", "cloud", "tree"]
+Nom = ["mono", "cloud", "tree", "item"]
 d["mono_factor"] = 3
 d["cloud_factor"] = 4
 d["tree_factor"] = 8
+d["item_factor"] = 2
 for nom in Nom:
     d['n_' + nom] = len(listdir(os.path.join(localdir, "..", "assets",
                                 "img", nom)))

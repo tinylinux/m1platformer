@@ -32,6 +32,7 @@ class Platform(ut.GameObject):
         """pos : int * int, position de la plateforme
         dim : int * int, largeur * hauteur de la plateforme
         img : image"""
+        self.dim = dim
         img = ut.resize(img, dim)
         super().__init__(pos, 1, img)
         ut.add_to_group(self, spt.ground)

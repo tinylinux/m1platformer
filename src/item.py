@@ -1,8 +1,6 @@
 """ Gère la génération d'items"""
 
 import random as rd
-
-
 import src.conf as cf
 import src.utilities as ut
 import src.sprites as spt
@@ -27,7 +25,7 @@ class item(ut.GameObject):
     def __init__(self, plt):
         """Crée un item sur une plateforme
             plt : plateforme sur laquelle apparait l'item"""
-        cf.FLAG_ITEM = True
+        FLAG_ITEM = True
         i = rd.randint(0, spt.d["n_item"]-1)
         self.type = ITEMS[i]
         img = spt.d["item_img"][i]
@@ -45,4 +43,4 @@ class item(ut.GameObject):
         """update l'item"""
         super().update()
         if self.rect.left < cf.SPEED:  # Si l'item va sortir de l'écran bientôt
-            cf.FLAG_ITEM = False     # On annule le cf.FLAG_ITEM
+            FLAG_ITEM = False     # On annule le cf.FLAG_ITEM
