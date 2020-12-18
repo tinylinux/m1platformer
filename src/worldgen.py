@@ -8,6 +8,7 @@ import src.platform as pltfrm
 import src.conf as cf
 import src.background as bg
 import src.item as it
+import src.utilities as ut
 
 # Indexation des modules
 localdir = os.path.dirname(__file__)
@@ -99,9 +100,14 @@ def genere_module(last_pltfrm):
         bloc_type = bloc[0]
         # xoffset += pltfrm_offset
         plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
-        # avec une chance sur it.proba on fait apparaître un nouvel item
-        if (not cf.FLAG_ITEM) and rd.randint(1, it.proba) == 1:
-            it.item(plt)
+        # avec une chance sur it.PROBA on fait apparaître un nouvel item
+        if (not cf.FLAG_ITEM) and rd.randint(1, it.PROBA) == 1:
+            item = it.item(plt)
+            # Si s'est superposé sur une plateforme, on le vire (pour l'instant ça marche pas)
+            if ut.collidegroup(item, spt.ground):
+                item.kill()
+                cf.FLAG_ITEM = False
+                
     module_file.close()
 
 

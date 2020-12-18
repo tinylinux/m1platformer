@@ -126,6 +126,13 @@ def collide(sprite1, sprite2):
     """
     return pygame.sprite.collide_rect(sprite1, sprite2)
 
+def collidegroup(sprite, group):
+    """
+    Renvoie true si y a une collision entre le sprite
+    et n'importe quel sprite du groupe.
+    """
+    return pygame.sprite.spritecollideany(sprite, group)
+
 def update_screen():
     """
     Mettre à jour l'écran

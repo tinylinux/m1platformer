@@ -47,7 +47,6 @@ w, h = d["mono_img"][0].get_rect().size
 for key in cf.SIZE:
     cf.SIZE[key] = (w*cf.SIZE[key], h*cf.SIZE[key])
 ut.resize_list(d['mono_img'], cf.SIZE['normal'])
-p_WIDTH, p_HEIGHT = cf.SIZE['normal']
 
 # Groupes
 ground = ut.group_sprite_define()

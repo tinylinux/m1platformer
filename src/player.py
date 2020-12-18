@@ -28,6 +28,7 @@ class Player(ut.Sprite):
         # Création de l'objet
         self.rect = self.images[0].get_rect()
 
+        # dimensions
         self.width, self.height = cf.SIZE['normal']
 
         # Position
@@ -101,9 +102,7 @@ class Player(ut.Sprite):
 
         for item in spt.items: # Gestion de la prise d'item
             if ut.collide(self, item):
-                print(self.rect)
                 self.change_state(item)
-                print(self.rect)
 
         # On change le sprite du joueur
         self.img += 0.03 * cf.SPEED
@@ -118,12 +117,13 @@ class Player(ut.Sprite):
                or self.pos.x + self.width < 0)
 
     def change_state(self, item):
-        """Modifie l'état du joueur parce qu'il a pris un item"""
+        """Modifie l'état du joueur parce qu'il a pris un item.
+            Supprime l'item"""
         self.state = item.type
         item.kill()
         self.timer = cf.ITEM_TIME[item.type]
 
-        # il faut resize la taille de l'image mais aussi le rect...
+        # resize le player
         if self.state in ['little', 'big']:
             ut.resize_list(self.images, cf.SIZE[self.state])
             self.width, self.height = cf.SIZE[self.state]
@@ -131,10 +131,7 @@ class Player(ut.Sprite):
                 self.pos[i] = self.pos[i] + cf.SIZE['normal'][i] - cf.SIZE[self.state][i]
             self.rect = self.images[0].get_rect()
             self.rect.midbottom = self.pos
-            # self.rect.fit(self.images[int(self.img)].get_rect())
-            # print(self.rect)
-            # ut.resize_rect(self.rect, cf.SIZE[self.state])
-            # print(self.rect)
+
 
     def end_item(self):
         """Quand on redevient normal"""
@@ -147,10 +144,8 @@ class Player(ut.Sprite):
                 self.pos[i] = self.pos[i] - cf.SIZE['normal'][i] + cf.SIZE[self.state][i]
             self.rect = self.images[0].get_rect()
             self.rect.midbottom = self.pos
-            # print(self.rect)
-            # ut.resize_rect(self.rect, cf.SIZE['normal'])
-            # print(self.rect)
-        # On se remet dans l'état normal, à la bonne vitesse, et on annule le FLAG_ITEM
+
+        # On se remet dans l'état normal et on annule le FLAG_ITEM
         self.state = "normal"
         cf.FLAG_ITEM = False
         self.vel.x = 0
