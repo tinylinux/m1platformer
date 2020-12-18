@@ -18,12 +18,9 @@ BlueSky = (0, 170, 251)
 SECONDS = 0
 FRAMES = 0
 
-# États du jeu :
-# 1 : menu de départ
-# 2 : jeu en cours
-# 3 : menu de fin (scores)
-# 4 : affichage des meilleurs scores
-STATE = 1
+# États du jeu : 
+# {menu, in-game, gameover, highscore}
+STATE = 'menu'
 
 # La fenêtre principale
 DISPLAYSURF = None
