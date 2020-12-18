@@ -23,6 +23,9 @@ FLAG_JUMP_2 = False
 # ou qu'on est dans un état spécial à cause d'un item
 FLAG_ITEM = False
 
+# Dico avec la durée des effets des items (en nbre de frames)
+ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
+
 # Couleurs
 BLACK = (255, 255, 255)
 GREY = (240, 240, 240)
