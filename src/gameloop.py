@@ -40,7 +40,7 @@ def main_loop(players, graphical):
         for P in players:
             if P.death():
                 nb_player_alive -= 1
-        if cf.NB_PLAYERS > 1 and nb_player_alive <= 1:
+        if cf.NB_PLAYERS > 1 >= nb_player_alive :
             # Fin du mode multijoueur
             cf.STATE = 3
             cf.NEWHS = scre.maj(cf.SECONDS)
