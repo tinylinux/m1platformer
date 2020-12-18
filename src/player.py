@@ -1,4 +1,4 @@
-"""Contient la classe Player, permettant de gerer le personnage."""
+"""Module de gestion des joueurs."""
 
 import src.conf as cf
 import src.sprites as spt
@@ -6,15 +6,18 @@ import src.utilities as ut
 
 # Position initiale
 X_INIT = cf.SCREEN_WIDTH//2
+"""Abscisse initiale"""
 Y_INIT = spt.GROUND_HEIGHT - spt.p_HEIGHT
-# Vitesse initiale
+"""Ordonnée initiale"""
+
 V_0 = 0
-# Vitesse initiale lors d'un saut
+"""Vitesse initiale"""
 V_JMP = 15
-# Accélération initiale
+"""Vitesse initiale lors d'un saut"""
 A_0 = 0
-# Accélération due à la gravité
+"""Accélération initiale"""
 G = 0.8
+"""Accélération due à la gravité"""
 
 
 def collide(pos_prev, pos_next, rect):
@@ -66,10 +69,27 @@ def collide(pos_prev, pos_next, rect):
 
 
 class Player(ut.Sprite):
-    """Gestion du personnage, par les méthodes jump(self), move(self)
-    et death(self)."""
+    """
+    Gestion du joueur.
+
+    Attributes
+    ----------
+    images : Surface list
+        Liste des images de l'objet
+    img : int
+        Indice dans la liste d'images
+    shape : Rect
+        Rectangle de collision du joueur
+    pos : Vector2
+        Position du joueur
+    vel : Vector2
+        Vitesse du joueur
+    acc : Vector2
+        Accélération du joueur
+    """
 
     def __init__(self):
+        """Initialisation du joueur."""
         # Initialisation de la classe parent
         # ut.add_to_group(self, cf.player_sprite)
         super().__init__()
@@ -89,7 +109,7 @@ class Player(ut.Sprite):
         self.acc = ut.Vec(A_0, G)
 
     def jump(self):
-        """Lance le saut du personnage."""
+        """Lance le saut du joueur."""
         if cf.FLAG_JUMP:
             cf.FLAG_JUMP = False
             self.vel.y = -V_JMP
@@ -99,8 +119,7 @@ class Player(ut.Sprite):
             cf.FLAG_JUMP_2 = False
 
     def move(self):
-        """Modifie les vecteurs position, vitesse
-        et accélération si nécessaire."""
+        """Met à jour pos, vec et acc."""
         self.vel += self.acc
         posnext = self.pos + self.vel + 0.5 * self.acc
 
@@ -123,6 +142,13 @@ class Player(ut.Sprite):
         cf.DISPLAYSURF.blit(self.images[int(self.img)], self.shape)
 
     def death(self):
-        """Renvoie si le joueur sort (suffisamment) de l'écran ou non"""
+        """
+        Condition de défaite du joueur.
+
+        Returns
+        -------
+        bool
+            True si le joueur sort suffisamment de l'écran.
+        """
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
                or self.pos.x + spt.p_WIDTH < 0)
