@@ -35,15 +35,15 @@ FRAMES = 0
 
 # États du jeu
 class State(Enum):
-	"""
-	Type énuméré pour l'état du jeu
-	"""
-	languages = 0
-	menu = 1
-	ingame = 2
-	gameover = 3
-	highscore = 4
-	setup = 5
+    """
+    Type énuméré pour l'état du jeu
+    """
+    languages = 0
+    menu = 1
+    ingame = 2
+    gameover = 3
+    highscore = 4
+    setup = 5
 
 
 STATE = State.menu

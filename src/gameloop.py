@@ -108,7 +108,8 @@ def event_handling(players, event, graphical):
 
         if event.type == ut.MOUSEBUTTONDOWN:
 
-            if cf.STATE == State.menu and mn.start_button.click(ut.mouse_pos()):
+            if cf.STATE == State.menu and\
+                    mn.start_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Commencer"
                 cf.STATE = State.ingame
                 wrld.stop_ground()  # Arrêt de la création du sol du menu
@@ -130,7 +131,7 @@ def event_handling(players, event, graphical):
                     wrld.stop_ground()
 
             elif cf.STATE == State.highscore and\
-            	mn.return_button.click(ut.mouse_pos()):
+                    mn.return_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Records"
                 cf.STATE = State.menu
 
