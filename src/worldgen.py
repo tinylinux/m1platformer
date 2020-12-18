@@ -1,14 +1,17 @@
-""" Gère la génération du monde """
-# import os
+"""Gère la génération du monde"""
+
+import os
 import random as rd
 # Import classes
 import src.sprites as spt
 import src.platform as pltfrm
 import src.conf as cf
 import src.background as bg
+import src.item as it
 
 # Indexation des modules
-modules = spt.listdir("./src/modules")
+localdir = os.path.dirname(__file__)
+modules = spt.listdir(os.path.join(localdir, "modules"))
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 
@@ -24,11 +27,11 @@ def platform_creation(bloc, xoffset, yoffset):
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
-    pltfrm.Platform((top_left_x + xoffset,
-                    top_left_y + yoffset),
-                    (bot_right_x - top_left_x,
-                    bot_right_y - top_left_y),
-                    spt.PLTFRM_IMG)
+    return pltfrm.Platform((top_left_x + xoffset,
+                            top_left_y + yoffset),
+                           (bot_right_x - top_left_x,
+                            bot_right_y - top_left_y),
+                           spt.PLTFRM_IMG)
 
 
 def batiment_creation(bloc, xoffset, yoffset):
@@ -38,11 +41,11 @@ def batiment_creation(bloc, xoffset, yoffset):
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     bot_right_x = int(bot_right[1])
-    pltfrm.Platform((top_left_x + xoffset,
-                    top_left_y + yoffset),
-                    (bot_right_x - top_left_x,
-                    cf.SCREEN_HEIGHT),
-                    spt.BAT_IMG)
+    return pltfrm.Platform((top_left_x + xoffset,
+                            top_left_y + yoffset),
+                           (bot_right_x - top_left_x,
+                            cf.SCREEN_HEIGHT),
+                           spt.BAT_IMG)
 
 
 creation_functions = {"Plateforme": platform_creation,
@@ -54,13 +57,13 @@ def initgen():
     # Crée quelques nuages
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
-               rd.randint(0, cf.SCREEN_HEIGHT//2))
-        i = rd.randint(0, spt.d["n_cloud"]-1)
+               rd.randint(0, cf.SCREEN_HEIGHT // 2))
+        i = rd.randint(0, spt.d["n_cloud"] - 1)
         bg.Cloud(pos, i)
     # Crée quelques arbres
     for _ in range(4):
         pos_x = rd.randint(0, cf.SCREEN_WIDTH)
-        i = rd.randint(0, spt.d["n_tree"]-1)
+        i = rd.randint(0, spt.d["n_tree"] - 1)
         bg.Tree(pos_x, i)
 
     # Lance la création du sol
@@ -74,7 +77,7 @@ def initgen():
 
 
 def genere_module(last_pltfrm):
-    """ Choisit et affiche un nouveau module à la fin de l'écran"""
+    """Choisit et affiche un nouveau module à la fin de l'écran"""
     # Offset dépendant de la vitesse
     module_offset = cf.SPEED * 10
     xoffset = cf.SPEED * 10
@@ -95,7 +98,10 @@ def genere_module(last_pltfrm):
         bloc = line.split(';')
         bloc_type = bloc[0]
         # xoffset += pltfrm_offset
-        creation_functions[bloc_type](bloc, xoffset, yoffset)
+        plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
+        # avec une chance sur 5 on fait apparaître un nouvel item
+        if rd.randint(1, it.proba) == 1 and (not cf.FLAG_ITEM):
+            it.item(plt)
     module_file.close()
 
 
@@ -109,12 +115,10 @@ def stop_ground():
 def update():
     """Update tous les objets du monde autres que player"""
     cf.DISPLAYSURF.fill(cf.BlueSky)  # Le ciel
-    for cloud in spt.clouds:  # Les nuages
-        cloud.update()
-    for tree in spt.trees:  # Les arbres
-        tree.update()
-    for bloc in spt.ground:  # Le sol
-        bloc.update()
+    spt.clouds.update()
+    spt.trees.update()
+    spt.ground.update()
+    spt.items.update()
 
     last_pltfrm = max(spt.ground, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
