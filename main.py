@@ -1,4 +1,4 @@
-""" Fichier principal du jeu """
+"""Module principal du jeu."""
 
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
@@ -13,8 +13,14 @@ import src.gameloop as gml  # noqa: E402
 
 
 def main(graphical):
-    """ Fonction principale du jeu """
+    """
+    Fonction principale du jeu.
 
+    Parameters
+    ----------
+    graphical : bool
+        Indique si le jeu doit être lancé en mode graphique ou non
+    """
     # Initialisation de la fenêtre
     cf.DISPLAYSURF, cf.WINDOWSURF = \
         ut.initialize_window("assets/img/mono/mono3.png",

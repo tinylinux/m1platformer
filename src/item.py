@@ -28,9 +28,9 @@ class item(ut.GameObject):
         """Crée un item sur une plateforme
             plt : plateforme sur laquelle apparait l'item"""
         cf.FLAG_ITEM = True
-        i = rd.randint(0, spt.d["n_item"]-1)
+        i = rd.randint(0, spt.img_dict["n_item"]-1)
         self.type = ITEMS[i]
-        img = spt.d["item_img"][i]
+        img = spt.img_dict["item_img"][i]
         w, h = img.get_rect().size
 
         x_plt, y_plt = plt.pos

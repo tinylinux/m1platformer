@@ -15,6 +15,7 @@ Classe
 ******
 .. autoclass:: Player
    :members:
+   :show-inheritance:
 
 Collisions
 **********

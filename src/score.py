@@ -1,4 +1,4 @@
-""" Gestion du score """
+"""Gestion du score."""
 import os
 import re
 import src.conf as cf
@@ -6,14 +6,27 @@ import src.menu as mn
 import src.utilities as ut
 
 FILE = "score.txt"
+"""Fichier contenant les scores"""
 PLAYER = "Player"
+"""Nom par défaut du joueur"""
 
 
 def onlydigits(value):
     """
-    Fonction qui permet de filtrer uniquement les caractères chiffres,
-    Cela va permettre de retirer toutes les sauts de lignes présents
-    dans le fichier score.txt
+    Filtre `value` pour ne garder que les chiffres.
+
+    On peut ainsi retirer toutes les sauts de lignes présents
+    dans le fichier `score.txt`.
+
+    Parameters
+    ----------
+    value : str
+        La chaîne à filtrer
+
+    Returns
+    -------
+    str
+        La chaîne obtenue après filtrage
     """
     final_chain = ""
     for i in value:
@@ -24,28 +37,35 @@ def onlydigits(value):
 
 def onlyalphanum(value):
     """
-    Fonction qui permet de filtrer uniquement les caractères
-    alphanumériques (pour le nom du joueur)
+    Filtre `value` pour ne garder que les caractères alphanumériques.
+
+    Parameters
+    ----------
+    value : str
+        La chaîne à filtrer
+
+    Returns
+    -------
+    str
+        La chaîne obtenue après filtrage
     """
     return re.sub(r'[^A-Za-z0-9]+', '', value)
 
 
 def init_best_score():
-    """
-    Initialiser le fichier score.txt
-    """
+    """Initialise le fichier `score.txt`."""
     with open(FILE, "w") as empty_board:
         empty_board.write("")
 
 
-if not os.path.isfile(FILE):
-    print('fichier non trouvé')
-    init_best_score()
-
-
 def score(pts):
     """
-    Afficher le score actuel durant la partie en cours
+    Afficher le score durant la partie.
+
+    Parameters
+    ----------
+    pts : int
+        Nombre de points du joueur
     """
     font = ut.font(mn.FONT_PIXEL, cf.SCORE_FONT_SIZE)
     font.set_bold(True)
@@ -55,7 +75,12 @@ def score(pts):
 
 def score_endgame(pts):
     """
-    Affiche le score à la fin de la partie
+    Affiche le score à la fin de la partie.
+
+    Parameters
+    ----------
+    pts : int
+        Nombre de points du joueur
     """
     mn.print_text("Score : " + str(pts), (640, 300), cf.GREY,
                   ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
@@ -63,7 +88,12 @@ def score_endgame(pts):
 
 def get_scores():
     """
-    Récuperer le score sauvegardé dans le scoreboard
+    Récupère le score sauvegardé dans le scoreboard.
+
+    Returns
+    -------
+    (int * str) list
+        Une liste contenant un score et un nom de joueur associé
     """
     with open(FILE) as board:
         try:
@@ -88,7 +118,14 @@ def get_scores():
 
 
 def get_last_best_score():
-    """Renvoie le plus petit score du leaderboard"""
+    """
+    Renvoie le plus petit score du leaderboard.
+
+    Returns
+    -------
+    int
+        Le score recherché
+    """
     scores = get_scores()
     if len(scores) == 0:
         return 0
@@ -98,7 +135,12 @@ def get_last_best_score():
 
 def set_best_score(value):
     """
-    Met à jour le score dans le fichier défini
+    Ajoute un score au leaderboard.
+
+    Parameters
+    ----------
+    value : int
+        Score à ajouter
     """
     scores_board = get_scores()
     with open(FILE, "w") as board:
@@ -123,12 +165,25 @@ def set_best_score(value):
 
 def maj(pts):
     """
-    Check si le score obtenu est un High-score
-    Si oui, il retourne True et modifie le High-Score
-    Si non, il retourne False
+    Si le score obtenu est parmi les meilleurs, met à jour le leaderboard.
+
+    Parameters
+    ----------
+    pts : int
+        Le score obtenu
+
+    Returns
+    -------
+    bool
+        `True` si le score a été ajouté, `False` sinon
     """
     minimal_score = get_last_best_score()
     if len(get_scores()) < 5 or minimal_score < pts:
         set_best_score(pts)
         return True
     return False
+
+
+if not os.path.isfile(FILE):
+    print('fichier non trouvé')
+    init_best_score()

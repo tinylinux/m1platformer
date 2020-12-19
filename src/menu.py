@@ -1,20 +1,35 @@
-"""Gestion des menus"""
+"""Gestion des menus."""
 
 import src.conf as cf
 import src.utilities as ut
 
 FONT_PIXEL = "assets/font/punk_rockf.ttf"
+"""Chemin vers la police"""
 
 CHARS_LOW = "azertyuiopqsdfghjklmwxcvbn1234567890"
+"""Caractères acceptés, en minuscules"""
 CHARS_CAP = "AZERTYUIOPQSDFGHJKLMWXCVBN1234567890"
+"""Caractères acceptés, en majuscules"""
 
 
 def mouse_on_button(mouse, button_pos, button_size):
-    """Renvoie si la souris est située sur le bouton.
-    mouse : int * int, position de la souris
-    button_pos : int * int, position du bouton
-    button_size : int * int, largeur * hauteur du bouton"""
+    """
+    Indique si le pointeur de la souris est sur le bouton.
 
+    Parameters
+    ----------
+    mouse : int * int
+        Position du pointeur de la souris
+    button_pos : int * int
+        Position du bouton
+    button_size : int * int
+        Largeur et hauteur du bouton
+
+    Returns
+    -------
+    bool
+        True si le pointeur est sur le bouton
+    """
     # Récupération de la dimension de la fenêtre
     window_dimensions = ut.get_screen_size()
 
@@ -29,28 +44,71 @@ def mouse_on_button(mouse, button_pos, button_size):
            and button_pos[1] <= new_mouse[1] <= button_pos[1] + button_size[1])
 
 
-class Button:  # pylint: disable=too-few-public-methods
-    """ Classe des boutons pour les menus"""
+class Button:
+    """Boutons pour les menus."""
+
     def __init__(self, position, size):
+        """
+        Initialisation.
+
+        Parameters
+        ----------
+        position : int * int
+            Position du bouton
+        size : int * int
+            Largeur et hauteur du bouton
+        """
         self.position = position
         self.size = size
         self.rect = ut.create_rect([position[0], position[1],
                                     size[0], size[1]])
 
     def click(self, mouse):
-        """Renvoie si la souris est sur le bouton"""
+        """
+        Indique si le pointeur de la souris est sur le bouton.
+
+        Parameters
+        ----------
+        mouse : int * int
+            Position de la souris
+
+        Returns
+        -------
+        bool
+            True si le pointeur est sur le bouton
+        """
         return mouse_on_button(mouse, self.position, self.size)
 
 
 class ButtonText(Button):
-    """Classe des boutons affichant du texte"""
+    """Boutons aillant du texte comme étiquette."""
+
     def __init__(self, position, size, text):
+        """
+        Initialisation.
+
+        Parameters
+        ----------
+        position : int * int
+            Position du bouton
+        size : int * int
+            Largeur et hauteur du bouton
+        text : string
+            Étiquette du bouton
+        """
         super().__init__(position, size)
         self.text = text
         self.text_position = (position[0] + 10, position[1] + 10)
 
     def print(self, mouse):
-        """Affiche le bouton"""
+        """
+        Affiche le bouton.
+
+        Parameters
+        ----------
+        mouse : int * int
+            Position de la souris
+        """
         if mouse_on_button(mouse, self.position, self.size):
             ut.draw_rect(cf.DISPLAYSURF, cf.HOVER, self.rect)
         else:
@@ -59,14 +117,45 @@ class ButtonText(Button):
 
 
 class ButtonImage(Button):
-    """Classe des boutons affichant une image"""
+    """
+    Boutons affichant une image.
+
+    Attributes
+    ----------
+    image : str
+        Nom de l'image à afficher quand le bouton est inactif
+    image_hover : str
+        Nom de l'image à afficher quand le pointeur est sur le bouton
+    """
+
     def __init__(self, position, size, image, image_hover):
+        """
+        Initialisation.
+
+        Parameters
+        ----------
+        position : int * int
+            Position du bouton
+        size : int * int
+            Largeur et hauteur du bouton
+        image : str
+            Nom de l'image à afficher quand le bouton est inactif
+        image_hover : str
+            Nom de l'image à afficher quand le pointeur est sur le bouton
+        """
         super().__init__(position, size)
         self.image = image
         self.image_hover = image_hover
 
     def print(self, mouse):
-        """Affiche le bouton"""
+        """
+        Affiche le bouton.
+
+        Parameters
+        ----------
+        mouse : int * int
+            Position du pointeur de la souris
+        """
         if mouse_on_button(mouse, self.position, self.size):
             cf.DISPLAYSURF.blit(ut.load_image(self.image_hover),
                                 self.position)
@@ -75,11 +164,34 @@ class ButtonImage(Button):
 
 
 class InputZone(Button):
-    """Classe des zones dans lesquelles on peut entrer du texte"""
+    """
+    Zones permettant le saisie de texte.
+
+    Attributes
+    ----------
+    input : str
+        Texte inséré dans la zone
+    selescted : bool
+        Indique si la zone est sélectionnée
+    text_position : int * int
+        Position du texte par rapport à la zone
+    font : Font
+        La fonte
+    """
+
     def __init__(self, position, size, font=None):
-        """position : int * int, position du bouton
-        size : int * int, largeur * hauteur du bouton
-        font : Font, la fonte"""
+        """
+        Initialisation.
+
+        Parameters
+        ----------
+        position : int * int
+            Position du bouton
+        size : int * int
+            Largeur et hauteur du bouton
+        font : Font, optionnel
+            La fonte
+        """
         super().__init__(position, size)
         if font is None:
             font = ut.font(None, cf.INPUT_FONT_SIZE)
@@ -89,21 +201,28 @@ class InputZone(Button):
         self.font = font
 
     def print(self):
-        """Affiche la zone et le texte entré"""
+        """Affiche la zone et le texte entré."""
         ut.draw_rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
         cf.DISPLAYSURF.blit(self.font.render(self.input, True, cf.WHITE),
                             self.text_position)
 
     def select(self):
-        """Active la sélection de la zone"""
+        """Active la sélection de la zone."""
         self.selected = True
 
     def deselect(self):
-        """Désactive la sélection de la zone"""
+        """Désactive la sélection de la zone."""
         self.selected = False
 
     def read(self, key):
-        """Lit les caractères entrés"""
+        """
+        Lit les caractères entrés.
+
+        Parameters
+        ----------
+        key : key
+            La touche détectée
+        """
         if self.selected:
             key_name = ut.keyname(key)
             if key_name in CHARS_LOW:
@@ -116,35 +235,56 @@ class InputZone(Button):
 
 start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
                            "assets/img/ui/beginpushed.png")
+"""Bouton pour lancer le jeu"""
 
 records_button = ButtonImage((440, 463), (401, 123),
                              "assets/img/ui/records.png",
                              "assets/img/ui/recordspushed.png")
+"""Boutons pour afficher les records"""
 
 restart_button = ButtonImage((440, 500), (401, 123),
                              "assets/img/ui/playagain.png",
                              "assets/img/ui/playagainpushed.png")
+"""Bouton pour relancer le jeu"""
 
 return_button = ButtonImage((20, 20), (123, 123),
                             "assets/img/ui/return.png",
                             "assets/img/ui/returnpushed.png")
+"""Bouton pour revenir au menu principal"""
 
 
 def print_image(image, position):
-    """Affiche une image à une position donnée.
-    image : string, le chemin vers l'image dans les fichiers
-    position : int * int, les coordonnées du coin supérieur gauche"""
+    """
+    Affiche une image à une position donnée.
+
+    Parameters
+    ----------
+    image : string
+        Le chemin vers l'image dans les fichiers
+    position : int * int
+        Les coordonnées de l'image
+    """
     cf.DISPLAYSURF.blit(ut.load_image(image), position)
 
 
 def print_text(text, position_center, color=cf.WHITE,
                font=None, bold=False):
-    """Affiche une surface de texte centrée sur une position.
-    text : string, le texte à afficher
-    position_center : int * int, la position du centre du texte
-    color : int * int * int, la couleur
-    font : ut.font, la fonte
-    bold : bool, si la fonte doit être en gras"""
+    """
+    Affiche une surface de texte centrée sur une position.
+
+    Parameters
+    ----------
+    text : string
+        Le texte à afficher
+    position_center : int * int
+        La position du centre du texte
+    color : int * int * int, optionnel
+        La couleur du texte
+    font : Font, optionnel
+        La fonte
+    bold : bool, optionnel
+        Indique si le texte doit être en gras
+    """
     if font is None:
         ut.font(None, cf.TEXT_FONT_SIZE)
     if bold:

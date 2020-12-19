@@ -1,7 +1,13 @@
 Gameloop
 ========
 
---.. automodule:: gameloop
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. automodule:: gameloop
+
+Boucle principale
+*****************
+.. autofunction:: main_loop
+
+Fonctions auxiliaires
+*********************
+.. autofunction:: event_handling
+.. autofunction:: reset_world

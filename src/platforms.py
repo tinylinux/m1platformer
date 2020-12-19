@@ -1,19 +1,26 @@
-""" Gère la création et les déplacements des plateformes """
+"""Création et déplacement des plateformes."""
 import src.conf as cf
 import src.utilities as ut
 import src.sprites as spt
 
 
 class Ground(ut.GameObject):
-    """Gestion de la plateforme initiale (menu)"""
+    """Plateforme initiale (dans le menu)."""
+
     def __init__(self, x):
+        """
+        Initialisation.
+
+        Parameters
+        ----------
+        x : int
+            Abscisse du début de la plateforme
+        """
         super().__init__((x, spt.GROUND_HEIGHT), 1, spt.GROUND_IMG)
         ut.add_to_group(self, spt.ground)
 
     def update(self):
-        """ Fait se déplacer la plateforme selon la variable SPEED du module conf.
-        Suprrime la plateforme si celle-ci sort de l'écran, et demande
-        la création d'une nouvelle plateforme si nécessaire"""
+        """Met à jour la position des plateformes du sol."""
         super().update()
         if self.rect.right < cf.SCREEN_WIDTH and self.FLAG_creation:
             # si le dernier ne couvre plus tout sur la droite,
@@ -22,16 +29,26 @@ class Ground(ut.GameObject):
             self.stop_creation()
 
     def stop_creation(self):
-        """Arrête la création de ces plateformes"""
+        """Arrête la génération du sol."""
         self.FLAG_creation = False
 
 
 class Platform(ut.GameObject):
-    """ Gère les plateformes """
+    """Plateformes pendant le jeu."""
+
     def __init__(self, pos=(1, 1), dim=(8, 3), img=spt.PLTFRM_IMG):
-        """pos : int * int, position de la plateforme
-        dim : int * int, largeur * hauteur de la plateforme
-        img : image"""
+        """
+        Initialisation.
+
+        Parameters
+        ----------
+        pos : int * int, optionnel
+            Position de la plateforme
+        dim : int * int, optionnel
+            Largeur et hauteur de la plateforme
+        img : Surface, optionnel
+            Apparence de la plateforme
+        """
         img = ut.resize(img, dim)
         super().__init__(pos, 1, img)
         ut.add_to_group(self, spt.ground)

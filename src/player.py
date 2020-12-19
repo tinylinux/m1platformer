@@ -94,7 +94,7 @@ class Player(ut.Sprite):
         # ut.add_to_group(self, cf.player_sprite)
         super().__init__()
         # Liste d'images de l'objet, et indice de cette liste
-        self.images = spt.d["mono_img"]
+        self.images = spt.img_dict["mono_img"]
         self.img = 0
         # Création de l'objet
         self.shape = self.images[0].get_rect()

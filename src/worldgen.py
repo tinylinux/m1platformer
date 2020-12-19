@@ -57,12 +57,12 @@ def initgen():
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
                rd.randint(0, cf.SCREEN_HEIGHT // 2))
-        i = rd.randint(0, spt.d["n_cloud"] - 1)
+        i = rd.randint(0, spt.img_dict["n_cloud"] - 1)
         bg.Cloud(pos, i)
     # Crée quelques arbres
     for _ in range(4):
         pos_x = rd.randint(0, cf.SCREEN_WIDTH)
-        i = rd.randint(0, spt.d["n_tree"] - 1)
+        i = rd.randint(0, spt.img_dict["n_tree"] - 1)
         bg.Tree(pos_x, i)
 
     # Lance la création du sol

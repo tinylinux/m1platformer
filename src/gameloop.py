@@ -1,4 +1,4 @@
-""" Fonctions pour la boucle principale du jeu """
+"""Fonctions pour la boucle principale du jeu."""
 
 import src.conf as cf
 import src.utilities as ut
@@ -10,9 +10,21 @@ import src.sprites as spt
 
 
 def main_loop(players, graphical):
-    """ Applique les mises à jour nécessaires au jeu,
-    et renvoie le nouvel objet joueur.
-    P: joueur """
+    """
+    Applique les mises à jour nécessaires au jeu.
+
+    Parameters
+    ----------
+    players : Player list
+        Liste des joueurs
+    graphical : bool
+        Indique si le jeu est en mode graphique ou non
+
+    Returns
+    -------
+    Player list
+        Liste des joueurs actualisée
+    """
     if cf.STATE == 1:  # On est dans le menu
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/title.png"), (357, 132))
@@ -80,7 +92,19 @@ def main_loop(players, graphical):
 
 
 def reset_world(nb_players=1):
-    """ Réinitialise le monde """
+    """
+    Réinitialise le monde.
+
+    Parameters
+    ----------
+    nb_player : int, optionnel
+        Nombre de joueurs dans le jeu (1 par défaut)
+
+    Returns
+    -------
+    Player list
+        Une liste de joueurs réinitialisés de longueur nb_players
+    """
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
@@ -92,10 +116,23 @@ def reset_world(nb_players=1):
 
 
 def event_handling(players, event, graphical):
-    """ Effectue les mises à jour relatives à event,
-    et renvoie le nouveau joueur.
-    P: joueur
-    event: événement """
+    """
+    Permet de gérer les événements.
+
+    Parameters
+    ----------
+    players : Player list
+        Liste des joueurs
+    event : Event
+        L'événement à traiter
+    graphical : bool
+        Indique si le jeu est en mode graphique ou non
+
+    Returns
+    -------
+    Player list
+        Renvoie la liste des joueurs mis à jour
+    """
     if event.type == ut.INC_SPEED:
         if cf.STATE == 2:  # Si on est in game
             cf.SPEED += 0.5
