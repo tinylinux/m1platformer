@@ -76,12 +76,13 @@ class ButtonImage(Button):
 
 class InputZone(Button):
     """Classe des zones dans lesquelles on peut entrer du texte"""
-    def __init__(self, position, size,
-                 font=ut.font(None, cf.INPUT_FONT_SIZE)):
+    def __init__(self, position, size, font=None):
         """position : int * int, position du bouton
         size : int * int, largeur * hauteur du bouton
         font : Font, la fonte"""
         super().__init__(position, size)
+        if font is None:
+            font = ut.font(None, cf.INPUT_FONT_SIZE)
         self.input = ""
         self.selected = False
         self.text_position = (position[0] + 10, position[1] + 10)
@@ -137,13 +138,15 @@ def print_image(image, position):
 
 
 def print_text(text, position_center, color=cf.WHITE,
-               font=ut.font(None, cf.TEXT_FONT_SIZE), bold=False):
+               font=None, bold=False):
     """Affiche une surface de texte centrée sur une position.
     text : string, le texte à afficher
     position_center : int * int, la position du centre du texte
     color : int * int * int, la couleur
     font : ut.font, la fonte
     bold : bool, si la fonte doit être en gras"""
+    if font is None:
+        ut.font(None, cf.TEXT_FONT_SIZE)
     if bold:
         font.set_bold(True)
     size_text = font.size(text)
