@@ -6,6 +6,7 @@ import src.utilities as ut
 import src.menu as mn
 import src.worldgen as wrld
 import src.player as plyr
+import src.lang as lg
 import src.score as scre
 import src.sprites as spt
 
@@ -25,6 +26,13 @@ def main_loop(players, graphical):
             mn.settings_button.print(ut.mouse_pos())
             mn.records_button.print(ut.mouse_pos())
             mn.credits_button.print(ut.mouse_pos())
+
+    elif cf.STATE == State.languages:
+        cf.DISPLAYSURF.blit(ut.load_image
+                            ("assets/img/ui/title.png"), (357, 132))
+        if graphical:
+            for lang in mn.flagbutton:
+                lang.print(ut.mouse_pos())
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
@@ -132,6 +140,12 @@ def event_handling(players, event, graphical):
                     mn.records_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Records"
                 cf.STATE = State.highscore
+
+            elif cf.STATE == State.languages:
+                for i in range(len(mn.flagbutton)):
+                    if mn.flagbutton[i].click(ut.mouse_pos()):
+                        cf.STATE = State.menu
+                        lg.set_lang(lg.AVAILABLE[i])
 
             elif cf.STATE == State.gameover:
                 if mn.return_button.click(ut.mouse_pos()):

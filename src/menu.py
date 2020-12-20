@@ -143,6 +143,23 @@ return_button = ButtonImage((20, 20), (100, 100),
                             "assets/img/ui/return.png",
                             "assets/img/ui/returnpushed.png")
 
+# Buttons for each language
+flagbutton = []
+flagbutton.append(
+    ButtonImage(
+        (418, 369), (180, 120),
+        "assets/img/ui/flag/fr.png",
+        "assets/img/ui/flag/fr_hover.png"
+    )
+)
+flagbutton.append(
+    ButtonImage(
+        (684, 369), (180, 120),
+        "assets/img/ui/flag/en.png",
+        "assets/img/ui/flag/en_hover.png"
+    )
+)
+
 
 def print_image(image, position):
     """Affiche une image à une position donnée.
