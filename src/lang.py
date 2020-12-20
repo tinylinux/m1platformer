@@ -1,12 +1,12 @@
 """Gestion de la langue"""
 
-import os
 import re
 import src.conf as cf
 from src.conf import State
 
 FILE = "lang.txt"
 AVAILABLE = ["fr", "en"]
+
 
 def init_lang():
     """
