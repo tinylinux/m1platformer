@@ -6,6 +6,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import src.utilities as ut  # noqa: E402
 ut.initialize()
 import src.conf as cf  # noqa: E402
+import src.lang as lg  # noqa: E402
 import src.worldgen as wrld  # noqa: E402
 import src.player as plyr  # noqa: E402
 import src.gameloop as gml  # noqa: E402
@@ -24,6 +25,11 @@ def main(graphical):
                              graphical)
 
     FramePerSec = ut.initialize_clock()
+
+    # Initialisation de la langue
+    if not os.path.isfile(lg.FILE):
+        lg.init_lang()
+    lg.get_lang()
 
     # Initialisation du joueur
     players = [plyr.Player() for _ in range(cf.NB_PLAYERS)]
