@@ -39,6 +39,7 @@ class State(Enum):
     menu = 1
     ingame = 2
     gameover = 3
+    gameover_multi = 3.5
     highscore = 4
     setup = 5
 

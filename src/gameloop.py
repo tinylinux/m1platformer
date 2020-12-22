@@ -39,21 +39,34 @@ def main_loop(players, graphical):
 
         # Gestion de la mort
         nb_player_alive = 0
-        for P in players:
+        for i, P in enumerate(players):
             if P.alive:
                 nb_player_alive += 1
+                plyr.WINNER = i+1
         if cf.NB_PLAYERS > 1 >= nb_player_alive:
             # Fin du mode multijoueur
-            cf.STATE = State.gameover
+            cf.STATE = State.gameover_multi
             cf.NEWHS = scre.maj(cf.SECONDS)
         elif nb_player_alive == 0:
             # Fin du mode solo
             cf.STATE = State.gameover
             cf.NEWHS = scre.maj(cf.SECONDS)
 
-    elif cf.STATE == State.gameover:  # Menu de fin
+    elif cf.STATE == State.gameover:  # Menu de fin solo
 
         scre.score_endgame(cf.SECONDS)
+        if cf.NEWHS:  # Nouveau record
+            cf.DISPLAYSURF.blit(ut.load_image
+                                ("assets/img/ui/highscore.png"), (428, 350))
+        cf.DISPLAYSURF.blit(ut.load_image
+                            ("assets/img/ui/gameover.png"), (395, 100))
+        if graphical:
+            mn.restart_button.print(ut.mouse_pos())
+            mn.return_button.print(ut.mouse_pos())
+
+    elif cf.STATE == State.gameover_multi: #Menu de fin multi
+
+        scre.winner_endgame(plyr.WINNER)
         if cf.NEWHS:  # Nouveau record
             cf.DISPLAYSURF.blit(ut.load_image
                                 ("assets/img/ui/highscore.png"), (428, 350))
@@ -130,7 +143,7 @@ def event_handling(players, event, graphical):
                 # Clic de la souris sur le bouton "Records"
                 cf.STATE = State.highscore
 
-            elif cf.STATE == State.gameover:
+            elif cf.STATE == State.gameover or cf.STATE == State.gameover_multi:
                 if mn.return_button.click(ut.mouse_pos()):
                     # Clic de la souris sur le bouton "Retour"
                     players = reset_world(len(players))

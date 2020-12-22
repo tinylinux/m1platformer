@@ -13,6 +13,8 @@ V_0 = 0
 A_0 = 0
 # Touches de saut des joueurs
 JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s]
+# Joueur gagnant
+WINNER = 1
 
 
 def collide(player, pos_next, rect):
