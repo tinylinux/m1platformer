@@ -1,4 +1,4 @@
-"""Gère la génération du monde"""
+"""Gère la génération du monde."""
 
 import os
 import random as rd
@@ -10,18 +10,32 @@ import src.background as bg
 
 # Indexation des modules
 localdir = os.path.dirname(__file__)
+"""Chemin du répertoire local"""
 modules = spt.listdir(os.path.join(localdir, "modules"))
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
+"""Liste des modules"""
 
-MAX_JUMP = 200  # La hateur maximale entre la dernière plateforme d'un module
-# et la première d'un nouveau module (à changer)
+MAX_JUMP = 200
+"""Hauteur maximale entre la dernière plateforme d'un module
+et la première plateforme du suivant"""
+# à changer
 
 
 # Fonctions de création
 def platform_creation(bloc, xoffset, yoffset):
-    """Crée la plateforme décrite dans [bloc]
-    avec un [xoffset] et un [yoffset]"""
+    """
+    Crée une plateforme.
+
+    Parameters
+    ----------
+    bloc : str list
+        Liste des chaînes de caractères définissant la plateforme
+    xoffset : int
+        Décalage en abscisses du module
+    yoffset : int
+        D&calage en ordonnées du module
+    """
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
@@ -34,8 +48,18 @@ def platform_creation(bloc, xoffset, yoffset):
 
 
 def batiment_creation(bloc, xoffset, yoffset):
-    """Crée le bâtiment décrit dans [bloc]
-    avec un [xoffset] et un [yoffset]"""
+    """
+    Crée un bâtiment.
+
+    Parameters
+    ----------
+    bloc : str list
+        Liste des chaînes de caractères définissant le bâtiment
+    xoffset : int
+        Décalage en abscisses du module
+    yoffset : int
+        D&calage en ordonnées du module
+    """
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
@@ -52,7 +76,7 @@ creation_functions = {"Plateforme": platform_creation,
 
 
 def initgen():
-    """Initialise le monde (notemment à l'écran d'accueil)"""
+    """Initialise le monde."""
     # Crée quelques nuages
     for _ in range(4):
         pos = (rd.randint(0, cf.SCREEN_WIDTH),
@@ -76,7 +100,14 @@ def initgen():
 
 
 def genere_module(last_pltfrm):
-    """Choisit et affiche un nouveau module à la fin de l'écran"""
+    """
+    Choisit et affiche un nouveau module à la fin de l'écran.
+
+    Parameters
+    ----------
+    last_pltfrm : Plateform
+        Dernière plateforme du module en cours
+    """
     # Offset dépendant de la vitesse
     module_offset = cf.SPEED * 10
     xoffset = cf.SPEED * 10
@@ -102,14 +133,14 @@ def genere_module(last_pltfrm):
 
 
 def stop_ground():
-    """Stop la création infinie du sol"""
+    """Arrête la création infinie du sol."""
     for bloc in spt.ground:
         if isinstance(bloc, pltfrm.Ground):
             bloc.stop_creation()
 
 
 def update():
-    """Update tous les objets du monde autres que player"""
+    """Met à jour tous les objets du monde autres que Player."""
     cf.DISPLAYSURF.fill(cf.BlueSky)  # Le ciel
     for cloud in spt.clouds:  # Les nuages
         cloud.update()
