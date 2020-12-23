@@ -49,6 +49,7 @@ class Platform(ut.GameObject):
         img : Surface, optionnel
             Apparence de la plateforme
         """
+        self.dim = dim
         img = ut.resize(img, dim)
         super().__init__(pos, 1, img)
         ut.add_to_group(self, spt.ground)

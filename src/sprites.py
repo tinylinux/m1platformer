@@ -36,6 +36,7 @@ et la liste de ces images."""
 img_dict["mono_factor"] = 3
 img_dict["cloud_factor"] = 4
 img_dict["tree_factor"] = 8
+img_dict["item_factor"] = 2
 for nom in Nom:
     img_dict['n_' + nom] = len(listdir(os.path.join(localdir, "..", "assets",
                                        "img", nom)))

@@ -1,6 +1,7 @@
 """Fonctions pour la boucle principale du jeu."""
 
 import src.conf as cf
+from src.conf import State
 import src.utilities as ut
 import src.menu as mn
 import src.worldgen as wrld
@@ -25,7 +26,7 @@ def main_loop(players, graphical):
     Player list
         Liste des joueurs actualisée
     """
-    if cf.STATE == 1:  # On est dans le menu
+    if cf.STATE == State.menu:  # On est dans le menu
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/title.png"), (357, 132))
         for P in players:
@@ -34,7 +35,7 @@ def main_loop(players, graphical):
             mn.start_button.print(ut.mouse_pos())
             mn.records_button.print(ut.mouse_pos())
 
-    elif cf.STATE == 2:  # On est en jeu
+    elif cf.STATE == State.ingame:  # On est en jeu
 
         # Décompte des secondes
         cf.FRAMES += 1
@@ -50,10 +51,10 @@ def main_loop(players, graphical):
         # Gestion de la mort
         for P in players:
             if P.death():
-                cf.STATE = 3
+                cf.STATE = State.gameover
                 cf.NEWHS = scre.maj(cf.SECONDS)
 
-    elif cf.STATE == 3:  # Menu de fin
+    elif cf.STATE == State.gameover:  # Menu de fin
 
         scre.score_endgame(cf.SECONDS)
         if cf.NEWHS:  # Nouveau record
@@ -65,7 +66,7 @@ def main_loop(players, graphical):
             mn.restart_button.print(ut.mouse_pos())
             mn.return_button.print(ut.mouse_pos())
 
-    elif cf.STATE == 4:  # Affichage des meilleurs scores
+    elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
 
         # Récupération des meilleurs scores
         records = scre.get_scores()
@@ -134,40 +135,42 @@ def event_handling(players, event, graphical):
         Renvoie la liste des joueurs mis à jour
     """
     if event.type == ut.INC_SPEED:
-        if cf.STATE == 2:  # Si on est in game
+        if cf.STATE == State.ingame:  # Si on est in game
             cf.SPEED += 0.5
 
     if graphical:
         if event.type == ut.KEYDOWN:
-            if cf.STATE == 2 and event.key == ut.K_SPACE:  # Saut
+            if cf.STATE == State.ingame and event.key == ut.K_SPACE:  # Saut
                 players[0].jump()
 
         if event.type == ut.MOUSEBUTTONDOWN:
 
-            if cf.STATE == 1 and mn.start_button.click(ut.mouse_pos()):
+            if cf.STATE == State.menu and\
+                    mn.start_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Commencer"
-                cf.STATE = 2
+                cf.STATE = State.ingame
                 wrld.stop_ground()  # Arrêt de la création du sol du menu
 
-            elif cf.STATE == 1 and\
+            elif cf.STATE == State.menu and\
                     mn.records_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Records"
-                cf.STATE = 4
+                cf.STATE = State.highscore
 
-            elif cf.STATE == 3:
+            elif cf.STATE == State.gameover:
                 if mn.return_button.click(ut.mouse_pos()):
                     # Clic de la souris sur le bouton "Retour"
                     players = reset_world(len(players))
-                    cf.STATE = 1
+                    cf.STATE = State.menu
                 if mn.restart_button.click(ut.mouse_pos()):
                     # Clic sur recommencer, on réinitialise le monde
                     players = reset_world(len(players))
-                    cf.STATE = 2
+                    cf.STATE = State.ingame
                     wrld.stop_ground()
 
-            elif cf.STATE == 4 and mn.return_button.click(ut.mouse_pos()):
+            elif cf.STATE == State.highscore and\
+                    mn.return_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Records"
-                cf.STATE = 1
+                cf.STATE = State.menu
 
         if event.type == ut.VIDEORESIZE:
             ut.resize_window(event.size)

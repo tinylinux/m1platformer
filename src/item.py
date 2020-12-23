@@ -1,15 +1,10 @@
 """ Gère la génération d'items"""
 
 import random as rd
-
-
 import src.conf as cf
 import src.utilities as ut
 import src.sprites as spt
 
-# Flag : true si y a un item à l'écran
-# ou qu'on est dans un état spécial à cause d'un item
-FLAG_ITEM = False
 
 # proba de faire apparaître nouvel item sur un plateforme
 proba = 2
