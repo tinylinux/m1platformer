@@ -65,6 +65,7 @@ class State(Enum):
 
 
 STATE = State.menu
+"""État du jeu"""
 
 DISPLAYSURF = None
 """Surface sur laquelle le jeu est créé"""

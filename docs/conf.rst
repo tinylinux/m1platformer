@@ -28,7 +28,10 @@ Compteurs pour le score
 
 État du jeu
 ***********
+.. autoclass:: State
+   :show-inheritance:
 .. autodata:: STATE
+   :annotation:
 
 Surfaces de jeu
 ***************
