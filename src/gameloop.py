@@ -64,12 +64,10 @@ def main_loop(players, graphical):
             mn.restart_button.print(ut.mouse_pos())
             mn.return_button.print(ut.mouse_pos())
 
-    elif cf.STATE == State.gameover_multi: #Menu de fin multi
+    elif cf.STATE == State.gameover_multi:  # Menu de fin multi
 
         scre.winner_endgame(plyr.WINNER)
-        if cf.NEWHS:  # Nouveau record
-            cf.DISPLAYSURF.blit(ut.load_image
-                                ("assets/img/ui/highscore.png"), (428, 350))
+
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/gameover.png"), (395, 100))
         if graphical:
@@ -143,7 +141,8 @@ def event_handling(players, event, graphical):
                 # Clic de la souris sur le bouton "Records"
                 cf.STATE = State.highscore
 
-            elif cf.STATE == State.gameover or cf.STATE == State.gameover_multi:
+            elif cf.STATE == State.gameover or\
+                    cf.STATE == State.gameover_multi:
                 if mn.return_button.click(ut.mouse_pos()):
                     # Clic de la souris sur le bouton "Retour"
                     players = reset_world(len(players))
