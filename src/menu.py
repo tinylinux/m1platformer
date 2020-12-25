@@ -49,9 +49,9 @@ class ButtonText(Button):
         self.text = text
         self.text_position = (position[0] + 10, position[1] + 10)
 
-    def print(self, mouse):
+    def print(self, mouse, pushed=False):
         """Affiche le bouton"""
-        if mouse_on_button(mouse, self.position, self.size):
+        if mouse_on_button(mouse, self.position, self.size) or pushed:
             ut.draw_rect(cf.DISPLAYSURF, cf.HOVER, self.rect)
         else:
             ut.draw_rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
@@ -65,9 +65,9 @@ class ButtonImage(Button):
         self.image = image
         self.image_hover = image_hover
 
-    def print(self, mouse):
+    def print(self, mouse, pushed=False):
         """Affiche le bouton"""
-        if mouse_on_button(mouse, self.position, self.size):
+        if mouse_on_button(mouse, self.position, self.size) or pushed:
             cf.DISPLAYSURF.blit(ut.load_image(self.image_hover),
                                 self.position)
         else:
