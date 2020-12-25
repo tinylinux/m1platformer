@@ -133,6 +133,16 @@ def event_handling(players, event, graphical):
             if cf.STATE == State.menu and\
                     mn.oneplayer_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Commencer"
+                players = reset_world(1)
+                cf.NB_PLAYERS = 1
+                cf.STATE = State.ingame
+                wrld.stop_ground()  # Arrêt de la création du sol du menu
+
+            elif cf.STATE == State.menu and\
+                    mn.multiplayer_button.click(ut.mouse_pos()):
+                # Clic de la souris sur le bouton "Commencer"
+                players = reset_world(3)
+                cf.NB_PLAYERS = 3
                 cf.STATE = State.ingame
                 wrld.stop_ground()  # Arrêt de la création du sol du menu
 
