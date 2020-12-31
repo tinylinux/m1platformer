@@ -10,6 +10,7 @@ import src.worldgen as wrld
 import src.player as plyr
 import src.score as scre
 import src.sprites as spt
+import src.replay as rpl
 
 
 def main_loop(players, graphical):
@@ -158,6 +159,8 @@ def event_handling(players, event, graphical):
     if graphical:
         if event.type == ut.KEYDOWN:
             if cf.STATE == State.ingame and event.key == ut.K_SPACE:  # Saut
+                if len(players) == 1:  # Aujout du saut au replay
+                    rpl.add_jump(cf.FRAMES)
                 players[0].jump()
 
         if event.type == ut.MOUSEBUTTONDOWN:
@@ -166,6 +169,7 @@ def event_handling(players, event, graphical):
                     mn.start_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Commencer"
                 cf.STATE = State.ingame
+                rpl.init_replay()
                 wrld.stop_ground()  # Arrêt de la création du sol du menu
 
             elif cf.STATE == State.menu and\
@@ -182,6 +186,7 @@ def event_handling(players, event, graphical):
                     # Clic sur recommencer, on réinitialise le monde
                     players = reset_world(len(players))
                     cf.STATE = State.ingame
+                    rpl.init_replay()
                     wrld.stop_ground()
 
             elif cf.STATE == State.highscore and\
