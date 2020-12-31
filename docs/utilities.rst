@@ -2,7 +2,7 @@ Utilities
 =========
 
 .. automodule:: utilities
-   :members: keyname, initialize, load_image,
+   :members: keyname, load_image,
             initialize_window, resize_window,
             initialize_clock, get_events,
             group_sprite_define,

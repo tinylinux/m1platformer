@@ -26,7 +26,7 @@ localdir = os.path.dirname(__file__)
 """Chemin du répertoire local"""
 
 # IMAGES
-Nom = ["mono", "cloud", "tree"]
+Nom = ["mono", "cloud", "tree", "item"]
 """Liste des noms des différents éléments de décor"""
 img_dict = {}
 """Dictionnaire associant, pour chaque élément de `Nom` :

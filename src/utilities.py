@@ -6,6 +6,8 @@ import sys
 import pygame
 import src.conf as cf
 
+pygame.init()
+
 Vec = pygame.math.Vector2
 
 # Crée un nouvel event, le +1 sert à avoir un nouvel ID
@@ -40,11 +42,6 @@ def keyname(key):
         Nom de la touche
     """
     return pygame.key.name(key)
-
-
-def initialize():
-    """Initialise l'environnement Pygame."""
-    pygame.init()
 
 
 def load_image(path):
