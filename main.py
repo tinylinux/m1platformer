@@ -12,14 +12,19 @@ import src.gameloop as gml  # noqa: E402
 # pylint: enable=wrong-import-position
 
 
-def main(graphical):
+def initialization(graphical):
     """
-    Fonction principale du jeu.
+    Initialisation des variables et des surfaces.
 
     Parameters
     ----------
     graphical : bool
         Indique si le jeu doit être lancé en mode graphique ou non
+
+    Returns
+    -------
+    Clock * Player list
+        Une horloge pour le contrôle de la vitesse, et la liste des joueurs
     """
     # Initialisation de la fenêtre
     cf.DISPLAYSURF, cf.WINDOWSURF = \
@@ -41,6 +46,20 @@ def main(graphical):
 
     # Initialisation du monde
     wrld.initgen()
+
+    return(FramePerSec, players)
+
+
+def main(graphical):
+    """
+    Fonction principale du jeu.
+
+    Parameters
+    ----------
+    graphical : bool
+        Indique si le jeu doit être lancé en mode graphique ou non
+    """
+    FramePerSec, players = initialization(graphical)
 
     while True:  # Boucle du jeu
 
