@@ -41,8 +41,7 @@ def main_loop(players, graphical):
 
         # Décompte des secondes
         cf.FRAMES += 1
-        if cf.FRAMES == cf.FPS:
-            cf.FRAMES = 0
+        if cf.FRAMES % cf.FPS == 0:
             cf.SECONDS += 1
         scre.score(cf.SECONDS)
 
