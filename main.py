@@ -4,7 +4,6 @@ import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 # pylint: disable=wrong-import-position
 import src.utilities as ut  # noqa: E402
-ut.initialize()
 import src.conf as cf  # noqa: E402
 import src.worldgen as wrld  # noqa: E402
 import src.player as plyr  # noqa: E402
