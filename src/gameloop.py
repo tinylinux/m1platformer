@@ -1,5 +1,7 @@
 """Fonctions pour la boucle principale du jeu."""
 
+import time
+import random as rd
 import src.conf as cf
 from src.conf import State
 import src.utilities as ut
@@ -92,6 +94,21 @@ def main_loop(players, graphical):
     return players
 
 
+def set_seed(seed=None):
+    """
+    Initialise la graine pour le module random.
+
+    Parameters
+    ----------
+    seed : int, optionnel
+        Valeur imposée
+    """
+    if seed is None:
+        seed = int(time.time())
+    cf.SEED = seed
+    rd.seed(seed)
+
+
 def reset_world(nb_players=1):
     """
     Réinitialise le monde.
@@ -112,6 +129,7 @@ def reset_world(nb_players=1):
     spt.ground = ut.group_sprite_define()
     spt.clouds = ut.group_sprite_define()
     spt.trees = ut.group_sprite_define()
+    set_seed()
     wrld.initgen()
     return [plyr.Player() for _ in range(nb_players)]
 

@@ -2,7 +2,7 @@ Conf
 ====
 
 .. automodule:: conf
-   :members: SCREEN_WIDTH, SCREEN_HEIGHT, FPS
+   :members: SCREEN_WIDTH, SCREEN_HEIGHT, FPS, SEED
    :noindex:
 
 Tailles des fontes

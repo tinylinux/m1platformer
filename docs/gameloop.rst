@@ -9,5 +9,6 @@ Boucle principale
 
 Fonctions auxiliaires
 *********************
+.. autofunction:: set_seed
 .. autofunction:: event_handling
 .. autofunction:: reset_world

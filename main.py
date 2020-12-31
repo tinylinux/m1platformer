@@ -36,6 +36,9 @@ def initialization(graphical):
 
     FramePerSec = ut.initialize_clock()
 
+    # Initialisation de la graine
+    gml.set_seed()
+
     # Initialisation du joueur
     players = [plyr.Player()]
 

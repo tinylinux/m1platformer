@@ -11,6 +11,9 @@ SCREEN_HEIGHT = 720
 FPS = 60
 """Objectif d'images par seconde"""
 
+SEED = 0
+"""Pour le générateur de nombres aléatoires"""
+
 HIGHTSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores"""
 SCORE_FONT_SIZE = 25
