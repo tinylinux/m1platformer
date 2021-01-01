@@ -104,9 +104,9 @@ def genere_module(last_pltfrm):
         if (not cf.FLAG_ITEM) and rd.randint(1, it.PROBA) == 1:
             item = it.item(plt)
             # Si s'est superposé sur une plateforme, on le vire (pour l'instant ça marche pas)
-            if ut.collidegroup(item, spt.ground):
-                item.kill()
-                cf.FLAG_ITEM = False
+            # if ut.collidegroup(item, spt.ground):
+            #     item.kill()
+            #     cf.FLAG_ITEM = False
                 
     module_file.close()
 

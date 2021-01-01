@@ -81,11 +81,13 @@ def main_loop(players, graphical):
 
 def reset_world(nb_players=1):
     """ Réinitialise le monde """
+    # remet le monocycle à la taille normale
     ut.resize_list(spt.d['mono_img'], cf.SIZE['normal'])
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
     cf.FLAG_ITEM = False
+    #efface les items, plateformes et le background
     spt.ground = ut.group_sprite_define()
     spt.clouds = ut.group_sprite_define()
     spt.trees = ut.group_sprite_define()

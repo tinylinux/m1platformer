@@ -11,7 +11,7 @@ import src.sprites as spt
 
 # proba de faire apparaître nouvel item sur une plateforme
 # (par ex: 1 chance sur 10)
-PROBA = 1 #10
+PROBA = 10
 
 ITEMS = ["fast", "slow", "little", "big"]
 
@@ -20,7 +20,7 @@ class item(ut.GameObject):
     def __init__(self, plt):
         """Crée un item sur une plateforme
             plt : plateforme sur laquelle apparait l'item"""
-        cf.FLAG_ITEM = False #True
+        cf.FLAG_ITEM = True
         i = rd.randint(0, spt.d["n_item"]-1)
         self.type = ITEMS[i]
         img = spt.d["item_img"][i]

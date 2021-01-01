@@ -21,6 +21,7 @@ FLAG_JUMP_2 = False
 
 # Drapeau qui dit si y a un item à l'écran
 # ou qu'on est dans un état spécial à cause d'un item
+# mettre à True si on veut pas d'items
 FLAG_ITEM = False
 
 # Dico avec la durée des effets des items (en nbre de frames)
