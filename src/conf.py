@@ -60,6 +60,7 @@ class State(Enum):
     menu = 1
     ingame = 2
     gameover = 3
+    gameover_multi = 3.5
     highscore = 4
     setup = 5
 
@@ -67,10 +68,23 @@ class State(Enum):
 STATE = State.menu
 """État du jeu"""
 
+LANG = "NONE"
+"""Langue du jeu"""
+
 DISPLAYSURF = None
 """Surface sur laquelle le jeu est créé"""
 WINDOWSURF = None
 """Surface sur laquelle le jeu sera affiché"""
+
+# Nombre maximal de joueurs
+NB_PLAYERS_MAX = 3
+# Nombre de joueurs
+NB_PLAYERS = 3
+
+# Vitesse initiale lors d'un saut
+V_JMP = 15
+# Accélération due à la gravité
+G = 0.8
 
 # Flag : true si y a un item à l'écran
 # ou qu'on est dans un état spécial à cause d'un item

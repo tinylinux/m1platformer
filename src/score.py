@@ -86,6 +86,14 @@ def score_endgame(pts):
                   ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
 
 
+def winner_endgame(player_number):
+    """
+    Affiche le gagnant à la fin de la partie
+    """
+    mn.print_text("Victoire de " + str(player_number), (640, 300), cf.GREY,
+                  ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
+
+
 def get_scores():
     """
     Récupère le score sauvegardé dans le scoreboard.

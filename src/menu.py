@@ -100,7 +100,7 @@ class ButtonText(Button):
         self.text = text
         self.text_position = (position[0] + 10, position[1] + 10)
 
-    def print(self, mouse):
+    def print(self, mouse, pushed=False):
         """
         Affiche le bouton.
 
@@ -108,8 +108,10 @@ class ButtonText(Button):
         ----------
         mouse : int * int
             Position de la souris
+        pushed : bool, optionnel
+            Bouton enfoncé
         """
-        if mouse_on_button(mouse, self.position, self.size):
+        if mouse_on_button(mouse, self.position, self.size) or pushed:
             ut.draw_rect(cf.DISPLAYSURF, cf.HOVER, self.rect)
         else:
             ut.draw_rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
@@ -147,7 +149,7 @@ class ButtonImage(Button):
         self.image = image
         self.image_hover = image_hover
 
-    def print(self, mouse):
+    def print(self, mouse, pushed=False):
         """
         Affiche le bouton.
 
@@ -155,8 +157,10 @@ class ButtonImage(Button):
         ----------
         mouse : int * int
             Position du pointeur de la souris
+        pushed : bool, optionnel
+            Bouton enfoncé
         """
-        if mouse_on_button(mouse, self.position, self.size):
+        if mouse_on_button(mouse, self.position, self.size) or pushed:
             cf.DISPLAYSURF.blit(ut.load_image(self.image_hover),
                                 self.position)
         else:
@@ -233,24 +237,66 @@ class InputZone(Button):
                 self.input = self.input[:-1]
 
 
-start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
-                           "assets/img/ui/beginpushed.png")
-"""Bouton pour lancer le jeu"""
+# start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
+#                            "assets/img/ui/beginpushed.png")
+oneplayer_button = ButtonImage(
+        (358, 323), (100, 100),
+        "assets/img/ui/oneplayer.png",
+        "assets/img/ui/oneplayerpushed.png"
+    )
 
-records_button = ButtonImage((440, 463), (401, 123),
-                             "assets/img/ui/records.png",
-                             "assets/img/ui/recordspushed.png")
-"""Boutons pour afficher les records"""
+multiplayer_button = ButtonImage(
+        (591, 323), (100, 100),
+        "assets/img/ui/multiplayer.png",
+        "assets/img/ui/multiplayerpushed.png"
+    )
 
-restart_button = ButtonImage((440, 500), (401, 123),
-                             "assets/img/ui/playagain.png",
-                             "assets/img/ui/playagainpushed.png")
-"""Bouton pour relancer le jeu"""
+settings_button = ButtonImage(
+        (824, 323), (100, 100),
+        "assets/img/ui/settings.png",
+        "assets/img/ui/settingspushed.png"
+    )
 
-return_button = ButtonImage((20, 20), (123, 123),
-                            "assets/img/ui/return.png",
-                            "assets/img/ui/returnpushed.png")
-"""Bouton pour revenir au menu principal"""
+records_button = ButtonImage(
+        (358, 460), (250, 75),
+        "assets/img/ui/top5.png",
+        "assets/img/ui/top5pushed.png"
+    )
+
+credits_button = ButtonImage(
+        (674, 460), (250, 75),
+        "assets/img/ui/credits.png",
+        "assets/img/ui/creditspushed.png"
+    )
+
+restart_button = ButtonImage(
+        (440, 500), (401, 123),
+        "assets/img/ui/playagain.png",
+        "assets/img/ui/playagainpushed.png"
+    )
+
+return_button = ButtonImage(
+        (20, 20), (100, 100),
+        "assets/img/ui/return.png",
+        "assets/img/ui/returnpushed.png"
+    )
+
+# Buttons for each language
+flagbutton = []
+flagbutton.append(
+    ButtonImage(
+        (418, 369), (180, 120),
+        "assets/img/ui/flag/fr.png",
+        "assets/img/ui/flag/fr_hover.png"
+    )
+)
+flagbutton.append(
+    ButtonImage(
+        (684, 369), (180, 120),
+        "assets/img/ui/flag/en.png",
+        "assets/img/ui/flag/en_hover.png"
+    )
+)
 
 
 def print_image(image, position):
