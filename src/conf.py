@@ -65,6 +65,7 @@ class State(Enum):
     gameover = 3
     highscore = 4
     setup = 5
+    replay = 6
 
 
 STATE = State.menu

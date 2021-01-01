@@ -9,6 +9,9 @@ import src.conf as cf
 import src.background as bg
 import src.item as it
 
+rd_map = rd.Random(0)
+
+
 # Indexation des modules
 localdir = os.path.dirname(__file__)
 """Chemin du répertoire local"""
@@ -20,7 +23,9 @@ modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 MAX_JUMP = 200
 """Hauteur maximale entre la dernière plateforme d'un module
 et la première plateforme du suivant"""
-# à changer
+
+FLAG_CREATION = False
+"""Drapeau indiquant si la création des modules a débuté"""
 
 
 # Fonctions de création
@@ -80,14 +85,14 @@ def initgen():
     """Initialise le monde."""
     # Crée quelques nuages
     for _ in range(4):
-        pos = (rd.randint(0, cf.SCREEN_WIDTH),
-               rd.randint(0, cf.SCREEN_HEIGHT // 2))
-        i = rd.randint(0, spt.img_dict["n_cloud"] - 1)
+        pos = (bg.rd_back.randint(0, cf.SCREEN_WIDTH),
+               bg.rd_back.randint(0, cf.SCREEN_HEIGHT // 2))
+        i = bg.rd_back.randint(0, spt.img_dict["n_cloud"] - 1)
         bg.Cloud(pos, i)
     # Crée quelques arbres
     for _ in range(4):
-        pos_x = rd.randint(0, cf.SCREEN_WIDTH)
-        i = rd.randint(0, spt.img_dict["n_tree"] - 1)
+        pos_x = bg.rd_back.randint(0, cf.SCREEN_WIDTH)
+        i = bg.rd_back.randint(0, spt.img_dict["n_tree"] - 1)
         bg.Tree(pos_x, i)
 
     # Lance la création du sol
@@ -109,6 +114,10 @@ def genere_module(last_pltfrm):
     last_pltfrm : Plateform
         Dernière plateforme du module en cours
     """
+    global FLAG_CREATION
+    # Mise à jour du drapeau si nécessaire
+    FLAG_CREATION = True
+
     # Offset dépendant de la vitesse
     module_offset = cf.SPEED * 10
     xoffset = cf.SPEED * 10
@@ -118,7 +127,7 @@ def genere_module(last_pltfrm):
     modules_possibles = [mod for mod in modules
                          if last_pltfrm.rect.top - mod[0] < MAX_JUMP]
     # Choix aléatoire d'un module
-    module = rd.choice(modules_possibles)
+    module = rd_map.choice(modules_possibles)
     # Chargement du module
     module_name = '_'.join([str(module[0]), str(module[1]), module[2]])
     module_file = open("./src/modules/" + module_name, "r")
@@ -131,7 +140,7 @@ def genere_module(last_pltfrm):
         # xoffset += pltfrm_offset
         plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
         # avec une chance sur 5 on fait apparaître un nouvel item
-        if rd.randint(1, it.proba) == 1 and (not cf.FLAG_ITEM):
+        if rd_map.randint(1, it.proba) == 1 and (not cf.FLAG_ITEM):
             it.item(plt)
     module_file.close()
 

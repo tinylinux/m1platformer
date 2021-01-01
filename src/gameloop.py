@@ -1,7 +1,6 @@
 """Fonctions pour la boucle principale du jeu."""
 
 import time
-import random as rd
 import src.conf as cf
 from src.conf import State
 import src.utilities as ut
@@ -38,13 +37,18 @@ def main_loop(players, graphical):
             mn.start_button.print(ut.mouse_pos())
             mn.records_button.print(ut.mouse_pos())
 
-    elif cf.STATE == State.ingame:  # On est en jeu
+    elif cf.STATE == State.ingame or cf.STATE == State.replay:
+        # On est en jeu ou en replay
+
+        if cf.STATE == State.replay and cf.FRAMES in rpl.JUMPS:
+            players[0].jump()  # Saut dans le replay
 
         # Décompte des secondes
-        cf.FRAMES += 1
-        if cf.FRAMES % cf.FPS == 0:
-            cf.SECONDS += 1
-        scre.score(cf.SECONDS)
+        if wrld.FLAG_CREATION:
+            cf.FRAMES += 1
+            if cf.FRAMES % cf.FPS == 0:
+                cf.SECONDS += 1
+            scre.score(cf.SECONDS)
 
         # Déplacement des joueurs
         for P in players:
@@ -53,10 +57,14 @@ def main_loop(players, graphical):
         # Gestion de la mort
         for P in players:
             if P.death():
+                if cf.STATE == State.ingame:
+                    cf.NEWHS = scre.maj(cf.SECONDS)
                 cf.STATE = State.gameover
-                cf.NEWHS = scre.maj(cf.SECONDS)
 
     elif cf.STATE == State.gameover:  # Menu de fin
+
+        # Mise à jour du drapeau de création des modules
+        wrld.FLAG_CREATION = False
 
         scre.score_endgame(cf.SECONDS)
         if cf.NEWHS:  # Nouveau record
@@ -67,6 +75,7 @@ def main_loop(players, graphical):
         if graphical:
             mn.restart_button.print(ut.mouse_pos())
             mn.return_button.print(ut.mouse_pos())
+            mn.replay_button.print(ut.mouse_pos())
 
     elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
 
@@ -106,10 +115,10 @@ def set_seed(seed=None):
     if seed is None:
         seed = int(time.time())
     cf.SEED = seed
-    rd.seed(seed)
+    wrld.rd_map.seed(seed)
 
 
-def reset_world(nb_players=1):
+def reset_world(nb_players=1, seed=None):
     """
     Réinitialise le monde.
 
@@ -117,6 +126,8 @@ def reset_world(nb_players=1):
     ----------
     nb_player : int, optionnel
         Nombre de joueurs dans le jeu (1 par défaut)
+    seed : int, optionnel
+        Graine pour le générateur de nombres aléatoires
 
     Returns
     -------
@@ -129,12 +140,12 @@ def reset_world(nb_players=1):
     spt.ground = ut.group_sprite_define()
     spt.clouds = ut.group_sprite_define()
     spt.trees = ut.group_sprite_define()
-    set_seed()
+    set_seed(seed)
     wrld.initgen()
     return [plyr.Player() for _ in range(nb_players)]
 
 
-def event_handling(players, event, graphical):
+def event_handling(players, event):
     """
     Permet de gérer les événements.
 
@@ -144,8 +155,6 @@ def event_handling(players, event, graphical):
         Liste des joueurs
     event : Event
         L'événement à traiter
-    graphical : bool
-        Indique si le jeu est en mode graphique ou non
 
     Returns
     -------
@@ -153,49 +162,59 @@ def event_handling(players, event, graphical):
         Renvoie la liste des joueurs mis à jour
     """
     if event.type == ut.INC_SPEED:
-        if cf.STATE == State.ingame:  # Si on est in game
+        if (cf.STATE == State.ingame or cf.STATE == State.replay)\
+                and wrld.FLAG_CREATION:
+            # Si on est dans le jeu ou en replay
             cf.SPEED += 0.5
 
-    if graphical:
-        if event.type == ut.KEYDOWN:
-            if cf.STATE == State.ingame and event.key == ut.K_SPACE:  # Saut
-                if len(players) == 1:  # Aujout du saut au replay
-                    rpl.add_jump(cf.FRAMES)
-                players[0].jump()
+    if event.type == ut.KEYDOWN:
+        if cf.STATE == State.ingame and event.key == ut.K_SPACE:  # Saut
+            if len(players) == 1 and wrld.FLAG_CREATION:
+                # Aujout du saut au replay
+                rpl.add_jump(cf.FRAMES)
+            players[0].jump()
 
-        if event.type == ut.MOUSEBUTTONDOWN:
+        elif cf.STATE == State.replay:  # Interruption du replay
+            cf.STATE = State.gameover
 
-            if cf.STATE == State.menu and\
-                    mn.start_button.click(ut.mouse_pos()):
-                # Clic de la souris sur le bouton "Commencer"
+    if event.type == ut.MOUSEBUTTONDOWN:
+
+        if cf.STATE == State.menu and\
+                mn.start_button.click(ut.mouse_pos()):
+            # Clic de la souris sur le bouton "Commencer"
+            cf.STATE = State.ingame
+            set_seed()
+            rpl.init_replay()
+            wrld.stop_ground()  # Arrêt de la création du sol du menu
+
+        elif cf.STATE == State.menu and\
+                mn.records_button.click(ut.mouse_pos()):
+            # Clic de la souris sur le bouton "Records"
+            cf.STATE = State.highscore
+
+        elif cf.STATE == State.gameover:
+            if mn.return_button.click(ut.mouse_pos()):
+                # Clic de la souris sur le bouton "Retour"
+                players = reset_world(len(players))
+                cf.STATE = State.menu
+            if mn.restart_button.click(ut.mouse_pos()):
+                # Clic sur recommencer, on réinitialise le monde
+                players = reset_world(len(players))
                 cf.STATE = State.ingame
                 rpl.init_replay()
-                wrld.stop_ground()  # Arrêt de la création du sol du menu
+                wrld.stop_ground()
+            if mn.replay_button.click(ut.mouse_pos()):
+                players = reset_world(1, rpl.start_replay())
+                cf.STATE = State.replay
+                wrld.stop_ground()
 
-            elif cf.STATE == State.menu and\
-                    mn.records_button.click(ut.mouse_pos()):
-                # Clic de la souris sur le bouton "Records"
-                cf.STATE = State.highscore
+        elif cf.STATE == State.highscore and\
+                mn.return_button.click(ut.mouse_pos()):
+            # Clic de la souris sur le bouton "Records"
+            cf.STATE = State.menu
 
-            elif cf.STATE == State.gameover:
-                if mn.return_button.click(ut.mouse_pos()):
-                    # Clic de la souris sur le bouton "Retour"
-                    players = reset_world(len(players))
-                    cf.STATE = State.menu
-                if mn.restart_button.click(ut.mouse_pos()):
-                    # Clic sur recommencer, on réinitialise le monde
-                    players = reset_world(len(players))
-                    cf.STATE = State.ingame
-                    rpl.init_replay()
-                    wrld.stop_ground()
-
-            elif cf.STATE == State.highscore and\
-                    mn.return_button.click(ut.mouse_pos()):
-                # Clic de la souris sur le bouton "Records"
-                cf.STATE = State.menu
-
-        if event.type == ut.VIDEORESIZE:
-            ut.resize_window(event.size)
+    if event.type == ut.VIDEORESIZE:
+        ut.resize_window(event.size)
 
     if event.type == ut.QUIT:
         ut.quit_game()

@@ -35,9 +35,6 @@ def initialization(graphical):
 
     FramePerSec = ut.initialize_clock()
 
-    # Initialisation de la graine
-    gml.set_seed()
-
     # Initialisation du joueur
     players = [plyr.Player()]
 
@@ -61,7 +58,7 @@ def main(graphical):
     while True:  # Boucle du jeu
 
         for event in ut.get_events():  # Gestion des événements
-            players = gml.event_handling(players, event, graphical)
+            players = gml.event_handling(players, event)
 
         wrld.update()  # Mise à jour de l'environnement
 

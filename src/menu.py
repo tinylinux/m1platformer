@@ -113,7 +113,10 @@ class ButtonText(Button):
             ut.draw_rect(cf.DISPLAYSURF, cf.HOVER, self.rect)
         else:
             ut.draw_rect(cf.DISPLAYSURF, cf.IDLE, self.rect)
-        cf.DISPLAYSURF.blit(self.text, self.text_position)
+        cf.DISPLAYSURF.blit(ut.font(None, 48).render(self.text,
+                                                     True,
+                                                     cf.BLACK),
+                            self.text_position)
 
 
 class ButtonImage(Button):
@@ -251,6 +254,8 @@ return_button = ButtonImage((20, 20), (123, 123),
                             "assets/img/ui/return.png",
                             "assets/img/ui/returnpushed.png")
 """Bouton pour revenir au menu principal"""
+
+replay_button = ButtonText((10, 10), (401, 123), "Replay")
 
 
 def print_image(image, position):

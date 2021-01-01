@@ -1,8 +1,10 @@
 """Gestion de l'arrière-plan."""
-import random
+import random as rd
 import src.utilities as ut
 import src.conf as cf
 import src.sprites as spt
+
+rd_back = rd.Random(rd.randint(0, 100000))
 
 
 class Cloud(ut.GameObject):
@@ -19,7 +21,7 @@ class Cloud(ut.GameObject):
         i : int
             Type de nuage
         """
-        scroll = 0.2*random.random() + 0.1
+        scroll = 0.2*rd_back.random() + 0.1
         img = spt.img_dict["cloud_img"][i]
         super().__init__(position, scroll, img)
         ut.add_to_group(self, spt.clouds)
@@ -28,9 +30,9 @@ class Cloud(ut.GameObject):
         """Mise à jour du nuage."""
         super().update()
         if self.rect.right < cf.SCREEN_WIDTH*0.8 and self.FLAG_creation:
-            i = random.randint(0, spt.img_dict["n_cloud"] - 1)
-            pos = (random.randint(cf.SCREEN_WIDTH, int(cf.SCREEN_WIDTH*2)),
-                   random.randint(0, cf.SCREEN_HEIGHT // 2))
+            i = rd_back.randint(0, spt.img_dict["n_cloud"] - 1)
+            pos = (rd_back.randint(cf.SCREEN_WIDTH, int(cf.SCREEN_WIDTH*2)),
+                   rd_back.randint(0, cf.SCREEN_HEIGHT // 2))
             Cloud(pos, i)
             self.FLAG_creation = False  # On en met un nouveau juste après
 
@@ -59,7 +61,7 @@ class Tree(ut.GameObject):
         """Mise à jour de l'arbre."""
         super().update()
         if self.rect.right < cf.SCREEN_WIDTH*0.8 and self.FLAG_creation:
-            i = random.randint(0, spt.img_dict["n_tree"]-1)
-            pos_x = random.randint(cf.SCREEN_WIDTH, int(cf.SCREEN_WIDTH*2))
+            i = rd_back.randint(0, spt.img_dict["n_tree"]-1)
+            pos_x = rd_back.randint(cf.SCREEN_WIDTH, int(cf.SCREEN_WIDTH*2))
             Tree(pos_x, i)
             self.FLAG_creation = False  # On en met un nouveau juste après
