@@ -6,6 +6,7 @@ import src.utilities as ut
 import src.menu as mn
 import src.worldgen as wrld
 import src.player as plyr
+import src.lang as lg
 import src.score as scre
 import src.sprites as spt
 
@@ -20,8 +21,18 @@ def main_loop(players, graphical):
         for P in players:
             P.move()
         if graphical:
-            mn.start_button.print(ut.mouse_pos())
+            mn.oneplayer_button.print(ut.mouse_pos())
+            mn.multiplayer_button.print(ut.mouse_pos())
+            mn.settings_button.print(ut.mouse_pos())
             mn.records_button.print(ut.mouse_pos())
+            mn.credits_button.print(ut.mouse_pos())
+
+    elif cf.STATE == State.languages:
+        cf.DISPLAYSURF.blit(ut.load_image
+                            ("assets/img/ui/title.png"), (357, 132))
+        if graphical:
+            for lang in mn.flagbutton:
+                lang.print(ut.mouse_pos())
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
@@ -131,8 +142,18 @@ def event_handling(players, event, graphical):
         if event.type == ut.MOUSEBUTTONDOWN:
 
             if cf.STATE == State.menu and\
-                    mn.start_button.click(ut.mouse_pos()):
+                    mn.oneplayer_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Commencer"
+                players = reset_world(1)
+                cf.NB_PLAYERS = 1
+                cf.STATE = State.ingame
+                wrld.stop_ground()  # Arrêt de la création du sol du menu
+
+            elif cf.STATE == State.menu and\
+                    mn.multiplayer_button.click(ut.mouse_pos()):
+                # Clic de la souris sur le bouton "Commencer"
+                players = reset_world(3)
+                cf.NB_PLAYERS = 3
                 cf.STATE = State.ingame
                 wrld.stop_ground()  # Arrêt de la création du sol du menu
 
@@ -140,6 +161,12 @@ def event_handling(players, event, graphical):
                     mn.records_button.click(ut.mouse_pos()):
                 # Clic de la souris sur le bouton "Records"
                 cf.STATE = State.highscore
+
+            elif cf.STATE == State.languages:
+                for i in range(len(mn.flagbutton)):
+                    if mn.flagbutton[i].click(ut.mouse_pos()):
+                        cf.STATE = State.menu
+                        lg.set_lang(lg.AVAILABLE[i])
 
             elif cf.STATE == State.gameover or\
                     cf.STATE == State.gameover_multi:

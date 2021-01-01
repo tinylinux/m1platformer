@@ -45,6 +45,7 @@ class State(Enum):
 
 
 STATE = State.menu
+LANG = "NONE"
 
 # La fenêtre principale
 DISPLAYSURF = None
