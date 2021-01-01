@@ -23,14 +23,15 @@ JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s]
 WINNER = 1
 """Joueur gagnant"""
 
-def collide(pos_prev, pos_next, rect):
+
+def collide(player, pos_next, rect):
     """
     Gestion des collisions.
 
     Parameters
     ----------
-    pos_prev : Vector2
-        position précédente du joueur
+    player : Player
+        joueur dont on examine la collision
     pos_next : Vector2
         position suivante du joueur
     rect : Rect
