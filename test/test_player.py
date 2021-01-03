@@ -2,13 +2,12 @@
 
 from hypothesis import given
 from hypothesis.strategies import integers
+import main as mn
 import src.sprites as spt
 import src.conf as cf
-from main import initialization
-from src.utilities import Vec
-from src.player import collide, Player
-from src.utilities import create_rect
-from src.gameloop import main_loop
+import src.utilities as ut
+import src.player as plyr
+import src.gameloop as gml
 
 
 # Test des collisions
@@ -27,15 +26,15 @@ def test_collisions(pos_prev_x, pos_prev_y,
                     pos_plat_x, pos_plat_y,
                     width_plat, height_plat):
     """Test pour la fonction de vérification des collisions."""
-    player = Player()
-    player.pos = Vec((pos_prev_x, pos_prev_y))
-    dummy_next = create_rect([pos_next_x, pos_next_y,
-                              spt.p_WIDTH, spt.p_HEIGHT])
-    plat = create_rect([pos_plat_x, pos_plat_y,
-                        width_plat, height_plat])
-    (vert, hor, new_pos) = collide(player,
-                                   Vec((pos_next_x, pos_next_y)),
-                                   plat)
+    player = plyr.Player()
+    player.pos = ut.Vec((pos_prev_x, pos_prev_y))
+    dummy_next = ut.create_rect([pos_next_x, pos_next_y,
+                                spt.p_WIDTH, spt.p_HEIGHT])
+    plat = ut.create_rect([pos_plat_x, pos_plat_y,
+                          width_plat, height_plat])
+    (vert, hor, new_pos) = plyr.collide(player,
+                                        ut.Vec((pos_next_x, pos_next_y)),
+                                        plat)
     assert (vert or hor) == dummy_next.colliderect(plat)
     if new_pos is not None:
         dummy_next.topleft = new_pos
@@ -46,9 +45,9 @@ def test_collisions(pos_prev_x, pos_prev_y,
 # Test du saut du joueur
 
 def test_jump():
-    """Test pour la fonction de saut de la classe Player."""
+    """Test pour la méthode de saut de la classe Player."""
     cf.NB_PLAYERS = 1
-    _, player = initialization(False)
+    _, player = mn.initialization(False)
     player = player[0]
     cf.STATE = cf.State.ingame
     # Lancement du saut
@@ -56,7 +55,27 @@ def test_jump():
     assert player.vel.y == -cf.V_JMP
     # Quelques tours de boucle
     for _ in range(10):
-        main_loop([player], False)
+        gml.main_loop([player], False)
     # Vitesse finale, avec précision prise en compte
     assert player.vel.y <= -cf.V_JMP + 10 * cf.G + 0.001\
         and player.vel.y >= -cf.V_JMP + 10 * cf.G - 0.001
+    gml.reset_world(False)
+
+
+# Test du mouvement du joueur
+
+@given(integers(min_value=0, max_value=100),
+       integers(min_value=0, max_value=100))
+def test_move(velx, vely):
+    """Test pour la méthode move de la classe Player."""
+    spt.ground = ut.group_sprite_define()
+    player = plyr.Player()
+    xinit, yinit = player.pos.x, player.pos.y
+    player.vel = ut.Vec(velx, vely)
+    player.move()
+    vely += player.acc.y
+    assert player.pos.x <= xinit + velx + 0.5 * player.acc.x + 0.001\
+        and player.pos.x >= xinit + velx + 0.5 * player.acc.x - 0.001
+    assert player.pos.y <= yinit + vely + 0.5 * player.acc.y + 0.001\
+        and player.pos.y >= yinit + vely + 0.5 * player.acc.y - 0.001
+    gml.reset_world(False)
