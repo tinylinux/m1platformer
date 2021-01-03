@@ -59,6 +59,9 @@ def test_jump():
     # Vitesse finale, avec précision prise en compte
     assert player.vel.y <= -cf.V_JMP + 10 * cf.G + 0.001\
         and player.vel.y >= -cf.V_JMP + 10 * cf.G - 0.001
+    # Vérification de la possibilité d'un double saut
+    player.jump()
+    assert player.vel.y == -cf.V_JMP
     gml.reset_world(False)
 
 
