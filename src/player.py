@@ -168,4 +168,6 @@ class Player(ut.Sprite):
             True si le joueur sort suffisamment de l'écran.
         """
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
-               or self.pos.x + spt.p_WIDTH < 0)
+               or self.pos.y + spt.p_HEIGHT < 0
+               or self.pos.x + spt.p_WIDTH < 0
+               or self.pos.x > cf.SCREEN_WIDTH)
