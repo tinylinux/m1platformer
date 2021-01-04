@@ -123,6 +123,27 @@ def initialize_clock():
     return pygame.time.Clock()
 
 
+def make_event(event_type, attr=None):
+    """
+    Renvoie un événement du type passé en entrée.
+
+    Parameters
+    ----------
+    event_type : int
+        Le type de l'événement
+    attr : dict, optionnel
+        Le dictionnaire des attributs
+
+    Returns
+    -------
+    Event
+        L'événement correspondant
+    """
+    if attr is None:
+        attr = {}
+    return pygame.event.Event(event_type, attr)
+
+
 def get_events():
     """
     Renvoie la liste des évènements.
