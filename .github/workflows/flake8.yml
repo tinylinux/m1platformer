@@ -20,4 +20,4 @@ jobs:
         pip install flake8 flake8-docstrings
     - name: Analysing the code with flake8
       run: |
-        flake8 --ignore D401 `find $PWD|grep .py$|xargs`
+        flake8 --ignore D401,W503 `find $PWD|grep .py$|xargs`

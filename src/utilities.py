@@ -104,8 +104,8 @@ def resize_window(screen_size):
     screen_size : int * int
         Taille de la fenêtre, au ratio quelconque
     """
-    ratio = min(screen_size[0]/cf.SCREEN_WIDTH,
-                screen_size[1]/cf.SCREEN_HEIGHT)
+    ratio = min(screen_size[0] / cf.SCREEN_WIDTH,
+                screen_size[1] / cf.SCREEN_HEIGHT)
     new_screen_size = (ceil(ratio * cf.SCREEN_WIDTH),
                        ceil(ratio * cf.SCREEN_HEIGHT))
     cf.WINDOWSURF = pygame.display.set_mode(new_screen_size,

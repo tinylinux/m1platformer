@@ -5,7 +5,7 @@ import src.sprites as spt
 import src.utilities as ut
 
 # Position initiale
-X_INIT = cf.SCREEN_WIDTH//2
+X_INIT = cf.SCREEN_WIDTH // 2
 """Abscisse initiale"""
 Y_INIT = spt.GROUND_HEIGHT - spt.p_HEIGHT
 """Ordonnée initiale"""

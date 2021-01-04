@@ -63,7 +63,7 @@ def main_loop(players, mouse=None):
         for i, P in enumerate(players):
             if P.alive:
                 nb_player_alive += 1
-                plyr.WINNER = i+1
+                plyr.WINNER = i + 1
         if cf.NB_PLAYERS > 1 >= nb_player_alive:
             # Fin du mode multijoueur
             cf.STATE = State.gameover_multi
@@ -107,7 +107,7 @@ def main_loop(players, mouse=None):
         else:
             for best_score in range(number_scores):
                 position_score = 10 * font_size - (size_height // 2)\
-                                + best_score * 2 * font_size + font_size // 2
+                    + best_score * 2 * font_size + font_size // 2
                 text_display = records[best_score][1] + " : "
                 text_display += str(records[best_score][0])
                 mn.print_text(text_display,

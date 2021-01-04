@@ -31,8 +31,8 @@ def scaled_mouse_pos(mouse):
     window_dimensions = ut.get_screen_size()
 
     # Calcul du facteur d'échelle
-    scale_factor_x = cf.SCREEN_WIDTH/window_dimensions[0]
-    scale_factor_y = cf.SCREEN_HEIGHT/window_dimensions[1]
+    scale_factor_x = cf.SCREEN_WIDTH / window_dimensions[0]
+    scale_factor_y = cf.SCREEN_HEIGHT / window_dimensions[1]
 
     return mouse[0] * scale_factor_x, mouse[1] * scale_factor_y
 
@@ -262,77 +262,77 @@ Oneplayer_size = (100, 100)
 Oneplayer_idle = os.path.join(cf.UI, 'oneplayer.png')
 Oneplayer_hover = os.path.join(cf.UI, 'oneplayerpushed.png')
 oneplayer_button = ButtonImage(
-        Oneplayer_pos,
-        Oneplayer_size,
-        Oneplayer_idle,
-        Oneplayer_hover
-    )
+    Oneplayer_pos,
+    Oneplayer_size,
+    Oneplayer_idle,
+    Oneplayer_hover
+)
 
 Multiplayer_pos = (591, 323)
 Multiplayer_size = (100, 100)
 Multiplayer_idle = os.path.join(cf.UI, 'multiplayer.png')
 Multiplayer_hover = os.path.join(cf.UI, 'multiplayerpushed.png')
 multiplayer_button = ButtonImage(
-        Multiplayer_pos,
-        Multiplayer_size,
-        Multiplayer_idle,
-        Multiplayer_hover
-    )
+    Multiplayer_pos,
+    Multiplayer_size,
+    Multiplayer_idle,
+    Multiplayer_hover
+)
 
 Settings_pos = (824, 323)
 Settings_size = (100, 100)
 Settings_idle = os.path.join(cf.UI, 'settings.png')
 Settings_hover = os.path.join(cf.UI, 'settingspushed.png')
 settings_button = ButtonImage(
-        Settings_pos,
-        Settings_size,
-        Settings_idle,
-        Settings_hover
-    )
+    Settings_pos,
+    Settings_size,
+    Settings_idle,
+    Settings_hover
+)
 
 Records_pos = (358, 460)
 Records_size = (250, 75)
 Records_idle = os.path.join(cf.UI, 'top5.png')
 Records_hover = os.path.join(cf.UI, 'top5pushed.png')
 records_button = ButtonImage(
-        Records_pos,
-        Records_size,
-        Records_idle,
-        Records_hover
-    )
+    Records_pos,
+    Records_size,
+    Records_idle,
+    Records_hover
+)
 
 Credits_pos = (674, 460)
 Credits_size = (250, 75)
 Credits_idle = os.path.join(cf.UI, 'credits.png')
 Credits_hover = os.path.join(cf.UI, 'creditspushed.png')
 credits_button = ButtonImage(
-        Credits_pos,
-        Credits_size,
-        Credits_idle,
-        Credits_hover
-    )
+    Credits_pos,
+    Credits_size,
+    Credits_idle,
+    Credits_hover
+)
 
 Restart_pos = (440, 500)
 Restart_size = (401, 123)
 Restart_idle = os.path.join(cf.UI, 'playagain.png')
 Restart_hover = os.path.join(cf.UI, 'playagainpushed.png')
 restart_button = ButtonImage(
-        Restart_pos,
-        Restart_size,
-        Restart_idle,
-        Restart_hover
-    )
+    Restart_pos,
+    Restart_size,
+    Restart_idle,
+    Restart_hover
+)
 
 Return_pos = (20, 20)
 Return_size = (100, 100)
 Return_idle = os.path.join(cf.UI, 'return.png')
 Return_hover = os.path.join(cf.UI, 'returnpushed.png')
 return_button = ButtonImage(
-        Return_pos,
-        Return_size,
-        Return_idle,
-        Return_hover
-    )
+    Return_pos,
+    Return_size,
+    Return_idle,
+    Return_hover
+)
 
 # Buttons for each language
 Flag_size = (180, 120)
@@ -396,7 +396,7 @@ def print_text(text, position_center, color=cf.WHITE,
     if bold:
         font.set_bold(True)
     size_text = font.size(text)
-    position = (int(position_center[0] - size_text[0]/2),
-                int(position_center[1] - size_text[1]/2))
+    position = (int(position_center[0] - size_text[0] / 2),
+                int(position_center[1] - size_text[1] / 2))
     txtgen = font.render(text, True, color)
     cf.DISPLAYSURF.blit(txtgen, position)

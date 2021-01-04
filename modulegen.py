@@ -1,4 +1,4 @@
-﻿"""Module de l'application de création de modules de terrain"""
+﻿"""Module de l'application de création de modules de terrain."""
 
 import tkinter as tk
 
@@ -15,18 +15,17 @@ SCALE_FACTOR_X = 20
 
 
 def minmax(fst, snd):
-    """Renvoie le min et le max des arguments"""
+    """Renvoie le min et le max des arguments."""
     return min(fst, snd), max(fst, snd)
 
 
 class ModuleGenerator:
-    """Application de création de modules de terrain"""
+    """Application de création de modules de terrain."""
 
     # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-        """Constructeur de l'application"""
-
+        """Constructeur de l'application."""
         # Création de la fenêtre de sélection du nombre de colonnes du futur
         # canevas de travail
         self.fenetre_nb_col = tk.Tk()
@@ -63,23 +62,23 @@ class ModuleGenerator:
         self.valider_button.pack(side=tk.RIGHT)
 
     def add_col(self):
-        """Augmente le nombre de colonnes de 1 si possible"""
+        """Augmente le nombre de colonnes de 1 si possible."""
         if self.nb_colonnes < NB_COLONNES_MAX:
             self.nb_colonnes += 1
             self.affiche_nb_colonnes.set(str(self.nb_colonnes))
 
     def rmv_col(self):
-        """Diminue le nombre de colonnes de 1 si possible"""
+        """Diminue le nombre de colonnes de 1 si possible."""
         if self.nb_colonnes > NB_COLONNES_MIN:
             self.nb_colonnes -= 1
             self.affiche_nb_colonnes.set(str(self.nb_colonnes))
 
     def launch(self):
-        """Lance l'application"""
+        """Lance l'application."""
         self.fenetre_nb_col.mainloop()
 
     def valid_nb_col(self):
-        """Passe à la fenêtre de création des obstacles"""
+        """Passe à la fenêtre de création des obstacles."""
         self.fenetre_nb_col.destroy()
 
         # Création de la fenêtre principale de travail
@@ -151,11 +150,11 @@ class ModuleGenerator:
         self.fenetre_principale.mainloop()
 
     def liste_obstacles(self):
-        """Affiche la liste des obstacles présents"""
+        """Affiche la liste des obstacles présents."""
         print(self.obstacles)
 
     def cancel_selection(self, mouse):
-        """Annule la sélection du premier clique"""
+        """Annule la sélection du premier clique."""
         self.canvas.itemconfigure(
             self.carreaux[self.clic_coords[0]][self.clic_coords[1]],
             fill="white")
@@ -171,7 +170,7 @@ class ModuleGenerator:
                 self.obstacle_suppression[obstacle[0]](obstacle)
 
     def clic_left_canvas(self, mouse):
-        """Action de clic gauche sur une case du canvas"""
+        """Action de clic gauche sur une case du canvas."""
         if self.obstacle_current.get() != "Effacer":
             # Récupération des coordonnées de la souris dans la grille
             # du canevas
@@ -197,7 +196,7 @@ class ModuleGenerator:
             self.cancel_selection(mouse)
 
     def plateforme_creation(self):
-        """Création d'une plateforme aux coordonnées self.clic_coords"""
+        """Création d'une plateforme aux coordonnées self.clic_coords."""
         i_0, i_1 = minmax(self.clic_coords[0], self.clic_coords[2])
         j_0, j_1 = minmax(self.clic_coords[1], self.clic_coords[3])
         isfree = True
@@ -206,8 +205,8 @@ class ModuleGenerator:
                 if self.occupation_carreaux[i][j] != -1:
                     isfree = False
         if isfree:
-            print("une plateforme est créée de ("+str(i_0)+","+str(j_0)+")\
-                  à ("+str(i_1)+","+str(j_1)+")")
+            print("une plateforme est créée de (" + str(i_0) + "," + str(j_0) + ")\
+                  à (" + str(i_1) + "," + str(j_1) + ")")
             rect = self.canvas.create_rectangle(
                 j_0 * self.taille_carreaux, i_0 * self.taille_carreaux,
                 (j_1 + 1) * self.taille_carreaux,
@@ -222,7 +221,7 @@ class ModuleGenerator:
             print("Collision: Impossible de créer la plateforme")
 
     def batiment_creation(self):
-        """Création d'un batiment aux coordonnées self.clic_coords"""
+        """Création d'un batiment aux coordonnées self.clic_coords."""
         i_0 = self.clic_coords[0]
         j_0, j_1 = minmax(self.clic_coords[1], self.clic_coords[3])
         isfree = True
@@ -231,8 +230,8 @@ class ModuleGenerator:
                 if self.occupation_carreaux[i][j] != -1:
                     isfree = False
         if isfree:
-            print("un batiment est créé de "+str(j_0)+" à "+str(j_1)
-                  + " à la hauteur "+str(i_0))
+            print("un batiment est créé de " + str(j_0) + " à " + str(j_1)
+                  + " à la hauteur " + str(i_0))
             rect = self.canvas.create_rectangle(
                 j_0 * self.taille_carreaux,
                 i_0 * self.taille_carreaux,
@@ -246,7 +245,7 @@ class ModuleGenerator:
             print("Collision: Impossible de créer le batiment")
 
     def plateforme_suppression(self, obstacle):
-        """Suppression de la plateforme [obstacle]"""
+        """Suppression de la plateforme [obstacle]."""
         i_0, j_0 = obstacle[1]
         i_1, j_1 = obstacle[2]
         for i in range(i_0, i_1):
@@ -254,7 +253,7 @@ class ModuleGenerator:
                 self.occupation_carreaux[i][j] = -1
 
     def batiment_suppression(self, obstacle):
-        """Suppression du bâtiment [obstacle]"""
+        """Suppression du bâtiment [obstacle]."""
         i_0, j_0 = obstacle[1]
         j_1 = obstacle[2][1]
         for i in range(i_0, self.nb_lignes):
@@ -262,7 +261,7 @@ class ModuleGenerator:
                 self.occupation_carreaux[i][j] = -1
 
     def enregistrement(self):
-        """Enregistre le module du canvas vers un fichier .mdl"""
+        """Enregistre le module du canvas vers un fichier .mdl."""
         liste0 = list(self.obstacles.values())
         liste0 = sorted(liste0, key=lambda obstacle: obstacle[1][1])
         xmin = liste0[0][1][1]
@@ -277,10 +276,10 @@ class ModuleGenerator:
                     (obstacle[1][2][1], obstacle[1][1][0]))[1][1][0]
         string = "\n".join([";".join([str(a) for a in li]) for li in liste0])
         print("Enregistrement de " + "src/modules/" + str(yfirst)
-              + "_" + str(ylast) + "_" + self.nom_module.get()+".mdl")
+              + "_" + str(ylast) + "_" + self.nom_module.get() + ".mdl")
         file = open("src/modules/" + str(yfirst) + "_" + str(ylast)
-                    + "_" + self.nom_module.get()+".mdl", "w")
-        file.write(str(self.nb_lignes * SCALE_FACTOR_Y)+"\n")
+                    + "_" + self.nom_module.get() + ".mdl", "w")
+        file.write(str(self.nb_lignes * SCALE_FACTOR_Y) + "\n")
         file.write(string + "\n")
         file.close()
 

@@ -1,4 +1,4 @@
-"""Gestion de la langue"""
+"""Gestion de la langue."""
 
 import re
 import src.conf as cf
@@ -9,17 +9,14 @@ AVAILABLE = ["fr", "en"]
 
 
 def init_lang():
-    """
-    Initialiser le fichier lang.txt
-    """
+    """Initialiser le fichier lang.txt."""
     with open(FILE, "w") as empty_lang:
         empty_lang.write(cf.LANG)
 
 
 def onlyalphanum(value):
     """
-    Fonction qui permet de filtrer uniquement les caractères
-    alphanumériques (pour la langue)
+    Fonction ne conservant que les caractères alphanumériques.
 
     Entrée :
     --------
@@ -35,9 +32,7 @@ def onlyalphanum(value):
 
 
 def get_lang():
-    """
-    Récupérer la langue choisie par l'utilisateur
-    """
+    """Récupérer la langue choisie par l'utilisateur."""
     with open(FILE) as lg:
         lang = lg.readlines()
         if len(lang) > 0 and onlyalphanum(lang[0]) in AVAILABLE:
@@ -49,7 +44,7 @@ def get_lang():
 
 def set_lang(lang):
     """
-    Changer la langue du jeu
+    Changer la langue du jeu.
 
     Entrée :
     --------
