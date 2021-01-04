@@ -1,4 +1,5 @@
 """Stocke des variables partagées entre les différents fichiers."""
+import os
 from enum import Enum
 
 # Screen configurations
@@ -10,6 +11,12 @@ SCREEN_HEIGHT = 720
 
 FPS = 60
 """Objectif d'images par seconde"""
+
+ASSETS = os.path.join(os.path.dirname(__file__), '..', 'assets')
+"""Chemin vers le dossier assets"""
+
+UI = os.path.join(ASSETS, 'img', 'ui')
+"""Chemin vers le dossier des images de l'interface"""
 
 HIGHTSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores"""

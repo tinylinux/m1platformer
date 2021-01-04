@@ -1,5 +1,6 @@
 """Gestion des menus."""
 
+import os
 import src.conf as cf
 import src.utilities as ut
 
@@ -255,62 +256,106 @@ class InputZone(Button):
 
 # start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
 #                            "assets/img/ui/beginpushed.png")
+
+Oneplayer_pos = (358, 323)
+Oneplayer_size = (100, 100)
+Oneplayer_idle = os.path.join(cf.UI, 'oneplayer.png')
+Oneplayer_hover = os.path.join(cf.UI, 'oneplayerpushed.png')
 oneplayer_button = ButtonImage(
-        (358, 323), (100, 100),
-        "assets/img/ui/oneplayer.png",
-        "assets/img/ui/oneplayerpushed.png"
+        Oneplayer_pos,
+        Oneplayer_size,
+        Oneplayer_idle,
+        Oneplayer_hover
     )
 
+Multiplayer_pos = (591, 323)
+Multiplayer_size = (100, 100)
+Multiplayer_idle = os.path.join(cf.UI, 'multiplayer.png')
+Multiplayer_hover = os.path.join(cf.UI, 'multiplayerpushed.png')
 multiplayer_button = ButtonImage(
-        (591, 323), (100, 100),
-        "assets/img/ui/multiplayer.png",
-        "assets/img/ui/multiplayerpushed.png"
+        Multiplayer_pos,
+        Multiplayer_size,
+        Multiplayer_idle,
+        Multiplayer_hover
     )
 
+Settings_pos = (824, 323)
+Settings_size = (100, 100)
+Settings_idle = os.path.join(cf.UI, 'settings.png')
+Settings_hover = os.path.join(cf.UI, 'settingspushed.png')
 settings_button = ButtonImage(
-        (824, 323), (100, 100),
-        "assets/img/ui/settings.png",
-        "assets/img/ui/settingspushed.png"
+        Settings_pos,
+        Settings_size,
+        Settings_idle,
+        Settings_hover
     )
 
+Records_pos = (358, 460)
+Records_size = (250, 75)
+Records_idle = os.path.join(cf.UI, 'top5.png')
+Records_hover = os.path.join(cf.UI, 'top5pushed.png')
 records_button = ButtonImage(
-        (358, 460), (250, 75),
-        "assets/img/ui/top5.png",
-        "assets/img/ui/top5pushed.png"
+        Records_pos,
+        Records_size,
+        Records_idle,
+        Records_hover
     )
 
+Credits_pos = (674, 460)
+Credits_size = (250, 75)
+Credits_idle = os.path.join(cf.UI, 'credits.png')
+Credits_hover = os.path.join(cf.UI, 'creditspushed.png')
 credits_button = ButtonImage(
-        (674, 460), (250, 75),
-        "assets/img/ui/credits.png",
-        "assets/img/ui/creditspushed.png"
+        Credits_pos,
+        Credits_size,
+        Credits_idle,
+        Credits_hover
     )
 
+Restart_pos = (440, 500)
+Restart_size = (401, 123)
+Restart_idle = os.path.join(cf.UI, 'playagain.png')
+Restart_hover = os.path.join(cf.UI, 'playagainpushed.png')
 restart_button = ButtonImage(
-        (440, 500), (401, 123),
-        "assets/img/ui/playagain.png",
-        "assets/img/ui/playagainpushed.png"
+        Restart_pos,
+        Restart_size,
+        Restart_idle,
+        Restart_hover
     )
 
+Return_pos = (20, 20)
+Return_size = (100, 100)
+Return_idle = os.path.join(cf.UI, 'return.png')
+Return_hover = os.path.join(cf.UI, 'returnpushed.png')
 return_button = ButtonImage(
-        (20, 20), (100, 100),
-        "assets/img/ui/return.png",
-        "assets/img/ui/returnpushed.png"
+        Return_pos,
+        Return_size,
+        Return_idle,
+        Return_hover
     )
 
 # Buttons for each language
+Flag_size = (180, 120)
+Flag_pos_en = (684, 369)
+Flag_pos_fr = (418, 369)
+Flag_idle_en = os.path.join(cf.UI, 'flag', 'en.png')
+Flag_idle_fr = os.path.join(cf.UI, 'flag', 'fr.png')
+Flag_hover_en = os.path.join(cf.UI, 'flag', 'en_hover.png')
+Flag_hover_fr = os.path.join(cf.UI, 'flag', 'fr_hover.png')
+
 flagbutton = []
 flagbutton.append(
     ButtonImage(
-        (418, 369), (180, 120),
-        "assets/img/ui/flag/fr.png",
-        "assets/img/ui/flag/fr_hover.png"
+        Flag_pos_fr, Flag_size,
+        Flag_idle_fr,
+        Flag_hover_fr
     )
 )
 flagbutton.append(
     ButtonImage(
-        (684, 369), (180, 120),
-        "assets/img/ui/flag/en.png",
-        "assets/img/ui/flag/en_hover.png"
+        Flag_pos_en, Flag_size,
+        Flag_idle_en,
+        Flag_hover_en
     )
 )
 
