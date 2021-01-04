@@ -336,26 +336,25 @@ return_button = ButtonImage(
 
 # Buttons for each language
 Flag_size = (180, 120)
-Flag_pos_en = (684, 369)
-Flag_pos_fr = (418, 369)
-Flag_idle_en = os.path.join(cf.UI, 'flag', 'en.png')
-Flag_idle_fr = os.path.join(cf.UI, 'flag', 'fr.png')
-Flag_hover_en = os.path.join(cf.UI, 'flag', 'en_hover.png')
-Flag_hover_fr = os.path.join(cf.UI, 'flag', 'fr_hover.png')
+Flag_pos = [(418, 369), (684, 369)]
+Flag_idle = [os.path.join(cf.UI, 'flag', 'fr.png'),
+             os.path.join(cf.UI, 'flag', 'en.png')]
+Flag_hover = [os.path.join(cf.UI, 'flag', 'fr_hover.png'),
+              os.path.join(cf.UI, 'flag', 'en_hover.png')]
 
 flagbutton = []
 flagbutton.append(
     ButtonImage(
-        Flag_pos_fr, Flag_size,
-        Flag_idle_fr,
-        Flag_hover_fr
+        Flag_pos[0], Flag_size,
+        Flag_idle[0],
+        Flag_hover[0]
     )
 )
 flagbutton.append(
     ButtonImage(
-        Flag_pos_en, Flag_size,
-        Flag_idle_en,
-        Flag_hover_en
+        Flag_pos[1], Flag_size,
+        Flag_idle[1],
+        Flag_hover[1]
     )
 )
 

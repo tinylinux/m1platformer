@@ -25,7 +25,7 @@ def main_loop(players, mouse=None):
     Player list
         Liste des joueurs actualisée
     """
-    if mouse is None:
+    if mouse is None:  # pragma: no cover
         mouse = mn.scaled_mouse_pos(ut.mouse_pos())
 
     if cf.STATE == State.menu:  # On est dans le menu
@@ -154,7 +154,7 @@ def event_handling(players, event, mouse=None):
     Player list
         Renvoie la liste des joueurs mis à jour
     """
-    if mouse is None:
+    if mouse is None:  # pragma: no cover
         mouse = mn.scaled_mouse_pos(ut.mouse_pos())
 
     if event.type == ut.INC_SPEED:
