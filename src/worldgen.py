@@ -24,7 +24,7 @@ et la première plateforme du suivant"""
 
 
 # Fonctions de création
-def platform_creation(bloc, xoffset, yoffset):
+def platform_creation(bloc, xoffset, yoffset, plat_type):
     """
     Crée une plateforme.
 
@@ -35,45 +35,24 @@ def platform_creation(bloc, xoffset, yoffset):
     xoffset : int
         Décalage en abscisses du module
     yoffset : int
-        D&calage en ordonnées du module
+        Décalage en ordonnées du module
+    plat_type : str
+        Type de plateforme à afficher
     """
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
-    bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
+    width = int(bot_right[1]) - top_left_x
+    if plat_type == 'Plateforme':
+        height = int(bot_right[0]) - top_left_y
+        sprite = spt.PLTFRM_IMG
+    else:
+        height = cf.SCREEN_HEIGHT
+        sprite = spt.BAT_IMG
     return pltfrm.Platform((top_left_x + xoffset,
                             top_left_y + yoffset),
-                           (bot_right_x - top_left_x,
-                            bot_right_y - top_left_y),
-                           spt.PLTFRM_IMG)
-
-
-def batiment_creation(bloc, xoffset, yoffset):
-    """
-    Crée un bâtiment.
-
-    Parameters
-    ----------
-    bloc : str list
-        Liste des chaînes de caractères définissant le bâtiment
-    xoffset : int
-        Décalage en abscisses du module
-    yoffset : int
-        D&calage en ordonnées du module
-    """
-    top_left = bloc[1][1:-1].split(',')
-    top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
-    bot_right = bloc[2][1:-2].split(',')
-    bot_right_x = int(bot_right[1])
-    return pltfrm.Platform((top_left_x + xoffset,
-                            top_left_y + yoffset),
-                           (bot_right_x - top_left_x,
-                            cf.SCREEN_HEIGHT),
-                           spt.BAT_IMG)
-
-
-creation_functions = {"Plateforme": platform_creation,
-                      "Batiment": batiment_creation}
+                           (width, height),
+                           sprite)
 
 
 def initgen():
@@ -129,7 +108,7 @@ def genere_module(last_pltfrm):
         bloc = line.split(';')
         bloc_type = bloc[0]
         # xoffset += pltfrm_offset
-        plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
+        plt = platform_creation(bloc, xoffset, yoffset, bloc_type)
         # avec une chance sur 5 on fait apparaître un nouvel item
         if rd.randint(1, it.proba) == 1 and (not cf.FLAG_ITEM):
             it.item(plt)
