@@ -54,8 +54,7 @@ def onlyalphanum(value):
 
 def init_best_score():
     """Initialise le fichier `score.txt`."""
-    with open(FILE, "w") as empty_board:
-        empty_board.write("")
+    open(FILE, "w").close()
 
 
 def score(pts):
@@ -117,9 +116,9 @@ def get_scores():
                     score_name = onlyalphanum(scores[0][duo])
                     element = (score_value, score_name)
                     ordered_list.append(element)
-            ordered_list = list(reversed(sorted(ordered_list)))
+            ordered_list = list(sorted(ordered_list, key=lambda x: -x[0]))
             return ordered_list
-        except ValueError:
+        except (ValueError, IndexError):
             board.close()
             init_best_score()
             return []
@@ -192,6 +191,5 @@ def maj(pts):
     return False
 
 
-if not os.path.isfile(FILE):
-    print('fichier non trouvé')
+if not os.path.isfile(FILE):  # pragma: no cover
     init_best_score()
