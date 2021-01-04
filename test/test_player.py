@@ -62,7 +62,7 @@ def test_jump():
     # Vérification de la possibilité d'un double saut
     player.jump()
     assert player.vel.y == -cf.V_JMP
-    gml.reset_world(False)
+    gml.reset_world()
 
 
 # Test du mouvement du joueur
@@ -81,4 +81,4 @@ def test_move(velx, vely):
         and player.pos.x >= xinit + velx + 0.5 * player.acc.x - 0.001
     assert player.pos.y <= yinit + vely + 0.5 * player.acc.y + 0.001\
         and player.pos.y >= yinit + vely + 0.5 * player.acc.y - 0.001
-    gml.reset_world(False)
+    gml.reset_world()

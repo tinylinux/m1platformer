@@ -85,13 +85,14 @@ def initialize_window(icon, title, width, height, graphical):
     Surface * Surface
         Un couple (surface de jeu, surface à afficher)
     """
+    game = pygame.Surface((width, height))
     if graphical:
         pygame.display.set_icon(load_image(icon))
         pygame.display.set_caption(title)
-        return (pygame.Surface((width, height)),
+        return (game,
                 pygame.display.set_mode((width, height),
                                         flags=pygame.RESIZABLE))
-    return (pygame.Surface((width, height)), None)
+    return (game, None)
 
 
 def resize_window(screen_size):

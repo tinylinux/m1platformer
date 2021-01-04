@@ -11,7 +11,7 @@ import src.score as scre
 import src.sprites as spt
 
 
-def main_loop(players, graphical):
+def main_loop(players, mouse=None):
     """
     Applique les mises à jour nécessaires au jeu.
 
@@ -19,39 +19,37 @@ def main_loop(players, graphical):
     ----------
     players : Player list
         Liste des joueurs
-    graphical : bool
-        Indique si le jeu est en mode graphique ou non
 
     Returns
     -------
     Player list
         Liste des joueurs actualisée
     """
+    if mouse is None:
+        mouse = mn.scaled_mouse_pos(ut.mouse_pos())
+
     if cf.STATE == State.menu:  # On est dans le menu
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/title.png"), (357, 132))
         for P in players:
             P.move()
-        if graphical:
-            mn.oneplayer_button.print(ut.mouse_pos())
-            mn.multiplayer_button.print(ut.mouse_pos())
-            mn.settings_button.print(ut.mouse_pos())
-            mn.records_button.print(ut.mouse_pos())
-            mn.credits_button.print(ut.mouse_pos())
+        mn.oneplayer_button.print(mouse)
+        mn.multiplayer_button.print(mouse)
+        mn.settings_button.print(mouse)
+        mn.records_button.print(mouse)
+        mn.credits_button.print(mouse)
 
     elif cf.STATE == State.languages:
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/title.png"), (357, 132))
-        if graphical:
-            for lang in mn.flagbutton:
-                lang.print(ut.mouse_pos())
+        for lang in mn.flagbutton:
+            lang.print(mouse)
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
         # Décompte des secondes
         cf.FRAMES += 1
-        if cf.FRAMES == cf.FPS:
-            cf.FRAMES = 0
+        if cf.FRAMES % cf.FPS == 0:
             cf.SECONDS += 1
         scre.score(cf.SECONDS)
 
@@ -83,9 +81,8 @@ def main_loop(players, graphical):
                                 ("assets/img/ui/highscore.png"), (428, 350))
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/gameover.png"), (395, 100))
-        if graphical:
-            mn.restart_button.print(ut.mouse_pos())
-            mn.return_button.print(ut.mouse_pos())
+        mn.restart_button.print(mouse)
+        mn.return_button.print(mouse)
 
     elif cf.STATE == State.gameover_multi:  # Menu de fin multi
 
@@ -93,9 +90,8 @@ def main_loop(players, graphical):
 
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/gameover.png"), (395, 100))
-        if graphical:
-            mn.restart_button.print(ut.mouse_pos())
-            mn.return_button.print(ut.mouse_pos())
+        mn.restart_button.print(mouse)
+        mn.return_button.print(mouse)
 
     elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
 
@@ -118,24 +114,19 @@ def main_loop(players, graphical):
                               (640, position_score), cf.GREY,
                               ut.font(mn.FONT_PIXEL, font_size),
                               True)
-        mn.return_button.print(ut.mouse_pos())
+        mn.return_button.print(mouse)
 
     return players
 
 
-def reset_world(nb_players=1):
+def reset_world():
     """
     Réinitialise le monde.
-
-    Parameters
-    ----------
-    nb_player : int, optionnel
-        Nombre de joueurs dans le jeu (1 par défaut)
 
     Returns
     -------
     Player list
-        Une liste de joueurs réinitialisés de longueur nb_players
+        Une liste de joueurs réinitialisés de longueur NB_PLAYERS
     """
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
@@ -144,10 +135,10 @@ def reset_world(nb_players=1):
     spt.clouds = ut.group_sprite_define()
     spt.trees = ut.group_sprite_define()
     wrld.initgen()
-    return [plyr.Player() for _ in range(nb_players)]
+    return [plyr.Player() for _ in range(cf.NB_PLAYERS)]
 
 
-def event_handling(players, event, graphical):
+def event_handling(players, event, mouse=None):
     """
     Permet de gérer les événements.
 
@@ -157,75 +148,75 @@ def event_handling(players, event, graphical):
         Liste des joueurs
     event : Event
         L'événement à traiter
-    graphical : bool
-        Indique si le jeu est en mode graphique ou non
 
     Returns
     -------
     Player list
         Renvoie la liste des joueurs mis à jour
     """
+    if mouse is None:
+        mouse = mn.scaled_mouse_pos(ut.mouse_pos())
+
     if event.type == ut.INC_SPEED:
         if cf.STATE == State.ingame:  # Si on est in game
             cf.SPEED += 0.5
 
-    if graphical:
-        if event.type == ut.KEYDOWN:
-            if cf.STATE == State.ingame:
-                for i, P in enumerate(players):
-                    if event.key == plyr.JUMP_KEYS[i]:  # Saut
-                        P.jump()
+    if event.type == ut.KEYDOWN:
+        if cf.STATE == State.ingame:
+            for i, P in enumerate(players):
+                if event.key == plyr.JUMP_KEYS[i]:  # Saut
+                    P.jump()
 
-        if event.type == ut.MOUSEBUTTONDOWN:
+    if event.type == ut.MOUSEBUTTONDOWN:
 
-            if cf.STATE == State.menu and\
-                    mn.oneplayer_button.click(ut.mouse_pos()):
-                # Clic de la souris sur le bouton "Commencer"
-                players = reset_world(1)
-                cf.NB_PLAYERS = 1
-                cf.STATE = State.ingame
-                wrld.stop_ground()  # Arrêt de la création du sol du menu
+        if cf.STATE == State.menu and\
+                mn.oneplayer_button.click(mouse):
+            # Clic de la souris sur le bouton "Commencer"
+            cf.NB_PLAYERS = 1
+            players = reset_world()
+            cf.STATE = State.ingame
+            wrld.stop_ground()  # Arrêt de la création du sol du menu
 
-            elif cf.STATE == State.menu and\
-                    mn.multiplayer_button.click(ut.mouse_pos()):
-                # Clic de la souris sur le bouton "Commencer"
-                players = reset_world(3)
-                cf.NB_PLAYERS = 3
-                cf.STATE = State.ingame
-                wrld.stop_ground()  # Arrêt de la création du sol du menu
+        elif cf.STATE == State.menu and\
+                mn.multiplayer_button.click(mouse):
+            # Clic de la souris sur le bouton "Commencer"
+            cf.NB_PLAYERS = 3
+            players = reset_world()
+            cf.STATE = State.ingame
+            wrld.stop_ground()  # Arrêt de la création du sol du menu
 
-            elif cf.STATE == State.menu and\
-                    mn.records_button.click(ut.mouse_pos()):
-                # Clic de la souris sur le bouton "Records"
-                cf.STATE = State.highscore
+        elif cf.STATE == State.menu and\
+                mn.records_button.click(mouse):
+            # Clic de la souris sur le bouton "Records"
+            cf.STATE = State.highscore
 
-            elif cf.STATE == State.languages:
-                for i in range(len(mn.flagbutton)):
-                    if mn.flagbutton[i].click(ut.mouse_pos()):
-                        cf.STATE = State.menu
-                        lg.set_lang(lg.AVAILABLE[i])
-
-            elif cf.STATE == State.gameover or\
-                    cf.STATE == State.gameover_multi:
-                if mn.return_button.click(ut.mouse_pos()):
-                    # Clic de la souris sur le bouton "Retour"
-                    players = reset_world(len(players))
+        elif cf.STATE == State.languages:
+            for i in range(len(mn.flagbutton)):
+                if mn.flagbutton[i].click(mouse):
                     cf.STATE = State.menu
-                if mn.restart_button.click(ut.mouse_pos()):
-                    # Clic sur recommencer, on réinitialise le monde
-                    players = reset_world(len(players))
-                    cf.STATE = State.ingame
-                    wrld.stop_ground()
+                    lg.set_lang(lg.AVAILABLE[i])
 
-            elif cf.STATE == State.highscore and\
-                    mn.return_button.click(ut.mouse_pos()):
-                # Clic de la souris sur le bouton "Records"
+        elif cf.STATE == State.gameover or\
+                cf.STATE == State.gameover_multi:
+            if mn.return_button.click(mouse):
+                # Clic de la souris sur le bouton "Retour"
+                players = reset_world()
                 cf.STATE = State.menu
+            if mn.restart_button.click(mouse):
+                # Clic sur recommencer, on réinitialise le monde
+                players = reset_world()
+                cf.STATE = State.ingame
+                wrld.stop_ground()
 
-        if event.type == ut.VIDEORESIZE:
-            ut.resize_window(event.size)
+        elif cf.STATE == State.highscore and\
+                mn.return_button.click(mouse):
+            # Clic de la souris sur le bouton "Records"
+            cf.STATE = State.menu
 
-    if event.type == ut.QUIT:
+    if event.type == ut.VIDEORESIZE:  # pragma: no cover
+        ut.resize_window(event.size)
+
+    if event.type == ut.QUIT:  # pragma: no cover
         ut.quit_game()
 
     return players

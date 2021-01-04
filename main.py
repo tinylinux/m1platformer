@@ -50,7 +50,7 @@ def initialization(graphical):
     return(FramePerSec, players)
 
 
-def main(graphical):
+def main():
     """
     Fonction principale du jeu.
 
@@ -59,24 +59,23 @@ def main(graphical):
     graphical : bool
         Indique si le jeu doit être lancé en mode graphique ou non
     """
-    FramePerSec, players = initialization(graphical)
+    FramePerSec, players = initialization(True)
 
     while True:  # Boucle du jeu
 
         for event in ut.get_events():  # Gestion des événements
-            players = gml.event_handling(players, event, graphical)
+            players = gml.event_handling(players, event)
 
         wrld.update()  # Mise à jour de l'environnement
 
-        players = gml.main_loop(players, graphical)  # Mise à jour du jeu
+        players = gml.main_loop(players)  # Mise à jour du jeu
 
         # Gestion de l'affichage
-        if graphical:
-            dim = ut.get_screen_size()
-            ut.resize(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
-            ut.update_screen()
+        dim = ut.get_screen_size()
+        ut.resize(cf.DISPLAYSURF, dim, cf.WINDOWSURF)
+        ut.update_screen()
         FramePerSec.tick(cf.FPS)
 
 
 if __name__ == "__main__":
-    main(True)
+    main()

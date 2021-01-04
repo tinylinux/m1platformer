@@ -12,14 +12,38 @@ CHARS_CAP = "AZERTYUIOPQSDFGHJKLMWXCVBN1234567890"
 """Caractères acceptés, en majuscules"""
 
 
-def mouse_on_button(mouse, button_pos, button_size):
+def scaled_mouse_pos(mouse):
+    """
+    Renvoie la position de la souris mise à l'échelle de l'image.
+
+    Parameters
+    ----------
+    mouse : int * int
+        La position réelle de la souris
+
+    Returns
+    -------
+    int * int
+        La position mise à l'échelle
+    """
+    # Récupération de la dimension de la fenêtre
+    window_dimensions = ut.get_screen_size()
+
+    # Calcul du facteur d'échelle
+    scale_factor_x = cf.SCREEN_WIDTH/window_dimensions[0]
+    scale_factor_y = cf.SCREEN_HEIGHT/window_dimensions[1]
+
+    return mouse[0] * scale_factor_x, mouse[1] * scale_factor_y
+
+
+def mouse_on_button(scaled_mouse, button_pos, button_size):
     """
     Indique si le pointeur de la souris est sur le bouton.
 
     Parameters
     ----------
-    mouse : int * int
-        Position du pointeur de la souris
+    scaled_mouse : int * int
+        Position du pointeur de la souris mise à l'échelle
     button_pos : int * int
         Position du bouton
     button_size : int * int
@@ -30,18 +54,10 @@ def mouse_on_button(mouse, button_pos, button_size):
     bool
         True si le pointeur est sur le bouton
     """
-    # Récupération de la dimension de la fenêtre
-    window_dimensions = ut.get_screen_size()
-
-    # Calcul du facteur d'échelle
-    scale_factor_x = cf.SCREEN_WIDTH/window_dimensions[0]
-    scale_factor_y = cf.SCREEN_HEIGHT/window_dimensions[1]
-
-    # Position de la sourie ajustée
-    new_mouse = mouse[0] * scale_factor_x, mouse[1] * scale_factor_y
-
-    return(button_pos[0] <= new_mouse[0] <= button_pos[0] + button_size[0]
-           and button_pos[1] <= new_mouse[1] <= button_pos[1] + button_size[1])
+    return(button_pos[0] <= scaled_mouse[0]
+           <= button_pos[0] + button_size[0]
+           and button_pos[1] <= scaled_mouse[1]
+           <= button_pos[1] + button_size[1])
 
 
 class Button:
