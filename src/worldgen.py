@@ -24,7 +24,7 @@ et la première plateforme du suivant"""
 
 
 # Fonctions de création
-def platform_creation(bloc, xoffset, yoffset, plat_type):
+def platform_creation(bloc, xoffset, yoffset):
     """
     Crée une plateforme.
 
@@ -36,14 +36,12 @@ def platform_creation(bloc, xoffset, yoffset, plat_type):
         Décalage en abscisses du module
     yoffset : int
         Décalage en ordonnées du module
-    plat_type : str
-        Type de plateforme à afficher
     """
     top_left = bloc[1][1:-1].split(',')
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     width = int(bot_right[1]) - top_left_x
-    if plat_type == 'Plateforme':
+    if bloc[0] == 'Plateforme':
         height = int(bot_right[0]) - top_left_y
         sprite = spt.PLTFRM_IMG
     else:
@@ -106,9 +104,8 @@ def genere_module(last_pltfrm):
     yoffset = cf.SCREEN_HEIGHT - module_height
     for line in lines[1:]:
         bloc = line.split(';')
-        bloc_type = bloc[0]
         # xoffset += pltfrm_offset
-        plt = platform_creation(bloc, xoffset, yoffset, bloc_type)
+        plt = platform_creation(bloc, xoffset, yoffset)
         # avec une chance sur 5 on fait apparaître un nouvel item
         if rd.randint(1, it.proba) == 1 and (not cf.FLAG_ITEM):
             it.item(plt)
