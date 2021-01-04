@@ -3,6 +3,7 @@
 import os
 from hypothesis import given
 from hypothesis.strategies import characters, integers, text, lists, tuples
+import main
 import src.score as scre
 
 scre.FILE = os.path.join(os.path.dirname(__file__), "test_score.txt")
@@ -26,6 +27,7 @@ def test_onlyalphanum(string):
 def test_print(number):
     """Test pour les fonctions d'affichage."""
     # Simples appels aux fonctions
+    main.initialization(False)
     scre.score(number)
     scre.score_endgame(number)
     scre.winner_endgame(number)

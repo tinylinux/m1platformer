@@ -2,7 +2,7 @@
 
 from hypothesis import given
 from hypothesis.strategies import integers
-import main as mn
+import main
 import src.sprites as spt
 import src.conf as cf
 import src.utilities as ut
@@ -47,7 +47,7 @@ def test_collisions(pos_prev_x, pos_prev_y,
 def test_jump():
     """Test pour la méthode de saut de la classe Player."""
     cf.NB_PLAYERS = 1
-    _, player = mn.initialization(False)
+    _, player = main.initialization(False)
     player = player[0]
     cf.STATE = cf.State.ingame
     # Lancement du saut
@@ -62,7 +62,6 @@ def test_jump():
     # Vérification de la possibilité d'un double saut
     player.jump()
     assert player.vel.y == -cf.V_JMP
-    gml.reset_world()
 
 
 # Test du mouvement du joueur
@@ -71,6 +70,7 @@ def test_jump():
        integers(min_value=0, max_value=100))
 def test_move(velx, vely):
     """Test pour la méthode move de la classe Player."""
+    main.initialization(False)
     spt.ground = ut.group_sprite_define()
     player = plyr.Player()
     xinit, yinit = player.pos.x, player.pos.y
@@ -81,4 +81,3 @@ def test_move(velx, vely):
         and player.pos.x >= xinit + velx + 0.5 * player.acc.x - 0.001
     assert player.pos.y <= yinit + vely + 0.5 * player.acc.y + 0.001\
         and player.pos.y >= yinit + vely + 0.5 * player.acc.y - 0.001
-    gml.reset_world()
