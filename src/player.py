@@ -1,5 +1,7 @@
 """Contient la classe Player, permettant de gerer le personnage."""
 
+import random as rd
+
 import src.conf as cf
 import src.sprites as spt
 import src.utilities as ut
@@ -10,8 +12,6 @@ V_0 = 0
 V_JMP = 15
 # Accélération initiale
 A_0 = 0
-# Accélération due à la gravité
-G = 0.8
 
 
 class Player(ut.Sprite):
@@ -42,7 +42,7 @@ class Player(ut.Sprite):
         # Vitesse
         self.vel = ut.Vec(V_0, 0)
         # Accélération
-        self.acc = ut.Vec(A_0, G)
+        self.acc = ut.Vec(A_0, cf.G)
 
         # état dans lequel est le joueur, est modifié par la prise d'item.
         # normal, fast, slow, little, big
@@ -66,7 +66,7 @@ class Player(ut.Sprite):
         """Modifie les vecteurs position, vitesse
         et accélération si nécessaire."""
 
-        # Gestion de l'état dans lequel on est
+        # Gestion de l'état dans lequel on est (selon l'item mangé)
         if self.state != "normal":
             self.timer -= 1
             # si le timer est fini on redevient normal
@@ -89,7 +89,7 @@ class Player(ut.Sprite):
         posnext = self.pos + self.vel + 0.5 * self.acc
 
         for plat in spt.ground:  # Gestion des collisions
-            coll = self.collide(self.pos, posnext, plat.rect)
+            coll = ut.collide(self, self.pos, posnext, plat.rect)
             if coll[0] or coll[1]:
                 posnext = coll[2]
                 if coll[0]:
@@ -101,7 +101,7 @@ class Player(ut.Sprite):
         self.rect.topleft = self.pos  # Mise à jour de la position
 
         for item in spt.items: # Gestion de la prise d'item
-            if ut.collide(self, item):
+            if ut.touch(self, item):
                 self.change_state(item)
 
         # On change le sprite du joueur
@@ -136,7 +136,7 @@ class Player(ut.Sprite):
     def end_item(self):
         """Quand on redevient normal"""
 
-        # On se remet à la bonne taille
+        # On se remet à la bonne taille, position, etc.
         if self.state in ['little', 'big']:
             ut.resize_list(self.images, cf.SIZE['normal'])
             self.width, self.height = cf.SIZE['normal']
@@ -147,40 +147,7 @@ class Player(ut.Sprite):
 
         # On se remet dans l'état normal et on annule le FLAG_ITEM
         self.state = "normal"
-        cf.FLAG_ITEM = False
         self.vel.x = 0
 
-    def collide(self, pos_prev, pos_next, rect):
-        """Gestion des collisions.
-        pos_prev : Vector2, position précédente du joueur
-        pos_next : Vector2, position suivante du joueur
-        rect : Rect, l'objet possiblement en collision avec le joueur
-        Renvoie un triplet (collision verticale, collision horizontale,
-        modification de position necessaire) (de type bool * bool * Vector2)"""
-        # On ne tient pas compte du cas dans lequel le joueur traverserait
-        # une plateforme dans sa longueur entre deux positions, il ne serait
-        # de toutes façons pas possible de jouer dans ce cas.
-        if pos_next.x + self.width > rect.left\
-                and pos_next.x < rect.right:
-            # Dans la plateforme horizontalement
-
-            if pos_prev.y + self.height <= rect.top:
-                # Position initale au-dessus de la plateforme
-                if pos_next.y + self.height > rect.top:
-                    # Nouvelle position dans ou sous la plateforme
-                    cf.FLAG_JUMP = True
-                    return (True, False,
-                            ut.Vec(pos_next.x, rect.top - self.height))
-
-            elif pos_prev.y >= rect.bottom:
-                # Position initiale en-dessous de la plateforme
-                if pos_next.y < rect.bottom:
-                    # Nouvelle position dans ou au-dessus de la plateforme
-                    return (True, False, ut.Vec(pos_next.x, rect.bottom))
-
-            elif pos_next.y + self.height > rect.top\
-                    and pos_next.y < rect.bottom:
-                # On ne considère que les collisions à gauche des plateformes
-                return (False, True, ut.Vec(rect.left - self.width, pos_next.y))
-
-        return(False, False, None)
+        cf.FLAG_ITEM = False
+        cf.NEW_ITEM_TIME = cf.SECONDS + rd.randint(cf.ITEM_PROBA_MIN, cf.ITEM_PROBA_MAX)

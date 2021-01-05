@@ -16,7 +16,7 @@ modules = spt.listdir(os.path.join(localdir, "modules"))
 modules = [file.split("_") for file in modules]
 modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 
-MAX_JUMP = 200  # La hateur maximale entre la dernière plateforme d'un module
+MAX_JUMP = 200  # La hauteur maximale entre la dernière plateforme d'un module
 # et la première d'un nouveau module (à changer)
 
 
@@ -28,7 +28,7 @@ def platform_creation(bloc, xoffset, yoffset):
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     bot_right_y, bot_right_x = int(bot_right[0]), int(bot_right[1])
-    return pltfrm.Platform((top_left_x + xoffset,
+    pltfrm.Platform((top_left_x + xoffset,
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
                     bot_right_y - top_left_y),
@@ -42,7 +42,7 @@ def batiment_creation(bloc, xoffset, yoffset):
     top_left_y, top_left_x = int(top_left[0]), int(top_left[1])
     bot_right = bloc[2][1:-2].split(',')
     bot_right_x = int(bot_right[1])
-    return pltfrm.Platform((top_left_x + xoffset,
+    pltfrm.Platform((top_left_x + xoffset,
                     top_left_y + yoffset),
                     (bot_right_x - top_left_x,
                     cf.SCREEN_HEIGHT),
@@ -99,14 +99,7 @@ def genere_module(last_pltfrm):
         bloc = line.split(';')
         bloc_type = bloc[0]
         # xoffset += pltfrm_offset
-        plt = creation_functions[bloc_type](bloc, xoffset, yoffset)
-        # avec une chance sur it.PROBA on fait apparaître un nouvel item
-        if (not cf.FLAG_ITEM) and rd.randint(1, it.PROBA) == 1:
-            item = it.item(plt)
-            # Si s'est superposé sur une plateforme, on le vire (pour l'instant ça marche pas)
-            # if ut.collidegroup(item, spt.ground):
-            #     item.kill()
-            #     cf.FLAG_ITEM = False
+        creation_functions[bloc_type](bloc, xoffset, yoffset)
                 
     module_file.close()
 
@@ -129,3 +122,8 @@ def update():
     last_pltfrm = max(spt.ground, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
         genere_module(last_pltfrm)
+
+    if (not cf.FLAG_ITEM) and (cf.SECONDS == cf.NEW_ITEM_TIME):
+        it.item()
+
+

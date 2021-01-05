@@ -14,6 +14,10 @@ TEXT_FONT_SIZE = 25
 # vitesse initiale de défilement du sol
 INITIAL_SPEED = 5
 SPEED = INITIAL_SPEED
+
+# Accélération due à la gravité
+G = 0.8
+
 # Drapeau de disponibilité du saut
 FLAG_JUMP = False
 # Drapeau de disponibilité du second saut
@@ -23,6 +27,13 @@ FLAG_JUMP_2 = False
 # ou qu'on est dans un état spécial à cause d'un item
 # mettre à True si on veut pas d'items
 FLAG_ITEM = False
+
+# Dans combien de secondes on crée un nouvel item
+NEW_ITEM_TIME = 1
+
+# Les bornes de NEW_ITEM_TIME lorsque tiré aléatoirement
+ITEM_PROBA_MIN = 1
+ITEM_PROBA_MAX = 2
 
 # Dico avec la durée des effets des items (en nbre de frames)
 ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
