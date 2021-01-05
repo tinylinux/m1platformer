@@ -145,9 +145,11 @@ class ButtonImage(Button):
         Nom de l'image à afficher quand le bouton est inactif
     image_hover : str
         Nom de l'image à afficher quand le pointeur est sur le bouton
+    lang : str
+        Langue à afficher (sous-repertoire à utiliser)
     """
 
-    def __init__(self, position, size, image, image_hover):
+    def __init__(self, position, size, image, image_hover, lang=""):
         """
         Initialisation.
 
@@ -161,10 +163,13 @@ class ButtonImage(Button):
             Nom de l'image à afficher quand le bouton est inactif
         image_hover : str
             Nom de l'image à afficher quand le pointeur est sur le bouton
+        lang : str
+            Langue à afficher (sous-repertoire à utiliser)
         """
         super().__init__(position, size)
         self.image = image
         self.image_hover = image_hover
+        self.lang = lang
 
     def print(self, mouse, pushed=False):
         """
@@ -178,10 +183,26 @@ class ButtonImage(Button):
             Bouton enfoncé
         """
         if mouse_on_button(mouse, self.position, self.size) or pushed:
-            cf.DISPLAYSURF.blit(ut.load_image(self.image_hover),
+            cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                                            self.lang,
+                                                            self.image_hover)),
                                 self.position)
         else:
-            cf.DISPLAYSURF.blit(ut.load_image(self.image), self.position)
+            cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                                            self.lang,
+                                                            self.image)),
+                                self.position)
+
+    def changlang(self, lang):
+        """
+        Changer la langue du bouton.
+
+        Parameters
+        ----------
+        lang : str
+            Langue à utiliser
+        """
+        self.lang = lang
 
 
 class InputZone(Button):
@@ -259,8 +280,8 @@ class InputZone(Button):
 
 Oneplayer_pos = (358, 323)
 Oneplayer_size = (100, 100)
-Oneplayer_idle = os.path.join(cf.UI, 'oneplayer.png')
-Oneplayer_hover = os.path.join(cf.UI, 'oneplayerpushed.png')
+Oneplayer_idle = 'oneplayer.png'
+Oneplayer_hover = 'oneplayerpushed.png'
 oneplayer_button = ButtonImage(
     Oneplayer_pos,
     Oneplayer_size,
@@ -270,8 +291,8 @@ oneplayer_button = ButtonImage(
 
 Multiplayer_pos = (591, 323)
 Multiplayer_size = (100, 100)
-Multiplayer_idle = os.path.join(cf.UI, 'multiplayer.png')
-Multiplayer_hover = os.path.join(cf.UI, 'multiplayerpushed.png')
+Multiplayer_idle = 'multiplayer.png'
+Multiplayer_hover = 'multiplayerpushed.png'
 multiplayer_button = ButtonImage(
     Multiplayer_pos,
     Multiplayer_size,
@@ -281,8 +302,8 @@ multiplayer_button = ButtonImage(
 
 Settings_pos = (824, 323)
 Settings_size = (100, 100)
-Settings_idle = os.path.join(cf.UI, 'settings.png')
-Settings_hover = os.path.join(cf.UI, 'settingspushed.png')
+Settings_idle = 'settings.png'
+Settings_hover = 'settingspushed.png'
 settings_button = ButtonImage(
     Settings_pos,
     Settings_size,
@@ -292,8 +313,8 @@ settings_button = ButtonImage(
 
 Records_pos = (358, 460)
 Records_size = (250, 75)
-Records_idle = os.path.join(cf.UI, 'top5.png')
-Records_hover = os.path.join(cf.UI, 'top5pushed.png')
+Records_idle = 'top5.png'
+Records_hover = 'top5pushed.png'
 records_button = ButtonImage(
     Records_pos,
     Records_size,
@@ -303,8 +324,8 @@ records_button = ButtonImage(
 
 Credits_pos = (674, 460)
 Credits_size = (250, 75)
-Credits_idle = os.path.join(cf.UI, 'credits.png')
-Credits_hover = os.path.join(cf.UI, 'creditspushed.png')
+Credits_idle = 'credits.png'
+Credits_hover = 'creditspushed.png'
 credits_button = ButtonImage(
     Credits_pos,
     Credits_size,
@@ -314,8 +335,8 @@ credits_button = ButtonImage(
 
 Restart_pos = (440, 500)
 Restart_size = (401, 123)
-Restart_idle = os.path.join(cf.UI, 'playagain.png')
-Restart_hover = os.path.join(cf.UI, 'playagainpushed.png')
+Restart_idle = 'playagain.png'
+Restart_hover = 'playagainpushed.png'
 restart_button = ButtonImage(
     Restart_pos,
     Restart_size,
@@ -325,8 +346,8 @@ restart_button = ButtonImage(
 
 Return_pos = (20, 20)
 Return_size = (100, 100)
-Return_idle = os.path.join(cf.UI, 'return.png')
-Return_hover = os.path.join(cf.UI, 'returnpushed.png')
+Return_idle = 'return.png'
+Return_hover = 'returnpushed.png'
 return_button = ButtonImage(
     Return_pos,
     Return_size,
@@ -337,24 +358,24 @@ return_button = ButtonImage(
 # Buttons for each language
 Flag_size = (180, 120)
 Flag_pos = [(418, 369), (684, 369)]
-Flag_idle = [os.path.join(cf.UI, 'flag', 'fr.png'),
-             os.path.join(cf.UI, 'flag', 'en.png')]
-Flag_hover = [os.path.join(cf.UI, 'flag', 'fr_hover.png'),
-              os.path.join(cf.UI, 'flag', 'en_hover.png')]
+Flag_idle = ['fr.png', 'en.png']
+Flag_hover = ['fr_hover.png', 'en_hover.png']
 
 flagbutton = []
 flagbutton.append(
     ButtonImage(
         Flag_pos[0], Flag_size,
         Flag_idle[0],
-        Flag_hover[0]
+        Flag_hover[0],
+        "flag"
     )
 )
 flagbutton.append(
     ButtonImage(
         Flag_pos[1], Flag_size,
         Flag_idle[1],
-        Flag_hover[1]
+        Flag_hover[1],
+        "flag"
     )
 )
 
