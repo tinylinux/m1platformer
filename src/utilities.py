@@ -422,6 +422,23 @@ def collide(obj, pos_next, rect):
     return(False, False, None)
 
 
+def update_pos_vel(obj, ground):
+    obj.vel += obj.acc
+    posnext = obj.pos + obj.vel + 0.5 * obj.acc
+
+    for plat in ground:  # Gestion des collisions
+        coll = collide(obj, posnext, plat.rect)
+        if coll[0] or coll[1]:
+            posnext = coll[2]
+            if coll[0]:
+                obj.vel.y = 0
+            if coll[1]:
+                obj.vel.x = 0
+
+    obj.pos = posnext
+    obj.rect.topleft = obj.pos  # Mise à jour de la position
+
+
 class GameObject(Sprite):
     """
     Classe des objets du monde (hors joueur).

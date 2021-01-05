@@ -41,16 +41,9 @@ class item(ut.GameObject):
     def update(self):
         """Met à jour l'item."""
         self.vel.x = -cf.SPEED
-        self.vel += self.acc
-        posnext = self.pos + self.vel + 0.5 * self.acc
-        # On regarde si on tombe sur une plateforme
-        for plat in spt.ground:
-            coll = ut.collide(self, posnext, plat.rect)
-            if coll[0] or coll[1]:
-                posnext = coll[2]
-                self.vel.y = 0
-        self.pos = posnext
-        self.rect.topleft = self.pos  # Mise à jour de la position
+
+        ut.update_pos_vel(self, spt.ground)
+
         cf.DISPLAYSURF.blit(self.image, self.rect)  # affichage
         # Si on sort de l'écran, on annule le FLAG,
         # on programme un nouvel item et on kill celui-là.

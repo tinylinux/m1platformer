@@ -115,20 +115,7 @@ class Player(ut.Sprite):
                 if self.pos.x < self.width:
                     self.end_item()
 
-        self.vel += self.acc
-        posnext = self.pos + self.vel + 0.5 * self.acc
-
-        for plat in spt.ground:  # Gestion des collisions
-            coll = ut.collide(self, posnext, plat.rect)
-            if coll[0] or coll[1]:
-                posnext = coll[2]
-                if coll[0]:
-                    self.vel.y = 0
-                if coll[1]:
-                    self.vel.x = 0
-
-        self.pos = posnext
-        self.rect.topleft = self.pos  # Mise à jour de la position
+        ut.update_pos_vel(self, spt.ground)
 
         for item in spt.items:  # Gestion de la prise d'item
             if ut.touch(self, item):
