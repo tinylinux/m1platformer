@@ -33,11 +33,38 @@ INITIAL_SPEED = 5
 """Vitesse initiale de défilement du sol"""
 SPEED = INITIAL_SPEED
 
+G = 0.8
+"""Accélération due à la gravité"""
+
 FLAG_JUMP = False
 """Drapeau de disponibilité du saut"""
 
 FLAG_JUMP_2 = False
 """Drapeau de disponibilité du second saut"""
+
+# Drapeau qui dit si y a un item à l'écran
+# ou qu'on est dans un état spécial à cause d'un item
+# mettre à True si on veut pas d'items
+FLAG_ITEM = False
+
+# Dans combien de secondes on crée un nouvel item
+NEW_ITEM_TIME = 1
+
+# Les bornes de NEW_ITEM_TIME lorsque tiré aléatoirement
+ITEM_PROBA_MIN = 1
+ITEM_PROBA_MAX = 2
+
+# Dico avec la durée des effets des items (en nbre de frames)
+ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
+
+# vitesse à laquelle on accélère ou ralentit
+VEL = {'fast': 4, 'slow': -4}
+
+# facteur de resize du monocycle
+# après initialisation des images, ça n'est plus un facteur de resize
+# mais une size en pixels
+# par exemple SIZE['little'] vaudra (21,32)
+SIZE = {'little': 1, 'normal': 3, 'big': 8}
 
 # Couleurs
 BLACK = (255, 255, 255)

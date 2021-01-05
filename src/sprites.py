@@ -33,10 +33,11 @@ img_dict = {}
 un facteur de taille,
 un nombre d'images
 et la liste de ces images."""
-img_dict["mono_factor"] = 3
+img_dict["mono_factor"] = 1
 img_dict["cloud_factor"] = 4
 img_dict["tree_factor"] = 8
 img_dict["item_factor"] = 2
+
 for nom in Nom:
     img_dict['n_' + nom] = len(listdir(os.path.join(localdir, "..", "assets",
                                        "img", nom)))
@@ -60,8 +61,12 @@ BAT_IMG = ut.load_image(os.path.join(localdir, "..", "assets",
 """Image pour un bâtiment"""
 
 # Dimensions
-p_WIDTH, p_HEIGHT = img_dict["mono_img"][0].get_rect().size
-"""Dimensions du joueur"""
+w, h = img_dict["mono_img"][0].get_rect().size
+for key in cf.SIZE:
+    cf.SIZE[key] = (w*cf.SIZE[key], h*cf.SIZE[key])
+ut.resize_list(img_dict['mono_img'], cf.SIZE['normal'])
+"""Les différentes dimensions du joueur (normal, big, little)"""
+
 w, h = GROUND_IMG.get_rect().size
 GROUND_HEIGHT = (cf.SCREEN_HEIGHT - h)
 """Hauteur du sol"""

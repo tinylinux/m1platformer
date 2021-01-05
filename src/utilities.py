@@ -224,6 +224,27 @@ def resize(surface, dimensions, destination=None):
     return pygame.transform.scale(surface, dimensions, destination)
 
 
+def resize_list(L, size):
+    """
+    Resize toutes les images d'une liste L à la taille size
+    """
+    for i in range(len(L)):
+        L[i] = pygame.transform.scale(L[i], size)
+
+
+def touch(sprite1, sprite2):
+    """
+    Renvoie True si les deux sprites se touchent
+    """
+    return pygame.sprite.collide_rect(sprite1, sprite2)
+
+def collidegroup(sprite, group):
+    """
+    Renvoie true si y a une collision entre le sprite
+    et n'importe quel sprite du groupe.
+    """
+    return pygame.sprite.spritecollideany(sprite, group)
+
 def update_screen():
     """Met à jour l'écran."""
     pygame.display.flip()
@@ -313,6 +334,58 @@ def font(font_name, size):
     return pygame.font.Font(font_name, size)
 
 
+def collide(obj, pos_next, rect):
+    """
+    Gestion des collisions.
+
+    Parameters
+    ----------
+    obj : Player ou item
+        objet (joueur ou item) dont on examine la collision
+    pos_next : Vector2
+        position suivante de l'objet
+    rect : Rect
+        ce qui est potentiellement en collision avec l'objet
+
+    Returns
+    -------
+    bool * bool * Vector2
+        un triplet (collision verticale, collision horizontale,
+        modification de position necessaire)
+    """
+    # On ne tient pas compte du cas dans lequel l'objet traverserait
+    # une plateforme dans sa longueur entre deux positions, il ne serait
+    # de toutes façons pas possible de jouer dans ce cas.
+    pos_prev = obj.pos
+
+
+
+    if pos_next.x + obj.width > rect.left\
+            and pos_next.x < rect.right:
+        # Dans la plateforme horizontalement
+
+        if pos_prev.y + obj.height <= rect.top:
+            # Position initale au-dessus de la plateforme
+            if pos_next.y + obj.height > rect.top:
+                # Nouvelle position dans ou sous la plateforme
+                obj.FLAG_JUMP = True
+                return (True, False,
+                        Vec(pos_next.x, rect.top - obj.height))
+
+        elif pos_prev.y >= rect.bottom:
+            # Position initiale en-dessous de la plateforme
+            if pos_next.y < rect.bottom:
+                # Nouvelle position dans ou au-dessus de la plateforme
+                return (True, False, Vec(pos_next.x, rect.bottom))
+
+        elif pos_next.y + obj.height > rect.top\
+                and pos_next.y < rect.bottom:
+            # On ne considère que les collisions à gauche des plateformes
+            return (False, True, Vec(rect.left - obj.width, pos_next.y))
+
+    return(False, False, None)
+
+
 class GameObject(Sprite):
     """
     Classe des objets du monde (hors joueur).
@@ -361,6 +434,7 @@ class GameObject(Sprite):
         self.pos = posnext
         self.rect.topleft = self.pos
         if self.rect.right < 0:     # si l'objet sort de l'écran
+            #print(self)
             self.kill()              # on le supprime
         # On met à jour l'image
         cf.DISPLAYSURF.blit(self.image, self.rect)

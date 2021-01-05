@@ -8,6 +8,7 @@ import src.platforms as pltfrm
 import src.conf as cf
 import src.background as bg
 import src.item as it
+import src.utilities as ut
 
 # Indexation des modules
 localdir = os.path.dirname(__file__)
@@ -21,7 +22,6 @@ MAX_JUMP = 200
 """Hauteur maximale entre la dernière plateforme d'un module
 et la première plateforme du suivant"""
 # à changer
-
 
 # Fonctions de création
 def platform_creation(bloc, xoffset, yoffset):
@@ -47,10 +47,10 @@ def platform_creation(bloc, xoffset, yoffset):
     else:
         height = cf.SCREEN_HEIGHT
         sprite = spt.BAT_IMG
-    return pltfrm.Platform((top_left_x + xoffset,
-                            top_left_y + yoffset),
-                           (width, height),
-                           sprite)
+    pltfrm.Platform((top_left_x + xoffset,
+                     top_left_y + yoffset),
+                     (width, height),
+                     sprite)
 
 
 def initgen():
@@ -106,9 +106,6 @@ def genere_module(last_pltfrm):
         bloc = line.split(';')
         # xoffset += pltfrm_offset
         plt = platform_creation(bloc, xoffset, yoffset)
-        # avec une chance sur 5 on fait apparaître un nouvel item
-        if rd.randint(1, it.proba) == 1 and (not cf.FLAG_ITEM):
-            it.item(plt)
     module_file.close()
 
 
@@ -130,3 +127,8 @@ def update():
     last_pltfrm = max(spt.ground, key=lambda bloc: bloc.rect.right)
     if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
         genere_module(last_pltfrm)
+
+    if (not cf.FLAG_ITEM) and (cf.SECONDS == cf.NEW_ITEM_TIME):
+        it.item()
+
+

@@ -128,12 +128,19 @@ def reset_world():
     Player list
         Une liste de joueurs réinitialisés de longueur NB_PLAYERS
     """
+    
+    # remet le monocycle à la taille normale
+    ut.resize_list(spt.img_dict['mono_img'], cf.SIZE['normal'])
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
+    cf.NEW_ITEM_TIME = 1
+    cf.FLAG_ITEM = False
+    #efface les items, plateformes et le background
     spt.ground = ut.group_sprite_define()
     spt.clouds = ut.group_sprite_define()
     spt.trees = ut.group_sprite_define()
+    spt.items = ut.group_sprite_define()
     wrld.initgen()
     return [plyr.Player() for _ in range(cf.NB_PLAYERS)]
 
