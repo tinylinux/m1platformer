@@ -12,7 +12,7 @@ import src.gameloop as gml  # noqa: E402
 # pylint: enable=wrong-import-position
 
 
-def initialization(graphical,music):
+def initialization(graphical, music=False):
     """
     Initialisation des variables et des surfaces.
 
@@ -20,14 +20,13 @@ def initialization(graphical,music):
     ----------
     graphical : bool
         Indique si le jeu doit être lancé en mode graphique ou non
-
-    music : bool
-        Indique si on lance la musique ou pas
+    music : bool, optionnel
+        Indique si on lance la musique
 
     Returns
     -------
     Clock * Player list
-        Une horloge pour le contrôle de la vitesse, et la liste des joueurs
+        Une horloge pour le contrôle de la vitesse et la liste des joueurs
     """
     # Initialisation de la fenêtre
     cf.DISPLAYSURF, cf.WINDOWSURF = \

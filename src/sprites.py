@@ -29,10 +29,12 @@ localdir = os.path.dirname(__file__)
 Nom = ["mono", "cloud", "tree", "item"]
 """Liste des noms des différents éléments de décor"""
 img_dict = {}
-"""Dictionnaire associant, pour chaque élément de `Nom` :
+"""
+Dictionnaire associant, pour chaque élément de `Nom` :
 un facteur de taille,
 un nombre d'images
-et la liste de ces images."""
+et la liste de ces images.
+"""
 img_dict["mono_factor"] = 1
 img_dict["cloud_factor"] = 4
 img_dict["tree_factor"] = 8
@@ -63,9 +65,8 @@ BAT_IMG = ut.load_image(os.path.join(localdir, "..", "assets",
 # Dimensions
 w, h = img_dict["mono_img"][0].get_rect().size
 for key in cf.SIZE:
-    cf.SIZE[key] = (w*cf.SIZE[key], h*cf.SIZE[key])
+    cf.SIZE[key] = (w * cf.SIZE_FACTOR[key], h * cf.SIZE_FACTOR[key])
 ut.resize_list(img_dict['mono_img'], cf.SIZE['normal'])
-"""Les différentes dimensions du joueur (normal, big, little)"""
 
 w, h = GROUND_IMG.get_rect().size
 GROUND_HEIGHT = (cf.SCREEN_HEIGHT - h)
