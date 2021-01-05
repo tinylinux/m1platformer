@@ -58,6 +58,8 @@ SECONDS = 0
 FRAMES = 0
 """Compteur des images pour les secondes"""
 
+MUSIC = os.path.join(ASSETS, 'music', 'loop.mp3')
+"""Chemin vers la musique"""
 
 # États du jeu
 class State(Enum):

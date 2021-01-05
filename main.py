@@ -12,7 +12,7 @@ import src.gameloop as gml  # noqa: E402
 # pylint: enable=wrong-import-position
 
 
-def initialization(graphical):
+def initialization(graphical,music):
     """
     Initialisation des variables et des surfaces.
 
@@ -20,6 +20,9 @@ def initialization(graphical):
     ----------
     graphical : bool
         Indique si le jeu doit être lancé en mode graphique ou non
+
+    music : bool
+        Indique si on lance la musique ou pas
 
     Returns
     -------
@@ -47,6 +50,11 @@ def initialization(graphical):
     # Initialisation du monde
     wrld.initgen()
 
+    # Lance la musique
+    if music:
+        ut.load_music(cf.MUSIC)
+        ut.play_music()
+
     return(FramePerSec, players)
 
 
@@ -59,7 +67,7 @@ def main():
     graphical : bool
         Indique si le jeu doit être lancé en mode graphique ou non
     """
-    FramePerSec, players = initialization(True)
+    FramePerSec, players = initialization(True, True)
 
     while True:  # Boucle du jeu
 

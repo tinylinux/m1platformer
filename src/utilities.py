@@ -62,6 +62,24 @@ def load_image(path):
     """
     return pygame.image.load(path)
 
+def load_music(path):
+    """
+    Charge une musique à partir d'un chemin.
+
+    Parameters
+    ----------
+    path : str
+        Chemin du fichier
+    """
+    pygame.mixer.music.load(path)
+
+def play_music():
+    """
+    Lance la musique chargée avec load_music.
+    Ça boucle automatiquement à la fin.
+    """
+    pygame.mixer.music.play(-1)
+
 
 def initialize_window(icon, title, width, height, graphical):
     """
