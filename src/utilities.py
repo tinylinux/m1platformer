@@ -378,8 +378,8 @@ def collide(obj, pos_next, rect):
 
     Parameters
     ----------
-    obj : Player ou item
-        objet (joueur ou item) dont on examine la collision
+    obj : Player / Item
+        objet (joueur ou objet) dont on examine la collision
     pos_next : Vector2
         position suivante de l'objet
     rect : Rect
@@ -423,6 +423,16 @@ def collide(obj, pos_next, rect):
 
 
 def update_pos_vel(obj, ground):
+    """
+    Met à jour la position et la vitesse de l'objet.
+
+    Parameters
+    ----------
+    obj : Player / Item
+        L'objet à mettre à jour
+    ground : Sprite group
+        Le groupe des plateformes
+    """
     obj.vel += obj.acc
     posnext = obj.pos + obj.vel + 0.5 * obj.acc
 
