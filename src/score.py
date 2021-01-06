@@ -84,16 +84,11 @@ def score_endgame(pts):
                   ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
 
 
-def winner_endgame(player_number):
+def winner_endgame():
     """
     Affiche le gagnant à la fin de la partie.
-
-    Parameters
-    ----------
-    player_number : int
-        Numéro du gagnant
     """
-    mono = "mono" + plyr.COLORS[player_number]
+    mono = "mono" + plyr.COLORS[plyr.WINNER]
     img_path = os.path.join(cf.ASSETS, "img", mono, mono + "3.png")
     img = ut.load_image(img_path)
     w, h = img.get_rect().size

@@ -88,7 +88,7 @@ def main_loop(players, mouse=None):
 
     elif cf.STATE == State.gameover_multi:  # Menu de fin multi
 
-        scre.winner_endgame(plyr.WINNER)
+        scre.winner_endgame()
 
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/gameover.png"), (395, 100))
