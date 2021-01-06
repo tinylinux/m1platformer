@@ -8,6 +8,9 @@
     <title>Player &#8212; Documentation Roll &#39;n&#39; Jump 1.0</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/docs/_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="/docs/_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="/docs/_static/pygments.css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -52,7 +55,7 @@
 <h2>Classe<a class="headerlink" href="#classe" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py class">
 <dt id="player.Player">
-<em class="property">class </em><code class="sig-prename descclassname">player.</code><code class="sig-name descname">Player</code><a class="headerlink" href="#player.Player" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">player.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'green'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#player.Player" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
 <p>Gestion du joueur.</p>
 <dl class="py attribute">
@@ -122,6 +125,11 @@
 </dd></dl>
 
 <p>Initialisation du joueur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>str</em>) – La couleur du joueur parmis Player.COLORS</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="player.Player.change_state">
 <code class="sig-name descname">change_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="headerlink" href="#player.Player.change_state" title="Lien permanent vers cette définition">¶</a></dt>
@@ -245,9 +253,6 @@
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
-      |
-      <a href="_sources/player.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     
