@@ -62,6 +62,7 @@ def load_image(path):
     """
     return pygame.image.load(path)
 
+
 def load_music(path):
     """
     Charge une musique à partir d'un chemin.
@@ -73,9 +74,11 @@ def load_music(path):
     """
     pygame.mixer.music.load(path)
 
+
 def play_music():
     """
     Lance la musique chargée avec load_music.
+
     Ça boucle automatiquement à la fin.
     """
     pygame.mixer.music.play(-1)
@@ -226,24 +229,59 @@ def resize(surface, dimensions, destination=None):
 
 def resize_list(L, size):
     """
-    Resize toutes les images d'une liste L à la taille size
+    Redimensionne les images d'une liste.
+
+    Parameters
+    ----------
+    L : Surface list
+        Liste d'images
+    size : int * int
+        La résolution attendue
+
+    Returns
+    -------
+    Surface list
+        La liste des images redimensionnées
     """
-    for i in range(len(L)):
-        L[i] = pygame.transform.scale(L[i], size)
+    for i, img in enumerate(L):
+        L[i] = pygame.transform.scale(img, size)
 
 
 def touch(sprite1, sprite2):
     """
-    Renvoie True si les deux sprites se touchent
+    Indique si deux sprites sont en contact.
+
+    Parameters
+    ----------
+    sprite1 : Sprite
+        Le premier sprite
+    sprite2 : Sprite
+        Le second sprite
+
+    Returns
+    -------
+    bool
     """
     return pygame.sprite.collide_rect(sprite1, sprite2)
 
+
 def collidegroup(sprite, group):
     """
-    Renvoie true si y a une collision entre le sprite
-    et n'importe quel sprite du groupe.
+    Indique s'il y a une collision entre un sprite et un groupe de sprites.
+
+    Parameters
+    ----------
+    sprite : Sprite
+        Le sprite examiné
+    group : Sprite group
+        Le groupe de sprites examiné
+
+    Returns
+    -------
+    bool
     """
     return pygame.sprite.spritecollideany(sprite, group)
+
 
 def update_screen():
     """Met à jour l'écran."""
@@ -340,8 +378,8 @@ def collide(obj, pos_next, rect):
 
     Parameters
     ----------
-    obj : Player ou item
-        objet (joueur ou item) dont on examine la collision
+    obj : Player / Item
+        objet (joueur ou objet) dont on examine la collision
     pos_next : Vector2
         position suivante de l'objet
     rect : Rect
@@ -357,8 +395,6 @@ def collide(obj, pos_next, rect):
     # une plateforme dans sa longueur entre deux positions, il ne serait
     # de toutes façons pas possible de jouer dans ce cas.
     pos_prev = obj.pos
-
-
 
     if pos_next.x + obj.width > rect.left\
             and pos_next.x < rect.right:
@@ -384,6 +420,33 @@ def collide(obj, pos_next, rect):
             return (False, True, Vec(rect.left - obj.width, pos_next.y))
 
     return(False, False, None)
+
+
+def update_pos_vel(obj, ground):
+    """
+    Met à jour la position et la vitesse de l'objet.
+
+    Parameters
+    ----------
+    obj : Player / Item
+        L'objet à mettre à jour
+    ground : Sprite group
+        Le groupe des plateformes
+    """
+    obj.vel += obj.acc
+    posnext = obj.pos + obj.vel + 0.5 * obj.acc
+
+    for plat in ground:  # Gestion des collisions
+        coll = collide(obj, posnext, plat.rect)
+        if coll[0] or coll[1]:
+            posnext = coll[2]
+            if coll[0]:
+                obj.vel.y = 0
+            if coll[1]:
+                obj.vel.x = 0
+
+    obj.pos = posnext
+    obj.rect.topleft = obj.pos  # Mise à jour de la position
 
 
 class GameObject(Sprite):
@@ -434,7 +497,7 @@ class GameObject(Sprite):
         self.pos = posnext
         self.rect.topleft = self.pos
         if self.rect.right < 0:     # si l'objet sort de l'écran
-            #print(self)
+            # print(self)
             self.kill()              # on le supprime
         # On met à jour l'image
         cf.DISPLAYSURF.blit(self.image, self.rect)

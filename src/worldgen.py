@@ -8,7 +8,6 @@ import src.platforms as pltfrm
 import src.conf as cf
 import src.background as bg
 import src.item as it
-import src.utilities as ut
 
 # Indexation des modules
 localdir = os.path.dirname(__file__)
@@ -21,7 +20,7 @@ modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
 MAX_JUMP = 200
 """Hauteur maximale entre la dernière plateforme d'un module
 et la première plateforme du suivant"""
-# à changer
+
 
 # Fonctions de création
 def platform_creation(bloc, xoffset, yoffset):
@@ -47,10 +46,10 @@ def platform_creation(bloc, xoffset, yoffset):
     else:
         height = cf.SCREEN_HEIGHT
         sprite = spt.BAT_IMG
-    pltfrm.Platform((top_left_x + xoffset,
-                     top_left_y + yoffset),
-                     (width, height),
-                     sprite)
+    return pltfrm.Platform((top_left_x + xoffset,
+                            top_left_y + yoffset),
+                           (width, height),
+                           sprite)
 
 
 def initgen():
@@ -104,8 +103,7 @@ def genere_module(last_pltfrm):
     yoffset = cf.SCREEN_HEIGHT - module_height
     for line in lines[1:]:
         bloc = line.split(';')
-        # xoffset += pltfrm_offset
-        plt = platform_creation(bloc, xoffset, yoffset)
+        platform_creation(bloc, xoffset, yoffset)
     module_file.close()
 
 
@@ -130,5 +128,3 @@ def update():
 
     if (not cf.FLAG_ITEM) and (cf.SECONDS == cf.NEW_ITEM_TIME):
         it.item()
-
-

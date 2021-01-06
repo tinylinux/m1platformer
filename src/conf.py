@@ -60,11 +60,11 @@ ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
 # vitesse à laquelle on accélère ou ralentit
 VEL = {'fast': 4, 'slow': -4}
 
-# facteur de resize du monocycle
-# après initialisation des images, ça n'est plus un facteur de resize
-# mais une size en pixels
-# par exemple SIZE['little'] vaudra (21,32)
-SIZE = {'little': 1, 'normal': 3, 'big': 8}
+SIZE_FACTOR = {'little': 1, 'normal': 3, 'big': 8}
+"""Facteurs de redimensionnement du joueur"""
+
+SIZE = {'little': (0, 0), 'normal': (0, 0), 'big': (0, 0)}
+"""Les différentes dimensions du joueur (normal, big, little)"""
 
 # Couleurs
 BLACK = (255, 255, 255)
@@ -87,6 +87,7 @@ FRAMES = 0
 
 MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 """Chemin vers la musique"""
+
 
 # États du jeu
 class State(Enum):

@@ -61,7 +61,7 @@ class Player(ut.Sprite):
         # Position
         # X : milieu de l'écran
         # moins la largeur sur 2 pour être centré (car topleft)
-        x = cf.SCREEN_WIDTH//2 - self.width//2
+        x = cf.SCREEN_WIDTH // 2 - self.width // 2
         y = spt.GROUND_HEIGHT - self.height
         self.pos = ut.Vec(x, y)
         self.rect.midbottom = self.pos
@@ -70,7 +70,6 @@ class Player(ut.Sprite):
         self.vel = ut.Vec(V_0, 0)
         # Accélération
         self.acc = ut.Vec(A_0, cf.G)
-
 
         # Drapeau de disponibilité du saut
         self.FLAG_JUMP = True
@@ -85,7 +84,6 @@ class Player(ut.Sprite):
         # D'où ce timer (en frames)
         self.timer = 0
 
-
     def jump(self):
         """Lance le saut du personnage."""
         if self.FLAG_JUMP:
@@ -98,7 +96,6 @@ class Player(ut.Sprite):
 
     def move(self):
         """Met à jour pos, vec et acc."""
-
         # Gestion de l'état dans lequel on est (selon l'item mangé)
         if self.state != "normal":
             self.timer -= 1
@@ -109,7 +106,7 @@ class Player(ut.Sprite):
             if self.state == "fast":
                 self.vel.x = cf.VEL['fast']
                 # si on arrive aux 2/3 de l'écran ça arrête d'avancer
-                if self.pos.x > (cf.SCREEN_WIDTH*2)//3:
+                if self.pos.x > (cf.SCREEN_WIDTH * 2) // 3:
                     self.end_item()
 
             elif self.state == "slow":
@@ -118,22 +115,9 @@ class Player(ut.Sprite):
                 if self.pos.x < self.width:
                     self.end_item()
 
-        self.vel += self.acc
-        posnext = self.pos + self.vel + 0.5 * self.acc
+        ut.update_pos_vel(self, spt.ground)
 
-        for plat in spt.ground:  # Gestion des collisions
-            coll = ut.collide(self, posnext, plat.rect)
-            if coll[0] or coll[1]:
-                posnext = coll[2]
-                if coll[0]:
-                    self.vel.y = 0
-                if coll[1]:
-                    self.vel.x = 0
-
-        self.pos = posnext
-        self.rect.topleft = self.pos  # Mise à jour de la position
-
-        for item in spt.items: # Gestion de la prise d'item
+        for item in spt.items:  # Gestion de la prise d'item
             if ut.touch(self, item):
                 self.change_state(item)
 
@@ -161,10 +145,15 @@ class Player(ut.Sprite):
                or self.pos.x + self.width < 0
                or self.pos.x > cf.SCREEN_WIDTH)
 
-
     def change_state(self, item):
-        """Modifie l'état du joueur parce qu'il a pris un item.
-            Supprime l'item"""
+        """
+        Modifie l'état après la prise d'un objet et supprime ce dernier.
+
+        Parameters
+        ----------
+        item : Item
+            L'objet récupéré
+        """
         self.state = item.type
         item.kill()
         self.timer = cf.ITEM_TIME[item.type]
@@ -174,27 +163,27 @@ class Player(ut.Sprite):
             ut.resize_list(self.images, cf.SIZE[self.state])
             self.width, self.height = cf.SIZE[self.state]
             for i in range(2):
-                self.pos[i] = self.pos[i] + cf.SIZE['normal'][i] - cf.SIZE[self.state][i]
+                self.pos[i] = self.pos[i] + cf.SIZE['normal'][i]\
+                    - cf.SIZE[self.state][i]
             self.rect = self.images[0].get_rect()
             self.rect.midbottom = self.pos
 
-
     def end_item(self):
-        """Quand on redevient normal"""
-
+        """Retour à l'état normal."""
         # On se remet à la bonne taille, position, etc.
         if self.state in ['little', 'big']:
             ut.resize_list(self.images, cf.SIZE['normal'])
             self.width, self.height = cf.SIZE['normal']
             for i in range(2):
-                self.pos[i] = self.pos[i] - cf.SIZE['normal'][i] + cf.SIZE[self.state][i]
+                self.pos[i] = self.pos[i] - cf.SIZE['normal'][i]\
+                    + cf.SIZE[self.state][i]
             self.rect = self.images[0].get_rect()
             self.rect.midbottom = self.pos
 
-        # On se remet dans l'état normal et on annule le FLAG_ITEM
+        # On se remet dans l'état normal et on annule le FLAG_ITEM
         self.state = "normal"
         self.vel.x = 0
 
         cf.FLAG_ITEM = False
-        cf.NEW_ITEM_TIME = cf.SECONDS + rd.randint(cf.ITEM_PROBA_MIN, cf.ITEM_PROBA_MAX)
-
+        cf.NEW_ITEM_TIME = cf.SECONDS + rd.randint(cf.ITEM_PROBA_MIN,
+                                                   cf.ITEM_PROBA_MAX)
