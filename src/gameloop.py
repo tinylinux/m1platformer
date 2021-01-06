@@ -214,11 +214,16 @@ def event_handling(players, event, mouse=None):
                 mn.settings_button.click(mouse):
             cf.STATE = State.setup
 
-        elif cf.STATE == State.languages or\
-                cf.STATE == State.langchange:
+        elif cf.STATE == State.languages:
             for i in range(len(mn.flagbutton)):
                 if mn.flagbutton[i].click(mouse):
                     cf.STATE = State.menu
+                    lg.set_lang(lg.AVAILABLE[i])
+
+        elif cf.STATE == State.langchange:
+            for i in range(len(mn.flagbutton)):
+                if mn.flagbutton[i].click(mouse):
+                    cf.STATE = State.setup
                     lg.set_lang(lg.AVAILABLE[i])
 
         elif cf.STATE == State.gameover or\
@@ -242,9 +247,13 @@ def event_handling(players, event, mouse=None):
                 mn.langue_button.click(mouse):
             cf.STATE = State.langchange
 
-        elif cf.STATE in [State.setup, State.langchange] and\
+        elif cf.STATE == State.setup and\
                 mn.return_button.click(mouse):
             # Clic de la souris sur le bouton "Records"
+            cf.STATE = State.menu
+
+        elif cf.STATE == State.langchange and\
+                mn.return_button.click(mouse):
             cf.STATE = State.menu
 
     if event.type == ut.VIDEORESIZE:  # pragma: no cover
