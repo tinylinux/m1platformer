@@ -1,5 +1,3 @@
-import sphinx_rtd_theme
-
 # flake8: noqa
 # pylint: skip-file
 # Configuration file for the Sphinx documentation builder.
@@ -14,16 +12,16 @@ import sphinx_rtd_theme
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import sphinx_rtd_theme
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
-sys.path.insert(0, os.path.abspath('../src'))
-
+sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 
 project = "Roll 'n' Jump"
-copyright = '2020, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali'
+copyright = '2021, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali'
 author = 'Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali'
 
 # The full version, including alpha/beta/rc tags
@@ -37,6 +35,7 @@ release = '1.0'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
     'sphinx_rtd_theme'
 ]
@@ -54,7 +53,7 @@ language = 'fr'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -70,7 +69,9 @@ html_copy_source = False
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-html_extra_path = ['docs/_static']
+
+
+# -- Extension configuration -------------------------------------------------
 
 # -- Napoleon configuration --------------------------------------------------
 
