@@ -4,7 +4,7 @@ import os
 import src.conf as cf
 import src.utilities as ut
 
-FONT_PIXEL = "assets/font/punk_rockf.ttf"
+FONT_PIXEL = os.path.join(cf.ASSETS, "font", "punk_rockf.ttf")
 """Chemin vers la police"""
 
 CHARS_LOW = "azertyuiopqsdfghjklmwxcvbn1234567890"
