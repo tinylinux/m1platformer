@@ -39,9 +39,19 @@ def main_loop(players, mouse=None):
         mn.records_button.print(mouse)
         mn.credits_button.print(mouse)
 
+    elif cf.STATE == State.setup:
+        mn.langue_button.print(mouse)
+        mn.return_button.print(mouse)
+        mn.commands_button.print(mouse)
+
     elif cf.STATE == State.languages:
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/title.png"), (357, 132))
+        for lang in mn.flagbutton:
+            lang.print(mouse)
+
+    elif cf.STATE == State.langchange:
+        mn.return_button.print(mouse)
         for lang in mn.flagbutton:
             lang.print(mouse)
 
@@ -190,7 +200,12 @@ def event_handling(players, event, mouse=None):
             # Clic de la souris sur le bouton "Records"
             cf.STATE = State.highscore
 
-        elif cf.STATE == State.languages:
+        elif cf.STATE == State.menu and\
+                mn.settings_button.click(mouse):
+            cf.STATE = State.setup
+
+        elif cf.STATE == State.languages or\
+                cf.STATE == State.langchange:
             for i in range(len(mn.flagbutton)):
                 if mn.flagbutton[i].click(mouse):
                     cf.STATE = State.menu
@@ -209,6 +224,15 @@ def event_handling(players, event, mouse=None):
                 wrld.stop_ground()
 
         elif cf.STATE == State.highscore and\
+                mn.return_button.click(mouse):
+            # Clic de la souris sur le bouton "Records"
+            cf.STATE = State.menu
+
+        elif cf.STATE == State.setup and\
+                mn.langue_button.click(mouse):
+            cf.STATE = State.langchange
+
+        elif cf.STATE in [State.setup, State.langchange] and\
                 mn.return_button.click(mouse):
             # Clic de la souris sur le bouton "Records"
             cf.STATE = State.menu
