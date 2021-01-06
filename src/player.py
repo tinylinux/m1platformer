@@ -8,7 +8,7 @@ import src.utilities as ut
 
 JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s, ut.K_u]
 """Touches de saut des joueurs."""
-WINNER = 1
+WINNER = 0
 """Joueur gagnant."""
 COLORS = ["green", "purple", "red", "white"]
 
