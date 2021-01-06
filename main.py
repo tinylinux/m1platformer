@@ -30,7 +30,7 @@ def initialization(graphical, music=False):
     """
     # Initialisation de la fenêtre
     cf.DISPLAYSURF, cf.WINDOWSURF = \
-        ut.initialize_window("assets/img/mono/mono3.png",
+        ut.initialize_window("assets/img/monogreen/monogreen3.png",
                              "Roll 'n' jump",
                              cf.SCREEN_WIDTH,
                              cf.SCREEN_HEIGHT,
@@ -44,7 +44,7 @@ def initialization(graphical, music=False):
     lg.get_lang()
 
     # Initialisation du joueur
-    players = [plyr.Player() for _ in range(cf.NB_PLAYERS)]
+    players = [plyr.Player(plyr.COLORS[i]) for i in range(cf.NB_PLAYERS)]
 
     # Initialisation du monde
     wrld.initgen()

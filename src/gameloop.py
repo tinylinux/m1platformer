@@ -129,7 +129,8 @@ def reset_world():
         Une liste de joueurs réinitialisés de longueur NB_PLAYERS
     """
     # remet le monocycle à la taille normale
-    ut.resize_list(spt.img_dict['mono_img'], cf.SIZE['normal'])
+    for color in plyr.COLORS:
+        ut.resize_list(spt.img_dict['mono' + color + '_img'], cf.SIZE['normal'])
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
@@ -141,7 +142,7 @@ def reset_world():
     spt.trees = ut.group_sprite_define()
     spt.items = ut.group_sprite_define()
     wrld.initgen()
-    return [plyr.Player() for _ in range(cf.NB_PLAYERS)]
+    return [plyr.Player(plyr.COLORS[i]) for i in range(cf.NB_PLAYERS)]
 
 
 def event_handling(players, event, mouse=None):
@@ -186,7 +187,7 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.menu and\
                 mn.multiplayer_button.click(mouse):
             # Clic de la souris sur le bouton "Commencer"
-            cf.NB_PLAYERS = 3
+            cf.NB_PLAYERS = 4
             players = reset_world()
             cf.STATE = State.ingame
             wrld.stop_ground()  # Arrêt de la création du sol du menu

@@ -114,9 +114,9 @@ WINDOWSURF = None
 """Surface sur laquelle le jeu sera affiché"""
 
 # Nombre maximal de joueurs
-NB_PLAYERS_MAX = 3
+NB_PLAYERS_MAX = 4
 # Nombre de joueurs
-NB_PLAYERS = 3
+NB_PLAYERS = 4
 
 # Vitesse initiale lors d'un saut
 V_JMP = 15

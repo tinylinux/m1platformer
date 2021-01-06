@@ -26,7 +26,7 @@ localdir = os.path.dirname(__file__)
 """Chemin du répertoire local"""
 
 # IMAGES
-Nom = ["mono", "cloud", "tree", "item"]
+Nom = ["monogreen", "monopurple", "monored", "monowhite", "cloud", "tree", "item"]
 """Liste des noms des différents éléments de décor"""
 img_dict = {}
 """
@@ -35,7 +35,10 @@ un facteur de taille,
 un nombre d'images
 et la liste de ces images.
 """
-img_dict["mono_factor"] = 1
+img_dict["monogreen_factor"] = 1
+img_dict["monopurple_factor"] = 1
+img_dict["monored_factor"] = 1
+img_dict["monowhite_factor"] = 1
 img_dict["cloud_factor"] = 4
 img_dict["tree_factor"] = 8
 img_dict["item_factor"] = 2
@@ -63,10 +66,11 @@ BAT_IMG = ut.load_image(os.path.join(localdir, "..", "assets",
 """Image pour un bâtiment"""
 
 # Dimensions
-w, h = img_dict["mono_img"][0].get_rect().size
-for key in cf.SIZE:
-    cf.SIZE[key] = (w * cf.SIZE_FACTOR[key], h * cf.SIZE_FACTOR[key])
-ut.resize_list(img_dict['mono_img'], cf.SIZE['normal'])
+for color in ["green", "purple", "red", "white"]:
+    w, h = img_dict["mono" + color + "_img"][0].get_rect().size
+    for key in cf.SIZE:
+        cf.SIZE[key] = (w * cf.SIZE_FACTOR[key], h * cf.SIZE_FACTOR[key])
+    ut.resize_list(img_dict['mono' + color + '_img'], cf.SIZE['normal'])
 
 w, h = GROUND_IMG.get_rect().size
 GROUND_HEIGHT = (cf.SCREEN_HEIGHT - h)

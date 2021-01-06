@@ -12,10 +12,11 @@ V_JMP = 15
 """Vitesse initiale lors d'un saut"""
 A_0 = 0
 """Accélération initiale"""
-JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s]
+JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s, ut.K_u]
 """Touches de saut des joueurs"""
 WINNER = 1
 """Joueur gagnant"""
+COLORS = ["green", "purple", "red", "white"]
 
 
 class Player(ut.Sprite):
@@ -40,14 +41,21 @@ class Player(ut.Sprite):
 
     # pylint: disable=too-many-instance-attributes
 
-    def __init__(self):
-        """Initialisation du joueur."""
+    def __init__(self, color):
+        """
+        Initialisation du joueur.
+        
+        Parameters
+        ----------
+        color : str
+            La couleur du joueur parmis Player.COLORS
+        """
         # Initialisation de la classe parent
         # ut.add_to_group(self, cf.player_sprite)
         super().__init__()
         # Liste d'images de l'objet, et indice de cette liste
         # [:] pour une copie parfaite, à cause du multijoueur pour l'instant
-        self.images = spt.img_dict["mono_img"][:]
+        self.images = spt.img_dict["mono" + color + "_img"][:]
         self.img = 0
         # Création de l'objet
         self.rect = self.images[0].get_rect()
