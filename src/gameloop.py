@@ -132,7 +132,8 @@ def reset_world():
     """
     # remet le monocycle à la taille normale
     for color in plyr.COLORS:
-        ut.resize_list(spt.img_dict['mono' + color + '_img'], cf.SIZE['normal'])
+        ut.resize_list(spt.img_dict['mono' + color + '_img'],
+                       cf.SIZE['normal'])
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0

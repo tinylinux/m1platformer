@@ -35,10 +35,10 @@ class Player(ut.Sprite):
 
     # pylint: disable=too-many-instance-attributes
 
-    def __init__(self, color):
+    def __init__(self, color="green"):
         """
         Initialisation du joueur.
-        
+
         Parameters
         ----------
         color : str

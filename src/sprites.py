@@ -23,7 +23,8 @@ def listdir(path):
 
 
 # IMAGES
-Nom = ["monogreen", "monopurple", "monored", "monowhite", "cloud", "tree", "item"]
+Nom = ["monogreen", "monopurple", "monored", "monowhite",
+       "cloud", "tree", "item"]
 """Liste des noms des différents éléments de décor"""
 img_dict = {}
 """
