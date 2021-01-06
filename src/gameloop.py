@@ -42,6 +42,7 @@ def main_loop(players, mouse=None):
         mn.settings_button.print(mouse)
         mn.records_button.print(mouse)
         mn.credits_button.print(mouse)
+        mn.sound_button.print(mouse)
 
     elif cf.STATE == State.setup:
         mn.langue_button.print(mouse)
@@ -216,6 +217,19 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.menu and\
                 mn.settings_button.click(mouse):
             cf.STATE = State.setup
+
+        elif cf.STATE == State.menu and\
+                mn.sound_button.click(mouse):
+            if cf.FLAG_MUSIC:
+                cf.FLAG_MUSIC = False
+                ut.pause_music()
+                mn.sound_button.image = 'soundoff.png'
+                mn.sound_button.image_hover = 'soundoffpushed.png'
+            else :
+                cf.FLAG_MUSIC = True
+                ut.unpause_music()
+                mn.sound_button.image = 'soundon.png'
+                mn.sound_button.image_hover = 'soundonpushed.png'
 
         elif cf.STATE == State.languages:
             for i in range(len(mn.flagbutton)):

@@ -409,6 +409,18 @@ commands_button = ButtonImage(
 )
 """Bouton pour changer les touches."""
 
+Sound_pos = (1168, 11)
+Sound_size = (100, 100)
+Sound_idle = 'soundon.png'
+Sound_hover = 'soundonpushed.png'
+sound_button = ButtonImage(
+    Sound_pos,
+    Sound_size,
+    Sound_idle,
+    Sound_hover
+)
+"""Bouton pour couper ou remettre la musique."""
+
 # Boutons pour chaque langue
 Flag_size = (180, 120)
 Flag_pos = [(418, 369), (684, 369)]

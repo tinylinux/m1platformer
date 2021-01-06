@@ -32,6 +32,9 @@ INPUT_FONT_SIZE = 35
 TEXT_FONT_SIZE = 25
 """Taille des fontes pour le texte."""
 
+FLAG_MUSIC = True
+"""Drapeau indiquant s'il y a de la musique ou non"""
+
 INITIAL_SPEED = 5
 """Vitesse initiale de défilement du sol."""
 SPEED = INITIAL_SPEED

@@ -95,6 +95,22 @@ def play_music():
     """
     pygame.mixer.music.play(-1)
 
+def pause_music():
+    """
+    Met sur pause la musique chargée avec load_music.
+
+    Ça boucle automatiquement à la fin.
+    """
+    pygame.mixer.music.pause()
+
+def unpause_music():
+    """
+    Relance la musique chargée avec load_music.
+
+    Ça boucle automatiquement à la fin.
+    """
+    pygame.mixer.music.unpause()
+
 
 def initialize_window(icon, title, width, height, graphical):
     """
