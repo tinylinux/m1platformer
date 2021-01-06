@@ -98,10 +98,8 @@ def winner_endgame(player_number):
     img = ut.load_image(img_path)
     w, h = img.get_rect().size
     scale_factor = 8
-    position = (int(cf.SCREEN_WIDTH / 2 - scale_factor * (w/2)),
-                int(cf.SCREEN_HEIGHT / 2 - scale_factor * (h/2)))
-    #mn.print_text("Victoire de", (640, 300), cf.GREY,
-    #              ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
+    position = (int(cf.SCREEN_WIDTH / 2 - scale_factor * (w / 2)),
+                int(cf.SCREEN_HEIGHT / 2 - scale_factor * (h / 2)))
     mn.print_image(img_path, position, scale_factor)
 
 

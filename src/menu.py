@@ -402,7 +402,7 @@ def print_image(image, position, scale=1):
     """
     img = ut.load_image(image)
     w, h = img.get_rect().size
-    img = ut.resize(img,(w * scale, h * scale))
+    img = ut.resize(img, (w * scale, h * scale))
     cf.DISPLAYSURF.blit(img, position)
 
 
