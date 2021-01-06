@@ -22,4 +22,5 @@ jobs:
       run: |
         cd Sphinx
         make html
+        rm -rf ../docs/*
         mv build/html/{.,}* ../docs
