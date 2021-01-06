@@ -65,7 +65,7 @@ def main_loop(players, mouse=None):
         for i, P in enumerate(players):
             if P.alive:
                 nb_player_alive += 1
-                plyr.WINNER = i + 1
+                plyr.WINNER = i
         if cf.NB_PLAYERS > 1 >= nb_player_alive:
             # Fin du mode multijoueur
             cf.STATE = State.gameover_multi
@@ -88,7 +88,7 @@ def main_loop(players, mouse=None):
 
     elif cf.STATE == State.gameover_multi:  # Menu de fin multi
 
-        scre.winner_endgame(plyr.WINNER)
+        scre.winner_endgame()
 
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/gameover.png"), (395, 100))

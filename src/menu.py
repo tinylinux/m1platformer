@@ -387,7 +387,7 @@ flagbutton.append(
 )
 
 
-def print_image(image, position):
+def print_image(image, position, scale=1):
     """
     Affiche une image à une position donnée.
 
@@ -397,8 +397,13 @@ def print_image(image, position):
         Le chemin vers l'image dans les fichiers
     position : int * int
         Les coordonnées de l'image
+    scale : int
+        Le facteur d'échelle
     """
-    cf.DISPLAYSURF.blit(ut.load_image(image), position)
+    img = ut.load_image(image)
+    w, h = img.get_rect().size
+    img = ut.resize(img, (w * scale, h * scale))
+    cf.DISPLAYSURF.blit(img, position)
 
 
 def print_text(text, position_center, color=cf.WHITE,
