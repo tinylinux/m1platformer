@@ -87,7 +87,11 @@ def score_endgame(pts):
 
 def winner_endgame(player_number):
     """Affiche le gagnant à la fin de la partie."""
-    mn.print_text("Victoire de " + str(player_number), (640, 300), cf.GREY,
+    if cf.LANG == "fr":
+        message = "Victoire du joueur " + str(player_number)
+    else:
+        message = "Player " + str(player_number) + " wins!"
+    mn.print_text(message, (640, 300), cf.GREY,
                   ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
 
 
