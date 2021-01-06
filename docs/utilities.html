@@ -1,0 +1,756 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Utilities &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Worldgen" href="worldgen.html" />
+    <link rel="prev" title="Sprites" href="sprites.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Roll 'n' Jump
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contenu :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fonction-de-collisions">Fonction de collisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evenements">Événements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#touches">Touches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Roll 'n' Jump</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Utilities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-utilities">
+<span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-utilities" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Gère l’abstraction de pygame.</p>
+<dl class="py function">
+<dt id="utilities.add_to_group">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">add_to_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sprite</span></em>, <em class="sig-param"><span class="n">group</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.add_to_group" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Ajoute un sprite à un groupe de sprites.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sprite</strong> (<em>Sprite</em>) – Le sprite à ajouter</p></li>
+<li><p><strong>group</strong> (<em>Group</em>) – Le groupe de sprites</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.collide_group">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">collide_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sprite</span></em>, <em class="sig-param"><span class="n">group</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.collide_group" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique s’il y a une collision entre un sprite et un groupe de sprites.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sprite</strong> (<em>Sprite</em>) – Le sprite examiné</p></li>
+<li><p><strong>group</strong> (<em>Sprite group</em>) – Le groupe de sprites examiné</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>True s’il y a une collision</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.contact">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">contact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sprite1</span></em>, <em class="sig-param"><span class="n">sprite2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.contact" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique si deux sprites sont en contact.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sprite1</strong> (<em>Sprite</em>) – Le premier sprite</p></li>
+<li><p><strong>sprite2</strong> (<em>Sprite</em>) – Le second sprite</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>True si les deux sprites sont en contact</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.create_rect">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">create_rect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">array</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.create_rect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Crée un objet rectangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>array</strong> (<em>int list</em>) – liste contenant l’abscisse de la gauche du rectangle,
+l’ordonnée du haut du rectangle,
+sa largeur et sa hauteur</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Le rectangle correspondant</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Rect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.draw_rect">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">draw_rect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface</span></em>, <em class="sig-param"><span class="n">color</span></em>, <em class="sig-param"><span class="n">rect</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.draw_rect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Dessine l’objet rectangle sur une surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface</strong> (<em>Surface</em>) – La surface sur laquelle afficher le rectangle</p></li>
+<li><p><strong>color</strong> (<em>int * int * int</em>) – La couleur (en RGB)</p></li>
+<li><p><strong>rect</strong> (<em>Rect</em>) – Le rectangle à afficher</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.font">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">font</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">font_name</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.font" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie une fonte de la taille demandée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font_name</strong> (<em>str</em>) – La police de caractères</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – La taille de la fonte</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>La fonte</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Font</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.get_events">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">get_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.get_events" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie la liste des évènements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>Liste des évènements</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>Event list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.get_screen_size">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">get_screen_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.get_screen_size" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie la taille de la fenêtre.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>Dimensions de la fenêtre</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.group_sprite_define">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">group_sprite_define</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.group_sprite_define" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Création d’un nouveau groupe de sprites.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>le groupe de sprites</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>Group</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.initialize_clock">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">initialize_clock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.initialize_clock" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Initialise le temps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>Une horloge</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>Clock</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.initialize_window">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">initialize_window</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">icon</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">graphical</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.initialize_window" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Initialise l’environnement graphique et la fenêtre.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>icon</strong> (<em>Surface</em>) – Icone de la fenêtre</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Nom de la fenêtre</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Largeur de la fenêtre</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Hauteur de la fenêtre</p></li>
+<li><p><strong>graphical</strong> (<em>bool</em>) – Indique si la fenêtre doit être affichée</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Un couple (surface de jeu, surface à afficher)</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Surface * Surface</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.keyname">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">keyname</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.keyname" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie le nom de la touche pressée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>Key</em>) – Touche pressée</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Nom de la touche</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.load_image">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">load_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.load_image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Charge une image à partir d’un chemin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Chemin du fichier</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Image du fichier</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Surface</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.load_music">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">load_music</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.load_music" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Charge une musique à partir d’un chemin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Chemin du fichier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.make_event">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">make_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event_type</span></em>, <em class="sig-param"><span class="n">attr</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.make_event" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie un événement du type passé en entrée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_type</strong> (<em>int</em>) – Le type de l’événement</p></li>
+<li><p><strong>attr</strong> (<em>dict</em><em>, </em><em>optionnel</em>) – Le dictionnaire des attributs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>L’événement correspondant</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Event</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.mouse_pos">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">mouse_pos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.mouse_pos" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie la position de la souris.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>La position du pointeur</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.play_music">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">play_music</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.play_music" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Lance la musique chargée avec load_music.</p>
+<p>Ça boucle automatiquement à la fin.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.quit_game">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">quit_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.quit_game" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Quitte le jeu.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.resize">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface</span></em>, <em class="sig-param"><span class="n">dimensions</span></em>, <em class="sig-param"><span class="n">destination</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.resize" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Change l’échelle de la surface en entrée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface</strong> (<em>Surface</em>) – La surface à modifier</p></li>
+<li><p><strong>dimensions</strong> (<em>int * int</em>) – Les nouvelles dimensions</p></li>
+<li><p><strong>destination</strong> (<em>Surface</em><em>, </em><em>optionnel</em>) – Nouvel objet à créer pour le redimensionnement</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Surface redimensionnée</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Surface</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.resize_list">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">resize_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.resize_list" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Redimensionne les images d’une liste.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L</strong> (<em>Surface list</em>) – Liste d’images</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – La résolution attendue</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>La liste des images redimensionnées</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Surface list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.resize_window">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">resize_window</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screen_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.resize_window" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Rétablit le ratio après un redimensionnement de fenêtre.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>screen_size</strong> (<em>int * int</em>) – Taille de la fenêtre, au ratio quelconque</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.update_pos_vel">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">update_pos_vel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">ground</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.update_pos_vel" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour la position et la vitesse de l’objet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Player / Item</em>) – L’objet à mettre à jour</p></li>
+<li><p><strong>ground</strong> (<em>Sprite group</em>) – Le groupe des plateformes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.update_screen">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">update_screen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.update_screen" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour l’écran.</p>
+</dd></dl>
+
+<div class="section" id="fonction-de-collisions">
+<h2>Fonction de collisions<a class="headerlink" href="#fonction-de-collisions" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py function">
+<dt id="utilities.collide">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">collide</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">pos_next</span></em>, <em class="sig-param"><span class="n">rect</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.collide" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Gestion des collisions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Player / Item</em>) – objet (joueur ou objet) dont on examine la collision</p></li>
+<li><p><strong>pos_next</strong> (<em>Vector2</em>) – position suivante de l’objet</p></li>
+<li><p><strong>rect</strong> (<em>Rect</em>) – ce qui est potentiellement en collision avec l’objet</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>un triplet (collision verticale, collision horizontale,
+modification de position necessaire)</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool * bool * Vector2</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="evenements">
+<h2>Événements<a class="headerlink" href="#evenements" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="utilities.INC_SPEED">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">INC_SPEED</code><a class="headerlink" href="#utilities.INC_SPEED" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Événement d’augmentation de la vitesse.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.KEYDOWN">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">KEYDOWN</code><a class="headerlink" href="#utilities.KEYDOWN" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Événement « touche enfoncée ».</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.MOUSEBUTTONDOWN">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">MOUSEBUTTONDOWN</code><a class="headerlink" href="#utilities.MOUSEBUTTONDOWN" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Événement « clic de la souris ».</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.VIDEORESIZE">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">VIDEORESIZE</code><a class="headerlink" href="#utilities.VIDEORESIZE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Événement « redimensionnement de la fenêtre ».</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.QUIT">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">QUIT</code><a class="headerlink" href="#utilities.QUIT" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Événement « quitter le jeu ».</p>
+</dd></dl>
+
+</div>
+<div class="section" id="touches">
+<h2>Touches<a class="headerlink" href="#touches" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="utilities.K_SPACE">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">K_SPACE</code><a class="headerlink" href="#utilities.K_SPACE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Touche espace.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.K_RETURN">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">K_RETURN</code><a class="headerlink" href="#utilities.K_RETURN" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Touche entrée.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.K_s">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">K_s</code><a class="headerlink" href="#utilities.K_s" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Touche S.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.K_BACKSPACE">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">K_BACKSPACE</code><a class="headerlink" href="#utilities.K_BACKSPACE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Touche retour.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="utilities.Vec">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">Vec</code><a class="headerlink" href="#utilities.Vec" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Classe des vecteurs de dimension 2.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.Sprite">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">Sprite</code><a class="headerlink" href="#utilities.Sprite" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Classe des sprites.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="utilities.GameObject">
+<em class="property">class </em><code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">GameObject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">scroll</span></em>, <em class="sig-param"><span class="n">image</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.GameObject" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
+<p>Classe des objets du monde (hors joueur).</p>
+<dl class="py attribute">
+<dt id="utilities.GameObject.pos">
+<code class="sig-name descname">pos</code><a class="headerlink" href="#utilities.GameObject.pos" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="utilities.GameObject.scroll">
+<code class="sig-name descname">scroll</code><a class="headerlink" href="#utilities.GameObject.scroll" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vitesse de déplacement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="utilities.GameObject.image">
+<code class="sig-name descname">image</code><a class="headerlink" href="#utilities.GameObject.image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Image de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Sprite</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="utilities.GameObject.rect">
+<code class="sig-name descname">rect</code><a class="headerlink" href="#utilities.GameObject.rect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Rectangle encadrant l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Rect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="utilities.GameObject.FLAG_creation">
+<code class="sig-name descname">FLAG_creation</code><a class="headerlink" href="#utilities.GameObject.FLAG_creation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Drapeau pour gérer la création des objets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position de l’objet</p></li>
+<li><p><strong>scroll</strong> (<em>float</em>) – Vitesse de déplacement</p></li>
+<li><p><strong>image</strong> (<em>Sprite</em>) – image de l’objet</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="utilities.GameObject.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.GameObject.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour le vecteur position.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="worldgen.html" class="btn btn-neutral float-right" title="Worldgen" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sprites.html" class="btn btn-neutral float-left" title="Sprites" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Worldgen &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Utilities" href="utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Roll 'n' Jump
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contenu :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Worldgen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constantes">Constantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions">Fonctions</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Roll 'n' Jump</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Worldgen</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-worldgen">
+<span id="worldgen"></span><h1>Worldgen<a class="headerlink" href="#module-worldgen" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Gère la génération du monde.</p>
+<div class="section" id="constantes">
+<h2>Constantes<a class="headerlink" href="#constantes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="worldgen.localdir">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">localdir</code><a class="headerlink" href="#worldgen.localdir" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Chemin du répertoire local</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="worldgen.modules">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">modules</code><a class="headerlink" href="#worldgen.modules" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Liste des modules</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="worldgen.MAX_JUMP">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">MAX_JUMP</code><em class="property"> = 200</em><a class="headerlink" href="#worldgen.MAX_JUMP" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Hauteur maximale entre la dernière plateforme d’un module
+et la première plateforme du suivant</p>
+</dd></dl>
+
+</div>
+<div class="section" id="fonctions">
+<h2>Fonctions<a class="headerlink" href="#fonctions" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py function">
+<dt id="worldgen.platform_creation">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">platform_creation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bloc</span></em>, <em class="sig-param"><span class="n">xoffset</span></em>, <em class="sig-param"><span class="n">yoffset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.platform_creation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Crée une plateforme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bloc</strong> (<em>str list</em>) – Liste des chaînes de caractères définissant la plateforme</p></li>
+<li><p><strong>xoffset</strong> (<em>int</em>) – Décalage en abscisses du module</p></li>
+<li><p><strong>yoffset</strong> (<em>int</em>) – Décalage en ordonnées du module</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="worldgen.initgen">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">initgen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.initgen" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Initialise le monde.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="worldgen.genere_module">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">genere_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">last_pltfrm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.genere_module" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Choisit et affiche un nouveau module à la fin de l’écran.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>last_pltfrm</strong> (<em>Plateform</em>) – Dernière plateforme du module en cours</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="worldgen.stop_ground">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">stop_ground</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.stop_ground" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Arrête la création infinie du sol.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="worldgen.update">
+<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour tous les objets du monde autres que Player.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="utilities.html" class="btn btn-neutral float-left" title="Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

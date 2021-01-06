@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Conf &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Gameloop" href="gameloop.html" />
+    <link rel="prev" title="Background" href="background.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Roll 'n' Jump
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contenu :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Conf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#chemins-de-fichier">Chemins de fichier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tailles-des-fontes">Tailles des fontes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mouvements">Mouvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multijoueur">Multijoueur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objets">Objets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#couleurs">Couleurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compteurs-pour-le-score">Compteurs pour le score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#etat-du-jeu">État du jeu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surfaces-de-jeu">Surfaces de jeu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Roll 'n' Jump</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Conf</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conf">
+<h1>Conf<a class="headerlink" href="#conf" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Stocke des variables partagées entre les différents fichiers.</p>
+<dl class="py data">
+<dt>
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">FPS</code><em class="property"> = 60</em></dt>
+<dd><p>Objectif d’images par seconde.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt>
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SCREEN_HEIGHT</code><em class="property"> = 720</em></dt>
+<dd><p>Référence de la hauteur de l’écran utilisée pour créer le jeu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt>
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SCREEN_WIDTH</code><em class="property"> = 1280</em></dt>
+<dd><p>Référence de la largeur de l’écran utilisée pour créer le jeu.</p>
+</dd></dl>
+
+<div class="section" id="chemins-de-fichier">
+<h2>Chemins de fichier<a class="headerlink" href="#chemins-de-fichier" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.ASSETS">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">ASSETS</code><a class="headerlink" href="#conf.ASSETS" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Chemin vers le dossier assets.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.UI">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">UI</code><a class="headerlink" href="#conf.UI" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Chemin vers le dossier des images de l’interface.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.MUSIC">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">MUSIC</code><a class="headerlink" href="#conf.MUSIC" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Chemin vers la musique.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.SCORES">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SCORES</code><a class="headerlink" href="#conf.SCORES" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Chemin vers le fichier contenant les scores.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="tailles-des-fontes">
+<h2>Tailles des fontes<a class="headerlink" href="#tailles-des-fontes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.HIGHTSCORES_FONT_SIZE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">HIGHTSCORES_FONT_SIZE</code><em class="property"> = 36</em><a class="headerlink" href="#conf.HIGHTSCORES_FONT_SIZE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Taille des fontes pour les meilleurs scores.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.SCORE_FONT_SIZE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SCORE_FONT_SIZE</code><em class="property"> = 25</em><a class="headerlink" href="#conf.SCORE_FONT_SIZE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Taille des fontes pour les scores.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.RESULT_FONT_SIZE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">RESULT_FONT_SIZE</code><em class="property"> = 50</em><a class="headerlink" href="#conf.RESULT_FONT_SIZE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Taille des fontes pour le résultat.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.TEXT_FONT_SIZE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">TEXT_FONT_SIZE</code><em class="property"> = 25</em><a class="headerlink" href="#conf.TEXT_FONT_SIZE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Taille des fontes pour le texte.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="mouvements">
+<h2>Mouvements<a class="headerlink" href="#mouvements" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.INITIAL_SPEED">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">INITIAL_SPEED</code><em class="property"> = 5</em><a class="headerlink" href="#conf.INITIAL_SPEED" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vitesse initiale de défilement du sol.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.SPEED">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SPEED</code><a class="headerlink" href="#conf.SPEED" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vitesse de défilement du monde.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.V_JMP">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">V_JMP</code><em class="property"> = 15</em><a class="headerlink" href="#conf.V_JMP" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vitesse initiale lors d’un saut.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.G">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">G</code><em class="property"> = 0.8</em><a class="headerlink" href="#conf.G" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accélération due à la gravité.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="multijoueur">
+<h2>Multijoueur<a class="headerlink" href="#multijoueur" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.NB_PLAYERS_MAX">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">NB_PLAYERS_MAX</code><em class="property"> = 3</em><a class="headerlink" href="#conf.NB_PLAYERS_MAX" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Nombre maximal de joueurs.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.NB_PLAYERS">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">NB_PLAYERS</code><a class="headerlink" href="#conf.NB_PLAYERS" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Nombre de joueurs.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="objets">
+<h2>Objets<a class="headerlink" href="#objets" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.FLAG_ITEM">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">FLAG_ITEM</code><a class="headerlink" href="#conf.FLAG_ITEM" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Drapeau indiquant un objet à l’écran ou un effet d’objet.
+A pour effet d’empêcher l’apparition d’objets.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.NEW_ITEM_TIME">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">NEW_ITEM_TIME</code><a class="headerlink" href="#conf.NEW_ITEM_TIME" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Le nombre de secondes avant le prochain objet.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.ITEM_PROBA_MIN">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">ITEM_PROBA_MIN</code><em class="property"> = 2</em><a class="headerlink" href="#conf.ITEM_PROBA_MIN" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Le minimum de NEW_ITEM_TIME lorsque tiré aléatoirement.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.ITEM_PROBA_MAX">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">ITEM_PROBA_MAX</code><em class="property"> = 5</em><a class="headerlink" href="#conf.ITEM_PROBA_MAX" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Le maximum de NEW_ITEM_TIME lorsque tiré aléatoirement.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.ITEM_TIME">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">ITEM_TIME</code><em class="property"> = {'big': 200, 'fast': 40, 'little': 200, 'slow': 40}</em><a class="headerlink" href="#conf.ITEM_TIME" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Dictionnaire avec la durée des effets des items (en nbre de frames).</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.V_ITEM">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">V_ITEM</code><em class="property"> = {'fast': 4, 'slow': -4}</em><a class="headerlink" href="#conf.V_ITEM" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vitesse à laquelle on accélère ou ralentit.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.SIZE_FACTOR">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SIZE_FACTOR</code><em class="property"> = {'big': 8, 'little': 1, 'normal': 3}</em><a class="headerlink" href="#conf.SIZE_FACTOR" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Facteurs de redimensionnement du joueur.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.SIZE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SIZE</code><a class="headerlink" href="#conf.SIZE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Les différentes dimensions du joueur (normal, big, little).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="couleurs">
+<h2>Couleurs<a class="headerlink" href="#couleurs" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.BLACK">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">BLACK</code><em class="property"> = (255, 255, 255)</em><a class="headerlink" href="#conf.BLACK" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Noir.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.GREY">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">GREY</code><em class="property"> = (240, 240, 240)</em><a class="headerlink" href="#conf.GREY" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Gris.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.WHITE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">WHITE</code><em class="property"> = (255, 255, 255)</em><a class="headerlink" href="#conf.WHITE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Blanc.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.BlueSky">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">BlueSky</code><em class="property"> = (0, 170, 251)</em><a class="headerlink" href="#conf.BlueSky" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Couleur du ciel.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.IDLE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">IDLE</code><em class="property"> = (170, 170, 170)</em><a class="headerlink" href="#conf.IDLE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Couleur d’un bouton inactif.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.HOVER">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">HOVER</code><em class="property"> = (100, 100, 100)</em><a class="headerlink" href="#conf.HOVER" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Couleur d’un bouton sur lequel le pointeur est situé.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="compteurs-pour-le-score">
+<h2>Compteurs pour le score<a class="headerlink" href="#compteurs-pour-le-score" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.SECONDS">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">SECONDS</code><a class="headerlink" href="#conf.SECONDS" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Compteur de secondes pour le score.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.FRAMES">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">FRAMES</code><a class="headerlink" href="#conf.FRAMES" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Compteur des images pour les secondes</p>
+</dd></dl>
+
+</div>
+<div class="section" id="etat-du-jeu">
+<h2>État du jeu<a class="headerlink" href="#etat-du-jeu" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="conf.State">
+<em class="property">class </em><code class="sig-prename descclassname">conf.</code><code class="sig-name descname">State</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#conf.State" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Type énuméré pour l’état du jeu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.STATE">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">STATE</code><a class="headerlink" href="#conf.STATE" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>État du jeu.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="surfaces-de-jeu">
+<h2>Surfaces de jeu<a class="headerlink" href="#surfaces-de-jeu" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="conf.DISPLAYSURF">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">DISPLAYSURF</code><a class="headerlink" href="#conf.DISPLAYSURF" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Surface sur laquelle le jeu est créé.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="conf.WINDOWSURF">
+<code class="sig-prename descclassname">conf.</code><code class="sig-name descname">WINDOWSURF</code><a class="headerlink" href="#conf.WINDOWSURF" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Surface sur laquelle le jeu sera affiché.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="gameloop.html" class="btn btn-neutral float-right" title="Gameloop" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="background.html" class="btn btn-neutral float-left" title="Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
