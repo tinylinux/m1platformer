@@ -9,24 +9,34 @@ import src.conf as cf
 pygame.init()
 
 Vec = pygame.math.Vector2
+"""Classe des vecteurs de dimension 2."""
 
-# Crée un nouvel event, le +1 sert à avoir un nouvel ID
+# le +1 sert à avoir un nouvel ID
 INC_SPEED = pygame.USEREVENT + 1
+"""Événement d'augmentation de la vitesse."""
 
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
 
 Sprite = pygame.sprite.Sprite
+"""Classe des sprites."""
 
-# pygame events
 KEYDOWN = pygame.KEYDOWN
+"""Événement "touche enfoncée"."""
 K_SPACE = pygame.K_SPACE
+"""Touche espace."""
 K_RETURN = pygame.K_RETURN
+"""Touche entrée."""
 K_s = pygame.K_s
+"""Touche S."""
 K_BACKSPACE = pygame.K_BACKSPACE
+"""Touche retour."""
 MOUSEBUTTONDOWN = pygame.MOUSEBUTTONDOWN
+"""Événement "clic de la souris"."""
 VIDEORESIZE = pygame.VIDEORESIZE
+"""Événement "redimensionnement de la fenêtre"."""
 QUIT = pygame.QUIT
+"""Événement "quitter le jeu"."""
 
 
 def keyname(key):
@@ -247,7 +257,7 @@ def resize_list(L, size):
         L[i] = pygame.transform.scale(img, size)
 
 
-def touch(sprite1, sprite2):
+def contact(sprite1, sprite2):
     """
     Indique si deux sprites sont en contact.
 
@@ -261,11 +271,12 @@ def touch(sprite1, sprite2):
     Returns
     -------
     bool
+        True si les deux sprites sont en contact
     """
     return pygame.sprite.collide_rect(sprite1, sprite2)
 
 
-def collidegroup(sprite, group):
+def collide_group(sprite, group):
     """
     Indique s'il y a une collision entre un sprite et un groupe de sprites.
 
@@ -279,6 +290,7 @@ def collidegroup(sprite, group):
     Returns
     -------
     bool
+        True s'il y a une collision
     """
     return pygame.sprite.spritecollideany(sprite, group)
 

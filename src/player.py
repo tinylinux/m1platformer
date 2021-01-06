@@ -6,16 +6,10 @@ import src.conf as cf
 import src.sprites as spt
 import src.utilities as ut
 
-V_0 = 0
-"""Vitesse initiale"""
-V_JMP = 15
-"""Vitesse initiale lors d'un saut"""
-A_0 = 0
-"""Accélération initiale"""
 JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s]
-"""Touches de saut des joueurs"""
+"""Touches de saut des joueurs."""
 WINNER = 1
-"""Joueur gagnant"""
+"""Joueur gagnant."""
 
 
 class Player(ut.Sprite):
@@ -67,9 +61,9 @@ class Player(ut.Sprite):
         self.rect.midbottom = self.pos
 
         # Vitesse
-        self.vel = ut.Vec(V_0, 0)
+        self.vel = ut.Vec(0, 0)
         # Accélération
-        self.acc = ut.Vec(A_0, cf.G)
+        self.acc = ut.Vec(0, cf.G)
 
         # Drapeau de disponibilité du saut
         self.FLAG_JUMP = True
@@ -104,13 +98,13 @@ class Player(ut.Sprite):
                 self.end_item()
 
             if self.state == "fast":
-                self.vel.x = cf.VEL['fast']
+                self.vel.x = cf.V_ITEM['fast']
                 # si on arrive aux 2/3 de l'écran ça arrête d'avancer
                 if self.pos.x > (cf.SCREEN_WIDTH * 2) // 3:
                     self.end_item()
 
             elif self.state == "slow":
-                self.vel.x = cf.VEL['slow']
+                self.vel.x = cf.V_ITEM['slow']
                 # si on sort presque de l'écran ça arrête de ralentir
                 if self.pos.x < self.width:
                     self.end_item()
@@ -118,7 +112,7 @@ class Player(ut.Sprite):
         ut.update_pos_vel(self, spt.ground)
 
         for item in spt.items:  # Gestion de la prise d'item
-            if ut.touch(self, item):
+            if ut.contact(self, item):
                 self.change_state(item)
 
         # On change le sprite du joueur

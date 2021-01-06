@@ -127,4 +127,4 @@ def update():
         genere_module(last_pltfrm)
 
     if (not cf.FLAG_ITEM) and (cf.SECONDS == cf.NEW_ITEM_TIME):
-        it.item()
+        it.Item()

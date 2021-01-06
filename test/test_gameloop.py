@@ -98,7 +98,7 @@ def test_event():
     for i, P in enumerate(players):
         event = ut.make_event(ut.KEYDOWN, {'key': plyr.JUMP_KEYS[i]})
         players = gml.event_handling(players, event, (0, 0))
-        assert P.vel.y == -plyr.V_JMP
+        assert P.vel.y == -cf.V_JMP
 
     cf.NB_PLAYERS = 3
     players = gml.reset_world()

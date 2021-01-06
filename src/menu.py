@@ -62,7 +62,18 @@ def mouse_on_button(scaled_mouse, button_pos, button_size):
 
 
 class Button:
-    """Boutons pour les menus."""
+    """
+    Boutons pour les menus.
+
+    Attributes
+    ----------
+    position : int * int
+        Position du bouton
+    size : int * int
+        Taille du bouton
+    rect : Rect
+        Rectangle du bouton
+    """
 
     def __init__(self, position, size):
         """
@@ -98,7 +109,16 @@ class Button:
 
 
 class ButtonText(Button):
-    """Boutons aillant du texte comme étiquette."""
+    """
+    Boutons aillant du texte comme étiquette.
+
+    Attributes
+    ----------
+    text : str
+        Étiquette du bouton
+    text_position :
+        Position de l'étiquette
+    """
 
     def __init__(self, position, size, text):
         """
@@ -267,6 +287,7 @@ oneplayer_button = ButtonImage(
     Oneplayer_idle,
     Oneplayer_hover
 )
+"""Bouton pour lancer le jeu à un joueur."""
 
 Multiplayer_pos = (591, 323)
 Multiplayer_size = (100, 100)
@@ -278,6 +299,7 @@ multiplayer_button = ButtonImage(
     Multiplayer_idle,
     Multiplayer_hover
 )
+"""Bouton pour lancer le jeu en multijoueur."""
 
 Settings_pos = (824, 323)
 Settings_size = (100, 100)
@@ -289,6 +311,7 @@ settings_button = ButtonImage(
     Settings_idle,
     Settings_hover
 )
+"""Bouton des réglages."""
 
 Records_pos = (358, 460)
 Records_size = (250, 75)
@@ -300,6 +323,7 @@ records_button = ButtonImage(
     Records_idle,
     Records_hover
 )
+"""Bouton des meilleurs scores."""
 
 Credits_pos = (674, 460)
 Credits_size = (250, 75)
@@ -311,6 +335,7 @@ credits_button = ButtonImage(
     Credits_idle,
     Credits_hover
 )
+"""Bouton des crédits."""
 
 Restart_pos = (440, 500)
 Restart_size = (401, 123)
@@ -322,6 +347,7 @@ restart_button = ButtonImage(
     Restart_idle,
     Restart_hover
 )
+"""Bouton pour recommencer le jeu."""
 
 Return_pos = (20, 20)
 Return_size = (100, 100)
@@ -333,8 +359,9 @@ return_button = ButtonImage(
     Return_idle,
     Return_hover
 )
+"""Bouton pour revenir au menu."""
 
-# Buttons for each language
+# Un bouton par langue
 Flag_size = (180, 120)
 Flag_pos = [(418, 369), (684, 369)]
 Flag_idle = [os.path.join(cf.UI, 'flag', 'fr.png'),
@@ -343,6 +370,7 @@ Flag_hover = [os.path.join(cf.UI, 'flag', 'fr_hover.png'),
               os.path.join(cf.UI, 'flag', 'en_hover.png')]
 
 flagbutton = []
+"""Liste des boutons pour les langues."""
 flagbutton.append(
     ButtonImage(
         Flag_pos[0], Flag_size,

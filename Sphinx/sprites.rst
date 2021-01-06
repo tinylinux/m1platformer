@@ -9,8 +9,6 @@ Fonctions
 
 Constantes et variables
 ***********************
-.. autodata:: localdir
-   :annotation:
 .. autodata:: Nom
 .. autodata:: img_dict
    :annotation:
@@ -18,19 +16,24 @@ Constantes et variables
 Images
 ------
 .. autodata:: GROUND_IMG
+   :annotation:
 .. autodata:: PLTFRM_IMG
+   :annotation:
 .. autodata:: BAT_IMG
+   :annotation:
 
 Dimensions
 ----------
-.. autodata:: p_WIDTH
-.. autodata:: p_HEIGHT
 .. autodata:: GROUND_HEIGHT
 .. autodata:: GROUND_WIDTH
 
 Groupes
 -------
 .. autodata:: ground
+   :annotation:
 .. autodata:: clouds
+   :annotation:
 .. autodata:: trees
+   :annotation:
 .. autodata:: items
+   :annotation:
