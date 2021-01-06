@@ -9,24 +9,36 @@ import src.conf as cf
 pygame.init()
 
 Vec = pygame.math.Vector2
+"""Classe des vecteurs de dimension 2."""
 
-# Crée un nouvel event, le +1 sert à avoir un nouvel ID
+# le +1 sert à avoir un nouvel ID
 INC_SPEED = pygame.USEREVENT + 1
+"""Événement d'augmentation de la vitesse."""
 
 # Toutes les secondes on augmente la vitesse
 pygame.time.set_timer(INC_SPEED, 1000)
 
 Sprite = pygame.sprite.Sprite
+"""Classe des sprites."""
 
-# pygame events
 KEYDOWN = pygame.KEYDOWN
+"""Événement "touche enfoncée"."""
 K_SPACE = pygame.K_SPACE
+"""Touche espace."""
 K_RETURN = pygame.K_RETURN
+"""Touche entrée."""
 K_s = pygame.K_s
+"""Touche S."""
+K_u = pygame.K_u
+"""Touche U."""
 K_BACKSPACE = pygame.K_BACKSPACE
+"""Touche retour."""
 MOUSEBUTTONDOWN = pygame.MOUSEBUTTONDOWN
+"""Événement "clic de la souris"."""
 VIDEORESIZE = pygame.VIDEORESIZE
+"""Événement "redimensionnement de la fenêtre"."""
 QUIT = pygame.QUIT
+"""Événement "quitter le jeu"."""
 
 
 def keyname(key):
@@ -61,6 +73,27 @@ def load_image(path):
         Image du fichier
     """
     return pygame.image.load(path)
+
+
+def load_music(path):
+    """
+    Charge une musique à partir d'un chemin.
+
+    Parameters
+    ----------
+    path : str
+        Chemin du fichier
+    """
+    pygame.mixer.music.load(path)
+
+
+def play_music():
+    """
+    Lance la musique chargée avec load_music.
+
+    Ça boucle automatiquement à la fin.
+    """
+    pygame.mixer.music.play(-1)
 
 
 def initialize_window(icon, title, width, height, graphical):
@@ -206,6 +239,64 @@ def resize(surface, dimensions, destination=None):
     return pygame.transform.scale(surface, dimensions, destination)
 
 
+def resize_list(L, size):
+    """
+    Redimensionne les images d'une liste.
+
+    Parameters
+    ----------
+    L : Surface list
+        Liste d'images
+    size : int * int
+        La résolution attendue
+
+    Returns
+    -------
+    Surface list
+        La liste des images redimensionnées
+    """
+    for i, img in enumerate(L):
+        L[i] = pygame.transform.scale(img, size)
+
+
+def contact(sprite1, sprite2):
+    """
+    Indique si deux sprites sont en contact.
+
+    Parameters
+    ----------
+    sprite1 : Sprite
+        Le premier sprite
+    sprite2 : Sprite
+        Le second sprite
+
+    Returns
+    -------
+    bool
+        True si les deux sprites sont en contact
+    """
+    return pygame.sprite.collide_rect(sprite1, sprite2)
+
+
+def collide_group(sprite, group):
+    """
+    Indique s'il y a une collision entre un sprite et un groupe de sprites.
+
+    Parameters
+    ----------
+    sprite : Sprite
+        Le sprite examiné
+    group : Sprite group
+        Le groupe de sprites examiné
+
+    Returns
+    -------
+    bool
+        True s'il y a une collision
+    """
+    return pygame.sprite.spritecollideany(sprite, group)
+
+
 def update_screen():
     """Met à jour l'écran."""
     pygame.display.flip()
@@ -295,6 +386,83 @@ def font(font_name, size):
     return pygame.font.Font(font_name, size)
 
 
+def collide(obj, pos_next, rect):
+    """
+    Gestion des collisions.
+
+    Parameters
+    ----------
+    obj : Player / Item
+        objet (joueur ou objet) dont on examine la collision
+    pos_next : Vector2
+        position suivante de l'objet
+    rect : Rect
+        ce qui est potentiellement en collision avec l'objet
+
+    Returns
+    -------
+    bool * bool * Vector2
+        un triplet (collision verticale, collision horizontale,
+        modification de position necessaire)
+    """
+    # On ne tient pas compte du cas dans lequel l'objet traverserait
+    # une plateforme dans sa longueur entre deux positions, il ne serait
+    # de toutes façons pas possible de jouer dans ce cas.
+    pos_prev = obj.pos
+
+    if pos_next.x + obj.width > rect.left\
+            and pos_next.x < rect.right:
+        # Dans la plateforme horizontalement
+
+        if pos_prev.y + obj.height <= rect.top:
+            # Position initale au-dessus de la plateforme
+            if pos_next.y + obj.height > rect.top:
+                # Nouvelle position dans ou sous la plateforme
+                obj.FLAG_JUMP = True
+                return (True, False,
+                        Vec(pos_next.x, rect.top - obj.height))
+
+        elif pos_prev.y >= rect.bottom:
+            # Position initiale en-dessous de la plateforme
+            if pos_next.y < rect.bottom:
+                # Nouvelle position dans ou au-dessus de la plateforme
+                return (True, False, Vec(pos_next.x, rect.bottom))
+
+        elif pos_next.y + obj.height > rect.top\
+                and pos_next.y < rect.bottom:
+            # On ne considère que les collisions à gauche des plateformes
+            return (False, True, Vec(rect.left - obj.width, pos_next.y))
+
+    return(False, False, None)
+
+
+def update_pos_vel(obj, ground):
+    """
+    Met à jour la position et la vitesse de l'objet.
+
+    Parameters
+    ----------
+    obj : Player / Item
+        L'objet à mettre à jour
+    ground : Sprite group
+        Le groupe des plateformes
+    """
+    obj.vel += obj.acc
+    posnext = obj.pos + obj.vel + 0.5 * obj.acc
+
+    for plat in ground:  # Gestion des collisions
+        coll = collide(obj, posnext, plat.rect)
+        if coll[0] or coll[1]:
+            posnext = coll[2]
+            if coll[0]:
+                obj.vel.y = 0
+            if coll[1]:
+                obj.vel.x = 0
+
+    obj.pos = posnext
+    obj.rect.topleft = obj.pos  # Mise à jour de la position
+
+
 class GameObject(Sprite):
     """
     Classe des objets du monde (hors joueur).
@@ -343,6 +511,7 @@ class GameObject(Sprite):
         self.pos = posnext
         self.rect.topleft = self.pos
         if self.rect.right < 0:     # si l'objet sort de l'écran
+            # print(self)
             self.kill()              # on le supprime
         # On met à jour l'image
         cf.DISPLAYSURF.blit(self.image, self.rect)

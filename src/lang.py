@@ -6,7 +6,9 @@ from src.conf import State
 import src.menu as mn
 
 FILE = "lang.txt"
+"""Fichier de langue."""
 AVAILABLE = ["fr", "en"]
+"""Langues disponibles."""
 
 
 def init_lang():
@@ -19,21 +21,21 @@ def onlyalphanum(value):
     """
     Fonction ne conservant que les caractères alphanumériques.
 
-    Entrée :
-    --------
-    value : <string>
+    Parameters
+    ----------
+    value : str
         Chaîne de caractères
 
-    Sortie :
-    --------
-    <string>
+    Returns
+    -------
+    str
         Chaîne de caractères filtrée
     """
     return re.sub(r'[^A-Za-z0-9]+', '', value)
 
 
 def get_lang():
-    """Récupérer la langue choisie par l'utilisateur."""
+    """Récupère la langue choisie par l'utilisateur."""
     with open(FILE) as lg:
         lang = lg.readlines()
         if len(lang) > 0 and onlyalphanum(lang[0]) in AVAILABLE:
@@ -46,11 +48,11 @@ def get_lang():
 
 def set_lang(lang):
     """
-    Changer la langue du jeu.
+    Change la langue du jeu.
 
-    Entrée :
-    --------
-    lang :  <string>
+    Parameters
+    ----------
+    lang : str
         Langue choisie par l'utilisateur
     """
     cf.LANG = onlyalphanum(lang)

@@ -30,7 +30,7 @@ def test_print(number):
     main.initialization(False)
     scre.score(number)
     scre.score_endgame(number)
-    scre.winner_endgame(number)
+    scre.winner_endgame()
 
 
 alphanum_char = characters(min_codepoint=0x30,

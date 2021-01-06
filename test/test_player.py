@@ -10,38 +10,6 @@ import src.player as plyr
 import src.gameloop as gml
 
 
-# Test des collisions
-
-# pylint: disable=too-many-arguments
-@given(integers(min_value=0, max_value=100),
-       integers(min_value=0, max_value=100),
-       integers(min_value=0, max_value=100),
-       integers(min_value=0, max_value=100),
-       integers(min_value=0, max_value=100),
-       integers(min_value=0, max_value=100),
-       integers(min_value=10, max_value=50),
-       integers(min_value=10, max_value=50))
-def test_collisions(pos_prev_x, pos_prev_y,
-                    pos_next_x, pos_next_y,
-                    pos_plat_x, pos_plat_y,
-                    width_plat, height_plat):
-    """Test pour la fonction de vérification des collisions."""
-    player = plyr.Player()
-    player.pos = ut.Vec((pos_prev_x, pos_prev_y))
-    dummy_next = ut.create_rect([pos_next_x, pos_next_y,
-                                spt.p_WIDTH, spt.p_HEIGHT])
-    plat = ut.create_rect([pos_plat_x, pos_plat_y,
-                          width_plat, height_plat])
-    (vert, hor, new_pos) = plyr.collide(player,
-                                        ut.Vec((pos_next_x, pos_next_y)),
-                                        plat)
-    assert (vert or hor) == dummy_next.colliderect(plat)
-    if new_pos is not None:
-        dummy_next.topleft = new_pos
-    assert not dummy_next.colliderect(plat)
-# pylint: enable=too-many-arguments
-
-
 # Test du saut du joueur
 
 def test_jump():

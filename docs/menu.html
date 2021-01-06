@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu &#8212; Documentation Roll &#39;n&#39; Jump 1.0</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Platforms" href="platforms.html" />
+    <link rel="prev" title="Lang" href="lang.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-menu">
+<span id="menu"></span><h1>Menu<a class="headerlink" href="#module-menu" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Gestion des menus.</p>
+<div class="section" id="constantes">
+<h2>Constantes<a class="headerlink" href="#constantes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="menu.FONT_PIXEL">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">FONT_PIXEL</code><a class="headerlink" href="#menu.FONT_PIXEL" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Chemin vers la police</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.CHARS_LOW">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">CHARS_LOW</code><em class="property"> = 'azertyuiopqsdfghjklmwxcvbn1234567890'</em><a class="headerlink" href="#menu.CHARS_LOW" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Caractères acceptés, en minuscules</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.CHARS_CAP">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">CHARS_CAP</code><em class="property"> = 'AZERTYUIOPQSDFGHJKLMWXCVBN1234567890'</em><a class="headerlink" href="#menu.CHARS_CAP" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Caractères acceptés, en majuscules</p>
+</dd></dl>
+
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="menu.Button">
+<em class="property">class </em><code class="sig-prename descclassname">menu.</code><code class="sig-name descname">Button</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.Button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Boutons pour les menus.</p>
+<dl class="py attribute">
+<dt id="menu.Button.position">
+<code class="sig-name descname">position</code><a class="headerlink" href="#menu.Button.position" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="menu.Button.size">
+<code class="sig-name descname">size</code><a class="headerlink" href="#menu.Button.size" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Taille du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="menu.Button.rect">
+<code class="sig-name descname">rect</code><a class="headerlink" href="#menu.Button.rect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Rectangle du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Rect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="menu.Button.click">
+<code class="sig-name descname">click</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.Button.click" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique si le pointeur de la souris est sur le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>mouse</strong> (<em>int * int</em>) – Position de la souris</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>True si le pointeur est sur le bouton</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="menu.ButtonText">
+<em class="property">class </em><code class="sig-prename descclassname">menu.</code><code class="sig-name descname">ButtonText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.ButtonText" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="#menu.Button" title="menu.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">menu.Button</span></code></a></p>
+<p>Boutons aillant du texte comme étiquette.</p>
+<dl class="py attribute">
+<dt id="menu.ButtonText.text">
+<code class="sig-name descname">text</code><a class="headerlink" href="#menu.ButtonText.text" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Étiquette du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="menu.ButtonText.text_position">
+<code class="sig-name descname">text_position</code><a class="headerlink" href="#menu.ButtonText.text_position" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position de l’étiquette</p>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+<li><p><strong>text</strong> (<em>string</em>) – Étiquette du bouton</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="menu.ButtonText.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em>, <em class="sig-param"><span class="n">pushed</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.ButtonText.print" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mouse</strong> (<em>int * int</em>) – Position de la souris</p></li>
+<li><p><strong>pushed</strong> (<em>bool</em><em>, </em><em>optionnel</em>) – Bouton enfoncé</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="menu.ButtonImage">
+<em class="property">class </em><code class="sig-prename descclassname">menu.</code><code class="sig-name descname">ButtonImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">image_hover</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.ButtonImage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="#menu.Button" title="menu.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">menu.Button</span></code></a></p>
+<p>Boutons affichant une image.</p>
+<dl class="py attribute">
+<dt id="menu.ButtonImage.image">
+<code class="sig-name descname">image</code><a class="headerlink" href="#menu.ButtonImage.image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Nom de l’image à afficher quand le bouton est inactif</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="menu.ButtonImage.image_hover">
+<code class="sig-name descname">image_hover</code><a class="headerlink" href="#menu.ButtonImage.image_hover" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Nom de l’image à afficher quand le pointeur est sur le bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+<li><p><strong>image</strong> (<em>str</em>) – Nom de l’image à afficher quand le bouton est inactif</p></li>
+<li><p><strong>image_hover</strong> (<em>str</em>) – Nom de l’image à afficher quand le pointeur est sur le bouton</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="menu.ButtonImage.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em>, <em class="sig-param"><span class="n">pushed</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.ButtonImage.print" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mouse</strong> (<em>int * int</em>) – Position du pointeur de la souris</p></li>
+<li><p><strong>pushed</strong> (<em>bool</em><em>, </em><em>optionnel</em>) – Bouton enfoncé</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="menu.InputZone">
+<em class="property">class </em><code class="sig-prename descclassname">menu.</code><code class="sig-name descname">InputZone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">font</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.InputZone" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="#menu.Button" title="menu.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">menu.Button</span></code></a></p>
+<p>Zones permettant le saisie de texte.</p>
+<dl class="py attribute">
+<dt id="menu.InputZone.input">
+<code class="sig-name descname">input</code><a class="headerlink" href="#menu.InputZone.input" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Texte inséré dans la zone</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="menu.InputZone.selescted">
+<code class="sig-name descname">selescted</code><a class="headerlink" href="#menu.InputZone.selescted" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique si la zone est sélectionnée</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="menu.InputZone.text_position">
+<code class="sig-name descname">text_position</code><a class="headerlink" href="#menu.InputZone.text_position" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position du texte par rapport à la zone</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="menu.InputZone.font">
+<code class="sig-name descname">font</code><a class="headerlink" href="#menu.InputZone.font" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>La fonte</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Font</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+<li><p><strong>font</strong> (<em>Font</em><em>, </em><em>optionnel</em>) – La fonte</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="menu.InputZone.deselect">
+<code class="sig-name descname">deselect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.InputZone.deselect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Désactive la sélection de la zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="menu.InputZone.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.InputZone.print" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche la zone et le texte entré.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="menu.InputZone.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.InputZone.read" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Lit les caractères entrés.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>key</em>) – La touche détectée</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="menu.InputZone.select">
+<code class="sig-name descname">select</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.InputZone.select" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Active la sélection de la zone.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fonctions">
+<h2>Fonctions<a class="headerlink" href="#fonctions" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py function">
+<dt id="menu.mouse_on_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">mouse_on_button</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scaled_mouse</span></em>, <em class="sig-param"><span class="n">button_pos</span></em>, <em class="sig-param"><span class="n">button_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.mouse_on_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique si le pointeur de la souris est sur le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scaled_mouse</strong> (<em>int * int</em>) – Position du pointeur de la souris mise à l’échelle</p></li>
+<li><p><strong>button_pos</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>button_size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>True si le pointeur est sur le bouton</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="menu.print_image">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">print_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">position</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.print_image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche une image à une position donnée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>string</em>) – Le chemin vers l’image dans les fichiers</p></li>
+<li><p><strong>position</strong> (<em>int * int</em>) – Les coordonnées de l’image</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="menu.print_text">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">print_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">position_center</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">(255, 255, 255)</span></em>, <em class="sig-param"><span class="n">font</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">bold</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.print_text" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche une surface de texte centrée sur une position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – Le texte à afficher</p></li>
+<li><p><strong>position_center</strong> (<em>int * int</em>) – La position du centre du texte</p></li>
+<li><p><strong>color</strong> (<em>int * int * int</em><em>, </em><em>optionnel</em>) – La couleur du texte</p></li>
+<li><p><strong>font</strong> (<em>Font</em><em>, </em><em>optionnel</em>) – La fonte</p></li>
+<li><p><strong>bold</strong> (<em>bool</em><em>, </em><em>optionnel</em>) – Indique si le texte doit être en gras</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="boutons">
+<h2>Boutons<a class="headerlink" href="#boutons" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="menu.oneplayer_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">oneplayer_button</code><a class="headerlink" href="#menu.oneplayer_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour lancer le jeu à un joueur.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.multiplayer_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">multiplayer_button</code><a class="headerlink" href="#menu.multiplayer_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour lancer le jeu en multijoueur.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.settings_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">settings_button</code><a class="headerlink" href="#menu.settings_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton des réglages.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.records_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">records_button</code><a class="headerlink" href="#menu.records_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton des meilleurs scores.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.credits_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">credits_button</code><a class="headerlink" href="#menu.credits_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton des crédits.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.restart_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">restart_button</code><a class="headerlink" href="#menu.restart_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour recommencer le jeu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.return_button">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">return_button</code><a class="headerlink" href="#menu.return_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour revenir au menu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="menu.flagbutton">
+<code class="sig-prename descclassname">menu.</code><code class="sig-name descname">flagbutton</code><a class="headerlink" href="#menu.flagbutton" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Liste des boutons pour les langues.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Roll 'n' Jump</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contenu :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Menu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constantes">Constantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions">Fonctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boutons">Boutons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="lang.html" title="Chapitre précédent">Lang</a></li>
+      <li>Next: <a href="platforms.html" title="Chapitre suivant">Platforms</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

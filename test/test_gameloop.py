@@ -44,7 +44,7 @@ def test_main_loop_event():
     players[1].pos = ut.Vec(-100, -100)  # Joueur 2 a perdu
     players = gml.main_loop(players, (0, 0))
     assert cf.STATE == cf.State.gameover_multi
-    assert plyr.WINNER == 3
+    assert plyr.WINNER == 2
 
     cf.NB_PLAYERS = 1
     cf.STATE = cf.State.ingame
@@ -98,7 +98,7 @@ def test_event():
     for i, P in enumerate(players):
         event = ut.make_event(ut.KEYDOWN, {'key': plyr.JUMP_KEYS[i]})
         players = gml.event_handling(players, event, (0, 0))
-        assert P.vel.y == -plyr.V_JMP
+        assert P.vel.y == -cf.V_JMP
 
     cf.NB_PLAYERS = 3
     players = gml.reset_world()
@@ -116,7 +116,7 @@ def test_event():
 
     cf.STATE = cf.State.menu
     players = gml.event_handling(players, event, mn.Multiplayer_pos)
-    assert cf.NB_PLAYERS == 3
+    assert cf.NB_PLAYERS == 4
     assert players[0].vel.y == 0
     assert cf.STATE == cf.State.ingame
     for bloc in spt.ground:

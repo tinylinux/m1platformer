@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Platforms &#8212; Documentation Roll &#39;n&#39; Jump 1.0</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Player" href="player.html" />
+    <link rel="prev" title="Menu" href="menu.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-platforms">
+<span id="platforms"></span><h1>Platforms<a class="headerlink" href="#module-platforms" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Création et déplacement des plateformes.</p>
+<dl class="py class">
+<dt id="platforms.Ground">
+<em class="property">class </em><code class="sig-prename descclassname">platforms.</code><code class="sig-name descname">Ground</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
+<p>Plateforme initiale (dans le menu).</p>
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>int</em>) – Abscisse du début de la plateforme</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="platforms.Ground.stop_creation">
+<code class="sig-name descname">stop_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground.stop_creation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Arrête la génération du sol.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="platforms.Ground.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour la position des plateformes du sol.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="platforms.Platform">
+<em class="property">class </em><code class="sig-prename descclassname">platforms.</code><code class="sig-name descname">Platform</code><span class="sig-paren">(</span><em class="sig-param">pos=(1</em>, <em class="sig-param">1)</em>, <em class="sig-param">dim=(8</em>, <em class="sig-param">3)</em>, <em class="sig-param">img=&lt;Surface(26x10x32 SW)&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Platform" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
+<p>Plateformes pendant le jeu.</p>
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos</strong> (<em>int * int</em><em>, </em><em>optionnel</em>) – Position de la plateforme</p></li>
+<li><p><strong>dim</strong> (<em>int * int</em><em>, </em><em>optionnel</em>) – Largeur et hauteur de la plateforme</p></li>
+<li><p><strong>img</strong> (<em>Surface</em><em>, </em><em>optionnel</em>) – Apparence de la plateforme</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Roll 'n' Jump</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contenu :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="menu.html" title="Chapitre précédent">Menu</a></li>
+      <li>Next: <a href="player.html" title="Chapitre suivant">Player</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

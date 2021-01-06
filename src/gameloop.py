@@ -19,6 +19,8 @@ def main_loop(players, mouse=None):
     ----------
     players : Player list
         Liste des joueurs
+    mouse : int * int, optionnel
+        Impose une position du curseur de la souris.
 
     Returns
     -------
@@ -73,7 +75,7 @@ def main_loop(players, mouse=None):
         for i, P in enumerate(players):
             if P.alive:
                 nb_player_alive += 1
-                plyr.WINNER = i + 1
+                plyr.WINNER = i
         if cf.NB_PLAYERS > 1 >= nb_player_alive:
             # Fin du mode multijoueur
             cf.STATE = State.gameover_multi
@@ -96,7 +98,7 @@ def main_loop(players, mouse=None):
 
     elif cf.STATE == State.gameover_multi:  # Menu de fin multi
 
-        scre.winner_endgame(plyr.WINNER)
+        scre.winner_endgame()
 
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/gameover.png"), (395, 100))
@@ -138,14 +140,22 @@ def reset_world():
     Player list
         Une liste de joueurs réinitialisés de longueur NB_PLAYERS
     """
+    # remet le monocycle à la taille normale
+    for color in plyr.COLORS:
+        ut.resize_list(spt.img_dict['mono' + color + '_img'],
+                       cf.SIZE['normal'])
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
+    cf.NEW_ITEM_TIME = 1
+    cf.FLAG_ITEM = False
+    # efface les items, plateformes et le background
     spt.ground = ut.group_sprite_define()
     spt.clouds = ut.group_sprite_define()
     spt.trees = ut.group_sprite_define()
+    spt.items = ut.group_sprite_define()
     wrld.initgen()
-    return [plyr.Player() for _ in range(cf.NB_PLAYERS)]
+    return [plyr.Player(plyr.COLORS[i]) for i in range(cf.NB_PLAYERS)]
 
 
 def event_handling(players, event, mouse=None):
@@ -190,7 +200,7 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.menu and\
                 mn.multiplayer_button.click(mouse):
             # Clic de la souris sur le bouton "Commencer"
-            cf.NB_PLAYERS = 3
+            cf.NB_PLAYERS = 4
             players = reset_world()
             cf.STATE = State.ingame
             wrld.stop_ground()  # Arrêt de la création du sol du menu
