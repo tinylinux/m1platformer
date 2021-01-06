@@ -85,9 +85,7 @@ def score_endgame(pts):
 
 
 def winner_endgame():
-    """
-    Affiche le gagnant à la fin de la partie.
-    """
+    """Affiche le gagnant à la fin de la partie."""
     mono = "mono" + plyr.COLORS[plyr.WINNER]
     img_path = os.path.join(cf.ASSETS, "img", mono, mono + "3.png")
     img = ut.load_image(img_path)

@@ -44,7 +44,7 @@ def test_main_loop_event():
     players[1].pos = ut.Vec(-100, -100)  # Joueur 2 a perdu
     players = gml.main_loop(players, (0, 0))
     assert cf.STATE == cf.State.gameover_multi
-    assert plyr.WINNER == 3
+    assert plyr.WINNER == 2
 
     cf.NB_PLAYERS = 1
     cf.STATE = cf.State.ingame
