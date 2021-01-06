@@ -11,6 +11,10 @@ JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s, ut.K_u]
 WINNER = 0
 """Joueur gagnant."""
 COLORS = ["green", "purple", "red", "white"]
+COLORSTRAD = {
+    "fr" : ["vert", "violet", "rouge", "blanc"],
+    "en" : ["green", "purple", "red", "white"]
+}
 
 
 class Player(ut.Sprite):
