@@ -10,6 +10,8 @@ import src.lang as lg
 import src.score as scre
 import src.sprites as spt
 
+import random as rd
+
 
 def main_loop(players, mouse=None):
     """
@@ -147,7 +149,8 @@ def reset_world():
     cf.SPEED = cf.INITIAL_SPEED
     cf.SECONDS = 0
     cf.FRAMES = 0
-    cf.NEW_ITEM_TIME = 1
+    cf.NEW_ITEM_TIME = rd.randint(cf.ITEM_PROBA_MIN,
+                                  cf.ITEM_PROBA_MAX)
     cf.FLAG_ITEM = False
     # efface les items, plateformes et le background
     spt.ground = ut.group_sprite_define()

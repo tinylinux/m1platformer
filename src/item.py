@@ -6,8 +6,6 @@ import src.utilities as ut
 import src.sprites as spt
 
 
-NEW_ITEM_TIME = rd.randint(cf.ITEM_PROBA_MIN, cf.ITEM_PROBA_MAX)
-
 ITEMS = ["fast", "slow", "little", "big"]
 """
 fast : fait accélérer le joueur (sauf après les 2/3 de l'écran)

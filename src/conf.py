@@ -53,12 +53,12 @@ Drapeau indiquant un objet à l'écran ou un effet d'objet.
 A pour effet d'empêcher l'apparition d'objets.
 """
 
-NEW_ITEM_TIME = 4
+NEW_ITEM_TIME = 5
 """Le nombre de secondes avant le prochain objet."""
 
-ITEM_PROBA_MIN = 2
+ITEM_PROBA_MIN = 3
 """Le minimum de NEW_ITEM_TIME lorsque tiré aléatoirement."""
-ITEM_PROBA_MAX = 5
+ITEM_PROBA_MAX = 10
 """Le maximum de NEW_ITEM_TIME lorsque tiré aléatoirement."""
 
 ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
