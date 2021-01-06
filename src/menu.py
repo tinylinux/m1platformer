@@ -333,15 +333,16 @@ credits_button = ButtonImage(
     Credits_hover
 )
 
-Restart_pos = (440, 500)
-Restart_size = (401, 123)
+Restart_pos = (357, 482)
+Restart_size = (567, 101)
 Restart_idle = 'playagain.png'
 Restart_hover = 'playagainpushed.png'
 restart_button = ButtonImage(
     Restart_pos,
     Restart_size,
     Restart_idle,
-    Restart_hover
+    Restart_hover,
+    "fr"
 )
 
 Return_pos = (20, 20)
@@ -353,6 +354,30 @@ return_button = ButtonImage(
     Return_size,
     Return_idle,
     Return_hover
+)
+
+Langue_pos = (357, 241)
+Langue_size = (567, 101)
+Langue_idle = 'langue.png'
+Langue_hover = 'languepushed.png'
+langue_button = ButtonImage(
+    Langue_pos,
+    Langue_size,
+    Langue_idle,
+    Langue_hover,
+    "fr"
+)
+
+Commands_pos = (357, 379)
+Commands_size = (567, 101)
+Commands_idle = 'controls.png'
+Commands_hover = 'controlspushed.png'
+commands_button = ButtonImage(
+    Commands_pos,
+    Commands_size,
+    Commands_idle,
+    Commands_hover,
+    "fr"
 )
 
 # Buttons for each language
