@@ -4,89 +4,92 @@ from enum import Enum
 
 # Screen configurations
 SCREEN_WIDTH = 1280
-"""Référence de la largeur de l'écran utilisée pour créer le jeu"""
+"""Référence de la largeur de l'écran utilisée pour créer le jeu."""
 
 SCREEN_HEIGHT = 720
-"""Référence de la hauteur de l'écran utilisée pour créer le jeu"""
+"""Référence de la hauteur de l'écran utilisée pour créer le jeu."""
 
 FPS = 60
-"""Objectif d'images par seconde"""
+"""Objectif d'images par seconde."""
 
 ASSETS = os.path.join(os.path.dirname(__file__), '..', 'assets')
-"""Chemin vers le dossier assets"""
-
+"""Chemin vers le dossier assets."""
 UI = os.path.join(ASSETS, 'img', 'ui')
-"""Chemin vers le dossier des images de l'interface"""
+"""Chemin vers le dossier des images de l'interface."""
+MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
+"""Chemin vers la musique."""
+SCORES = os.path.join(os.path.dirname(__file__), '..', 'score.txt')
+"""Chemin vers le fichier contenant les scores."""
 
 HIGHTSCORES_FONT_SIZE = 36
-"""Taille des fontes pour les meilleurs scores"""
+"""Taille des fontes pour les meilleurs scores."""
 SCORE_FONT_SIZE = 25
-"""Taille des fontes pour les scores"""
+"""Taille des fontes pour les scores."""
 RESULT_FONT_SIZE = 50
-"""Taille des fontes pour le résultat"""
+"""Taille des fontes pour le résultat."""
 INPUT_FONT_SIZE = 35
-"""Taille des fontes pour les entrées"""
+"""Taille des fontes pour les entrées."""
 TEXT_FONT_SIZE = 25
-"""Taille des fontes pour le texte"""
+"""Taille des fontes pour le texte."""
 
 INITIAL_SPEED = 5
-"""Vitesse initiale de défilement du sol"""
+"""Vitesse initiale de défilement du sol."""
 SPEED = INITIAL_SPEED
+"""Vitesse de défilement du monde."""
 
+V_JMP = 15
+"""Vitesse initiale lors d'un saut."""
 G = 0.8
-"""Accélération due à la gravité"""
+"""Accélération due à la gravité."""
 
-FLAG_JUMP = False
-"""Drapeau de disponibilité du saut"""
+NB_PLAYERS_MAX = 3
+"""Nombre maximal de joueurs."""
+NB_PLAYERS = 3
+"""Nombre de joueurs."""
 
-FLAG_JUMP_2 = False
-"""Drapeau de disponibilité du second saut"""
-
-# Drapeau qui dit si y a un item à l'écran
-# ou qu'on est dans un état spécial à cause d'un item
-# mettre à True si on veut pas d'items
 FLAG_ITEM = False
+"""
+Drapeau indiquant un objet à l'écran ou un effet d'objet.
+A pour effet d'empêcher l'apparition d'objets.
+"""
 
-# Dans combien de secondes on crée un nouvel item
 NEW_ITEM_TIME = 4
+"""Le nombre de secondes avant le prochain objet."""
 
-# Les bornes de NEW_ITEM_TIME lorsque tiré aléatoirement
 ITEM_PROBA_MIN = 2
+"""Le minimum de NEW_ITEM_TIME lorsque tiré aléatoirement."""
 ITEM_PROBA_MAX = 5
+"""Le maximum de NEW_ITEM_TIME lorsque tiré aléatoirement."""
 
-# Dico avec la durée des effets des items (en nbre de frames)
 ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
+"""Dictionnaire avec la durée des effets des items (en nbre de frames)."""
 
-# vitesse à laquelle on accélère ou ralentit
-VEL = {'fast': 4, 'slow': -4}
+V_ITEM = {'fast': 4, 'slow': -4}
+"""Vitesse à laquelle on accélère ou ralentit."""
 
 SIZE_FACTOR = {'little': 1, 'normal': 3, 'big': 8}
-"""Facteurs de redimensionnement du joueur"""
-
+"""Facteurs de redimensionnement du joueur."""
 SIZE = {'little': (0, 0), 'normal': (0, 0), 'big': (0, 0)}
-"""Les différentes dimensions du joueur (normal, big, little)"""
+"""Les différentes dimensions du joueur (normal, big, little)."""
 
 # Couleurs
 BLACK = (255, 255, 255)
-"""Noir"""
+"""Noir."""
 GREY = (240, 240, 240)
-"""Gris"""
+"""Gris."""
 WHITE = (255, 255, 255)
-"""Blanc"""
+"""Blanc."""
 BlueSky = (0, 170, 251)
-"""Couleur du ciel"""
+"""Couleur du ciel."""
 IDLE = (170, 170, 170)
-"""Couleur d'un bouton inactif"""
+"""Couleur d'un bouton inactif."""
 HOVER = (100, 100, 100)
-"""Couleur d'un bouton sur lequel le pointeur est situé"""
+"""Couleur d'un bouton sur lequel le pointeur est situé."""
 
 SECONDS = 0
-"""Compteur de secondes pour le score"""
+"""Compteur de secondes pour le score."""
 FRAMES = 0
 """Compteur des images pour les secondes"""
-
-MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
-"""Chemin vers la musique"""
 
 
 # États du jeu
@@ -103,26 +106,12 @@ class State(Enum):
 
 
 STATE = State.menu
-"""État du jeu"""
+"""État du jeu."""
 
 LANG = "NONE"
-"""Langue du jeu"""
+"""Langue du jeu."""
 
 DISPLAYSURF = None
-"""Surface sur laquelle le jeu est créé"""
+"""Surface sur laquelle le jeu est créé."""
 WINDOWSURF = None
-"""Surface sur laquelle le jeu sera affiché"""
-
-# Nombre maximal de joueurs
-NB_PLAYERS_MAX = 4
-# Nombre de joueurs
-NB_PLAYERS = 4
-
-# Vitesse initiale lors d'un saut
-V_JMP = 15
-# Accélération due à la gravité
-G = 0.8
-
-# Flag : true si y a un item à l'écran
-# ou qu'on est dans un état spécial à cause d'un item
-FLAG_ITEM = False
+"""Surface sur laquelle le jeu sera affiché."""

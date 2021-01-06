@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gameloop &#8212; Documentation Roll &#39;n&#39; Jump 1.0</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Item" href="item.html" />
+    <link rel="prev" title="Conf" href="conf.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-gameloop">
+<span id="gameloop"></span><h1>Gameloop<a class="headerlink" href="#module-gameloop" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Fonctions pour la boucle principale du jeu.</p>
+<div class="section" id="boucle-principale">
+<h2>Boucle principale<a class="headerlink" href="#boucle-principale" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py function">
+<dt id="gameloop.main_loop">
+<code class="sig-prename descclassname">gameloop.</code><code class="sig-name descname">main_loop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">players</span></em>, <em class="sig-param"><span class="n">mouse</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gameloop.main_loop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Applique les mises à jour nécessaires au jeu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>players</strong> (<em>Player list</em>) – Liste des joueurs</p></li>
+<li><p><strong>mouse</strong> (<em>int * int</em><em>, </em><em>optionnel</em>) – Impose une position du curseur de la souris.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Liste des joueurs actualisée</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Player list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="fonctions-auxiliaires">
+<h2>Fonctions auxiliaires<a class="headerlink" href="#fonctions-auxiliaires" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py function">
+<dt id="gameloop.event_handling">
+<code class="sig-prename descclassname">gameloop.</code><code class="sig-name descname">event_handling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">players</span></em>, <em class="sig-param"><span class="n">event</span></em>, <em class="sig-param"><span class="n">mouse</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gameloop.event_handling" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de gérer les événements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>players</strong> (<em>Player list</em>) – Liste des joueurs</p></li>
+<li><p><strong>event</strong> (<em>Event</em>) – L’événement à traiter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>Renvoie la liste des joueurs mis à jour</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>Player list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="gameloop.reset_world">
+<code class="sig-prename descclassname">gameloop.</code><code class="sig-name descname">reset_world</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gameloop.reset_world" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Réinitialise le monde.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>Une liste de joueurs réinitialisés de longueur NB_PLAYERS</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>Player list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Roll 'n' Jump</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contenu :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gameloop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#boucle-principale">Boucle principale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions-auxiliaires">Fonctions auxiliaires</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="conf.html" title="Chapitre précédent">Conf</a></li>
+      <li>Next: <a href="item.html" title="Chapitre suivant">Item</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/gameloop.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

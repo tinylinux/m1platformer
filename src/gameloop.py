@@ -19,6 +19,8 @@ def main_loop(players, mouse=None):
     ----------
     players : Player list
         Liste des joueurs
+    mouse : int * int, optionnel
+        Impose une position du curseur de la souris.
 
     Returns
     -------

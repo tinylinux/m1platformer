@@ -15,6 +15,7 @@ Bienvenue dans la documentation de Roll \'n\' Jump
    conf
    gameloop
    item
+   lang
    menu
    platforms
    player

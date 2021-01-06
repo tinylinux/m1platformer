@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Item &#8212; Documentation Roll &#39;n&#39; Jump 1.0</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Lang" href="lang.html" />
+    <link rel="prev" title="Gameloop" href="gameloop.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-item">
+<span id="item"></span><h1>Item<a class="headerlink" href="#module-item" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Gère la génération d’items.</p>
+<dl class="py data">
+<dt id="item.ITEMS">
+<code class="sig-prename descclassname">item.</code><code class="sig-name descname">ITEMS</code><em class="property"> = ['fast', 'slow', 'little', 'big']</em><a class="headerlink" href="#item.ITEMS" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>fait accélérer le joueur (sauf après les 2/3 de l’écran)
+slow : fait ralentir le joueur (sauf s’il sort presque de l’écran)
+little : fait rapetisser le joueur
+big : fait grossir le joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>fast</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="item.Item">
+<em class="property">class </em><code class="sig-prename descclassname">item.</code><code class="sig-name descname">Item</code><a class="headerlink" href="#item.Item" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
+<p>Gestion des objets.</p>
+<dl class="py attribute">
+<dt id="item.Item.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#item.Item.type" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Type de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="item.Item.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#item.Item.width" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Largeur de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="item.Item.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#item.Item.height" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Hauteur de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="item.Item.vel">
+<code class="sig-name descname">vel</code><a class="headerlink" href="#item.Item.vel" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vitesse de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="item.Item.acc">
+<code class="sig-name descname">acc</code><a class="headerlink" href="#item.Item.acc" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accélération de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation de l’objet.</p>
+<dl class="py method">
+<dt id="item.Item.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#item.Item.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour l’item.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Roll 'n' Jump</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contenu :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="gameloop.html" title="Chapitre précédent">Gameloop</a></li>
+      <li>Next: <a href="lang.html" title="Chapitre suivant">Lang</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/item.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -6,6 +6,7 @@ Menu
 Constantes
 **********
 .. autodata:: FONT_PIXEL
+   :annotation:
 .. autodata:: CHARS_LOW
 .. autodata:: CHARS_CAP
 
@@ -32,7 +33,19 @@ Fonctions
 
 Boutons
 *******
-.. autodata:: start_button
+.. autodata:: oneplayer_button
+   :annotation:
+.. autodata:: multiplayer_button
+   :annotation:
+.. autodata:: settings_button
+   :annotation:
 .. autodata:: records_button
+   :annotation:
+.. autodata:: credits_button
+   :annotation:
 .. autodata:: restart_button
+   :annotation:
 .. autodata:: return_button
+   :annotation:
+.. autodata:: flagbutton
+   :annotation:

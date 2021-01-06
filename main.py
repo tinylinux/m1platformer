@@ -58,14 +58,7 @@ def initialization(graphical, music=False):
 
 
 def main():
-    """
-    Fonction principale du jeu.
-
-    Parameters
-    ----------
-    graphical : bool
-        Indique si le jeu doit être lancé en mode graphique ou non
-    """
+    """Fonction principale du jeu."""
     FramePerSec, players = initialization(True, True)
 
     while True:  # Boucle du jeu

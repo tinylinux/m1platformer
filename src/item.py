@@ -17,11 +17,26 @@ big : fait grossir le joueur
 """
 
 
-class item(ut.GameObject):
-    """Gère les items."""
+class Item(ut.GameObject):
+    """
+    Gestion des objets.
+
+    Attributes
+    ----------
+    type : str
+        Type de l'objet
+    width : float
+        Largeur de l'objet
+    height : float
+        Hauteur de l'objet
+    vel : float
+        Vitesse de l'objet
+    acc : float
+        Accélération de l'objet
+    """
 
     def __init__(self):
-        """Crée un item."""
+        """Initialisation de l'objet."""
         cf.FLAG_ITEM = True
         i = rd.randint(0, spt.img_dict["n_item"] - 1)
         self.type = ITEMS[i]

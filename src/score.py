@@ -5,8 +5,6 @@ import src.conf as cf
 import src.menu as mn
 import src.utilities as ut
 
-FILE = "score.txt"
-"""Fichier contenant les scores"""
 PLAYER = "Player"
 """Nom par défaut du joueur"""
 
@@ -54,7 +52,7 @@ def onlyalphanum(value):
 
 def init_best_score():
     """Initialise le fichier `score.txt`."""
-    open(FILE, "w").close()
+    open(cf.SCORES, "w").close()
 
 
 def score(pts):
@@ -86,7 +84,14 @@ def score_endgame(pts):
 
 
 def winner_endgame(player_number):
-    """Affiche le gagnant à la fin de la partie."""
+    """
+    Affiche le gagnant à la fin de la partie.
+
+    Parameters
+    ----------
+    player_number : int
+        Numéro du gagnant
+    """
     mn.print_text("Victoire de " + str(player_number), (640, 300), cf.GREY,
                   ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
 
@@ -100,7 +105,7 @@ def get_scores():
     (int * str) list
         Une liste contenant un score et un nom de joueur associé
     """
-    with open(FILE) as board:
+    with open(cf.SCORES) as board:
         try:
             scores = board.readlines()
             if len(scores) < 2:
@@ -148,7 +153,7 @@ def set_best_score(value):
         Score à ajouter
     """
     scores_board = get_scores()
-    with open(FILE, "w") as board:
+    with open(cf.SCORES, "w") as board:
         must_be_added = True
         new_scores = ""
         new_players = ""
@@ -189,5 +194,5 @@ def maj(pts):
     return False
 
 
-if not os.path.isfile(FILE):  # pragma: no cover
+if not os.path.isfile(cf.SCORES):  # pragma: no cover
     init_best_score()
