@@ -58,6 +58,23 @@ def keyname(key):
     return pygame.key.name(key)
 
 
+def keyidentifier(control):
+    """
+    Renvoie la touche à partir d'une chaîne de caractères.
+
+    Parameters
+    ----------
+    control : str
+        Texte caractérisant la touche
+
+    Returns
+    -------
+    Key
+        Variable de la touche
+    """
+    return pygame.key.key_code(control)
+
+
 def load_image(path):
     """
     Charge une image à partir d'un chemin.
