@@ -70,6 +70,7 @@ class State(Enum):
     gameover_multi = 3.5
     highscore = 4
     setup = 5
+    langchange = 6
 
 
 STATE = State.menu
