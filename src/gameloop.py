@@ -228,6 +228,8 @@ def event_handling(players, event, mouse=None):
                 if mn.flagbutton[i].click(mouse):
                     cf.STATE = State.setup
                     lg.set_lang(lg.AVAILABLE[i])
+            if mn.return_button.click(mouse):
+                cf.STATE = State.setup
 
         elif cf.STATE == State.gameover or\
                 cf.STATE == State.gameover_multi:
@@ -255,9 +257,6 @@ def event_handling(players, event, mouse=None):
             # Clic de la souris sur le bouton "Records"
             cf.STATE = State.menu
 
-        elif cf.STATE == State.langchange and\
-                mn.return_button.click(mouse):
-            cf.STATE = State.menu
 
     if event.type == ut.VIDEORESIZE:  # pragma: no cover
         ut.resize_window(event.size)
