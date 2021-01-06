@@ -48,11 +48,11 @@ FLAG_JUMP_2 = False
 FLAG_ITEM = False
 
 # Dans combien de secondes on crée un nouvel item
-NEW_ITEM_TIME = 1
+NEW_ITEM_TIME = 4
 
 # Les bornes de NEW_ITEM_TIME lorsque tiré aléatoirement
-ITEM_PROBA_MIN = 1
-ITEM_PROBA_MAX = 2
+ITEM_PROBA_MIN = 2
+ITEM_PROBA_MAX = 5
 
 # Dico avec la durée des effets des items (en nbre de frames)
 ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
@@ -85,7 +85,7 @@ SECONDS = 0
 FRAMES = 0
 """Compteur des images pour les secondes"""
 
-MUSIC = os.path.join(ASSETS, 'music', 'monozik.mp3')
+MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 """Chemin vers la musique"""
 
 # États du jeu
