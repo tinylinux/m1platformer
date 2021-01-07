@@ -10,6 +10,12 @@ import src.player as plyr
 FILE = "commands.txt"
 """Fichier des commandes"""
 
+TEXTCAPT = {
+    "fr" : "Capture de la touche pour le joueur : ",
+    "en" : "Key capture for player : "
+}
+
+
 def init_com():
     """Initialiser le fichier des commandes."""
     with open(FILE, "w") as empty_com:
@@ -33,7 +39,7 @@ def set_keys(keys):
     """
     plyr.JUMP_KEYS = keys
     with open(FILE, "w") as coms:
-        empty_com.writelines([ut.keyname(key)+str("\n") for key in plyr.JUMP_KEYS])
+        coms.writelines([ut.keyname(key)+str("\n") for key in plyr.JUMP_KEYS])
 
 Modify_size = (100,100)
 Modify_pos = [(900,85 + i*150) for i in range(cf.NB_PLAYERS_MAX)]

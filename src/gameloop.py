@@ -71,6 +71,13 @@ def main_loop(players, mouse=None):
                             (700, 135 + i*150),
                             cf.GREY,
                             ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
+        if cf.CAPT:
+            mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
+            mn.print_text(ky.TEXTCAPT[cf.LANG] +
+                            plyr.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
+                            (640, 350),
+                            cf.GREY,
+                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE//2))
 
 
     elif cf.STATE == State.ingame:  # On est en jeu
@@ -204,6 +211,15 @@ def event_handling(players, event, mouse=None):
                 if event.key == plyr.JUMP_KEYS[i]:  # Saut
                     P.jump()
 
+        elif cf.STATE == State.keyset:
+            if cf.CAPT:
+                if event.key == ut.K_ESCAPE:
+                    cf.CAPT = False
+                else:
+                    plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
+                    ky.set_keys(plyr.JUMP_KEYS)
+                    cf.CAPT = False
+
     if event.type == ut.MOUSEBUTTONDOWN:
 
         if cf.STATE == State.menu and\
@@ -275,9 +291,13 @@ def event_handling(players, event, mouse=None):
             # Clic de la souris sur le bouton "Records"
             cf.STATE = State.menu
 
-        elif cf.STATE == State.keyset and\
-                mn.return_button.click(mouse):
-            cf.STATE = State.setup
+        elif cf.STATE == State.keyset:
+            if mn.return_button.click(mouse):
+                cf.STATE = State.setup
+            for i in range(len(ky.modifybutton)):
+                if ky.modifybutton[i].click(mouse):
+                    cf.CAPT = True
+                    cf.CAPT_PLYR = i
 
 
     if event.type == ut.VIDEORESIZE:  # pragma: no cover

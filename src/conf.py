@@ -72,6 +72,12 @@ SIZE_FACTOR = {'little': 1, 'normal': 3, 'big': 8}
 SIZE = {'little': (0, 0), 'normal': (0, 0), 'big': (0, 0)}
 """Les différentes dimensions du joueur (normal, big, little)."""
 
+# Capture des commandes
+CAPT = False
+"""En cours de capture de touches."""
+CAPT_PLYR = 0
+"""Numéro du joueur en cours pour changer sa commande."""
+
 # Couleurs
 BLACK = (255, 255, 255)
 """Noir."""
