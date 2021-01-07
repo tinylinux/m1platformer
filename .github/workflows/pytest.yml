@@ -17,7 +17,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest hypothesis pytest-xdist
+        pip install pytest hypothesis pytest-xdist pytest-cov
     - name: Running tests
       run: |
-        python -m pytest --forked test/
+        python -m pytest --forked --cov=. --cov-report html:./docs/cov_report
