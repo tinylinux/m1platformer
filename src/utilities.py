@@ -59,7 +59,24 @@ def keyname(key):  # pragma: no cover
     return pygame.key.name(key)
 
 
-def load_image(path):  # pragma: no cover
+def keyidentifier(control):
+    """
+    Renvoie la touche à partir d'une chaîne de caractères.
+
+    Parameters
+    ----------
+    control : str
+        Texte caractérisant la touche
+
+    Returns
+    -------
+    Key
+        Variable de la touche
+    """
+    return pygame.key.key_code(control)
+
+
+def load_image(path): # pragma: no cover
     """
     Charge une image à partir d'un chemin.
 

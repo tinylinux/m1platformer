@@ -11,6 +11,7 @@ import src.player as plyr
 import src.lang as lg
 import src.score as scre
 import src.sprites as spt
+import src.key as ky
 
 
 def main_loop(players, mouse=None):
@@ -44,21 +45,44 @@ def main_loop(players, mouse=None):
         mn.credits_button.print(mouse)
         mn.sound_button.print(mouse)
 
-    elif cf.STATE == State.setup:
+    elif cf.STATE == State.setup: # Paramètres
         mn.language_button.print(mouse)
         mn.return_button.print(mouse)
         mn.commands_button.print(mouse)
 
-    elif cf.STATE == State.languages:
+    elif cf.STATE == State.languages: # Choix de la langue (1e fois)
         cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
                             "title.png")), (357, 132))
+
         for lang in mn.flagbutton:
             lang.print(mouse)
 
-    elif cf.STATE == State.langchange:
+    elif cf.STATE == State.langchange: # Changement de la langue
         mn.return_button.print(mouse)
         for lang in mn.flagbutton:
             lang.print(mouse)
+
+    elif cf.STATE == State.keyset: # Changement des commandes
+        mn.return_button.print(mouse)
+        for button in ky.modifybutton:
+            button.print(mouse)
+        for i in range(cf.NB_PLAYERS_MAX):
+            mn.print_text(plyr.COLORSTRAD[cf.LANG][i],
+                            (370, 135 + i*150),
+                            cf.GREY,
+                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
+            mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
+                            (700, 135 + i*150),
+                            cf.GREY,
+                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
+        if cf.CAPT:
+            mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
+            mn.print_text(ky.TEXTCAPT[cf.LANG] +
+                            plyr.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
+                            (640, 350),
+                            cf.GREY,
+                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE//2))
+
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
@@ -107,6 +131,7 @@ def main_loop(players, mouse=None):
                             "gameover.png")), (395, 100))
         mn.restart_button.print(mouse)
         mn.return_button.print(mouse)
+
 
     elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
 
@@ -191,6 +216,15 @@ def event_handling(players, event, mouse=None):
                 if event.key == plyr.JUMP_KEYS[i]:  # Saut
                     P.jump()
 
+        elif cf.STATE == State.keyset:
+            if cf.CAPT:
+                if event.key == ut.K_ESCAPE:
+                    cf.CAPT = False
+                else:
+                    plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
+                    ky.set_keys(plyr.JUMP_KEYS)
+                    cf.CAPT = False
+
     if event.type == ut.MOUSEBUTTONDOWN:
 
         if cf.STATE == State.menu and\
@@ -267,9 +301,21 @@ def event_handling(players, event, mouse=None):
             cf.STATE = State.langchange
 
         elif cf.STATE == State.setup and\
+                mn.commands_button.click(mouse):
+            cf.STATE = State.keyset
+
+        elif cf.STATE == State.setup and\
                 mn.return_button.click(mouse):
             # Clic de la souris sur le bouton "Retour"
             cf.STATE = State.menu
+
+        elif cf.STATE == State.keyset:
+            if mn.return_button.click(mouse):
+                cf.STATE = State.setup
+            for i in range(len(ky.modifybutton)):
+                if ky.modifybutton[i].click(mouse):
+                    cf.CAPT = True
+                    cf.CAPT_PLYR = i
 
     if event.type == ut.VIDEORESIZE:  # pragma: no cover
         ut.resize_window(event.size)
