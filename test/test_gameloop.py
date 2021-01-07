@@ -11,7 +11,8 @@ import src.gameloop as gml
 import src.sprites as spt
 import src.lang as lg
 
-scre.FILE = os.path.join(os.path.dirname(__file__), "test_score.txt")
+cf.SCORES = os.path.join(os.path.dirname(__file__), "test_score.txt")
+lg.FILE = os.path.join(os.path.dirname(__file__), "test_lang.txt")
 scre.init_best_score()
 
 

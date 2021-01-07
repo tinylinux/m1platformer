@@ -143,3 +143,7 @@ score.txt
 *.psb
 *.psd
 lang.txt
+
+# Test text files
+test/test_lang.txt
+test/test_score.txt
