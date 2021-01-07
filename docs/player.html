@@ -85,7 +85,12 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contenu :</span></p>
+              <p class="caption"><span class="caption-text">Instructions :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulegen.html">Utilisation du générateur de modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules :</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
@@ -259,7 +264,7 @@
 <p>Initialisation du joueur.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>color</strong> (<em>str</em>) – La couleur du joueur parmis Player.COLORS</p>
+<dd class="field-odd"><p><strong>color</strong> (<em>str</em><em>, </em><em>optionnel</em>) – La couleur du joueur parmi cf.COLORS</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -303,6 +308,20 @@
 <dt id="player.Player.move">
 <code class="sig-name descname">move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#player.Player.move" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Met à jour pos, vec et acc.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="player.Player.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size1</span></em>, <em class="sig-param"><span class="n">size2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#player.Player.resize" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Change la taille du joueur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size1</strong> (<em>str</em>) – La taille actuelle (parmi « little », « normal », « big »)</p></li>
+<li><p><strong>size2</strong> (<em>str</em>) – La taille à atteindre</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

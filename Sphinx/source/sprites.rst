@@ -9,7 +9,7 @@ Fonctions
 
 Constantes et variables
 ***********************
-.. autodata:: Nom
+.. autodata:: Names
 .. autodata:: img_dict
    :annotation:
 

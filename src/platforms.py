@@ -34,7 +34,14 @@ class Ground(ut.GameObject):
 
 
 class Platform(ut.GameObject):
-    """Plateformes pendant le jeu."""
+    """
+    Plateformes pendant le jeu.
+    
+    Attributes
+    ----------
+    dim : int * int
+        Dimensions de la plateforme
+    """
 
     def __init__(self, pos=(1, 1), dim=(8, 3), img=spt.PLTFRM_IMG):
         """

@@ -3,7 +3,6 @@
 import os
 import src.conf as cf
 import src.utilities as ut
-import src.player as plyr
 
 
 def listdir(path):
@@ -24,10 +23,10 @@ def listdir(path):
 
 
 # IMAGES
-Nom = ["cloud", "tree", "item"]
-"""Liste des noms des différents éléments de décor"""
-for color in plyr.COLORS:
-    Nom.append('mono' + color)
+Names = ["cloud", "tree", "item"]
+"""Liste des noms des différents éléments de décor."""
+for color in cf.COLORS:
+    Names.append('mono' + color)
 img_dict = {}
 """
 Dictionnaire associant, pour chaque élément de `Nom` :
@@ -35,22 +34,22 @@ un facteur de taille,
 un nombre d'images
 et la liste de ces images.
 """
-for color in plyr.COLORS:
+for color in cf.COLORS:
     img_dict['mono' + color + '_factor'] = 1
 img_dict["cloud_factor"] = 4
 img_dict["tree_factor"] = 8
 img_dict["item_factor"] = 2
 
-for nom in Nom:
-    img_dict['n_' + nom] = len(listdir(os.path.join(cf.ASSETS, "img", nom)))
-    img_dict[nom + '_img'] = []
-    for i in range(img_dict['n_' + nom]):
+for name in Names:
+    img_dict['n_' + name] = len(listdir(os.path.join(cf.ASSETS, "img", name)))
+    img_dict[name + '_img'] = []
+    for i in range(img_dict['n_' + name]):
         img = ut.load_image(os.path.join(cf.ASSETS, "img",
-                                         nom, nom + str(i) + ".png"))
+                                         name, name + str(i) + ".png"))
         w, h = img.get_rect().size
-        img = ut.resize(img, (img_dict[nom + '_factor'] * w,
-                              img_dict[nom + '_factor'] * h))
-        img_dict[nom + '_img'].append(img)
+        img = ut.resize(img, (img_dict[name + '_factor'] * w,
+                              img_dict[name + '_factor'] * h))
+        img_dict[name + '_img'].append(img)
 
 GROUND_IMG = ut.load_image(os.path.join(cf.ASSETS, "img", "ground.png"))
 """Image pour le sol"""
@@ -60,7 +59,7 @@ BAT_IMG = ut.load_image(os.path.join(cf.ASSETS, "img", "bat.png"))
 """Image pour un bâtiment"""
 
 # Dimensions
-for color in plyr.COLORS:
+for color in cf.COLORS:
     w, h = img_dict["mono" + color + "_img"][0].get_rect().size
     for key in cf.SIZE:
         cf.SIZE[key] = (w * cf.SIZE_FACTOR[key], h * cf.SIZE_FACTOR[key])

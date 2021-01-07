@@ -85,7 +85,12 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contenu :</span></p>
+              <p class="caption"><span class="caption-text">Instructions :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulegen.html">Utilisation du générateur de modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules :</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
@@ -170,13 +175,13 @@
 <p>Création et déplacement des plateformes.</p>
 <dl class="py class">
 <dt id="platforms.Ground">
-<em class="property">class </em><code class="sig-prename descclassname">platforms.</code><code class="sig-name descname">Ground</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">platforms.</code><code class="sig-name descname">Ground</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position_x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
 <p>Plateforme initiale (dans le menu).</p>
 <p>Initialisation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>int</em>) – Abscisse du début de la plateforme</p>
+<dd class="field-odd"><p><strong>position_x</strong> (<em>int</em>) – Abscisse du début de la plateforme</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -198,6 +203,17 @@
 <em class="property">class </em><code class="sig-prename descclassname">platforms.</code><code class="sig-name descname">Platform</code><span class="sig-paren">(</span><em class="sig-param">pos=(1</em>, <em class="sig-param">1)</em>, <em class="sig-param">dim=(8</em>, <em class="sig-param">3)</em>, <em class="sig-param">img=&lt;Surface(26x10x32 SW)&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Platform" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
 <p>Plateformes pendant le jeu.</p>
+<dl class="py attribute">
+<dt id="platforms.Platform.dim">
+<code class="sig-name descname">dim</code><a class="headerlink" href="#platforms.Platform.dim" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Dimensions de la plateforme</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
 <p>Initialisation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>

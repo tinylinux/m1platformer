@@ -21,7 +21,7 @@ MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 SCORES = os.path.join(os.path.dirname(__file__), '..', 'score.txt')
 """Chemin vers le fichier contenant les scores."""
 
-HIGHTSCORES_FONT_SIZE = 36
+HIGHSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores."""
 SCORE_FONT_SIZE = 25
 """Taille des fontes pour les scores."""
@@ -49,6 +49,14 @@ NB_PLAYERS_MAX = 3
 """Nombre maximal de joueurs."""
 NB_PLAYERS = 3
 """Nombre de joueurs."""
+
+COLORS = ["green", "purple", "red", "white"]
+"""Couleurs des joueurs."""
+COLORSTRAD = {
+    "fr": ["vert", "violet", "rouge", "blanc"],
+    "en": ["green", "purple", "red", "white"]
+}
+"""Dictionnaire pour la traduction des couleurs."""
 
 FLAG_ITEM = False
 """

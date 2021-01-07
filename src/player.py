@@ -10,11 +10,6 @@ JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s, ut.K_u]
 """Touches de saut des joueurs."""
 WINNER = 0
 """Joueur gagnant."""
-COLORS = ["green", "purple", "red", "white"]
-COLORSTRAD = {
-    "fr": ["vert", "violet", "rouge", "blanc"],
-    "en": ["green", "purple", "red", "white"]
-}
 
 
 class Player(ut.Sprite):
@@ -45,8 +40,8 @@ class Player(ut.Sprite):
 
         Parameters
         ----------
-        color : str
-            La couleur du joueur parmis Player.COLORS
+        color : str, optionnel
+            La couleur du joueur parmi cf.COLORS
         """
         # Initialisation de la classe parent
         # ut.add_to_group(self, cf.player_sprite)

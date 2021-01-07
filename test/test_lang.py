@@ -5,6 +5,7 @@ import src.conf as cf
 import src.lang as lg
 
 lg.FILE = os.path.join(os.path.dirname(__file__), "test_lang.txt")
+open(lg.FILE, 'w').close()
 
 
 def test_init():

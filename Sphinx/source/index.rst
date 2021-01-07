@@ -7,8 +7,15 @@ Bienvenue dans la documentation de Roll \'n\' Jump
 ==================================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contenu :
+   :maxdepth: 1
+   :caption: Instructions :
+
+   installation
+   modulegen
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Modules :
 
    main
    background
@@ -23,3 +30,5 @@ Bienvenue dans la documentation de Roll \'n\' Jump
    sprites
    utilities
    worldgen
+
+`Couverture des tests <https://tinylinux.github.io/m1platformer/cov_report/>`_

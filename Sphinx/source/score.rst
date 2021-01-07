@@ -9,8 +9,6 @@ Constantes
 
 Fonctions
 *********
-.. autofunction:: onlydigits
-.. autofunction:: onlyalphanum
 .. autofunction:: init_best_score
 .. autofunction:: score
 .. autofunction:: score_endgame

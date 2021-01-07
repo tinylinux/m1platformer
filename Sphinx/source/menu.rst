@@ -27,6 +27,7 @@ Classes
 
 Fonctions
 *********
+.. autofunction:: scaled_mouse_pos
 .. autofunction:: mouse_on_button
 .. autofunction:: print_image
 .. autofunction:: print_text
@@ -46,6 +47,12 @@ Boutons
 .. autodata:: restart_button
    :annotation:
 .. autodata:: return_button
+   :annotation:
+.. autodata:: language_button
+   :annotation:
+.. autodata:: commands_button
+   :annotation:
+.. autodata:: sound_button
    :annotation:
 .. autodata:: flagbutton
    :annotation:

@@ -18,9 +18,10 @@ Chemins de fichier
 
 Tailles des fontes
 ******************
-.. autodata:: HIGHTSCORES_FONT_SIZE
+.. autodata:: HIGHSCORES_FONT_SIZE
 .. autodata:: SCORE_FONT_SIZE
 .. autodata:: RESULT_FONT_SIZE
+.. autodata:: INPUT_FONT_SIZE
 .. autodata:: TEXT_FONT_SIZE
 
 Mouvements
@@ -39,8 +40,6 @@ Multijoueur
 
 Objets
 ******
-.. autodata:: FLAG_ITEM
-   :annotation:
 .. autodata:: NEW_ITEM_TIME
    :annotation:
 .. autodata:: ITEM_PROBA_MIN
@@ -51,6 +50,13 @@ Objets
 .. autodata:: SIZE
    :annotation:
 
+Drapeaux
+********
+.. autodata:: FLAG_MUSIC
+   :annotation:
+.. autodata:: FLAG_ITEM
+   :annotation:
+
 Couleurs
 ********
 .. autodata:: BLACK
@@ -59,6 +65,7 @@ Couleurs
 .. autodata:: BlueSky
 .. autodata:: IDLE
 .. autodata:: HOVER
+.. autodata:: COLORS
 
 Compteurs pour le score
 ***********************
@@ -73,6 +80,11 @@ Compteurs pour le score
    :show-inheritance:
 .. autodata:: STATE
    :annotation:
+
+Langue
+******
+.. autodata:: LANG
+.. autodata:: COLORSTRAD
 
 Surfaces de jeu
 ***************

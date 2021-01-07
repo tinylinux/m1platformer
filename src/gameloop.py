@@ -144,7 +144,7 @@ def reset_world():
         Une liste de joueurs réinitialisés de longueur NB_PLAYERS
     """
     # remet le monocycle à la taille normale
-    for color in plyr.COLORS:
+    for color in cf.COLORS:
         ut.resize_list(spt.img_dict['mono' + color + '_img'],
                        cf.SIZE['normal'])
     cf.SPEED = cf.INITIAL_SPEED
@@ -159,7 +159,7 @@ def reset_world():
     spt.trees = ut.group_sprite_define()
     spt.items = ut.group_sprite_define()
     wrld.initgen()
-    return [plyr.Player(plyr.COLORS[i]) for i in range(cf.NB_PLAYERS)]
+    return [plyr.Player(cf.COLORS[i]) for i in range(cf.NB_PLAYERS)]
 
 
 def event_handling(players, event, mouse=None):

@@ -46,13 +46,13 @@ def winner_endgame():
     """Affiche le gagnant à la fin de la partie."""
     if cf.LANG == "fr":
         message = "Victoire du joueur "
-        message += plyr.COLORSTRAD[cf.LANG][plyr.WINNER]
+        message += cf.COLORSTRAD[cf.LANG][plyr.WINNER]
     else:
-        message = plyr.COLORS[plyr.WINNER]
+        message = cf.COLORS[plyr.WINNER]
         message += " player wins!"
     mn.print_text(message, (640, 250), cf.GREY,
                   ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE), True)
-    mono = "mono" + plyr.COLORS[plyr.WINNER]
+    mono = "mono" + cf.COLORS[plyr.WINNER]
     img_path = os.path.join(cf.ASSETS, "img", mono, mono + "3.png")
     img = ut.load_image(img_path)
     w, h = img.get_rect().size

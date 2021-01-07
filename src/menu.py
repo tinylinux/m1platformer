@@ -295,9 +295,6 @@ class InputZone(Button):
                 self.input = self.input[:-1]
 
 
-# start_button = ButtonImage((440, 314), (401, 123), "assets/img/ui/begin.png",
-#                            "assets/img/ui/beginpushed.png")
-
 Oneplayer_pos = (358, 323)
 Oneplayer_size = (100, 100)
 Oneplayer_idle = 'oneplayer.png'
@@ -383,15 +380,15 @@ return_button = ButtonImage(
 )
 """Bouton pour revenir au menu."""
 
-Langue_pos = (357, 241)
-Langue_size = (567, 101)
-Langue_idle = 'langue.png'
-Langue_hover = 'languepushed.png'
-langue_button = ButtonImage(
-    Langue_pos,
-    Langue_size,
-    Langue_idle,
-    Langue_hover,
+Language_pos = (357, 241)
+Language_size = (567, 101)
+Language_idle = 'language.png'
+Language_hover = 'languagepushed.png'
+language_button = ButtonImage(
+    Language_pos,
+    Language_size,
+    Language_idle,
+    Language_hover,
     "fr"
 )
 """Bouton pour changer la langue dans les paramètres."""

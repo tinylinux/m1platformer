@@ -85,7 +85,12 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contenu :</span></p>
+              <p class="caption"><span class="caption-text">Instructions :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulegen.html">Utilisation du générateur de modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules :</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
@@ -99,7 +104,6 @@
 <li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#fonction-de-collisions">Fonction de collisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#evenements">Événements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#touches">Touches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a></li>
@@ -184,6 +188,28 @@
 <li><p><strong>sprite</strong> (<em>Sprite</em>) – Le sprite à ajouter</p></li>
 <li><p><strong>group</strong> (<em>Group</em>) – Le groupe de sprites</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.collide">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">collide</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">pos_next</span></em>, <em class="sig-param"><span class="n">rect</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.collide" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Gestion des collisions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Player / Item</em>) – objet (joueur ou objet) dont on examine la collision</p></li>
+<li><p><strong>pos_next</strong> (<em>Vector2</em>) – position suivante de l’objet</p></li>
+<li><p><strong>rect</strong> (<em>Rect</em>) – ce qui est potentiellement en collision avec l’objet</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>un triplet (collision verticale, collision horizontale,
+modification de position necessaire)</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool * bool * Vector2</p>
 </dd>
 </dl>
 </dd></dl>
@@ -441,10 +467,52 @@ sa largeur et sa hauteur</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="utilities.onlyalphanum">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">onlyalphanum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.onlyalphanum" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Filtre <cite>value</cite> pour ne garder que les caractères alphanumériques.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – La chaîne à filtrer</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>La chaîne obtenue après filtrage</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.onlydigits">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">onlydigits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.onlydigits" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Filtre <cite>value</cite> pour ne garder que les chiffres.</p>
+<p>On peut ainsi retirer toutes les sauts de lignes présents
+dans le fichier <cite>score.txt</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – La chaîne à filtrer</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>La chaîne obtenue après filtrage</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utilities.pause_music">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">pause_music</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.pause_music" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met sur pause la musique chargée avec load_music.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="utilities.play_music">
 <code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">play_music</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.play_music" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Lance la musique chargée avec load_music.</p>
-<p>Ça boucle automatiquement à la fin.</p>
+<p>Boucle automatiquement à la fin du fichier.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -506,6 +574,12 @@ sa largeur et sa hauteur</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="utilities.unpause_music">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">unpause_music</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utilities.unpause_music" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Relance la musique chargée avec load_music.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="utilities.update_pos_vel">
 <code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">update_pos_vel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">ground</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.update_pos_vel" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Met à jour la position et la vitesse de l’objet.</p>
@@ -525,31 +599,6 @@ sa largeur et sa hauteur</p>
 <dd><p>Met à jour l’écran.</p>
 </dd></dl>
 
-<div class="section" id="fonction-de-collisions">
-<h2>Fonction de collisions<a class="headerlink" href="#fonction-de-collisions" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="py function">
-<dt id="utilities.collide">
-<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">collide</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">pos_next</span></em>, <em class="sig-param"><span class="n">rect</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.collide" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Gestion des collisions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>obj</strong> (<em>Player / Item</em>) – objet (joueur ou objet) dont on examine la collision</p></li>
-<li><p><strong>pos_next</strong> (<em>Vector2</em>) – position suivante de l’objet</p></li>
-<li><p><strong>rect</strong> (<em>Rect</em>) – ce qui est potentiellement en collision avec l’objet</p></li>
-</ul>
-</dd>
-<dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p>un triplet (collision verticale, collision horizontale,
-modification de position necessaire)</p>
-</dd>
-<dt class="field-odd">Type renvoyé</dt>
-<dd class="field-odd"><p>bool * bool * Vector2</p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
 <div class="section" id="evenements">
 <h2>Événements<a class="headerlink" href="#evenements" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py data">
@@ -601,6 +650,12 @@ modification de position necessaire)</p>
 <dt id="utilities.K_s">
 <code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">K_s</code><a class="headerlink" href="#utilities.K_s" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Touche S.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="utilities.K_u">
+<code class="sig-prename descclassname">utilities.</code><code class="sig-name descname">K_u</code><a class="headerlink" href="#utilities.K_u" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Touche U.</p>
 </dd></dl>
 
 <dl class="py data">

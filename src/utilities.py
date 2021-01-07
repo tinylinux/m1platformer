@@ -92,26 +92,20 @@ def play_music():  # pragma: no cover
     """
     Lance la musique chargée avec load_music.
 
-    Ça boucle automatiquement à la fin.
+    Boucle automatiquement à la fin du fichier.
     """
     pygame.mixer.music.play(-1)
 
 
 def pause_music():  # pragma: no cover
     """
-    Met sur pause la musique chargée avec load_music.
-
-    Ça boucle automatiquement à la fin.
-    """
+    Met sur pause la musique chargée avec load_music."""
     pygame.mixer.music.pause()
 
 
 def unpause_music():  # pragma: no cover
     """
-    Relance la musique chargée avec load_music.
-
-    Ça boucle automatiquement à la fin.
-    """
+    Relance la musique chargée avec load_music."""
     pygame.mixer.music.unpause()
 
 
