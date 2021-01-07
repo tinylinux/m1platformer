@@ -25,9 +25,9 @@ def listdir(path):
 
 # IMAGES
 Nom = ["cloud", "tree", "item"]
+"""Liste des noms des différents éléments de décor"""
 for color in plyr.COLORS:
     Nom.append('mono' + color)
-"""Liste des noms des différents éléments de décor"""
 img_dict = {}
 """
 Dictionnaire associant, pour chaque élément de `Nom` :
