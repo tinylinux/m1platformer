@@ -45,44 +45,43 @@ def main_loop(players, mouse=None):
         mn.credits_button.print(mouse)
         mn.sound_button.print(mouse)
 
-    elif cf.STATE == State.setup: # Paramètres
+    elif cf.STATE == State.setup:  # Paramètres
         mn.language_button.print(mouse)
         mn.return_button.print(mouse)
         mn.commands_button.print(mouse)
 
-    elif cf.STATE == State.languages: # Choix de la langue (1e fois)
+    elif cf.STATE == State.languages:  # Choix de la langue (1e fois)
         cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
                             "title.png")), (357, 132))
 
         for lang in mn.flagbutton:
             lang.print(mouse)
 
-    elif cf.STATE == State.langchange: # Changement de la langue
+    elif cf.STATE == State.langchange:  # Changement de la langue
         mn.return_button.print(mouse)
         for lang in mn.flagbutton:
             lang.print(mouse)
 
-    elif cf.STATE == State.keyset: # Changement des commandes
+    elif cf.STATE == State.keyset:  # Changement des commandes
         mn.return_button.print(mouse)
         for button in ky.modifybutton:
             button.print(mouse)
         for i in range(cf.NB_PLAYERS_MAX):
-            mn.print_text(plyr.COLORSTRAD[cf.LANG][i],
-                            (370, 135 + i*150),
-                            cf.GREY,
-                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
+            mn.print_text(cf.COLORSTRAD[cf.LANG][i],
+                          (370, 135 + i*150),
+                          cf.GREY,
+                          ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
             mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
-                            (700, 135 + i*150),
-                            cf.GREY,
-                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
+                          (700, 135 + i*150),
+                          cf.GREY,
+                          ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
         if cf.CAPT:
             mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
             mn.print_text(ky.TEXTCAPT[cf.LANG] +
-                            plyr.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
-                            (640, 350),
-                            cf.GREY,
-                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE//2))
-
+                          cf.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
+                          (640, 350),
+                          cf.GREY,
+                          ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE//2))
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
@@ -91,7 +90,6 @@ def main_loop(players, mouse=None):
         if cf.FRAMES % cf.FPS == 0:
             cf.SECONDS += 1
         scre.score(cf.SECONDS)
-
 
         nb_player_alive = 0
         # Déplacement des joueurs
@@ -131,7 +129,6 @@ def main_loop(players, mouse=None):
                             "gameover.png")), (395, 100))
         mn.restart_button.print(mouse)
         mn.return_button.print(mouse)
-
 
     elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
 

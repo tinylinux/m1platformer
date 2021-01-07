@@ -1,8 +1,6 @@
-"""Gestion des commandes"""
+"""Gestion des commandes."""
 
-import re
 import src.conf as cf
-from src.conf import State
 import src.utilities as ut
 import src.menu as mn
 import src.player as plyr
@@ -11,26 +9,26 @@ FILE = "commands.txt"
 """Fichier des commandes"""
 
 TEXTCAPT = {
-    "fr" : "Capture de la touche pour le joueur : ",
-    "en" : "Key capture for player : "
+    "fr": "Capture de la touche pour le joueur : ",
+    "en": "Key capture for player : "
 }
 
 
 def init_com():
     """Initialiser le fichier des commandes."""
     with open(FILE, "w") as empty_com:
-        empty_com.writelines([keyname(key) for key in plyr.JUMP_KEYS])
+        empty_com.writelines([ut.keyname(key) for key in plyr.JUMP_KEYS])
 
 
 def get_keys():
-    """Récupère les commandes sauvegardées par les utilisateurs"""
+    """Récupère les commandes sauvegardées par les utilisateurs."""
     with open(FILE) as coms:
         plyr.JUMP_KEYS = coms.read().splitlines()
 
 
 def set_keys(keys):
     """
-    Changer les commandes du jeu
+    Changer les commandes du jeu.
 
     Parameters :
     ------------
@@ -41,12 +39,13 @@ def set_keys(keys):
     with open(FILE, "w") as coms:
         coms.writelines([ut.keyname(key)+str("\n") for key in plyr.JUMP_KEYS])
 
-Modify_size = (100,100)
-Modify_pos = [(900,85 + i*150) for i in range(cf.NB_PLAYERS_MAX)]
+
+Modify_size = (100, 100)
+Modify_pos = [(900, 85 + i*150) for i in range(cf.NB_PLAYERS_MAX)]
 Modify_idle = "modify.png"
 Modify_hover = "modifypushed.png"
 modifybutton = []
-"""Liste des boutons de modification"""
+"""Liste des boutons de modification."""
 for i in range(cf.NB_PLAYERS_MAX):
     modifybutton.append(
         mn.ButtonImage(

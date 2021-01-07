@@ -42,9 +42,12 @@ def test_main_loop_event():
     assert cf.SECONDS == 1
     players[0].pos = ut.Vec(-100, -100)  # Joueur 1 a perdu
     players = gml.main_loop(players, (0, 0))
+    assert not players[0].alive
     assert cf.STATE == cf.State.ingame
     players[1].pos = ut.Vec(-100, -100)  # Joueur 2 a perdu
     players = gml.main_loop(players, (0, 0))
+    players = gml.main_loop(players, (0, 0))
+    assert not players[1].alive
     assert cf.STATE == cf.State.gameover_multi
     assert plyr.WINNER == 2
 
@@ -54,6 +57,7 @@ def test_main_loop_event():
     assert len(players) == 1
     players[0].pos = ut.Vec(-100, -100)
     cf.SECONDS = 30  # Record pour l'étape suivante
+    players = gml.main_loop(players, (0, 0))
     players = gml.main_loop(players, (0, 0))
     assert cf.STATE == cf.State.gameover
     players = gml.reset_world()

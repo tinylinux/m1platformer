@@ -24,6 +24,8 @@ Sprite = pygame.sprite.Sprite
 
 KEYDOWN = pygame.KEYDOWN
 """Événement "touche enfoncée"."""
+K_ESCAPE = pygame.K_ESCAPE
+"""Touche échap."""
 K_SPACE = pygame.K_SPACE
 """Touche espace."""
 K_RETURN = pygame.K_RETURN
@@ -59,7 +61,7 @@ def keyname(key):  # pragma: no cover
     return pygame.key.name(key)
 
 
-def keyidentifier(control):
+def keyidentifier(control):  # pragma: no cover
     """
     Renvoie la touche à partir d'une chaîne de caractères.
 
@@ -76,7 +78,7 @@ def keyidentifier(control):
     return pygame.key.key_code(control)
 
 
-def load_image(path): # pragma: no cover
+def load_image(path):  # pragma: no cover
     """
     Charge une image à partir d'un chemin.
 
