@@ -36,7 +36,7 @@ class Ground(ut.GameObject):
 class Platform(ut.GameObject):
     """
     Plateformes pendant le jeu.
-    
+
     Attributes
     ----------
     dim : int * int

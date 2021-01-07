@@ -44,7 +44,7 @@ def initialization(graphical, music=False):
     lg.get_lang()
 
     # Initialisation du joueur
-    players = [plyr.Player(plyr.COLORS[i]) for i in range(cf.NB_PLAYERS)]
+    players = [plyr.Player(cf.COLORS[i]) for i in range(cf.NB_PLAYERS)]
 
     # Initialisation du monde
     wrld.initgen()

@@ -190,7 +190,7 @@ def test_event():
     assert cf.STATE == cf.State.menu
 
     cf.STATE = cf.State.setup
-    players = gml.event_handling(players, event, mn.Langue_pos)
+    players = gml.event_handling(players, event, mn.Language_pos)
     assert cf.STATE == cf.State.langchange
 
     cf.STATE = cf.State.setup

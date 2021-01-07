@@ -45,7 +45,7 @@ def main_loop(players, mouse=None):
         mn.sound_button.print(mouse)
 
     elif cf.STATE == State.setup:
-        mn.langue_button.print(mouse)
+        mn.language_button.print(mouse)
         mn.return_button.print(mouse)
         mn.commands_button.print(mouse)
 
@@ -113,7 +113,7 @@ def main_loop(players, mouse=None):
         # Récupération des meilleurs scores
         records = scre.get_scores()
         number_scores = len(records)
-        font_size = cf.HIGHTSCORES_FONT_SIZE
+        font_size = cf.HIGHSCORES_FONT_SIZE
         size_height = font_size * 2 * number_scores
         if number_scores == 0:
             mn.print_text("Pas de scores", (640, 360), cf.GREY,
@@ -263,7 +263,7 @@ def event_handling(players, event, mouse=None):
             cf.STATE = State.menu
 
         elif cf.STATE == State.setup and\
-                mn.langue_button.click(mouse):
+                mn.language_button.click(mouse):
             cf.STATE = State.langchange
 
         elif cf.STATE == State.setup and\
