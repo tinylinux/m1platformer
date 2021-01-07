@@ -3,6 +3,7 @@
 import os
 import src.conf as cf
 import src.utilities as ut
+import src.player as plyr
 
 
 def listdir(path):
@@ -23,8 +24,9 @@ def listdir(path):
 
 
 # IMAGES
-Nom = ["monogreen", "monopurple", "monored", "monowhite",
-       "cloud", "tree", "item"]
+Nom = ["cloud", "tree", "item"]
+for color in plyr.COLORS:
+    Nom.append('mono' + color)
 """Liste des noms des différents éléments de décor"""
 img_dict = {}
 """
@@ -33,10 +35,8 @@ un facteur de taille,
 un nombre d'images
 et la liste de ces images.
 """
-img_dict["monogreen_factor"] = 1
-img_dict["monopurple_factor"] = 1
-img_dict["monored_factor"] = 1
-img_dict["monowhite_factor"] = 1
+for color in plyr.COLORS:
+    img_dict['mono' + color + '_factor'] = 1
 img_dict["cloud_factor"] = 4
 img_dict["tree_factor"] = 8
 img_dict["item_factor"] = 2
@@ -60,7 +60,7 @@ BAT_IMG = ut.load_image(os.path.join(cf.ASSETS, "img", "bat.png"))
 """Image pour un bâtiment"""
 
 # Dimensions
-for color in ["green", "purple", "red", "white"]:
+for color in plyr.COLORS:
     w, h = img_dict["mono" + color + "_img"][0].get_rect().size
     for key in cf.SIZE:
         cf.SIZE[key] = (w * cf.SIZE_FACTOR[key], h * cf.SIZE_FACTOR[key])
