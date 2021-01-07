@@ -7,7 +7,6 @@ import pygame
 import src.conf as cf
 
 pygame.init()
-pygame.mixer.init()
 
 Vec = pygame.math.Vector2
 """Classe des vecteurs de dimension 2."""

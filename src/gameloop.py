@@ -219,7 +219,7 @@ def event_handling(players, event, mouse=None):
             cf.STATE = State.setup
 
         elif cf.STATE == State.menu and\
-                mn.sound_button.click(mouse):
+                mn.sound_button.click(mouse):  # pragma: no cover
             if cf.FLAG_MUSIC:
                 cf.FLAG_MUSIC = False
                 ut.pause_music()

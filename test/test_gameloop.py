@@ -143,15 +143,6 @@ def test_event():
     players = gml.event_handling(players, event, mn.Settings_pos)
     assert cf.STATE == cf.State.setup
 
-    cf.STATE = cf.State.menu
-    cf.FLAG_MUSIC = True
-    players = gml.event_handling(players, event, mn.Sound_pos)
-    assert cf.STATE == cf.State.menu
-    assert not cf.FLAG_MUSIC
-    players = gml.event_handling(players, event, mn.Sound_pos)
-    assert cf.STATE == cf.State.menu
-    assert cf.FLAG_MUSIC
-
     cf.STATE = cf.State.languages
     lg.set_lang(lg.AVAILABLE[0])
     players = gml.event_handling(players, event, mn.Flag_pos[1])
