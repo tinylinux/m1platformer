@@ -1,5 +1,6 @@
 """Fonctions pour la boucle principale du jeu."""
 
+import random as rd
 import src.conf as cf
 from src.conf import State
 import src.utilities as ut
@@ -9,8 +10,6 @@ import src.player as plyr
 import src.lang as lg
 import src.score as scre
 import src.sprites as spt
-
-import random as rd
 
 
 def main_loop(players, mouse=None):
@@ -225,7 +224,7 @@ def event_handling(players, event, mouse=None):
                 ut.pause_music()
                 mn.sound_button.image = 'soundoff.png'
                 mn.sound_button.image_hover = 'soundoffpushed.png'
-            else :
+            else:
                 cf.FLAG_MUSIC = True
                 ut.unpause_music()
                 mn.sound_button.image = 'soundon.png'
@@ -270,7 +269,6 @@ def event_handling(players, event, mouse=None):
                 mn.return_button.click(mouse):
             # Clic de la souris sur le bouton "Records"
             cf.STATE = State.menu
-
 
     if event.type == ut.VIDEORESIZE:  # pragma: no cover
         ut.resize_window(event.size)
