@@ -183,7 +183,16 @@ class Player(ut.Sprite):
                                                    cf.ITEM_PROBA_MAX)
 
     def resize(self, size1, size2):
-        """Fais passer le joueur de la size1 à la size2"""
+        """
+        Change la taille du joueur.
+
+        Parameters
+        ----------
+        size1 : str
+            La taille actuelle (parmi "little", "normal", "big")
+        size2 : str
+            La taille à atteindre
+        """
         ut.resize_list(self.images, cf.SIZE[size2])
         self.width, self.height = cf.SIZE[size2]
         for i in range(2):
