@@ -4,6 +4,7 @@ import re
 import src.conf as cf
 from src.conf import State
 import src.utilities as ut
+import src.menu as mn
 import src.player as plyr
 
 FILE = "commands.txt"
@@ -33,3 +34,19 @@ def set_keys(keys):
     plyr.JUMP_KEYS = keys
     with open(FILE, "w") as coms:
         empty_com.writelines([ut.keyname(key)+str("\n") for key in plyr.JUMP_KEYS])
+
+Modify_size = (100,100)
+Modify_pos = [(900,85 + i*150) for i in range(cf.NB_PLAYERS_MAX)]
+Modify_idle = "modify.png"
+Modify_hover = "modifypushed.png"
+modifybutton = []
+"""Liste des boutons de modification"""
+for i in range(cf.NB_PLAYERS_MAX):
+    modifybutton.append(
+        mn.ButtonImage(
+            Modify_pos[i],
+            Modify_size,
+            Modify_idle,
+            Modify_hover
+        )
+    )
