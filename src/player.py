@@ -12,8 +12,8 @@ WINNER = 0
 """Joueur gagnant."""
 COLORS = ["green", "purple", "red", "white"]
 COLORSTRAD = {
-    "fr" : ["vert", "violet", "rouge", "blanc"],
-    "en" : ["green", "purple", "red", "white"]
+    "fr": ["vert", "violet", "rouge", "blanc"],
+    "en": ["green", "purple", "red", "white"]
 }
 
 

@@ -183,7 +183,7 @@ class ButtonImage(Button):
             Nom de l'image à afficher quand le bouton est inactif
         image_hover : str
             Nom de l'image à afficher quand le pointeur est sur le bouton
-        lang : str
+        lang : str, optionnel
             Langue à afficher (sous-repertoire à utiliser)
         """
         super().__init__(position, size)
@@ -204,13 +204,13 @@ class ButtonImage(Button):
         """
         if mouse_on_button(mouse, self.position, self.size) or pushed:
             cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
-                                                            self.lang,
-                                                            self.image_hover)),
+                                                           self.lang,
+                                                           self.image_hover)),
                                 self.position)
         else:
             cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
-                                                            self.lang,
-                                                            self.image)),
+                                                           self.lang,
+                                                           self.image)),
                                 self.position)
 
     def changlang(self, lang):
