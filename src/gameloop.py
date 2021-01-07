@@ -218,6 +218,10 @@ def event_handling(players, event, mouse=None):
                 if event.key == ut.K_ESCAPE:
                     cf.CAPT = False
                 else:
+                    if event.key in plyr.JUMP_KEYS:
+                        plyr.JUMP_KEYS[plyr.JUMP_KEYS.index(event.key)] \
+                            = plyr.JUMP_KEYS[cf.CAPT_PLYR]
+                        plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
                     plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
                     ky.set_keys(plyr.JUMP_KEYS)
                     cf.CAPT = False
