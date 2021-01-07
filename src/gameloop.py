@@ -35,7 +35,7 @@ def main_loop(players, mouse=None):
     if cf.STATE == State.menu:  # On est dans le menu
         cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
                             "title.png")), (357, 132))
-        for P in players:
+        for P in rd.sample(players, len(players)):
             P.move()
         mn.oneplayer_button.print(mouse)
         mn.multiplayer_button.print(mouse)
@@ -68,17 +68,17 @@ def main_loop(players, mouse=None):
             cf.SECONDS += 1
         scre.score(cf.SECONDS)
 
+
+        nb_player_alive = 0
         # Déplacement des joueurs
-        for P in players:
+        for i, P in rd.sample(list(enumerate(players)), len(players)):
             if P.alive:
                 P.move()
-
-        # Gestion de la mort
-        nb_player_alive = 0
-        for i, P in enumerate(players):
-            if P.alive:
                 nb_player_alive += 1
                 plyr.WINNER = i
+
+        # Gestion de la mort
+
         if cf.NB_PLAYERS > 1 >= nb_player_alive:
             # Fin du mode multijoueur
             cf.STATE = State.gameover_multi
@@ -195,7 +195,7 @@ def event_handling(players, event, mouse=None):
 
         if cf.STATE == State.menu and\
                 mn.oneplayer_button.click(mouse):
-            # Clic de la souris sur le bouton "Commencer"
+            # Clic de la souris sur le bouton "Un joueur"
             cf.NB_PLAYERS = 1
             players = reset_world()
             cf.STATE = State.ingame
@@ -203,7 +203,7 @@ def event_handling(players, event, mouse=None):
 
         elif cf.STATE == State.menu and\
                 mn.multiplayer_button.click(mouse):
-            # Clic de la souris sur le bouton "Commencer"
+            # Clic de la souris sur le bouton "Multi-joueur"
             cf.NB_PLAYERS = 4
             players = reset_world()
             cf.STATE = State.ingame
