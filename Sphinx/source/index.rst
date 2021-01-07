@@ -11,6 +11,7 @@ Bienvenue dans la documentation de Roll \'n\' Jump
    :caption: Instructions :
 
    installation
+   instructions
    modulegen
 
 .. toctree::

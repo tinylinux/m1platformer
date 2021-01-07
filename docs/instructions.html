@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Utilisation du générateur de modules &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  <title>Comment jouer &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Main" href="main.html" />
-    <link rel="prev" title="Comment jouer" href="instructions.html" /> 
+    <link rel="next" title="Utilisation du générateur de modules" href="modulegen.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,13 +88,15 @@
               <p class="caption"><span class="caption-text">Instructions :</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="instructions.html">Comment jouer</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilisation du générateur de modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#le-selecteur-d-obstacle">Le sélecteur d’obstacle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#la-grille-de-creation">La grille de création</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#les-fonctionnalites-tournees-vers-l-exterieur">Les fonctionnalités tournées vers l’extérieur</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comment jouer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#selection-de-la-langue">Sélection de la langue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#menu-principal">Menu principal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reglages">Réglages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#principe-du-jeu">Principe du jeu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objets">Objets</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="modulegen.html">Utilisation du générateur de modules</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Modules :</span></p>
 <ul>
@@ -159,7 +161,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Utilisation du générateur de modules</li>
+      <li>Comment jouer</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -176,42 +178,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="utilisation-du-generateur-de-modules">
-<h1>Utilisation du générateur de modules<a class="headerlink" href="#utilisation-du-generateur-de-modules" title="Lien permanent vers ce titre">¶</a></h1>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>le module <code class="docutils literal notranslate"><span class="pre">tkinter</span></code> est nécessaire à l’utilisation du générateur de modules</p>
+  <div class="section" id="comment-jouer">
+<h1>Comment jouer<a class="headerlink" href="#comment-jouer" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="selection-de-la-langue">
+<h2>Sélection de la langue<a class="headerlink" href="#selection-de-la-langue" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Au premier lancement du jeu, il vous sera demandé de choisir la langue.
+Cette option peut être changée à tout moment dans le menu des réglages.</p>
 </div>
-<p>La première fenêtre vous demande le nombre de colonnes de la future grille de création de votre module
-Celui-ci peut être augmenté et diminué avec les boutons à côté du nombre.
-Lorsque ce nombre vous convient, il suffit de valider.</p>
-<p>La seconde fenêtre est la fenêtre principale de création de votre module.
-Elle se décompose en trois zones :</p>
+<div class="section" id="menu-principal">
+<h2>Menu principal<a class="headerlink" href="#menu-principal" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Sur le menu principal, vous disposez au centre des boutons, de gauche à
+droite et de haut en bas :</p>
 <ul class="simple">
-<li><p>Le sélecteur d’obstacle</p></li>
-<li><p>La grille de création</p></li>
-<li><p>Les fonctionnalités tournées vers l’extérieur</p></li>
+<li><p>le bouton pour lancer le jeu à un joueur,</p></li>
+<li><p>le bouton pour lancer le jeu à plusieurs joueurs,</p></li>
+<li><p>le bouton des réglages,</p></li>
+<li><p>le bouton des scores,</p></li>
+<li><p>le bouton des crédits.</p></li>
 </ul>
-<div class="section" id="le-selecteur-d-obstacle">
-<h2>Le sélecteur d’obstacle<a class="headerlink" href="#le-selecteur-d-obstacle" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Il permet de sélectionner à l’aide du clique gauche le type du prochain obstacle à placer, ou de permettre d’effacer des obstacles.</p>
+<p>D’autre part, vous disposez en haut à droite d’un bouton pour couper et rétablir
+la musique du jeu.</p>
 </div>
-<div class="section" id="la-grille-de-creation">
-<h2>La grille de création<a class="headerlink" href="#la-grille-de-creation" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Lorsqu’un type d’obstacle est choisi dans le sélecteur, il suffit de délimiter les dimensions et l’emplacement du prochain obstacle à ajouter à l’aide de deux cliques gauches
-sur la grille. À la création de l’obstacle, ses caractéristiques sont affichées dans la console.</p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>Deux obstacles peuvent se toucher mais ne peuvent se pas superposer. Le cas échéant, un message d’erreur « Collision » est affiché dans la console.</p>
+<div class="section" id="reglages">
+<h2>Réglages<a class="headerlink" href="#reglages" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Comme indiqué plus haut, vous disposez d’un menu pour changer la langue, mais aussi
+d’un menu pour changer la touche assignée à chaque joueur.</p>
+<p>Pour chaque joueur, vous pouvez cliquer sur le crayon puis sur la touche que vous
+souhaitez lui assigner. Lorsque le jeu est lancé à moins de quatre joueurs, les couleurs
+les plus en haut sont utilisées en priorité. Pour régler la touche à un joueur, il faut
+donc changer celle du joueur vert.</p>
 </div>
-<p>Il est aussi possible d’effacer un obstacle en choisissant la fonctionnalité dans le sélecteur et en faisant un clique gauche sur l’obstacle en question.</p>
+<div class="section" id="principe-du-jeu">
+<h2>Principe du jeu<a class="headerlink" href="#principe-du-jeu" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Votre monocycle se déplace vers la droite, sans que vous ayez de contrôle direct sur sa vitesse.
+Vous pouvez sauter à l’aide de la touche choisie (espace par défaut), et faire des doubles sauts
+(sauter à nouveau an appuyant sur la touche une fois en l’air).</p>
+<p>À un joueur, le but est d’arriver le plus loin possible sans tomber. Votre score s’affiche en
+haut à droite de l’écran. Si vous tombez, vous aurez un écran de fin vous indiquant votre score,
+et vous demandant d’entrer un pseudonyme si vous entre dans le tableau des meilleurs scores.
+Vous pourrez également recommencer directement une partie, mais aussi revenir au menu principal
+avec la flèche en haut à gauche de l’écran.</p>
+<p>À plusieurs joueurs, c’est le dernier joueur en vie qui l’emporte, et le vainqueur est indiqué sur
+l’écran de fin. Il est encore une fois possible de recommencer ou de revenir au menu principal.</p>
 </div>
-<div class="section" id="les-fonctionnalites-tournees-vers-l-exterieur">
-<h2>Les fonctionnalités tournées vers l’extérieur<a class="headerlink" href="#les-fonctionnalites-tournees-vers-l-exterieur" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Deux fonctionnalités sont présentes ici. En premier le bouton « Liste obstacles » qui affiche dans la console l’ensemble des caractéristiques des obstacles présents sur la grille.
-En dessous, une zone de texte qui permet de rentrer un nom particulier de module, puis le bouton « Enregistrer »
-qui permet d’enregistrer la grille sous forme d’un fichier <code class="docutils literal notranslate"><span class="pre">y1_y2_nom.mdl</span></code> avec <code class="docutils literal notranslate"><span class="pre">y1</span></code> la hauteur de l’obstacle le plus à gauche,
-<code class="docutils literal notranslate"><span class="pre">y2</span></code> celle de l’obstacle le plus à droite et <code class="docutils literal notranslate"><span class="pre">nom</span></code> le nom du module rentré dans la zone de texte précédente.</p>
+<div class="section" id="objets">
+<h2>Objets<a class="headerlink" href="#objets" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pendant que vous avancez, vous remarquerez que des choses tombent du ciel. Il s’agit de quatre types
+d’objets.</p>
+<ul class="simple">
+<li><p>Un objet d’accélération (une flèche multicolore) qui vous fait vous déplacer vers la droite de l’écran, mais pas au plus des deux tiers.</p></li>
+<li><p>Un objet de ralentissement (une tortue) qui vous fait vous déplacer vers la gauche de l’écran, mais ne vous fera jamais perdre en sortant de l’écran.</p></li>
+<li><p>Un objet de grossissement (un éléphant) qui augmente la taille du monocycle.</p></li>
+<li><p>Un objet de réduction (une fourmi) qui réduit la taille du monocycle.</p></li>
+</ul>
+<p>Si votre monocycle touche l’un de ces objets, l’effet lui sera appliqué, ce qui peut vous avantager
+ou vous désavantager.</p>
 </div>
 </div>
 
@@ -221,8 +242,8 @@ qui permet d’enregistrer la grille sous forme d’un fichier <code class="docu
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="main.html" class="btn btn-neutral float-right" title="Main" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="instructions.html" class="btn btn-neutral float-left" title="Comment jouer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="modulegen.html" class="btn btn-neutral float-right" title="Utilisation du générateur de modules" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 
   <hr/>
