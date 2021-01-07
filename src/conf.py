@@ -45,7 +45,7 @@ V_JMP = 15
 G = 0.8
 """Accélération due à la gravité."""
 
-NB_PLAYERS_MAX = 3
+NB_PLAYERS_MAX = 4
 """Nombre maximal de joueurs."""
 NB_PLAYERS = 3
 """Nombre de joueurs."""
@@ -83,6 +83,12 @@ SIZE_FACTOR = {'little': 1, 'normal': 3, 'big': 8}
 SIZE = {'little': (0, 0), 'normal': (0, 0), 'big': (0, 0)}
 """Les différentes dimensions du joueur (normal, big, little)."""
 
+# Capture des commandes
+CAPT = False
+"""En cours de capture de touches."""
+CAPT_PLYR = 0
+"""Numéro du joueur en cours pour changer sa commande."""
+
 # Couleurs
 BLACK = (255, 255, 255)
 """Noir."""
@@ -106,7 +112,6 @@ FRAMES = 0
 # États du jeu
 class State(Enum):
     """Type énuméré pour l'état du jeu."""
-
     languages = 0
     menu = 1
     ingame = 2
@@ -115,6 +120,7 @@ class State(Enum):
     highscore = 4
     setup = 5
     langchange = 6
+    keyset = 7
 
 
 STATE = State.menu

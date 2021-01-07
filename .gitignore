@@ -138,11 +138,14 @@ dmypy.json
 /.vs/ProjectSettings.json
 /.vscode/*
 
-# Le fichier de score
+# Fichiers de configuration
 score.txt
+lang.txt
+commands.txt
+
+# Travaux sur Photoshop
 *.psb
 *.psd
-lang.txt
 
 # Test text files
 test/test_lang.txt
