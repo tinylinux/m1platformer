@@ -443,6 +443,23 @@ flagbutton.append(
     )
 )
 
+# Boutons pour choisir le nombre de joueurs
+Multi_size = (100, 100)
+Multi_pos = [(350, 135), (590, 135), (880, 135)]
+Multi_idle = [str(i+2) + ".png" for i in range(cf.NB_PLAYERS_MAX)]
+Multi_hover = [str(i+2) + "pushed.png" for i in range(cf.NB_PLAYERS_MAX)]
+multi_button = []
+"""Boutons pour choisir le nombre de joueurs"""
+for i in range(cf.NB_PLAYERS_MAX):
+    multi_button.append(
+        ButtonImage(
+            Multi_pos[i],
+            Multi_size,
+            Multi_idle[i],
+            Multi_hover[i]
+        )
+    )
+
 
 def print_image(image, position, scale=1):
     """
