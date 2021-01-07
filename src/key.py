@@ -37,11 +37,12 @@ def set_keys(keys):
     """
     plyr.JUMP_KEYS = keys
     with open(FILE, "w") as coms:
-        coms.writelines([ut.keyname(key)+str("\n") for key in plyr.JUMP_KEYS])
+        coms.writelines([ut.keyname(key)
+                         + str("\n") for key in plyr.JUMP_KEYS])
 
 
 Modify_size = (100, 100)
-Modify_pos = [(900, 85 + i*150) for i in range(cf.NB_PLAYERS_MAX)]
+Modify_pos = [(900, 85 + i * 150) for i in range(cf.NB_PLAYERS_MAX)]
 Modify_idle = "modify.png"
 Modify_hover = "modifypushed.png"
 modifybutton = []

@@ -68,20 +68,20 @@ def main_loop(players, mouse=None):
             button.print(mouse)
         for i in range(cf.NB_PLAYERS_MAX):
             mn.print_text(cf.COLORSTRAD[cf.LANG][i],
-                          (370, 135 + i*150),
+                          (370, 135 + i * 150),
                           cf.GREY,
                           ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
             mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
-                          (700, 135 + i*150),
+                          (700, 135 + i * 150),
                           cf.GREY,
                           ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
         if cf.CAPT:
             mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
-            mn.print_text(ky.TEXTCAPT[cf.LANG] +
-                          cf.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
+            mn.print_text(ky.TEXTCAPT[cf.LANG]
+                          + cf.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
                           (640, 350),
                           cf.GREY,
-                          ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE//2))
+                          ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE // 2))
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
