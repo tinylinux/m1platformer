@@ -1,5 +1,6 @@
 """Fonctions pour la boucle principale du jeu."""
 
+import os
 import random as rd
 import src.conf as cf
 from src.conf import State
@@ -32,8 +33,8 @@ def main_loop(players, mouse=None):
         mouse = mn.scaled_mouse_pos(ut.mouse_pos())
 
     if cf.STATE == State.menu:  # On est dans le menu
-        cf.DISPLAYSURF.blit(ut.load_image
-                            ("assets/img/ui/title.png"), (357, 132))
+        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                            "title.png")), (357, 132))
         for P in players:
             P.move()
         mn.oneplayer_button.print(mouse)
@@ -49,8 +50,8 @@ def main_loop(players, mouse=None):
         mn.commands_button.print(mouse)
 
     elif cf.STATE == State.languages:
-        cf.DISPLAYSURF.blit(ut.load_image
-                            ("assets/img/ui/title.png"), (357, 132))
+        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                            "title.png")), (357, 132))
         for lang in mn.flagbutton:
             lang.print(mouse)
 
@@ -91,10 +92,10 @@ def main_loop(players, mouse=None):
 
         scre.score_endgame(cf.SECONDS)
         if cf.NEWHS:  # Nouveau record
-            cf.DISPLAYSURF.blit(ut.load_image
-                                ("assets/img/ui/highscore.png"), (428, 350))
-        cf.DISPLAYSURF.blit(ut.load_image
-                            ("assets/img/ui/gameover.png"), (395, 100))
+            cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                "highscore.png")), (428, 350))
+        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                            "gameover.png")), (395, 100))
         mn.restart_button.print(mouse)
         mn.return_button.print(mouse)
 
@@ -102,8 +103,8 @@ def main_loop(players, mouse=None):
 
         scre.winner_endgame()
 
-        cf.DISPLAYSURF.blit(ut.load_image
-                            ("assets/img/ui/gameover.png"), (395, 100))
+        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                            "gameover.png")), (395, 100))
         mn.restart_button.print(mouse)
         mn.return_button.print(mouse)
 
