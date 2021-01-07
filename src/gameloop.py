@@ -67,7 +67,7 @@ def main_loop(players, mouse=None):
         for button in ky.modifybutton:
             button.print(mouse)
         for i in range(cf.NB_PLAYERS_MAX):
-            mn.print_text(plyr.COLORSTRAD[cf.LANG][i],
+            mn.print_text(cf.COLORSTRAD[cf.LANG][i],
                             (370, 135 + i*150),
                             cf.GREY,
                             ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
@@ -78,7 +78,7 @@ def main_loop(players, mouse=None):
         if cf.CAPT:
             mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
             mn.print_text(ky.TEXTCAPT[cf.LANG] +
-                            plyr.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
+                            cf.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
                             (640, 350),
                             cf.GREY,
                             ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE//2))
