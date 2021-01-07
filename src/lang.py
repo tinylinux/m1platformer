@@ -1,6 +1,6 @@
 """Gestion de la langue."""
 
-import re
+import src.utilities as ut
 import src.conf as cf
 from src.conf import State
 import src.menu as mn
@@ -17,29 +17,12 @@ def init_lang():
         empty_lang.write(cf.LANG)
 
 
-def onlyalphanum(value):
-    """
-    Fonction ne conservant que les caractères alphanumériques.
-
-    Parameters
-    ----------
-    value : str
-        Chaîne de caractères
-
-    Returns
-    -------
-    str
-        Chaîne de caractères filtrée
-    """
-    return re.sub(r'[^A-Za-z0-9]+', '', value)
-
-
 def get_lang():
     """Récupère la langue choisie par l'utilisateur."""
     with open(FILE) as lg:
         lang = lg.readlines()
-        if len(lang) > 0 and onlyalphanum(lang[0]) in AVAILABLE:
-            cf.LANG = onlyalphanum(lang[0])
+        if len(lang) > 0 and ut.onlyalphanum(lang[0]) in AVAILABLE:
+            cf.LANG = ut.onlyalphanum(lang[0])
             changbuttonslang(cf.LANG)
         else:
             cf.STATE = State.languages
@@ -55,7 +38,7 @@ def set_lang(lang):
     lang : str
         Langue choisie par l'utilisateur
     """
-    cf.LANG = onlyalphanum(lang)
+    cf.LANG = ut.onlyalphanum(lang)
     changbuttonslang(cf.LANG)
     with open(FILE, "w") as empty_lang:
         empty_lang.write(cf.LANG)

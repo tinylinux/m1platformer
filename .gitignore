@@ -147,3 +147,6 @@ lang.txt
 # Test text files
 test/test_lang.txt
 test/test_score.txt
+
+# Coverage report
+docs/cov_report/*

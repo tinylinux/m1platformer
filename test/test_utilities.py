@@ -2,7 +2,7 @@
 
 import os
 from hypothesis import given
-from hypothesis.strategies import integers, tuples
+from hypothesis.strategies import integers, tuples, text
 import main
 import src.conf as cf
 import src.utilities as ut
@@ -57,6 +57,20 @@ def test_update():
     player.acc = ut.Vec((0, 0))
     ut.update_pos_vel(player, spt.ground)
     assert player.pos == ut.Vec((50, 50 - player.height))
+
+
+@given(text())
+def test_onlydigits(string):
+    """Test pour la fonction onlydigits."""
+    digits = ut.onlydigits(string)
+    assert digits == '' or digits.isnumeric()
+
+
+@given(text())
+def test_onlyalphanum(string):
+    """Test pour la fonction onlyalphanum."""
+    alphanum = ut.onlyalphanum(string)
+    assert alphanum == '' or alphanum.isalnum()
 
 
 @given(tuples(integers(0, 100), integers(0, 100)),

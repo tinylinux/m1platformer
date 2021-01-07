@@ -1,5 +1,6 @@
 """Gère l'abstraction de pygame."""
 
+import re
 from math import ceil
 
 import sys
@@ -480,6 +481,47 @@ def update_pos_vel(obj, ground):
 
     obj.pos = posnext
     obj.rect.topleft = obj.pos  # Mise à jour de la position
+
+
+def onlydigits(value):
+    """
+    Filtre `value` pour ne garder que les chiffres.
+
+    On peut ainsi retirer toutes les sauts de lignes présents
+    dans le fichier `score.txt`.
+
+    Parameters
+    ----------
+    value : str
+        La chaîne à filtrer
+
+    Returns
+    -------
+    str
+        La chaîne obtenue après filtrage
+    """
+    final_chain = ""
+    for i in value:
+        if '0' <= i <= '9':
+            final_chain += i
+    return final_chain
+
+
+def onlyalphanum(value):
+    """
+    Filtre `value` pour ne garder que les caractères alphanumériques.
+
+    Parameters
+    ----------
+    value : str
+        La chaîne à filtrer
+
+    Returns
+    -------
+    str
+        La chaîne obtenue après filtrage
+    """
+    return re.sub(r'[^A-Za-z0-9]+', '', value)
 
 
 class GameObject(Sprite):

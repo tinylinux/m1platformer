@@ -10,20 +10,6 @@ import src.score as scre
 cf.SCORES = os.path.join(os.path.dirname(__file__), "test_score.txt")
 
 
-@given(text())
-def test_onlydigits(string):
-    """Test pour la fonction onlydigits."""
-    digits = scre.onlydigits(string)
-    assert digits == '' or digits.isnumeric()
-
-
-@given(text())
-def test_onlyalphanum(string):
-    """Test pour la fonction onlyalphanum."""
-    alphanum = scre.onlyalphanum(string)
-    assert alphanum == '' or alphanum.isalnum()
-
-
 @given(integers())
 def test_print(number):
     """Test pour les fonctions d'affichage."""

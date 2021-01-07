@@ -20,4 +20,4 @@ jobs:
         pip install pytest hypothesis pytest-xdist pytest-cov
     - name: Running tests
       run: |
-        python -m pytest --forked --cov=. --cov-report html:./docs/cov_report
+        python -m pytest --forked --cov=./src --cov-report html:./docs/cov_report

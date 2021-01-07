@@ -1,6 +1,5 @@
 """Gestion du score."""
 import os
-import re
 import src.conf as cf
 import src.menu as mn
 import src.utilities as ut
@@ -8,47 +7,6 @@ import src.player as plyr
 
 PLAYER = "Player"
 """Nom par défaut du joueur"""
-
-
-def onlydigits(value):
-    """
-    Filtre `value` pour ne garder que les chiffres.
-
-    On peut ainsi retirer toutes les sauts de lignes présents
-    dans le fichier `score.txt`.
-
-    Parameters
-    ----------
-    value : str
-        La chaîne à filtrer
-
-    Returns
-    -------
-    str
-        La chaîne obtenue après filtrage
-    """
-    final_chain = ""
-    for i in value:
-        if '0' <= i <= '9':
-            final_chain += i
-    return final_chain
-
-
-def onlyalphanum(value):
-    """
-    Filtre `value` pour ne garder que les caractères alphanumériques.
-
-    Parameters
-    ----------
-    value : str
-        La chaîne à filtrer
-
-    Returns
-    -------
-    str
-        La chaîne obtenue après filtrage
-    """
-    return re.sub(r'[^A-Za-z0-9]+', '', value)
 
 
 def init_best_score():
@@ -122,9 +80,9 @@ def get_scores():
         scores[1] = scores[1].split(";")
         ordered_list = []
         for duo in range(len(scores[0])):
-            if onlydigits(scores[1][duo]) != '':
-                score_value = int(onlydigits(scores[1][duo]))
-                score_name = onlyalphanum(scores[0][duo])
+            if ut.onlydigits(scores[1][duo]) != '':
+                score_value = int(ut.onlydigits(scores[1][duo]))
+                score_name = ut.onlyalphanum(scores[0][duo])
                 element = (score_value, score_name)
                 ordered_list.append(element)
         ordered_list = list(sorted(ordered_list, key=lambda x: -x[0]))
