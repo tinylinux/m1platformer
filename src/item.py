@@ -49,7 +49,6 @@ class Item(ut.GameObject):
         self.acc = ut.Vec(0, cf.G)
 
         super().__init__((x, y), 1, img)
-        ut.add_to_group(self, spt.items)
 
     def update(self):
         """Met à jour l'item."""

@@ -24,7 +24,8 @@ class Ground(ut.GameObject):
         if self.rect.right < cf.SCREEN_WIDTH and self.FLAG_creation:
             # si le dernier ne couvre plus tout sur la droite,
             # il faut ajouter un nouveau
-            Ground(self.rect.right)
+            plat = Ground(self.rect.right)
+            ut.add_to_group(plat, spt.ground)
             self.stop_creation()
 
     def stop_creation(self):

@@ -3,6 +3,7 @@
 import os
 import random as rd
 # Import classes
+import src.utilities as ut
 import src.sprites as spt
 import src.platforms as pltfrm
 import src.conf as cf
@@ -46,10 +47,12 @@ def platform_creation(bloc, xoffset, yoffset):
     else:
         height = cf.SCREEN_HEIGHT
         sprite = spt.BAT_IMG
-    return pltfrm.Platform((top_left_x + xoffset,
+    plat = pltfrm.Platform((top_left_x + xoffset,
                             top_left_y + yoffset),
                            (width, height),
                            sprite)
+    ut.add_to_group(plat, spt.ground)
+    return plat
 
 
 def initgen():
@@ -69,11 +72,12 @@ def initgen():
     # Lance la création du sol
     # on rajoute des bouts de sol, on additionne leur longueur
     # et quand on a couvert tout l'écran on s'arrête.
-    longueur_totale = 0
-    while longueur_totale < cf.SCREEN_WIDTH:
-        # On en met un nouveau à la position x = longueur_totale.
-        pltfrm.Ground(longueur_totale)
-        longueur_totale += spt.GROUND_WIDTH
+    total_width = 0
+    while total_width < cf.SCREEN_WIDTH:
+        # On en met un nouveau à la fin
+        plat = pltfrm.Ground(total_width)
+        ut.add_to_group(plat, spt.ground)
+        total_width += spt.GROUND_WIDTH
 
 
 def genere_module(last_pltfrm):
@@ -122,9 +126,13 @@ def update():
     spt.ground.update()
     spt.items.update()
 
-    last_pltfrm = max(spt.ground, key=lambda bloc: bloc.rect.right)
-    if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
-        genere_module(last_pltfrm)
+    try:
+        last_pltfrm = max(spt.ground, key=lambda bloc: bloc.rect.right)
+        if last_pltfrm.rect.right < cf.SCREEN_WIDTH:
+            genere_module(last_pltfrm)
+    except ValueError:
+        genere_module(pltfrm.Platform())
 
     if (not cf.FLAG_ITEM) and (cf.SECONDS == cf.NEW_ITEM_TIME):
-        it.Item()
+        newitem = it.Item()
+        ut.add_to_group(newitem, spt.items)

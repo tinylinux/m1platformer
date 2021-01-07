@@ -113,26 +113,26 @@ def get_scores():
     (int * str) list
         Une liste contenant un score et un nom de joueur associé
     """
-    with open(cf.SCORES) as board:
-        try:
+    try:
+        with open(cf.SCORES, 'r') as board:
             scores = board.readlines()
-            if len(scores) < 2:
-                return []
-            scores[0] = scores[0].split(";")
-            scores[1] = scores[1].split(";")
-            ordered_list = []
-            for duo in range(len(scores[0])):
-                if onlydigits(scores[1][duo]) != '':
-                    score_value = int(onlydigits(scores[1][duo]))
-                    score_name = onlyalphanum(scores[0][duo])
-                    element = (score_value, score_name)
-                    ordered_list.append(element)
-            ordered_list = list(sorted(ordered_list, key=lambda x: -x[0]))
-            return ordered_list
-        except (ValueError, IndexError):
-            board.close()
-            init_best_score()
+        if len(scores) < 2:
             return []
+        scores[0] = scores[0].split(";")
+        scores[1] = scores[1].split(";")
+        ordered_list = []
+        for duo in range(len(scores[0])):
+            if onlydigits(scores[1][duo]) != '':
+                score_value = int(onlydigits(scores[1][duo]))
+                score_name = onlyalphanum(scores[0][duo])
+                element = (score_value, score_name)
+                ordered_list.append(element)
+        ordered_list = list(sorted(ordered_list, key=lambda x: -x[0]))
+        return ordered_list
+    except (ValueError, IndexError):
+        board.close()
+        init_best_score()
+        return []
 
 
 def get_last_best_score():

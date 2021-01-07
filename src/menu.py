@@ -13,7 +13,7 @@ CHARS_CAP = "AZERTYUIOPQSDFGHJKLMWXCVBN1234567890"
 """Caractères acceptés, en majuscules"""
 
 
-def scaled_mouse_pos(mouse):
+def scaled_mouse_pos(mouse):  # pragma: no cover
     """
     Renvoie la position de la souris mise à l'échelle de l'image.
 
@@ -134,7 +134,7 @@ class ButtonText(Button):
             Étiquette du bouton
         """
         super().__init__(position, size)
-        self.text = text
+        self.text = ut.font(None, 48).render(text, True, cf.BLACK)
         self.text_position = (position[0] + 10, position[1] + 10)
 
     def print(self, mouse, pushed=False):
@@ -485,7 +485,7 @@ def print_text(text, position_center, color=cf.WHITE,
         Indique si le texte doit être en gras
     """
     if font is None:
-        ut.font(None, cf.TEXT_FONT_SIZE)
+        font = ut.font(None, cf.TEXT_FONT_SIZE)
     if bold:
         font.set_bold(True)
     size_text = font.size(text)

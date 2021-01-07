@@ -8,6 +8,7 @@ import src.conf as cf
 import src.utilities as ut
 import src.player as plyr
 import src.gameloop as gml
+import src.item as it
 
 
 # Test du saut du joueur
@@ -49,3 +50,64 @@ def test_move(velx, vely):
         and player.pos.x >= xinit + velx + 0.5 * player.acc.x - 0.001
     assert player.pos.y <= yinit + vely + 0.5 * player.acc.y + 0.001\
         and player.pos.y >= yinit + vely + 0.5 * player.acc.y - 0.001
+
+    player.timer = 1
+    player.state = "little"
+    player.move()
+    assert player.state == "normal"
+    player.state = "fast"
+    player.move()
+    assert player.vel.x == cf.V_ITEM["fast"]
+    player.pos.x = (3 * cf.SCREEN_WIDTH) // 4
+    player.move()
+    assert player.vel.x == 0
+    player.state = "slow"
+    player.move()
+    assert player.vel.x == cf.V_ITEM["slow"]
+    player.pos.x = -player.width // 2
+    player.move()
+    assert player.vel.x == 0
+
+    player.state = "normal"
+    item = it.Item()
+    item.pos = player.pos
+    item.update()
+    ut.add_to_group(item, spt.items)
+    player.vel = ut.Vec((0, 0))
+    player.acc = ut.Vec((0, 0))
+    player.move()
+    assert player.state != "normal"
+
+
+def test_change_state():
+    """Test pour la méthode change_state."""
+    main.initialization(False)
+    player = plyr.Player()
+    item = it.Item()
+    item.type = "little"
+    player.change_state(item)
+    assert player.width, player.height == cf.SIZE["little"]
+    item = it.Item()
+    item.type = "big"
+    player.change_state(item)
+    assert player.width, player.height == cf.SIZE["big"]
+
+
+def test_end_item():
+    """Test pour la méthode end_item."""
+    main.initialization(False)
+    player = plyr.Player()
+    player.vel.x = cf.V_ITEM['fast']
+    item = it.Item()
+    item.type = "little"
+    player.change_state(item)
+    player.end_item()
+    assert player.width, player.height == cf.SIZE["normal"]
+    assert player.vel.x == 0
+    player.vel.x = cf.V_ITEM['slow']
+    item = it.Item()
+    item.type = "big"
+    player.change_state(item)
+    player.end_item()
+    assert player.width, player.height == cf.SIZE["normal"]
+    assert player.vel.x == 0

@@ -267,7 +267,7 @@ def event_handling(players, event, mouse=None):
 
         elif cf.STATE == State.setup and\
                 mn.return_button.click(mouse):
-            # Clic de la souris sur le bouton "Records"
+            # Clic de la souris sur le bouton "Retour"
             cf.STATE = State.menu
 
     if event.type == ut.VIDEORESIZE:  # pragma: no cover

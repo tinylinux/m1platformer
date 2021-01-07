@@ -4,9 +4,10 @@ import os
 from hypothesis import given
 from hypothesis.strategies import characters, integers, text, lists, tuples
 import main
+import src.conf as cf
 import src.score as scre
 
-scre.FILE = os.path.join(os.path.dirname(__file__), "test_score.txt")
+cf.SCORES = os.path.join(os.path.dirname(__file__), "test_score.txt")
 
 
 @given(text())
@@ -30,6 +31,9 @@ def test_print(number):
     main.initialization(False)
     scre.score(number)
     scre.score_endgame(number)
+    cf.LANG = "fr"
+    scre.winner_endgame()
+    cf.LANG = "en"
     scre.winner_endgame()
 
 
@@ -69,7 +73,7 @@ def test_scoreboard(scores):
 @given(lists(text()))
 def test_corrupted_board_random(contents):
     """Test de robustesse en cas d'erreur dans le fichier des scores."""
-    with open(scre.FILE, 'w') as board:
+    with open(cf.SCORES, 'w') as board:
         for line in contents:
             board.write(line + '\n')
     scre.get_scores()
@@ -77,7 +81,7 @@ def test_corrupted_board_random(contents):
 
 def test_corrupted_board():
     """Test similaire non randomisé pour assurer la couverture."""
-    with open(scre.FILE, 'w') as board:
-        for line in ["fsdq", "sdq;0"]:
+    with open(cf.SCORES, 'w') as board:
+        for line in ["fsdq;0;vd", "s;s", "bcds"]:
             board.write(line + '\n')
     assert scre.get_scores() == []

@@ -41,7 +41,7 @@ QUIT = pygame.QUIT
 """Événement "quitter le jeu"."""
 
 
-def keyname(key):
+def keyname(key):  # pragma: no cover
     """
     Renvoie le nom de la touche pressée.
 
@@ -58,7 +58,7 @@ def keyname(key):
     return pygame.key.name(key)
 
 
-def load_image(path):
+def load_image(path):  # pragma: no cover
     """
     Charge une image à partir d'un chemin.
 
@@ -75,7 +75,7 @@ def load_image(path):
     return pygame.image.load(path)
 
 
-def load_music(path):
+def load_music(path):  # pragma: no cover
     """
     Charge une musique à partir d'un chemin.
 
@@ -87,7 +87,7 @@ def load_music(path):
     pygame.mixer.music.load(path)
 
 
-def play_music():
+def play_music():  # pragma: no cover
     """
     Lance la musique chargée avec load_music.
 
@@ -96,7 +96,7 @@ def play_music():
     pygame.mixer.music.play(-1)
 
 
-def pause_music():
+def pause_music():  # pragma: no cover
     """
     Met sur pause la musique chargée avec load_music.
 
@@ -105,7 +105,7 @@ def pause_music():
     pygame.mixer.music.pause()
 
 
-def unpause_music():
+def unpause_music():  # pragma: no cover
     """
     Relance la musique chargée avec load_music.
 
@@ -114,7 +114,8 @@ def unpause_music():
     pygame.mixer.music.unpause()
 
 
-def initialize_window(icon, title, width, height, graphical):
+def initialize_window(icon, title, width,
+                      height, graphical):  # pragma: no cover
     """
     Initialise l'environnement graphique et la fenêtre.
 
@@ -146,7 +147,7 @@ def initialize_window(icon, title, width, height, graphical):
     return (game, None)
 
 
-def resize_window(screen_size):
+def resize_window(screen_size):  # pragma: no cover
     """
     Rétablit le ratio après un redimensionnement de fenêtre.
 
@@ -163,7 +164,7 @@ def resize_window(screen_size):
                                             flags=pygame.RESIZABLE)
 
 
-def initialize_clock():
+def initialize_clock():  # pragma: no cover
     """
     Initialise le temps.
 
@@ -175,7 +176,7 @@ def initialize_clock():
     return pygame.time.Clock()
 
 
-def make_event(event_type, attr=None):
+def make_event(event_type, attr=None):  # pragma: no cover
     """
     Renvoie un événement du type passé en entrée.
 
@@ -196,7 +197,7 @@ def make_event(event_type, attr=None):
     return pygame.event.Event(event_type, attr)
 
 
-def get_events():
+def get_events():  # pragma: no cover
     """
     Renvoie la liste des évènements.
 
@@ -208,7 +209,7 @@ def get_events():
     return pygame.event.get()
 
 
-def group_sprite_define():
+def group_sprite_define():  # pragma: no cover
     """
     Création d'un nouveau groupe de sprites.
 
@@ -220,7 +221,7 @@ def group_sprite_define():
     return pygame.sprite.Group()
 
 
-def add_to_group(sprite, group):
+def add_to_group(sprite, group):  # pragma: no cover
     """
     Ajoute un sprite à un groupe de sprites.
 
@@ -234,7 +235,7 @@ def add_to_group(sprite, group):
     group.add(sprite)
 
 
-def resize(surface, dimensions, destination=None):
+def resize(surface, dimensions, destination=None):  # pragma: no cover
     """
     Change l'échelle de la surface en entrée.
 
@@ -257,7 +258,7 @@ def resize(surface, dimensions, destination=None):
     return pygame.transform.scale(surface, dimensions, destination)
 
 
-def resize_list(L, size):
+def resize_list(L, size):  # pragma: no cover
     """
     Redimensionne les images d'une liste.
 
@@ -277,7 +278,7 @@ def resize_list(L, size):
         L[i] = pygame.transform.scale(img, size)
 
 
-def contact(sprite1, sprite2):
+def contact(sprite1, sprite2):  # pragma: no cover
     """
     Indique si deux sprites sont en contact.
 
@@ -296,7 +297,7 @@ def contact(sprite1, sprite2):
     return pygame.sprite.collide_rect(sprite1, sprite2)
 
 
-def collide_group(sprite, group):
+def collide_group(sprite, group):  # pragma: no cover
     """
     Indique s'il y a une collision entre un sprite et un groupe de sprites.
 
@@ -315,12 +316,12 @@ def collide_group(sprite, group):
     return pygame.sprite.spritecollideany(sprite, group)
 
 
-def update_screen():
+def update_screen():  # pragma: no cover
     """Met à jour l'écran."""
     pygame.display.flip()
 
 
-def get_screen_size():
+def get_screen_size():  # pragma: no cover
     """
     Renvoie la taille de la fenêtre.
 
@@ -332,7 +333,7 @@ def get_screen_size():
     return pygame.display.get_surface().get_size()
 
 
-def create_rect(array):
+def create_rect(array):  # pragma: no cover
     """
     Crée un objet rectangle.
 
@@ -351,7 +352,7 @@ def create_rect(array):
     return pygame.Rect(array)
 
 
-def draw_rect(surface, color, rect):
+def draw_rect(surface, color, rect):  # pragma: no cover
     """
     Dessine l'objet rectangle sur une surface.
 
@@ -367,7 +368,7 @@ def draw_rect(surface, color, rect):
     pygame.draw.rect(surface, color, rect)
 
 
-def mouse_pos():
+def mouse_pos():  # pragma: no cover
     """
     Renvoie la position de la souris.
 
@@ -379,13 +380,13 @@ def mouse_pos():
     return pygame.mouse.get_pos()
 
 
-def quit_game():
+def quit_game():  # pragma: no cover
     """Quitte le jeu."""
     pygame.quit()
     sys.exit()
 
 
-def font(font_name, size):
+def font(font_name, size):  # pragma: no cover
     """
     Renvoie une fonte de la taille demandée.
 

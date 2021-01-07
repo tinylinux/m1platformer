@@ -24,6 +24,7 @@ def test_main_loop_event():
     assert len(players) == 3
 
     # Menu
+    cf.STATE = cf.State.menu
     players[0].jump()  # Pour tester move
     players = gml.main_loop(players, (0, 0))
     assert players[0].vel.y != 0
@@ -74,6 +75,17 @@ def test_main_loop_event():
     scre.init_best_score()  # Suppression du contenu
     # Appel avec un tableau vide
     players = gml.main_loop(players, (0, 0))
+    players = gml.reset_world()
+
+    # Setup (simple appel pour créer les boutons)
+    cf.STATE = cf.State.setup
+    players = gml.main_loop(players, (0, 0))
+    players = gml.reset_world()
+
+    # Langchange
+    cf.STATE = cf.State.langchange
+    players = gml.main_loop(players, (0, 0))
+    players = gml.reset_world()
 
 
 def test_event():
@@ -126,6 +138,19 @@ def test_event():
     players = gml.event_handling(players, event, mn.Records_pos)
     assert cf.STATE == cf.State.highscore
 
+    cf.STATE = cf.State.menu
+    players = gml.event_handling(players, event, mn.Settings_pos)
+    assert cf.STATE == cf.State.setup
+
+    cf.STATE = cf.State.menu
+    cf.FLAG_MUSIC = True
+    players = gml.event_handling(players, event, mn.Sound_pos)
+    assert cf.STATE == cf.State.menu
+    assert not cf.FLAG_MUSIC
+    players = gml.event_handling(players, event, mn.Sound_pos)
+    assert cf.STATE == cf.State.menu
+    assert cf.FLAG_MUSIC
+
     cf.STATE = cf.State.languages
     lg.set_lang(lg.AVAILABLE[0])
     players = gml.event_handling(players, event, mn.Flag_pos[1])
@@ -136,6 +161,22 @@ def test_event():
     lg.set_lang(lg.AVAILABLE[1])
     players = gml.event_handling(players, event, mn.Flag_pos[0])
     assert cf.STATE == cf.State.menu
+    assert cf.LANG == lg.AVAILABLE[0]
+
+    cf.STATE = cf.State.langchange
+    players = gml.event_handling(players, event, mn.Flag_pos[0])
+    assert cf.STATE == cf.State.setup
+    assert cf.LANG == lg.AVAILABLE[0]
+
+    cf.STATE = cf.State.langchange
+    players = gml.event_handling(players, event, mn.Flag_pos[1])
+    assert cf.STATE == cf.State.setup
+    assert cf.LANG == lg.AVAILABLE[1]
+
+    cf.STATE = cf.State.langchange
+    lg.set_lang(lg.AVAILABLE[0])
+    players = gml.event_handling(players, event, mn.Return_pos)
+    assert cf.STATE == cf.State.setup
     assert cf.LANG == lg.AVAILABLE[0]
 
     cf.STATE = cf.State.gameover
@@ -153,5 +194,13 @@ def test_event():
     assert cf.STATE == cf.State.ingame
 
     cf.STATE = cf.State.highscore
+    players = gml.event_handling(players, event, mn.Return_pos)
+    assert cf.STATE == cf.State.menu
+
+    cf.STATE = cf.State.setup
+    players = gml.event_handling(players, event, mn.Langue_pos)
+    assert cf.STATE == cf.State.langchange
+
+    cf.STATE = cf.State.setup
     players = gml.event_handling(players, event, mn.Return_pos)
     assert cf.STATE == cf.State.menu

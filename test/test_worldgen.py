@@ -3,6 +3,8 @@
 from hypothesis import given
 from hypothesis.strategies import integers
 import main
+import src.utilities as ut
+import src.conf as cf
 import src.sprites as spt
 import src.worldgen as wrld
 
@@ -47,3 +49,11 @@ def test_update():
     wrld.stop_ground()
     for _ in range(100):
         wrld.update()
+    cf.FLAG_ITEM = False
+    cf.SECONDS = 10
+    cf.NEW_ITEM_TIME = 10
+    item_num = len(spt.items)
+    wrld.update()
+    assert len(spt.items) == item_num + 1
+    spt.ground = ut.group_sprite_define()
+    wrld.update()
