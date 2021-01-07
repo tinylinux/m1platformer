@@ -36,6 +36,8 @@ K_u = pygame.K_u
 """Touche U."""
 K_BACKSPACE = pygame.K_BACKSPACE
 """Touche retour."""
+K_ESCAPE = pygame.K_ESCAPE
+"""Touche échap"""
 MOUSEBUTTONDOWN = pygame.MOUSEBUTTONDOWN
 """Événement "clic de la souris"."""
 VIDEORESIZE = pygame.VIDEORESIZE
