@@ -7,17 +7,16 @@ import src.sprites as spt
 class Ground(ut.GameObject):
     """Plateforme initiale (dans le menu)."""
 
-    def __init__(self, x):
+    def __init__(self, position_x):
         """
         Initialisation.
 
         Parameters
         ----------
-        x : int
+        position_x : int
             Abscisse du début de la plateforme
         """
-        super().__init__((x, spt.GROUND_HEIGHT), 1, spt.GROUND_IMG)
-        ut.add_to_group(self, spt.ground)
+        super().__init__((position_x, spt.GROUND_HEIGHT), 1, spt.GROUND_IMG)
 
     def update(self):
         """Met à jour la position des plateformes du sol."""
@@ -52,4 +51,3 @@ class Platform(ut.GameObject):
         self.dim = dim
         img = ut.resize(img, dim)
         super().__init__(pos, 1, img)
-        ut.add_to_group(self, spt.ground)
