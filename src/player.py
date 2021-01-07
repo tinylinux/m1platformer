@@ -166,25 +166,13 @@ class Player(ut.Sprite):
 
         # resize le player
         if self.state in ['little', 'big']:
-            ut.resize_list(self.images, cf.SIZE[self.state])
-            self.width, self.height = cf.SIZE[self.state]
-            for i in range(2):
-                self.pos[i] = self.pos[i] + cf.SIZE['normal'][i]\
-                    - cf.SIZE[self.state][i]
-            self.rect = self.images[0].get_rect()
-            self.rect.midbottom = self.pos
+            self.resize('normal', self.state)
 
     def end_item(self):
         """Retour à l'état normal."""
         # On se remet à la bonne taille, position, etc.
         if self.state in ['little', 'big']:
-            ut.resize_list(self.images, cf.SIZE['normal'])
-            self.width, self.height = cf.SIZE['normal']
-            for i in range(2):
-                self.pos[i] = self.pos[i] - cf.SIZE['normal'][i]\
-                    + cf.SIZE[self.state][i]
-            self.rect = self.images[0].get_rect()
-            self.rect.midbottom = self.pos
+            self.resize(self.state, 'normal')
 
         # On se remet dans l'état normal et on annule le FLAG_ITEM
         self.state = "normal"
@@ -193,3 +181,13 @@ class Player(ut.Sprite):
         cf.FLAG_ITEM = False
         cf.NEW_ITEM_TIME = cf.SECONDS + rd.randint(cf.ITEM_PROBA_MIN,
                                                    cf.ITEM_PROBA_MAX)
+
+    def resize(self, size1, size2):
+        """Fais passer le joueur de la size1 à la size2"""
+        ut.resize_list(self.images, cf.SIZE[size2])
+        self.width, self.height = cf.SIZE[size2]
+        for i in range(2):
+            self.pos[i] = self.pos[i] + cf.SIZE[size1][i]\
+                - cf.SIZE[size2][i]
+        self.rect = self.images[0].get_rect()
+        self.rect.midbottom = self.pos
