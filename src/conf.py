@@ -42,7 +42,7 @@ V_JMP = 15
 G = 0.8
 """Accélération due à la gravité."""
 
-NB_PLAYERS_MAX = 3
+NB_PLAYERS_MAX = 4
 """Nombre maximal de joueurs."""
 NB_PLAYERS = 3
 """Nombre de joueurs."""
@@ -95,7 +95,6 @@ FRAMES = 0
 # États du jeu
 class State(Enum):
     """Type énuméré pour l'état du jeu."""
-
     languages = 0
     menu = 1
     ingame = 2
@@ -104,6 +103,7 @@ class State(Enum):
     highscore = 4
     setup = 5
     langchange = 6
+    keyset = 7
 
 
 STATE = State.menu

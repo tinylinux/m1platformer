@@ -9,6 +9,7 @@ import src.player as plyr
 import src.lang as lg
 import src.score as scre
 import src.sprites as spt
+import src.key as ky
 
 
 def main_loop(players, mouse=None):
@@ -41,21 +42,36 @@ def main_loop(players, mouse=None):
         mn.records_button.print(mouse)
         mn.credits_button.print(mouse)
 
-    elif cf.STATE == State.setup:
+    elif cf.STATE == State.setup: # Paramètres
         mn.langue_button.print(mouse)
         mn.return_button.print(mouse)
         mn.commands_button.print(mouse)
 
-    elif cf.STATE == State.languages:
+    elif cf.STATE == State.languages: # Choix de la langue (1e fois)
         cf.DISPLAYSURF.blit(ut.load_image
                             ("assets/img/ui/title.png"), (357, 132))
         for lang in mn.flagbutton:
             lang.print(mouse)
 
-    elif cf.STATE == State.langchange:
+    elif cf.STATE == State.langchange: # Changement de la langue
         mn.return_button.print(mouse)
         for lang in mn.flagbutton:
             lang.print(mouse)
+
+    elif cf.STATE == State.keyset: # Changement des commandes
+        mn.return_button.print(mouse)
+        for button in ky.modifybutton:
+            button.print(mouse)
+        for i in range(cf.NB_PLAYERS_MAX):
+            mn.print_text(plyr.COLORSTRAD[cf.LANG][i],
+                            (370, 135 + i*150),
+                            cf.GREY,
+                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
+            mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
+                            (700, 135 + i*150),
+                            cf.GREY,
+                            ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
+
 
     elif cf.STATE == State.ingame:  # On est en jeu
 
@@ -104,6 +120,7 @@ def main_loop(players, mouse=None):
                             ("assets/img/ui/gameover.png"), (395, 100))
         mn.restart_button.print(mouse)
         mn.return_button.print(mouse)
+
 
     elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
 
@@ -250,9 +267,17 @@ def event_handling(players, event, mouse=None):
             cf.STATE = State.langchange
 
         elif cf.STATE == State.setup and\
+                mn.commands_button.click(mouse):
+            cf.STATE = State.keyset
+
+        elif cf.STATE == State.setup and\
                 mn.return_button.click(mouse):
             # Clic de la souris sur le bouton "Records"
             cf.STATE = State.menu
+
+        elif cf.STATE == State.keyset and\
+                mn.return_button.click(mouse):
+            cf.STATE = State.setup
 
 
     if event.type == ut.VIDEORESIZE:  # pragma: no cover
