@@ -62,6 +62,30 @@ def main_loop(players, mouse=None):
         for lang in mn.flagbutton:
             lang.print(mouse)
 
+    elif cf.STATE == State.multiplayer_set: # Régler le multijoueur
+        mn.return_button.print(mouse)
+        mn.print_text(mn.MULTIMENU[cf.LANG],
+                      (cf.SCREEN_WIDTH//2, 70),
+                      cf.GREY,
+                      ut.font(mn.FONT_PIXEL, 3*cf.RESULT_FONT_SIZE//4))
+        mn.start_button.print(mouse)
+        for i in range(cf.NB_PLAYERS_MAX - 1):
+            mn.multi_button[i].print(mouse, cf.NB_PLAYERS == i+2)
+        for i in range(cf.NB_PLAYERS_MAX):
+            if i < cf.NB_PLAYERS:
+                mn.print_image(
+                    "assets/img/mono" + cf.COLORS[i] \
+                        + "/mono" + cf.COLORS[i] + "0.png",
+                    (cf.SCREEN_WIDTH//8 + i*cf.SCREEN_WIDTH//4 - 50,
+                        5*cf.SCREEN_HEIGHT//12),
+                    scale=4)
+                mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
+                              (cf.SCREEN_WIDTH//8 + i*cf.SCREEN_WIDTH//4,
+                                2*cf.SCREEN_HEIGHT//3),
+                              cf.GREY,
+                              ut.font(mn.FONT_PIXEL, 2*cf.RESULT_FONT_SIZE//3))
+
+
     elif cf.STATE == State.keyset:  # Changement des commandes
         mn.return_button.print(mouse)
         for button in ky.modifybutton:
@@ -239,10 +263,7 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.menu and\
                 mn.multiplayer_button.click(mouse):
             # Clic de la souris sur le bouton "Multi-joueur"
-            cf.NB_PLAYERS = 4
-            players = reset_world()
-            cf.STATE = State.ingame
-            wrld.stop_ground()  # Arrêt de la création du sol du menu
+            cf.STATE = State.multiplayer_set
 
         elif cf.STATE == State.menu and\
                 mn.records_button.click(mouse):
@@ -271,6 +292,17 @@ def event_handling(players, event, mouse=None):
                 if mn.flagbutton[i].click(mouse):
                     cf.STATE = State.menu
                     lg.set_lang(lg.AVAILABLE[i])
+
+        elif cf.STATE == State.multiplayer_set:
+            for i in range(cf.NB_PLAYERS_MAX - 1):
+                if mn.multi_button[i].click(mouse):
+                    cf.NB_PLAYERS = i+2
+            if mn.return_button.click(mouse):
+                cf.STATE = State.menu
+            if mn.start_button.click(mouse):
+                players = reset_world()
+                cf.STATE = State.ingame
+                wrld.stop_ground()  # Arrêt de la création du sol du menu
 
         elif cf.STATE == State.langchange:
             for i in range(len(mn.flagbutton)):
