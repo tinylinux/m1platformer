@@ -49,7 +49,7 @@ def test_scoreboard(scores):
 
     scre.PLAYER = scores[0][1]
     assert scre.maj(scores[0][0] + 1)
-    assert scre.get_scores()[1] == scores[0]
+    assert scre.get_scores()[0] == scores[0]
     for _ in range(5):
         scre.maj(10)
     assert not scre.maj(1)
