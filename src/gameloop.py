@@ -62,29 +62,30 @@ def main_loop(players, mouse=None):
         for lang in mn.flagbutton:
             lang.print(mouse)
 
-    elif cf.STATE == State.multiplayer_set: # Régler le multijoueur
+    elif cf.STATE == State.multiplayer_set:  # Régler le multijoueur
         mn.return_button.print(mouse)
         mn.print_text(mn.MULTIMENU[cf.LANG],
-                      (cf.SCREEN_WIDTH//2, 70),
+                      (cf.SCREEN_WIDTH // 2, 70),
                       cf.GREY,
-                      ut.font(mn.FONT_PIXEL, 3*cf.RESULT_FONT_SIZE//4))
+                      ut.font(mn.FONT_PIXEL, 3 * cf.RESULT_FONT_SIZE // 4))
         mn.start_button.print(mouse)
         for i in range(cf.NB_PLAYERS_MAX - 1):
-            mn.multi_button[i].print(mouse, cf.NB_PLAYERS == i+2)
+            mn.multi_button[i].print(mouse, cf.NB_PLAYERS == i + 2)
         for i in range(cf.NB_PLAYERS_MAX):
             if i < cf.NB_PLAYERS:
                 mn.print_image(os.path.join(
                     cf.ASSETS, "img", "mono" + cf.COLORS[i],
                     "mono" + cf.COLORS[i] + "0.png"),
-                    (cf.SCREEN_WIDTH//8 + i*cf.SCREEN_WIDTH//4 - 50,
-                        5*cf.SCREEN_HEIGHT//12),
+                    (cf.SCREEN_WIDTH // 8 + i * cf.SCREEN_WIDTH // 4 - 50,
+                        5 * cf.SCREEN_HEIGHT // 12),
                     scale=4)
                 mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
-                              (cf.SCREEN_WIDTH//8 + i*cf.SCREEN_WIDTH//4,
-                                2*cf.SCREEN_HEIGHT//3),
+                              (cf.SCREEN_WIDTH // 8 +
+                               i * cf.SCREEN_WIDTH // 4,
+                               2 * cf.SCREEN_HEIGHT // 3),
                               cf.GREY,
-                              ut.font(mn.FONT_PIXEL, 2*cf.RESULT_FONT_SIZE//3))
-
+                              ut.font(mn.FONT_PIXEL,
+                                      2 * cf.RESULT_FONT_SIZE // 3))
 
     elif cf.STATE == State.keyset:  # Changement des commandes
         mn.return_button.print(mouse)
@@ -125,11 +126,12 @@ def main_loop(players, mouse=None):
 
         # Affichage de la commande en début de game
         if cf.SECONDS < 3:
-            mn.print_text(mn.INDICBUTTON[cf.LANG] +\
-                            ut.keyname(plyr.JUMP_KEYS[0]),
-                          (cf.SCREEN_WIDTH//2, 70),
+            mn.print_text(mn.INDICBUTTON[cf.LANG] +
+                          ut.keyname(plyr.JUMP_KEYS[0]),
+                          (cf.SCREEN_WIDTH // 2, 70),
                           cf.GREY,
-                          ut.font(mn.FONT_PIXEL, 3*cf.RESULT_FONT_SIZE//4))
+                          ut.font(mn.FONT_PIXEL,
+                                  3 * cf.RESULT_FONT_SIZE // 4))
 
         # Gestion de la mort
 
@@ -147,7 +149,7 @@ def main_loop(players, mouse=None):
     elif cf.STATE == State.gameover:  # Menu de fin solo
 
         scre.score_endgame(cf.SECONDS)
-        if cf.CAPT: # Demander au joueur son nom avant de MaJ le scoreboard
+        if cf.CAPT:  # Demander au joueur son nom avant de MaJ le scoreboard
             mn.print_image((os.path.join(cf.UI, "messagebox.png")), (189, 249))
             mn.print_text(scre.NAMEASK[cf.LANG],
                           (640, 300),
@@ -332,7 +334,7 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.multiplayer_set:
             for i in range(cf.NB_PLAYERS_MAX - 1):
                 if mn.multi_button[i].click(mouse):
-                    cf.NB_PLAYERS = i+2
+                    cf.NB_PLAYERS = i + 2
             if mn.return_button.click(mouse):
                 cf.STATE = State.menu
             if mn.start_button.click(mouse):

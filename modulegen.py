@@ -278,7 +278,8 @@ class ModuleGenerator:
         string = "\n".join([";".join([str(a) for a in li]) for li in liste0])
         print("Enregistrement de " + os.path.join("src", "modules", str(yfirst)
               + "_" + str(ylast) + "_" + self.nom_module.get() + ".mdl"))
-        file = open(os.path.join(cf.SRC, "modules", str(yfirst) + "_" + str(ylast)
+        file = open(os.path.join(cf.SRC, "modules",
+                                 str(yfirst) + "_" + str(ylast)
                     + "_" + self.nom_module.get() + ".mdl"), "w")
         file.write(str(self.nb_lignes * SCALE_FACTOR_Y) + "\n")
         file.write(string + "\n")

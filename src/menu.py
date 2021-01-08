@@ -458,10 +458,10 @@ flagbutton.append(
 
 # Boutons pour choisir le nombre de joueurs
 Multi_size = (100, 100)
-Multi_pos = [(cf.SCREEN_WIDTH//8 + (i+1)*cf.SCREEN_WIDTH//4 - 50, 150)
-                for i in range(cf.NB_PLAYERS_MAX)]
-Multi_idle = [str(i+2) + ".png" for i in range(cf.NB_PLAYERS_MAX)]
-Multi_hover = [str(i+2) + "pushed.png" for i in range(cf.NB_PLAYERS_MAX)]
+Multi_pos = [(cf.SCREEN_WIDTH // 8 + (i + 1) * cf.SCREEN_WIDTH // 4 - 50, 150)
+             for i in range(cf.NB_PLAYERS_MAX)]
+Multi_idle = [str(i + 2) + ".png" for i in range(cf.NB_PLAYERS_MAX)]
+Multi_hover = [str(i + 2) + "pushed.png" for i in range(cf.NB_PLAYERS_MAX)]
 multi_button = []
 """Boutons pour choisir le nombre de joueurs"""
 for i in range(cf.NB_PLAYERS_MAX - 1):
@@ -475,14 +475,14 @@ for i in range(cf.NB_PLAYERS_MAX - 1):
     )
 
 MULTIMENU = {
-    "fr" : "Nombre de joueurs :",
-    "en" : "Number of players:"
+    "fr": "Nombre de joueurs :",
+    "en": "Number of players:"
 }
 """Dictionnaire pour traduire le menu multijoueur."""
 
 INDICBUTTON = {
-    "fr" : "Pour sauter, appuyer sur ",
-    "en" : "To jump, press "
+    "fr": "Pour sauter, appuyer sur ",
+    "en": "To jump, press "
 }
 
 Player_pos = (490, 350)
@@ -490,7 +490,7 @@ Player_size = (300, 50)
 player_name_area = InputZone(
     Player_pos,
     Player_size,
-    ut.font(FONT_PIXEL, 3*cf.RESULT_FONT_SIZE // 4)
+    ut.font(FONT_PIXEL, 3 * cf.RESULT_FONT_SIZE // 4)
 )
 """Zone de texte pour le pseudo du joueur."""
 

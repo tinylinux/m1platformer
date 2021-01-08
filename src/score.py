@@ -9,8 +9,8 @@ PLAYER = "Player"
 """Nom par défaut du joueur"""
 
 NAMEASK = {
-    "fr" : "Quel est votre nom ?",
-    "en" : "Who are you?"
+    "fr": "Quel est votre nom ?",
+    "en": "Who are you?"
 }
 """Message demandant le pseudo du joueur."""
 

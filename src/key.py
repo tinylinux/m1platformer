@@ -24,7 +24,7 @@ def get_keys():
     """Récupère les commandes sauvegardées par les utilisateurs."""
     with open(FILE) as coms:
         plyr.JUMP_KEYS = [ut.keyidentifier(i)
-                            for i in coms.read().splitlines()]
+                          for i in coms.read().splitlines()]
 
 
 def set_keys(keys):
