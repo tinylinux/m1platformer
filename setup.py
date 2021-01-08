@@ -1,5 +1,6 @@
 #!/usr/bin/env-python
 # -*- coding: utf-8 -*-
+# pylint: disable-all
 
 #   This work is licensed under a Creative Commons
 #   Attribution 1.0 License.
