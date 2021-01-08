@@ -8,6 +8,7 @@ import src.conf as cf  # noqa: E402
 import src.lang as lg  # noqa: E402
 import src.worldgen as wrld  # noqa: E402
 import src.player as plyr  # noqa: E402
+import src.key as ky  # noqa: E402
 import src.gameloop as gml  # noqa: E402
 # pylint: enable=wrong-import-position
 
@@ -42,6 +43,11 @@ def initialization(graphical, music=False):
     if not os.path.isfile(lg.FILE):
         lg.init_lang()
     lg.get_lang()
+
+    # Initialisation des commandes
+    if not os.path.isfile(ky.FILE):
+        ky.init_com()
+    ky.get_keys()
 
     # Initialisation du joueur
     players = [plyr.Player(cf.COLORS[i]) for i in range(cf.NB_PLAYERS)]
