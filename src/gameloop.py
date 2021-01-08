@@ -123,6 +123,14 @@ def main_loop(players, mouse=None):
                 nb_player_alive += 1
                 plyr.WINNER = i
 
+        # Affichage de la commande en début de game
+        if cf.SECONDS < 3:
+            mn.print_text(mn.INDICBUTTON[cf.LANG] +\
+                            ut.keyname(plyr.JUMP_KEYS[0]),
+                          (cf.SCREEN_WIDTH//2, 70),
+                          cf.GREY,
+                          ut.font(mn.FONT_PIXEL, 3*cf.RESULT_FONT_SIZE//4))
+
         # Gestion de la mort
 
         if cf.NB_PLAYERS > 1 >= nb_player_alive:

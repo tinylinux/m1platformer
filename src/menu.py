@@ -480,6 +480,11 @@ MULTIMENU = {
 }
 """Dictionnaire pour traduire le menu multijoueur."""
 
+INDICBUTTON = {
+    "fr" : "Pour sauter, appuyer sur ",
+    "en" : "To jump, press "
+}
+
 Player_pos = (490, 350)
 Player_size = (300, 50)
 player_name_area = InputZone(
