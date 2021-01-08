@@ -5,7 +5,7 @@ from math import ceil
 
 import sys
 import pygame
-import src.conf as cf
+import rollnjump.conf as cf
 
 pygame.init()
 

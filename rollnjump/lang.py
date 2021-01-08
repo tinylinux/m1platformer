@@ -1,9 +1,9 @@
 """Gestion de la langue."""
 
-import src.utilities as ut
-import src.conf as cf
-from src.conf import State
-import src.menu as mn
+import rollnjump.utilities as ut
+import rollnjump.conf as cf
+from rollnjump.conf import State
+import rollnjump.menu as mn
 
 FILE = "lang.txt"
 """Fichier de langue."""

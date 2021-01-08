@@ -3,12 +3,12 @@
 import os
 import random as rd
 # Import classes
-import src.utilities as ut
-import src.sprites as spt
-import src.platforms as pltfrm
-import src.conf as cf
-import src.background as bg
-import src.item as it
+import rollnjump.utilities as ut
+import rollnjump.sprites as spt
+import rollnjump.platforms as pltfrm
+import rollnjump.conf as cf
+import rollnjump.background as bg
+import rollnjump.item as it
 
 # Indexation des modules
 modules = []

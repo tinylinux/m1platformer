@@ -1,8 +1,8 @@
 """Gestion des menus."""
 
 import os
-import src.conf as cf
-import src.utilities as ut
+import rollnjump.conf as cf
+import rollnjump.utilities as ut
 
 FONT_PIXEL = os.path.join(cf.ASSETS, "font", "punk_rockf.ttf")
 """Chemin vers la police"""

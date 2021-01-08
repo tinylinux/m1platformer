@@ -1,8 +1,8 @@
 """Gestion de l'arrière-plan."""
 import random
-import src.utilities as ut
-import src.conf as cf
-import src.sprites as spt
+import rollnjump.utilities as ut
+import rollnjump.conf as cf
+import rollnjump.sprites as spt
 
 
 class Cloud(ut.GameObject):

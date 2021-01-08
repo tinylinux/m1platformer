@@ -12,9 +12,9 @@ SCREEN_HEIGHT = 720
 FPS = 60
 """Objectif d'images par seconde."""
 
-SRC = os.path.join(os.path.dirname(__file__), '..', 'src')
+SRC = os.path.join(os.path.dirname(__file__), '..', 'rollnjump')
 """Chemin vers le dossier src."""
-ASSETS = os.path.join(os.path.dirname(__file__), '..', 'assets')
+ASSETS = os.path.join(os.path.dirname(__file__), '..', 'rollnjump/assets')
 """Chemin vers le dossier assets."""
 UI = os.path.join(ASSETS, 'img', 'ui')
 """Chemin vers le dossier des images de l'interface."""
@@ -22,7 +22,7 @@ MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 """Chemin vers la musique."""
 SCORES = os.path.join(os.path.dirname(__file__), '..', 'score.txt')
 """Chemin vers le fichier contenant les scores."""
-MODULES = os.path.join(os.path.dirname(__file__), '..', 'src', 'modules')
+MODULES = os.path.join(os.path.dirname(__file__), '..', 'rollnjump', 'modules')
 
 HIGHSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores."""

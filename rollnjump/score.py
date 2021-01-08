@@ -1,9 +1,9 @@
 """Gestion du score."""
 import os
-import src.conf as cf
-import src.menu as mn
-import src.utilities as ut
-import src.player as plyr
+import rollnjump.conf as cf
+import rollnjump.menu as mn
+import rollnjump.utilities as ut
+import rollnjump.player as plyr
 
 PLAYER = "Player"
 """Nom par défaut du joueur"""

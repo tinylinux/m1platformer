@@ -1,7 +1,7 @@
 """Création et déplacement des plateformes."""
-import src.conf as cf
-import src.utilities as ut
-import src.sprites as spt
+import rollnjump.conf as cf
+import rollnjump.utilities as ut
+import rollnjump.sprites as spt
 
 
 class Ground(ut.GameObject):

@@ -2,9 +2,9 @@
 
 import random as rd
 
-import src.conf as cf
-import src.sprites as spt
-import src.utilities as ut
+import rollnjump.conf as cf
+import rollnjump.sprites as spt
+import rollnjump.utilities as ut
 
 JUMP_KEYS = [ut.K_SPACE, ut.K_RETURN, ut.K_s, ut.K_u]
 """Touches de saut des joueurs."""

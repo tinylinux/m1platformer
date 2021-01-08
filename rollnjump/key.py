@@ -1,9 +1,9 @@
 """Gestion des commandes."""
 
-import src.conf as cf
-import src.utilities as ut
-import src.menu as mn
-import src.player as plyr
+import rollnjump.conf as cf
+import rollnjump.utilities as ut
+import rollnjump.menu as mn
+import rollnjump.player as plyr
 
 FILE = "commands.txt"
 """Fichier des commandes"""
