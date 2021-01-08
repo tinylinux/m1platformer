@@ -343,6 +343,11 @@ records_button = ButtonImage(
 )
 """Bouton des meilleurs scores."""
 
+NOSCORES = {
+    "fr": "Pas de scores",
+    "en": "No scores"
+}
+
 Credits_pos = (674, 460)
 Credits_size = (250, 75)
 Credits_idle = 'credits.png'
