@@ -22,8 +22,8 @@ et la première plateforme du suivant"""
 def init_modules():
     """Indexation des modules."""
     for file in spt.listdir(cf.MODULES):
-        first_y, last_y, module_name = file.split('_')
-        first_y, last_y = int(first_y), int(last_y)
+        first_y, _, _ = file.split('_')
+        first_y = int(first_y)
         module_file = open(os.path.join(cf.MODULES, file), 'r')
         lines = module_file.readlines()
         module_height = int(lines[0])
