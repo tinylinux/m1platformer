@@ -1,11 +1,11 @@
 ﻿"""Module de l'application de création de modules de terrain."""
 
 import tkinter as tk
+import src.conf as cf
 
-SCREEN_HEIGHT = 720
 
 TAILLE_CARREAUX = 10
-NB_LIGNES = (SCREEN_HEIGHT - 90) // TAILLE_CARREAUX
+NB_LIGNES = (cf.SCREEN_HEIGHT - 90) // TAILLE_CARREAUX
 NB_COLONNES = 100
 NB_COLONNES_MAX = 150
 NB_COLONNES_MIN = 2
@@ -275,10 +275,10 @@ class ModuleGenerator:
                     key=lambda obstacle:
                     (obstacle[1][2][1], obstacle[1][1][0]))[1][1][0]
         string = "\n".join([";".join([str(a) for a in li]) for li in liste0])
-        print("Enregistrement de " + "src/modules/" + str(yfirst)
-              + "_" + str(ylast) + "_" + self.nom_module.get() + ".mdl")
-        file = open("src/modules/" + str(yfirst) + "_" + str(ylast)
-                    + "_" + self.nom_module.get() + ".mdl", "w")
+        print("Enregistrement de " + os.path.join("src", "modules", str(yfirst)
+              + "_" + str(ylast) + "_" + self.nom_module.get() + ".mdl"))
+        file = open(os.path.join(cf.SRC, "modules", str(yfirst) + "_" + str(ylast)
+                    + "_" + self.nom_module.get() + ".mdl"), "w")
         file.write(str(self.nb_lignes * SCALE_FACTOR_Y) + "\n")
         file.write(string + "\n")
         file.close()

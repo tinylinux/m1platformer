@@ -73,9 +73,9 @@ def main_loop(players, mouse=None):
             mn.multi_button[i].print(mouse, cf.NB_PLAYERS == i+2)
         for i in range(cf.NB_PLAYERS_MAX):
             if i < cf.NB_PLAYERS:
-                mn.print_image(
-                    "assets/img/mono" + cf.COLORS[i] \
-                        + "/mono" + cf.COLORS[i] + "0.png",
+                mn.print_image(os.path.join(
+                    cf.ASSETS, "img", "mono" + cf.COLORS[i],
+                    "mono" + cf.COLORS[i] + "0.png"),
                     (cf.SCREEN_WIDTH//8 + i*cf.SCREEN_WIDTH//4 - 50,
                         5*cf.SCREEN_HEIGHT//12),
                     scale=4)
@@ -100,7 +100,7 @@ def main_loop(players, mouse=None):
                           cf.GREY,
                           ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
         if cf.CAPT:
-            mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
+            mn.print_image((os.path.join(cf.UI, "messagebox.png")), (189, 249))
             mn.print_text(ky.TEXTCAPT[cf.LANG]
                           + cf.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
                           (640, 350),
@@ -148,7 +148,7 @@ def main_loop(players, mouse=None):
 
         scre.score_endgame(cf.SECONDS)
         if cf.CAPT: # Demander au joueur son nom avant de MaJ le scoreboard
-            mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
+            mn.print_image((os.path.join(cf.UI, "messagebox.png")), (189, 249))
             mn.print_text(scre.NAMEASK[cf.LANG],
                           (640, 300),
                           cf.GREY,

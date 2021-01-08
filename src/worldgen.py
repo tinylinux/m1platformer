@@ -101,7 +101,7 @@ def genere_module(last_pltfrm):
     module = rd.choice(modules_possibles)
     # Chargement du module
     module_name = '_'.join([str(module[0]), str(module[1]), module[2]])
-    module_file = open("./src/modules/" + module_name, "r")
+    module_file = open(os.path.join(cf.SRC, "modules", module_name), "r")
     lines = module_file.readlines()
     module_height = int(lines[0])
     yoffset = cf.SCREEN_HEIGHT - module_height

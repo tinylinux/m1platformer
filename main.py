@@ -31,7 +31,8 @@ def initialization(graphical, music=False):
     """
     # Initialisation de la fenêtre
     cf.DISPLAYSURF, cf.WINDOWSURF = \
-        ut.initialize_window("assets/img/monogreen/monogreen3.png",
+        ut.initialize_window(os.path.join(cf.ASSETS, "img",
+                                          "monogreen", "monogreen3.png"),
                              "Roll 'n' jump",
                              cf.SCREEN_WIDTH,
                              cf.SCREEN_HEIGHT,

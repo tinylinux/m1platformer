@@ -12,6 +12,8 @@ SCREEN_HEIGHT = 720
 FPS = 60
 """Objectif d'images par seconde."""
 
+SRC = os.path.join(os.path.dirname(__file__), '..', 'src')
+"""Chemin vers le dossier src."""
 ASSETS = os.path.join(os.path.dirname(__file__), '..', 'assets')
 """Chemin vers le dossier assets."""
 UI = os.path.join(ASSETS, 'img', 'ui')
