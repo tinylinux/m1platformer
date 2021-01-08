@@ -102,7 +102,7 @@ def main_loop(players, mouse=None):
                           ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
         if cf.CAPT:
             mn.print_image((os.path.join(cf.UI, "messagebox.png")), (189, 249))
-            mn.print_text(ky.TEXTCAPT[cf.LANG]\
+            mn.print_text(ky.TEXTCAPT[cf.LANG]
                           + cf.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
                           (640, 350),
                           cf.GREY,
