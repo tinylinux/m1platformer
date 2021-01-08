@@ -17,7 +17,7 @@ TEXTCAPT = {
 def init_com():
     """Initialiser le fichier des commandes."""
     with open(FILE, "w") as empty_com:
-        empty_com.writelines([ut.keyname(key) for key in plyr.JUMP_KEYS])
+        empty_com.writelines([ut.keyname(key)+"\n" for key in plyr.JUMP_KEYS])
 
 
 def get_keys():
