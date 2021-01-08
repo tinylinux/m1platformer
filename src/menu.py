@@ -368,6 +368,19 @@ restart_button = ButtonImage(
 )
 """Bouton pour recommencer le jeu."""
 
+Start_pos = (357, 552)
+Start_size = (567, 101)
+Start_idle = 'begin.png'
+Start_hover = 'beginpushed.png'
+start_button = ButtonImage(
+    Start_pos,
+    Start_size,
+    Start_idle,
+    Start_hover,
+    "fr"
+)
+"""Bouton pour commencer une partie."""
+
 Return_pos = (20, 20)
 Return_size = (100, 100)
 Return_idle = 'return.png'
@@ -445,12 +458,13 @@ flagbutton.append(
 
 # Boutons pour choisir le nombre de joueurs
 Multi_size = (100, 100)
-Multi_pos = [(350, 135), (590, 135), (880, 135)]
+Multi_pos = [(cf.SCREEN_WIDTH//8 + (i+1)*cf.SCREEN_WIDTH//4 - 50, 150)
+                for i in range(cf.NB_PLAYERS_MAX)]
 Multi_idle = [str(i+2) + ".png" for i in range(cf.NB_PLAYERS_MAX)]
 Multi_hover = [str(i+2) + "pushed.png" for i in range(cf.NB_PLAYERS_MAX)]
 multi_button = []
 """Boutons pour choisir le nombre de joueurs"""
-for i in range(cf.NB_PLAYERS_MAX):
+for i in range(cf.NB_PLAYERS_MAX - 1):
     multi_button.append(
         ButtonImage(
             Multi_pos[i],
@@ -459,6 +473,12 @@ for i in range(cf.NB_PLAYERS_MAX):
             Multi_hover[i]
         )
     )
+
+MULTIMENU = {
+    "fr" : "Nombre de joueurs :",
+    "en" : "Number of players:"
+}
+"""Dictionnaire pour traduire le menu multijoueur."""
 
 
 def print_image(image, position, scale=1):
