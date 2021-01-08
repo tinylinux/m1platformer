@@ -83,13 +83,9 @@ def test_change_state():
     """Test pour la méthode change_state."""
     main.initialization(False)
     player = plyr.Player()
-    item = it.Item()
-    item.type = "little"
-    player.change_state(item)
+    player.change_state('little')
     assert player.width, player.height == cf.SIZE["little"]
-    item = it.Item()
-    item.type = "big"
-    player.change_state(item)
+    player.change_state('big')
     assert player.width, player.height == cf.SIZE["big"]
 
 
@@ -98,16 +94,12 @@ def test_end_item():
     main.initialization(False)
     player = plyr.Player()
     player.vel.x = cf.V_ITEM['fast']
-    item = it.Item()
-    item.type = "little"
-    player.change_state(item)
+    player.change_state('little')
     player.end_item()
     assert player.width, player.height == cf.SIZE["normal"]
     assert player.vel.x == 0
     player.vel.x = cf.V_ITEM['slow']
-    item = it.Item()
-    item.type = "big"
-    player.change_state(item)
+    player.change_state('big')
     player.end_item()
     assert player.width, player.height == cf.SIZE["normal"]
     assert player.vel.x == 0
