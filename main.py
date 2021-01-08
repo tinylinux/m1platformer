@@ -40,6 +40,9 @@ def initialization(graphical, music=False):
 
     FramePerSec = ut.initialize_clock()
 
+    # Initialisation des modules
+    wrld.init_modules()
+
     # Initialisation de la langue
     if not os.path.isfile(lg.FILE):
         lg.init_lang()

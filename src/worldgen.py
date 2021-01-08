@@ -11,16 +11,29 @@ import src.background as bg
 import src.item as it
 
 # Indexation des modules
-localdir = os.path.dirname(__file__)
-"""Chemin du répertoire local"""
-modules = spt.listdir(os.path.join(localdir, "modules"))
-modules = [file.split("_") for file in modules]
-modules = [[int(mod[0]), int(mod[1]), mod[2]] for mod in modules]
-"""Liste des modules"""
+modules = []
+"""Liste préchargeant les fichiers modules"""
 
 MAX_JUMP = 200
 """Hauteur maximale entre la dernière plateforme d'un module
 et la première plateforme du suivant"""
+
+
+def init_modules():
+    """Indexation des modules."""
+    for file in spt.listdir(cf.MODULES):
+        first_y, last_y, module_name = file.split('_')
+        first_y, last_y = int(first_y), int(last_y)
+        module_file = open(os.path.join(cf.MODULES, file), 'r')
+        lines = module_file.readlines()
+        module_height = int(lines[0])
+        yoffset = cf.SCREEN_HEIGHT - module_height
+        blocs = []
+        for line in lines[1:]:
+            bloc = line.split(';')
+            blocs.append(bloc)
+        module_file.close()
+        modules.append((first_y, yoffset, blocs.copy()))
 
 
 # Fonctions de création
@@ -98,17 +111,10 @@ def genere_module(last_pltfrm):
     modules_possibles = [mod for mod in modules
                          if last_pltfrm.rect.top - mod[0] < MAX_JUMP]
     # Choix aléatoire d'un module
-    module = rd.choice(modules_possibles)
+    _, yoffset, blocs = rd.choice(modules_possibles)
     # Chargement du module
-    module_name = '_'.join([str(module[0]), str(module[1]), module[2]])
-    module_file = open(os.path.join(cf.SRC, "modules", module_name), "r")
-    lines = module_file.readlines()
-    module_height = int(lines[0])
-    yoffset = cf.SCREEN_HEIGHT - module_height
-    for line in lines[1:]:
-        bloc = line.split(';')
+    for bloc in blocs:
         platform_creation(bloc, xoffset, yoffset)
-    module_file.close()
 
 
 def stop_ground():
