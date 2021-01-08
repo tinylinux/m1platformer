@@ -65,7 +65,7 @@ def main_loop(players, mouse=None):
     elif cf.STATE == State.multiplayer_set:  # Régler le multijoueur
         mn.return_button.print(mouse)
         mn.print_text(mn.MULTIMENU[cf.LANG],
-                      mn.Multi_start_pos,
+                      mn.Multi_nb_pos,
                       cf.GREY,
                       ut.font(mn.FONT_PIXEL, 3 * cf.RESULT_FONT_SIZE // 4))
         mn.start_button.print(mouse)
@@ -102,7 +102,7 @@ def main_loop(players, mouse=None):
                           ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE))
         if cf.CAPT:
             mn.print_image((os.path.join(cf.UI, "messagebox.png")), (189, 249))
-            mn.print_text(ky.TEXTCAPT[cf.LANG]
+            mn.print_text(ky.TEXTCAPT[cf.LANG]\
                           + cf.COLORSTRAD[cf.LANG][cf.CAPT_PLYR],
                           (640, 350),
                           cf.GREY,
@@ -126,7 +126,7 @@ def main_loop(players, mouse=None):
 
         # Affichage de la commande en début de game
         if cf.SECONDS < 3:
-            mn.print_text(mn.INDICBUTTON[cf.LANG]
+            mn.print_text(mn.INDICBUTTON[cf.LANG]\
                           + ut.keyname(plyr.JUMP_KEYS[0]),
                           (cf.SCREEN_WIDTH // 2, 70),
                           cf.GREY,

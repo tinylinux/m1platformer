@@ -136,7 +136,7 @@ def test_event():
     players = gml.event_handling(players, event,
                                  mn.Multi_pos[cf.NB_PLAYERS_MAX - 2])
     assert cf.NB_PLAYERS == 4
-    players = gml.event_handling(players, event, mn.Multi_start_pos)
+    players = gml.event_handling(players, event, mn.Start_pos)
     assert players[0].vel.y == 0
     assert cf.STATE == cf.State.ingame
     for bloc in spt.ground:
