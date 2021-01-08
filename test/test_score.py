@@ -51,7 +51,8 @@ def test_scoreboard(scores):
     assert scre.maj(scores[0][0] + 1)
     assert scre.get_scores()[0] == scores[0]
     for _ in range(5):
-        scre.maj(10)
+        if scre.maj(10):
+            scre.set_best_score(10)
     assert not scre.maj(1)
     scre.init_best_score()
 
