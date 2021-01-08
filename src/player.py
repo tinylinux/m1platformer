@@ -142,9 +142,7 @@ class Player(ut.Sprite):
             True si le joueur sort suffisamment de l'écran.
         """
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
-               or self.pos.y + self.height < 0
-               or self.pos.x + self.width < 0
-               or self.pos.x > cf.SCREEN_WIDTH)
+               or self.pos.x + self.width < 0)
 
     def change_state(self, item):
         """
