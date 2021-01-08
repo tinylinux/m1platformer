@@ -133,17 +133,26 @@ def main_loop(players, mouse=None):
             # Fin du mode solo
             cf.STATE = State.gameover
             cf.NEWHS = scre.maj(cf.SECONDS)
+            mn.player_name_area.select()
 
     elif cf.STATE == State.gameover:  # Menu de fin solo
 
         scre.score_endgame(cf.SECONDS)
-        if cf.NEWHS:  # Nouveau record
+        if cf.CAPT: # Demander au joueur son nom avant de MaJ le scoreboard
+            mn.print_image(("assets/img/ui/messagebox.png"), (189, 249))
+            mn.print_text(scre.NAMEASK[cf.LANG],
+                          (640, 300),
+                          cf.GREY,
+                          ut.font(mn.FONT_PIXEL, cf.RESULT_FONT_SIZE // 2))
+            mn.player_name_area.print()
+        else:
+            if cf.NEWHS:  # Nouveau record
+                cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                    "highscore.png")), (428, 350))
             cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
-                                "highscore.png")), (428, 350))
-        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
-                            "gameover.png")), (395, 100))
-        mn.restart_button.print(mouse)
-        mn.return_button.print(mouse)
+                                "gameover.png")), (395, 100))
+            mn.restart_button.print(mouse)
+            mn.return_button.print(mouse)
 
     elif cf.STATE == State.gameover_multi:  # Menu de fin multi
 
@@ -249,6 +258,16 @@ def event_handling(players, event, mouse=None):
                     plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
                     ky.set_keys(plyr.JUMP_KEYS)
                     cf.CAPT = False
+
+        elif cf.STATE == State.gameover:
+            if cf.CAPT:
+                if event.key == ut.K_RETURN:
+                    scre.PLAYER = mn.player_name_area.input
+                    scre.set_best_score(cf.SECONDS)
+                    cf.CAPT = False
+                    mn.player_name_area.deselect()
+                else:
+                    mn.player_name_area.read(event.key)
 
     if event.type == ut.MOUSEBUTTONDOWN:
 
