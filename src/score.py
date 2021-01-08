@@ -115,6 +115,22 @@ def get_last_best_score():
     return last[0]
 
 
+def get_best_score():
+    """
+    Renvoie le meilleur score du leaderboard.
+
+    Returns
+    -------
+    int
+        Le score recherché
+    """
+    scores = get_scores()
+    if len(scores) == 0:
+        return 0
+    last = max(scores)
+    return last[0]
+
+
 def set_best_score(value):
     """
     Ajoute un score au leaderboard.

@@ -133,6 +133,7 @@ def main_loop(players, mouse=None):
             # Fin du mode solo
             cf.STATE = State.gameover
             cf.NEWHS = scre.maj(cf.SECONDS)
+            cf.NEWRC = scre.get_best_score() < cf.SECONDS
             mn.player_name_area.select()
 
     elif cf.STATE == State.gameover:  # Menu de fin solo
@@ -147,8 +148,16 @@ def main_loop(players, mouse=None):
             mn.player_name_area.print()
         else:
             if cf.NEWHS:  # Nouveau record
-                cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
-                                    "highscore.png")), (428, 350))
+                if cf.NEWRC:
+                    if cf.LANG == "fr":
+                        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                            "highscore.png")), (428, 350))
+                    else:
+                        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                            "newrecord.png")), (428, 350))
+                else:
+                    cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                        "top5mes.png")), (428, 350))
             cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
                                 "gameover.png")), (395, 100))
             mn.restart_button.print(mouse)
