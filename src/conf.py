@@ -112,7 +112,6 @@ FRAMES = 0
 # États du jeu
 class State(Enum):
     """Type énuméré pour l'état du jeu."""
-
     languages = 0
     menu = 1
     ingame = 2
@@ -122,6 +121,7 @@ class State(Enum):
     setup = 5
     langchange = 6
     keyset = 7
+    multiplayer_set = 8
 
 
 STATE = State.menu
