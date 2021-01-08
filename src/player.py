@@ -65,7 +65,7 @@ class Player(ut.Sprite):
         x = cf.SCREEN_WIDTH // 2 - self.width // 2
         y = spt.GROUND_HEIGHT - self.height
         self.pos = ut.Vec(x, y)
-        self.rect.midbottom = self.pos
+        self.rect.topleft = self.pos
 
         # Vitesse
         self.vel = ut.Vec(0, 0)
@@ -190,8 +190,9 @@ class Player(ut.Sprite):
         """
         ut.resize_list(self.images, cf.SIZE[size2])
         self.width, self.height = cf.SIZE[size2]
-        for i in range(2):
-            self.pos[i] = self.pos[i] + cf.SIZE[size1][i]\
-                - cf.SIZE[size2][i]
+        self.pos[0] = self.pos[0] + cf.SIZE[size1][0]//2\
+            - cf.SIZE[size2][0]//2
+        self.pos[1] = self.pos[1] + cf.SIZE[size1][1]\
+            - cf.SIZE[size2][1]
         self.rect = self.images[0].get_rect()
-        self.rect.midbottom = self.pos
+        self.rect.topleft = self.pos
