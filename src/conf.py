@@ -71,10 +71,10 @@ NEW_ITEM_TIME = 5
 
 ITEM_PROBA_MIN = 3
 """Le minimum de NEW_ITEM_TIME lorsque tiré aléatoirement."""
-ITEM_PROBA_MAX = 10
+ITEM_PROBA_MAX = 7
 """Le maximum de NEW_ITEM_TIME lorsque tiré aléatoirement."""
 
-ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200}
+ITEM_TIME = {'fast': 40, 'slow': 40, 'little': 200, 'big': 200, 'delay': 5}
 """Dictionnaire avec la durée des effets des items (en nbre de frames)."""
 
 V_ITEM = {'fast': 4, 'slow': -4}

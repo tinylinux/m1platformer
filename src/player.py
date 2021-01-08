@@ -102,7 +102,12 @@ class Player(ut.Sprite):
             self.timer -= 1
             # si le timer est fini on redevient normal
             if self.timer == 0:
-                self.end_item()
+                # l'état delay permet de devenir big avec un delay pour
+                # éviter de rentrer dans une plateforme
+                if self.state == 'delay':
+                    self.change_state('big')
+                else:
+                    self.end_item()
 
             if self.state == "fast":
                 self.vel.x = cf.V_ITEM['fast']
@@ -120,7 +125,8 @@ class Player(ut.Sprite):
 
         for item in spt.items:  # Gestion de la prise d'item
             if ut.contact(self, item):
-                self.change_state(item)
+                self.change_state(item.type)
+                item.kill()
 
         # On change le sprite du joueur
         self.img += 0.03 * cf.SPEED
@@ -144,7 +150,7 @@ class Player(ut.Sprite):
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
                or self.pos.x + self.width < 0)
 
-    def change_state(self, item):
+    def change_state(self, type):
         """
         Modifie l'état après la prise d'un objet et supprime ce dernier.
 
@@ -153,17 +159,19 @@ class Player(ut.Sprite):
         item : Item
             L'objet récupéré
         """
-        self.state = item.type
-        item.kill()
-        self.timer = cf.ITEM_TIME[item.type]
 
         # resize le player
-        if self.state in ['little', 'big']:
-            self.resize('normal', self.state)
+        if type in ['little', 'big']:
+            self.resize('normal', type)
 
         # Si quand on devient grand on collide une plateforme, on annule
-        if self.state == 'big' and ut.collide_group(self, spt.ground):
-            self.end_item()
+        # Et on passe en 'delay' pour l'activer un peu plus tard
+        if type == 'big' and ut.collide_group(self, spt.ground):
+            self.resize('big', 'normal')
+            type = 'delay'
+
+        self.state = type
+        self.timer = cf.ITEM_TIME[type]
 
     def end_item(self):
         """Retour à l'état normal."""
@@ -176,7 +184,7 @@ class Player(ut.Sprite):
         # Dans ce cas, on reste petit quelques instants
         if self.state == 'little' and ut.collide_group(self, spt.ground):
             self.resize('normal', 'little')
-            self.timer += 50
+            self.timer += cf.ITEM_TIME['delay']
         else:
             # On se remet dans l'état normal et on annule le FLAG_ITEM
             self.state = "normal"
