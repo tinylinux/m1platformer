@@ -371,6 +371,7 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.setup and\
                 mn.commands_button.click(mouse):
             cf.STATE = State.keyset
+            cf.CAPT = False
 
         elif cf.STATE == State.setup and\
                 mn.return_button.click(mouse):
