@@ -8,6 +8,12 @@ import src.player as plyr
 PLAYER = "Player"
 """Nom par défaut du joueur"""
 
+NAMEASK = {
+    "fr" : "Quel est votre nom ?",
+    "en" : "Who are you?"
+}
+"""Message demandant le pseudo du joueur."""
+
 
 def init_best_score():
     """Initialise le fichier `score.txt`."""
@@ -155,7 +161,7 @@ def maj(pts):
     """
     minimal_score = get_last_best_score()
     if len(get_scores()) < 5 or minimal_score < pts:
-        set_best_score(pts)
+        cf.CAPT = True
         return True
     return False
 
