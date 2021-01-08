@@ -480,6 +480,15 @@ MULTIMENU = {
 }
 """Dictionnaire pour traduire le menu multijoueur."""
 
+Player_pos = (490, 350)
+Player_size = (300, 50)
+player_name_area = InputZone(
+    Player_pos,
+    Player_size,
+    ut.font(FONT_PIXEL, 3*cf.RESULT_FONT_SIZE // 4)
+)
+"""Zone de texte pour le pseudo du joueur."""
+
 
 def print_image(image, position, scale=1):
     """
