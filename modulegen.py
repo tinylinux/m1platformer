@@ -1,5 +1,6 @@
 ﻿"""Module de l'application de création de modules de terrain."""
 
+import os
 import tkinter as tk
 import src.conf as cf
 
