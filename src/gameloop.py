@@ -13,6 +13,7 @@ import src.score as scre
 import src.sprites as spt
 import src.key as ky
 
+
 def main_loop(players, mouse=None):
     """
     Applique les mises à jour nécessaires au jeu.
@@ -158,7 +159,8 @@ def main_loop(players, mouse=None):
         else:
             if cf.NEWHS:  # Nouveau record
                 if cf.NEWRC:
-                    cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI, cf.LANG,
+                    cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                                                   cf.LANG,
                                         "highscore.png")), (428, 350))
                 else:
                     cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
