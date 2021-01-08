@@ -163,19 +163,30 @@ class Player(ut.Sprite):
         if self.state in ['little', 'big']:
             self.resize('normal', self.state)
 
+        # Si quand on devient grand on collide une plateforme, on annule
+        if self.state == 'big' and ut.collide_group(self, spt.ground):
+            self.end_item()
+
     def end_item(self):
         """Retour à l'état normal."""
         # On se remet à la bonne taille, position, etc.
         if self.state in ['little', 'big']:
             self.resize(self.state, 'normal')
 
-        # On se remet dans l'état normal et on annule le FLAG_ITEM
-        self.state = "normal"
-        self.vel.x = 0
+        # Si on était petit et qu'on redevient normal,
+        # il se peut qu'on collide une plateforme.
+        # Dans ce cas, on reste petit quelques instants
+        if self.state == 'little' and ut.collide_group(self, spt.ground):
+            self.resize('normal', 'little')
+            self.timer += 50
+        else:
+            # On se remet dans l'état normal et on annule le FLAG_ITEM
+            self.state = "normal"
+            self.vel.x = 0
 
-        cf.FLAG_ITEM = False
-        cf.NEW_ITEM_TIME = cf.SECONDS + rd.randint(cf.ITEM_PROBA_MIN,
-                                                   cf.ITEM_PROBA_MAX)
+            cf.FLAG_ITEM = False
+            cf.NEW_ITEM_TIME = cf.SECONDS + rd.randint(cf.ITEM_PROBA_MIN,
+                                                       cf.ITEM_PROBA_MAX)
 
     def resize(self, size1, size2):
         """
@@ -190,8 +201,8 @@ class Player(ut.Sprite):
         """
         ut.resize_list(self.images, cf.SIZE[size2])
         self.width, self.height = cf.SIZE[size2]
-        self.pos[0] = self.pos[0] + cf.SIZE[size1][0]//2\
-            - cf.SIZE[size2][0]//2
+        self.pos[0] = self.pos[0] + cf.SIZE[size1][0] // 2\
+            - cf.SIZE[size2][0] // 2
         self.pos[1] = self.pos[1] + cf.SIZE[size1][1]\
             - cf.SIZE[size2][1]
         self.rect = self.images[0].get_rect()
