@@ -80,8 +80,8 @@ def main_loop(players, mouse=None):
                         5 * cf.SCREEN_HEIGHT // 12),
                     scale=4)
                 mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
-                              (cf.SCREEN_WIDTH // 8 +\
-                               i * cf.SCREEN_WIDTH // 4,
+                              (cf.SCREEN_WIDTH // 8
+                               + i * cf.SCREEN_WIDTH // 4,
                                2 * cf.SCREEN_HEIGHT // 3),
                               cf.GREY,
                               ut.font(mn.FONT_PIXEL,
@@ -126,8 +126,8 @@ def main_loop(players, mouse=None):
 
         # Affichage de la commande en début de game
         if cf.SECONDS < 3:
-            mn.print_text(mn.INDICBUTTON[cf.LANG] +\
-                          ut.keyname(plyr.JUMP_KEYS[0]),
+            mn.print_text(mn.INDICBUTTON[cf.LANG]
+                          + ut.keyname(plyr.JUMP_KEYS[0]),
                           (cf.SCREEN_WIDTH // 2, 70),
                           cf.GREY,
                           ut.font(mn.FONT_PIXEL,
