@@ -150,7 +150,7 @@ class Player(ut.Sprite):
         return(self.pos.y > cf.SCREEN_HEIGHT + 50
                or self.pos.x + self.width < 0)
 
-    def change_state(self, type):
+    def change_state(self, item_type):
         """
         Modifie l'état après la prise d'un objet et supprime ce dernier.
 
@@ -159,19 +159,18 @@ class Player(ut.Sprite):
         item : Item
             L'objet récupéré
         """
-
         # resize le player
-        if type in ['little', 'big']:
-            self.resize('normal', type)
+        if item_type in ['little', 'big']:
+            self.resize('normal', item_type)
 
         # Si quand on devient grand on collide une plateforme, on annule
-        # Et on passe en 'delay' pour l'activer un peu plus tard
-        if type == 'big' and ut.collide_group(self, spt.ground):
+        # Et on passe en 'delay' pour l'activer un peu plus tard
+        if item_type == 'big' and ut.collide_group(self, spt.ground):
             self.resize('big', 'normal')
-            type = 'delay'
+            item_type = 'delay'
 
-        self.state = type
-        self.timer = cf.ITEM_TIME[type]
+        self.state = item_type
+        self.timer = cf.ITEM_TIME[item_type]
 
     def end_item(self):
         """Retour à l'état normal."""
