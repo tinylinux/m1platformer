@@ -93,7 +93,7 @@ CAPT_PLYR = 0
 """Numéro du joueur en cours pour changer sa commande."""
 
 # Couleurs
-BLACK = (255, 255, 255)
+BLACK = (0, 0, 0)
 """Noir."""
 GREY = (240, 240, 240)
 """Gris."""

@@ -55,15 +55,18 @@ def test_main_loop_event():
     cf.STATE = cf.State.ingame
     players = gml.reset_world()
     assert len(players) == 1
+    cf.LANG = "fr"
     players[0].pos = ut.Vec(-100, -100)
     cf.SECONDS = 30  # Record pour l'étape suivante
     players = gml.main_loop(players, (0, 0))
     players = gml.main_loop(players, (0, 0))
     assert cf.STATE == cf.State.gameover
-    players = gml.reset_world()
 
     # Game over
     cf.STATE = cf.State.gameover
+    cf.CAPT = False
+    scre.PLAYER = "test"
+    scre.set_best_score(cf.SECONDS)
     players = gml.main_loop(players, (0, 0))
     assert cf.NEWHS
     assert scre.get_scores()[0][0] == 30
