@@ -2,13 +2,13 @@
 
 from hypothesis import given
 from hypothesis.strategies import integers
-import main
-import src.sprites as spt
-import src.conf as cf
-import src.utilities as ut
-import src.player as plyr
-import src.gameloop as gml
-import src.item as it
+import rollnjump.main as main
+import rollnjump.sprites as spt
+import rollnjump.conf as cf
+import rollnjump.utilities as ut
+import rollnjump.player as plyr
+import rollnjump.gameloop as gml
+import rollnjump.item as it
 
 
 # Test du saut du joueur

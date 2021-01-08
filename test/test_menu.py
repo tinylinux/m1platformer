@@ -3,10 +3,10 @@
 import os
 from hypothesis import given
 from hypothesis.strategies import integers, tuples, characters, text
-import main
-import src.utilities as ut
-import src.conf as cf
-import src.menu as mn
+import rollnjump.main as main
+import rollnjump.utilities as ut
+import rollnjump.conf as cf
+import rollnjump.menu as mn
 
 
 @given(tuples(integers(0, 100), integers(0, 100)),

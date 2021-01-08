@@ -1,15 +1,15 @@
 """Fichier de test pour gameloop."""
 
 import os
-import main
-import src.score as scre
-import src.menu as mn
-import src.conf as cf
-import src.utilities as ut
-import src.player as plyr
-import src.gameloop as gml
-import src.sprites as spt
-import src.lang as lg
+import rollnjump.main as main
+import rollnjump.score as scre
+import rollnjump.menu as mn
+import rollnjump.conf as cf
+import rollnjump.utilities as ut
+import rollnjump.player as plyr
+import rollnjump.gameloop as gml
+import rollnjump.sprites as spt
+import rollnjump.lang as lg
 
 cf.SCORES = os.path.join(os.path.dirname(__file__), "test_score.txt")
 lg.FILE = os.path.join(os.path.dirname(__file__), "test_lang.txt")

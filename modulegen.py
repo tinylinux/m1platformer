@@ -2,7 +2,7 @@
 
 import os
 import tkinter as tk
-import src.conf as cf
+import rollnjump.conf as cf
 
 
 TAILLE_CARREAUX = 10

@@ -2,10 +2,10 @@
 
 from hypothesis import given
 from hypothesis.strategies import integers, tuples
-import main
-import src.utilities as ut
-import src.sprites as spt
-import src.platforms as plt
+import rollnjump.main as main
+import rollnjump.utilities as ut
+import rollnjump.sprites as spt
+import rollnjump.platforms as plt
 
 
 def test_ground():
