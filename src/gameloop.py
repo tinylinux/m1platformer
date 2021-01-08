@@ -65,7 +65,7 @@ def main_loop(players, mouse=None):
     elif cf.STATE == State.multiplayer_set:  # Régler le multijoueur
         mn.return_button.print(mouse)
         mn.print_text(mn.MULTIMENU[cf.LANG],
-                      (cf.SCREEN_WIDTH // 2, 70),
+                      mn.Multi_start_pos,
                       cf.GREY,
                       ut.font(mn.FONT_PIXEL, 3 * cf.RESULT_FONT_SIZE // 4))
         mn.start_button.print(mouse)
