@@ -474,6 +474,7 @@ for i in range(cf.NB_PLAYERS_MAX - 1):
         )
     )
 
+Multi_start_pos = cf.SCREEN_WIDTH // 2, 70
 MULTIMENU = {
     "fr": "Nombre de joueurs :",
     "en": "Number of players:"
