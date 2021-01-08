@@ -125,7 +125,7 @@ def main_loop(players, mouse=None):
                 plyr.WINNER = i
 
         # Affichage de la commande en début de game
-        if cf.SECONDS < 3:
+        if cf.SECONDS < 3 and cf.NB_PLAYERS == 1:
             mn.print_text(mn.INDICBUTTON[cf.LANG]
                           + ut.keyname(plyr.JUMP_KEYS[0]),
                           (cf.SCREEN_WIDTH // 2, 70),
