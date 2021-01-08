@@ -174,26 +174,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-worldgen">
-<span id="worldgen"></span><h1>Worldgen<a class="headerlink" href="#module-worldgen" title="Lien permanent vers ce titre">¶</a></h1>
+  <div class="section" id="module-rollnjump.worldgen">
+<span id="worldgen"></span><h1>Worldgen<a class="headerlink" href="#module-rollnjump.worldgen" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Gère la génération du monde.</p>
 <div class="section" id="constantes">
 <h2>Constantes<a class="headerlink" href="#constantes" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py data">
-<dt id="worldgen.localdir">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">localdir</code><a class="headerlink" href="#worldgen.localdir" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Chemin du répertoire local</p>
+<dt id="rollnjump.worldgen.modules">
+<code class="sig-prename descclassname">rollnjump.worldgen.</code><code class="sig-name descname">modules</code><a class="headerlink" href="#rollnjump.worldgen.modules" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Liste préchargeant les fichiers modules</p>
 </dd></dl>
 
 <dl class="py data">
-<dt id="worldgen.modules">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">modules</code><a class="headerlink" href="#worldgen.modules" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Liste des modules</p>
-</dd></dl>
-
-<dl class="py data">
-<dt id="worldgen.MAX_JUMP">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">MAX_JUMP</code><em class="property"> = 200</em><a class="headerlink" href="#worldgen.MAX_JUMP" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.worldgen.MAX_JUMP">
+<code class="sig-prename descclassname">rollnjump.worldgen.</code><code class="sig-name descname">MAX_JUMP</code><em class="property"> = 200</em><a class="headerlink" href="#rollnjump.worldgen.MAX_JUMP" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Hauteur maximale entre la dernière plateforme d’un module
 et la première plateforme du suivant</p>
 </dd></dl>
@@ -202,8 +196,8 @@ et la première plateforme du suivant</p>
 <div class="section" id="fonctions">
 <h2>Fonctions<a class="headerlink" href="#fonctions" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py function">
-<dt id="worldgen.platform_creation">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">platform_creation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bloc</span></em>, <em class="sig-param"><span class="n">xoffset</span></em>, <em class="sig-param"><span class="n">yoffset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.platform_creation" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.worldgen.platform_creation">
+<code class="sig-prename descclassname">rollnjump.worldgen.</code><code class="sig-name descname">platform_creation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bloc</span></em>, <em class="sig-param"><span class="n">xoffset</span></em>, <em class="sig-param"><span class="n">yoffset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.worldgen.platform_creation" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Crée une plateforme.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -217,14 +211,14 @@ et la première plateforme du suivant</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="worldgen.initgen">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">initgen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.initgen" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.worldgen.initgen">
+<code class="sig-prename descclassname">rollnjump.worldgen.</code><code class="sig-name descname">initgen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.worldgen.initgen" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Initialise le monde.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="worldgen.genere_module">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">genere_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">last_pltfrm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.genere_module" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.worldgen.genere_module">
+<code class="sig-prename descclassname">rollnjump.worldgen.</code><code class="sig-name descname">genere_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">last_pltfrm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.worldgen.genere_module" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Choisit et affiche un nouveau module à la fin de l’écran.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -234,14 +228,14 @@ et la première plateforme du suivant</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="worldgen.stop_ground">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">stop_ground</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.stop_ground" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.worldgen.stop_ground">
+<code class="sig-prename descclassname">rollnjump.worldgen.</code><code class="sig-name descname">stop_ground</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.worldgen.stop_ground" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Arrête la création infinie du sol.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="worldgen.update">
-<code class="sig-prename descclassname">worldgen.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#worldgen.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.worldgen.update">
+<code class="sig-prename descclassname">rollnjump.worldgen.</code><code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.worldgen.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Met à jour tous les objets du monde autres que Player.</p>
 </dd></dl>
 
@@ -261,7 +255,7 @@ et la première plateforme du suivant</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+        &#169; Copyright .
 
     </p>
   </div>
@@ -272,7 +266,20 @@ et la première plateforme du suivant</p>
     
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
     
-    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+  <p xmlns:dct="http://purl.org/dc/terms/">
+    <a rel="license"
+       href="http://creativecommons.org/publicdomain/zero/1.0/">
+      <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+    </a>
+    <br />
+    To the extent possible under law,
+    <span resource="[_:publisher]" rel="dct:publisher">
+      <span property="dct:title">Samuel Arsac, Hugo Buscemi, Matteo Chancerel and Rida Lali</span></span>
+    has waived all copyright and related or neighboring rights to
+    <span property="dct:title">Roll 'n' Jump</span>.
+  </p>
+
 
 </footer>
         </div>

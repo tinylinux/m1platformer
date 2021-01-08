@@ -171,12 +171,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-item">
-<span id="item"></span><h1>Item<a class="headerlink" href="#module-item" title="Lien permanent vers ce titre">¶</a></h1>
+  <div class="section" id="module-rollnjump.item">
+<span id="item"></span><h1>Item<a class="headerlink" href="#module-rollnjump.item" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Gère la génération d’items.</p>
 <dl class="py data">
-<dt id="item.ITEMS">
-<code class="sig-prename descclassname">item.</code><code class="sig-name descname">ITEMS</code><em class="property"> = ['fast', 'slow', 'little', 'big']</em><a class="headerlink" href="#item.ITEMS" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.item.ITEMS">
+<code class="sig-prename descclassname">rollnjump.item.</code><code class="sig-name descname">ITEMS</code><em class="property"> = ['fast', 'slow', 'little', 'big']</em><a class="headerlink" href="#rollnjump.item.ITEMS" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>fait accélérer le joueur (sauf après les 2/3 de l’écran)
 slow : fait ralentir le joueur (sauf s’il sort presque de l’écran)
 little : fait rapetisser le joueur
@@ -189,13 +189,13 @@ big : fait grossir le joueur</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="item.Item">
-<em class="property">class </em><code class="sig-prename descclassname">item.</code><code class="sig-name descname">Item</code><a class="headerlink" href="#item.Item" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
+<dt id="rollnjump.item.Item">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.item.</code><code class="sig-name descname">Item</code><a class="headerlink" href="#rollnjump.item.Item" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="utilities.html#rollnjump.utilities.GameObject" title="rollnjump.utilities.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">rollnjump.utilities.GameObject</span></code></a></p>
 <p>Gestion des objets.</p>
 <dl class="py attribute">
-<dt id="item.Item.type">
-<code class="sig-name descname">type</code><a class="headerlink" href="#item.Item.type" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.item.Item.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#rollnjump.item.Item.type" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Type de l’objet</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -205,8 +205,8 @@ big : fait grossir le joueur</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="item.Item.width">
-<code class="sig-name descname">width</code><a class="headerlink" href="#item.Item.width" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.item.Item.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#rollnjump.item.Item.width" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Largeur de l’objet</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -216,8 +216,8 @@ big : fait grossir le joueur</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="item.Item.height">
-<code class="sig-name descname">height</code><a class="headerlink" href="#item.Item.height" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.item.Item.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#rollnjump.item.Item.height" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Hauteur de l’objet</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -227,8 +227,8 @@ big : fait grossir le joueur</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="item.Item.vel">
-<code class="sig-name descname">vel</code><a class="headerlink" href="#item.Item.vel" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.item.Item.vel">
+<code class="sig-name descname">vel</code><a class="headerlink" href="#rollnjump.item.Item.vel" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Vitesse de l’objet</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -238,8 +238,8 @@ big : fait grossir le joueur</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="item.Item.acc">
-<code class="sig-name descname">acc</code><a class="headerlink" href="#item.Item.acc" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.item.Item.acc">
+<code class="sig-name descname">acc</code><a class="headerlink" href="#rollnjump.item.Item.acc" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Accélération de l’objet</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -250,8 +250,8 @@ big : fait grossir le joueur</p>
 
 <p>Initialisation de l’objet.</p>
 <dl class="py method">
-<dt id="item.Item.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#item.Item.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.item.Item.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.item.Item.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Met à jour l’item.</p>
 </dd></dl>
 
@@ -273,7 +273,7 @@ big : fait grossir le joueur</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+        &#169; Copyright .
 
     </p>
   </div>
@@ -284,7 +284,20 @@ big : fait grossir le joueur</p>
     
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
     
-    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+  <p xmlns:dct="http://purl.org/dc/terms/">
+    <a rel="license"
+       href="http://creativecommons.org/publicdomain/zero/1.0/">
+      <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+    </a>
+    <br />
+    To the extent possible under law,
+    <span resource="[_:publisher]" rel="dct:publisher">
+      <span property="dct:title">Samuel Arsac, Hugo Buscemi, Matteo Chancerel and Rida Lali</span></span>
+    has waived all copyright and related or neighboring rights to
+    <span property="dct:title">Roll 'n' Jump</span>.
+  </p>
+
 
 </footer>
         </div>

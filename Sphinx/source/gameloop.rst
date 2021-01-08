@@ -1,7 +1,7 @@
 Gameloop
 ========
 
-.. automodule:: gameloop
+.. automodule:: rollnjump.gameloop
 
 Boucle principale
 *****************
