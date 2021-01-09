@@ -3,9 +3,9 @@
 import os
 from hypothesis import given
 from hypothesis.strategies import characters, integers, text, lists, tuples
-import main
-import src.conf as cf
-import src.score as scre
+import rollnjump.main as main
+import rollnjump.conf as cf
+import rollnjump.score as scre
 
 cf.SCORES = os.path.join(os.path.dirname(__file__), "test_score.txt")
 

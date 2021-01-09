@@ -2,11 +2,11 @@
 
 from hypothesis import given
 from hypothesis.strategies import integers
-import main
-import src.utilities as ut
-import src.conf as cf
-import src.sprites as spt
-import src.worldgen as wrld
+import rollnjump.main as main
+import rollnjump.utilities as ut
+import rollnjump.conf as cf
+import rollnjump.sprites as spt
+import rollnjump.worldgen as wrld
 
 
 def test_platform_creation():

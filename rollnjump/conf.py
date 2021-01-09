@@ -1,3 +1,13 @@
+# Roll 'n' Jump
+# Written in 2020, 2021 by Samuel Arsac, Hugo Buscemi,
+# Matteo Chencerel, Rida Lali
+# To the extent possible under law, the author(s) have dedicated all
+# copyright and related and neighboring rights to this software to the
+# public domain worldwide. This software is distributed without any warranty.
+# You should have received a copy of the CC0 Public Domain Dedication along
+# with this software. If not, see
+# <http://creativecommons.org/publicdomain/zero/1.0/>.
+
 """Stocke des variables partagées entre les différents fichiers."""
 import os
 from enum import Enum
@@ -12,9 +22,9 @@ SCREEN_HEIGHT = 720
 FPS = 60
 """Objectif d'images par seconde."""
 
-SRC = os.path.join(os.path.dirname(__file__), '..', 'src')
+SRC = os.path.join(os.path.dirname(__file__), '..', 'rollnjump')
 """Chemin vers le dossier src."""
-ASSETS = os.path.join(os.path.dirname(__file__), '..', 'assets')
+ASSETS = os.path.join(os.path.dirname(__file__), '..', 'rollnjump/assets')
 """Chemin vers le dossier assets."""
 UI = os.path.join(ASSETS, 'img', 'ui')
 """Chemin vers le dossier des images de l'interface."""
@@ -22,7 +32,7 @@ MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 """Chemin vers la musique."""
 SCORES = os.path.join(os.path.dirname(__file__), '..', 'score.txt')
 """Chemin vers le fichier contenant les scores."""
-MODULES = os.path.join(os.path.dirname(__file__), '..', 'src', 'modules')
+MODULES = os.path.join(os.path.dirname(__file__), '..', 'rollnjump', 'modules')
 
 HIGHSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores."""

@@ -171,13 +171,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-platforms">
-<span id="platforms"></span><h1>Platforms<a class="headerlink" href="#module-platforms" title="Lien permanent vers ce titre">¶</a></h1>
+  <div class="section" id="module-rollnjump.platforms">
+<span id="platforms"></span><h1>Platforms<a class="headerlink" href="#module-rollnjump.platforms" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Création et déplacement des plateformes.</p>
 <dl class="py class">
-<dt id="platforms.Ground">
-<em class="property">class </em><code class="sig-prename descclassname">platforms.</code><code class="sig-name descname">Ground</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position_x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
+<dt id="rollnjump.platforms.Ground">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.platforms.</code><code class="sig-name descname">Ground</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position_x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.platforms.Ground" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="utilities.html#rollnjump.utilities.GameObject" title="rollnjump.utilities.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">rollnjump.utilities.GameObject</span></code></a></p>
 <p>Plateforme initiale (dans le menu).</p>
 <p>Initialisation.</p>
 <dl class="field-list simple">
@@ -186,27 +186,27 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt id="platforms.Ground.stop_creation">
-<code class="sig-name descname">stop_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground.stop_creation" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.platforms.Ground.stop_creation">
+<code class="sig-name descname">stop_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.platforms.Ground.stop_creation" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Arrête la génération du sol.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="platforms.Ground.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Ground.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.platforms.Ground.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.platforms.Ground.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Met à jour la position des plateformes du sol.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="platforms.Platform">
-<em class="property">class </em><code class="sig-prename descclassname">platforms.</code><code class="sig-name descname">Platform</code><span class="sig-paren">(</span><em class="sig-param">pos=(1</em>, <em class="sig-param">1)</em>, <em class="sig-param">dim=(8</em>, <em class="sig-param">3)</em>, <em class="sig-param">img=&lt;Surface(26x10x32 SW)&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#platforms.Platform" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">src.utilities.GameObject</span></code></p>
+<dt id="rollnjump.platforms.Platform">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.platforms.</code><code class="sig-name descname">Platform</code><span class="sig-paren">(</span><em class="sig-param">pos=(1</em>, <em class="sig-param">1)</em>, <em class="sig-param">dim=(8</em>, <em class="sig-param">3)</em>, <em class="sig-param">img=&lt;Surface(26x10x32 SW)&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.platforms.Platform" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="utilities.html#rollnjump.utilities.GameObject" title="rollnjump.utilities.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">rollnjump.utilities.GameObject</span></code></a></p>
 <p>Plateformes pendant le jeu.</p>
 <dl class="py attribute">
-<dt id="platforms.Platform.dim">
-<code class="sig-name descname">dim</code><a class="headerlink" href="#platforms.Platform.dim" title="Lien permanent vers cette définition">¶</a></dt>
+<dt id="rollnjump.platforms.Platform.dim">
+<code class="sig-name descname">dim</code><a class="headerlink" href="#rollnjump.platforms.Platform.dim" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Dimensions de la plateforme</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -243,7 +243,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali.
+        &#169; Copyright .
 
     </p>
   </div>
@@ -254,7 +254,20 @@
     
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
     
-    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+  <p xmlns:dct="http://purl.org/dc/terms/">
+    <a rel="license"
+       href="http://creativecommons.org/publicdomain/zero/1.0/">
+      <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+    </a>
+    <br />
+    To the extent possible under law,
+    <span resource="[_:publisher]" rel="dct:publisher">
+      <span property="dct:title">Samuel Arsac, Hugo Buscemi, Matteo Chancerel and Rida Lali</span></span>
+    has waived all copyright and related or neighboring rights to
+    <span property="dct:title">Roll 'n' Jump</span>.
+  </p>
+
 
 </footer>
         </div>

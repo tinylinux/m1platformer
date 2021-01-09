@@ -1,9 +1,19 @@
+# Roll 'n' Jump
+# Written in 2020, 2021 by Samuel Arsac, Hugo Buscemi,
+# Matteo Chencerel, Rida Lali
+# To the extent possible under law, the author(s) have dedicated all
+# copyright and related and neighboring rights to this software to the
+# public domain worldwide. This software is distributed without any warranty.
+# You should have received a copy of the CC0 Public Domain Dedication along
+# with this software. If not, see
+# <http://creativecommons.org/publicdomain/zero/1.0/>.
+
 """Gestion du score."""
 import os
-import src.conf as cf
-import src.menu as mn
-import src.utilities as ut
-import src.player as plyr
+import rollnjump.conf as cf
+import rollnjump.menu as mn
+import rollnjump.utilities as ut
+import rollnjump.player as plyr
 
 PLAYER = "Player"
 """Nom par défaut du joueur"""

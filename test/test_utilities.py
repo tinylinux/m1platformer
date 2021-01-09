@@ -3,12 +3,12 @@
 import os
 from hypothesis import given
 from hypothesis.strategies import integers, tuples, text
-import main
-import src.conf as cf
-import src.utilities as ut
-import src.platforms as plt
-import src.sprites as spt
-import src.player as plyr
+import rollnjump.main as main
+import rollnjump.conf as cf
+import rollnjump.utilities as ut
+import rollnjump.platforms as plt
+import rollnjump.sprites as spt
+import rollnjump.player as plyr
 
 
 # Test des collisions

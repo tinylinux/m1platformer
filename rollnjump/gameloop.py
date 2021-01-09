@@ -1,17 +1,27 @@
+# Roll 'n' Jump
+# Written in 2020, 2021 by Samuel Arsac, Hugo Buscemi,
+# Matteo Chencerel, Rida Lali
+# To the extent possible under law, the author(s) have dedicated all
+# copyright and related and neighboring rights to this software to the
+# public domain worldwide. This software is distributed without any warranty.
+# You should have received a copy of the CC0 Public Domain Dedication along
+# with this software. If not, see
+# <http://creativecommons.org/publicdomain/zero/1.0/>.
+
 """Fonctions pour la boucle principale du jeu."""
 
 import os
 import random as rd
-import src.conf as cf
-from src.conf import State
-import src.utilities as ut
-import src.menu as mn
-import src.worldgen as wrld
-import src.player as plyr
-import src.lang as lg
-import src.score as scre
-import src.sprites as spt
-import src.key as ky
+import rollnjump.conf as cf
+from rollnjump.conf import State
+import rollnjump.utilities as ut
+import rollnjump.menu as mn
+import rollnjump.worldgen as wrld
+import rollnjump.player as plyr
+import rollnjump.lang as lg
+import rollnjump.score as scre
+import rollnjump.sprites as spt
+import rollnjump.key as ky
 
 
 def main_loop(players, mouse=None):
@@ -371,6 +381,7 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.setup and\
                 mn.commands_button.click(mouse):
             cf.STATE = State.keyset
+            cf.CAPT = False
 
         elif cf.STATE == State.setup and\
                 mn.return_button.click(mouse):
