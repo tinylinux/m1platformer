@@ -66,3 +66,4 @@ def changbuttonslang(lang):
     mn.restart_button.changlang(lang)
     mn.language_button.changlang(lang)
     mn.commands_button.changlang(lang)
+    mn.start_button.changlang(lang)
