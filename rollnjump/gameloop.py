@@ -190,6 +190,13 @@ def main_loop(players, mouse=None):
         mn.restart_button.print(mouse)
         mn.return_button.print(mouse)
 
+    elif cf.STATE == State.credits: # Affichage des credits
+
+        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+                                                       cf.LANG,
+                            "credits.png")), (0, 0))
+        mn.return_button.print(mouse)
+
     elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
 
         # Récupération des meilleurs scores
@@ -383,6 +390,16 @@ def event_handling(players, event, mouse=None):
                 mn.return_button.click(mouse):
             # Clic de la souris sur le bouton "Retour"
             cf.STATE = State.menu
+
+        elif cf.STATE == State.credits and\
+                mn.return_button.click(mouse):
+            # Clic de la souris sur le bouton "Retour"
+            cf.STATE = State.menu
+
+        elif cf.STATE == State.menu and\
+                mn.credits_button.click(mouse):
+            # Clic de la souris sur le bouton "Retour"
+            cf.STATE = State.credits
 
         elif cf.STATE == State.keyset:
             if mn.return_button.click(mouse):
