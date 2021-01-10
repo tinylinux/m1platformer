@@ -1,3 +1,5 @@
+![Pylint & Flake8](https://github.com/tinylinux/m1platformer/workflows/Pylint%20&%20Flake8/badge.svg)
+![Tests et documentation](https://github.com/tinylinux/m1platformer/workflows/Tests%20et%20documentation/badge.svg)
 [![CC0 v1.0](https://img.shields.io/badge/licence-CC0%20v1.0-blue)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 # Roll'n'Jump
