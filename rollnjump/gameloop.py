@@ -190,7 +190,7 @@ def main_loop(players, mouse=None):
         mn.restart_button.print(mouse)
         mn.return_button.print(mouse)
 
-    elif cf.STATE == State.credits: # Affichage des credits
+    elif cf.STATE == State.credits:  # Affichage des credits
 
         cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
                                                        cf.LANG,

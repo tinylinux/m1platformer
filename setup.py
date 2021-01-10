@@ -17,7 +17,7 @@ import setuptools
 setuptools.setup(
     name="rollnjump",
     version="2.0.0",
-    author = "Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali",
+    author="Samuel Arsac, Hugo Buscemi, Matteo Chancerel, Rida Lali",
     licence="CC0 1.0",
     classifiers=[
         'License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication',
