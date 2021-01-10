@@ -21,9 +21,6 @@ FILE = join(cf.CONFDIR, "lang.txt")
 AVAILABLE = ["fr", "en"]
 """Langues disponibles."""
 
-
-
-
 def init_lang():
     """Initialiser le fichier lang.txt."""
     with open(FILE, "w") as empty_lang:
