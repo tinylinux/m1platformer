@@ -6,7 +6,7 @@
 Projet de Click and Run pour le M1 MPRI - Créé par Samuel Arsac, Hugo Buscemi, Matteo Chancerel et Rida Lali
 
 ## Le jeu
-Vous contrôlez un monocycle sautant de plateforme en plateforme, et votre objectif est de tenir le plus longtemps sans tomber.
+Vous contrôlez un monocycle sautant de plateforme en plateforme, votre objectif : tenir le plus longtemps sans tomber.
 Vous n'avez pas de contrôle sur votre vitesse, vous ne pouvez que choisir quand sauter. Vous trouverez sur votre route des
 objets qui auront des effets sur votre monocycle, qui pourrons vous aider ou vous rendre la tâche plus difficile !
 
@@ -15,9 +15,11 @@ objets qui auront des effets sur votre monocycle, qui pourrons vous aider ou vou
 
 L'installation du jeu nécessite `pip3`.
 
-Le jeu peut s'installe en téléchargeant ou en clonant le dépôt, puis en utilisant la commande suivante à sa racine :
+Le jeu peut s'installer en téléchargeant via `Releases` ou en clonant le dépôt, puis en utilisant la commande suivante à sa racine :
 
-```pip3 install .```
+```
+pip3 install .
+```
 
 Le jeu peut ensuite être lancé avec la commande `rollandjump`.
 

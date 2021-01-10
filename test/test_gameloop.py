@@ -142,8 +142,6 @@ def test_event():
     """Test pour la fonction event_handling."""
     _, players = main.initialization(False)
 
-    players = gml.reset_world()
-
     # Test pour KEY_DOWN
     cf.STATE = cf.State.ingame
     for i, P in enumerate(players):

@@ -24,6 +24,7 @@ Bienvenue dans la documentation de Roll \'n\' Jump
    :maxdepth: 1
    :caption: Modules :
 
+   structure
    main
    background
    conf
