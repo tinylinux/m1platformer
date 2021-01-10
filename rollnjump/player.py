@@ -126,7 +126,7 @@ class Player(ut.Sprite):
             self.timer -= 1
             # si le timer est fini on redevient normal
             if self.timer == 0:
-                # l'état delay permet de devenir big avec un delay pour
+                # l'état delay permet de devenir big avec un délai pour
                 # éviter de rentrer dans une plateforme
                 if self.state == 'delay':
                     self.change_state('big')

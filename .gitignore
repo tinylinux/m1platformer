@@ -151,3 +151,4 @@ commands.txt
 # Test text files
 test/test_lang.txt
 test/test_score.txt
+test/test_commands.txt
