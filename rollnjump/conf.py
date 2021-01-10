@@ -33,6 +33,7 @@ MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 SCORES = os.path.join(os.path.dirname(__file__), '..', 'score.txt')
 """Chemin vers le fichier contenant les scores."""
 MODULES = os.path.join(os.path.dirname(__file__), '..', 'rollnjump', 'modules')
+"""Chemin vers le dossier contenant les modules."""
 
 HIGHSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores."""
