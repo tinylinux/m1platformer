@@ -130,6 +130,9 @@ def test_main_loop_event():
     # Simple appel à la fonction
     players = gml.main_loop(players, (0, 0))
 
+    cf.STATE = cf.State.credits
+    players = gml.main_loop(players, (0, 0))
+
     # Highscores
     cf.STATE = cf.State.highscore
     # Appel avec un tableau non vide
@@ -274,6 +277,14 @@ def test_event():
     players = gml.event_handling(players, event, mn.Commands_pos)
     assert cf.STATE == cf.State.keyset
     assert not cf.CAPT
+
+    cf.STATE = cf.State.credits
+    players = gml.event_handling(players, event, mn.Return_pos)
+    assert cf.STATE == cf.State.menu
+
+    cf.STATE = cf.State.menu
+    players = gml.event_handling(players, event, mn.Credits_pos)
+    assert cf.STATE == cf.State.credits
 
     cf.STATE = cf.State.setup
     players = gml.event_handling(players, event, mn.Return_pos)
