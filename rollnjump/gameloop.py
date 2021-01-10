@@ -82,21 +82,20 @@ def main_loop(players, mouse=None):
         mn.start_button.print(mouse)
         for i in range(cf.NB_PLAYERS_MAX - 1):
             mn.multi_button[i].print(mouse, cf.NB_PLAYERS == i + 2)
-        for i in range(cf.NB_PLAYERS_MAX):
-            if i < cf.NB_PLAYERS:
-                mn.print_image(os.path.join(
-                    cf.ASSETS, "img", "mono" + cf.COLORS[i],
-                    "mono" + cf.COLORS[i] + "0.png"),
-                    (cf.SCREEN_WIDTH // 8 + i * cf.SCREEN_WIDTH // 4 - 50,
-                        5 * cf.SCREEN_HEIGHT // 12),
-                    scale=4)
-                mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
-                              (cf.SCREEN_WIDTH // 8
-                               + i * cf.SCREEN_WIDTH // 4,
-                               2 * cf.SCREEN_HEIGHT // 3),
-                              cf.GREY,
-                              ut.font(mn.FONT_PIXEL,
-                                      2 * cf.RESULT_FONT_SIZE // 3))
+        for i in range(cf.NB_PLAYERS):
+            mn.print_image(os.path.join(
+                cf.ASSETS, "img", "mono" + cf.COLORS[i],
+                "mono" + cf.COLORS[i] + "0.png"),
+                (cf.SCREEN_WIDTH // 8 + i * cf.SCREEN_WIDTH // 4 - 50,
+                    5 * cf.SCREEN_HEIGHT // 12),
+                scale=4)
+            mn.print_text(ut.keyname(plyr.JUMP_KEYS[i]),
+                          (cf.SCREEN_WIDTH // 8
+                          + i * cf.SCREEN_WIDTH // 4,
+                          2 * cf.SCREEN_HEIGHT // 3),
+                          cf.GREY,
+                          ut.font(mn.FONT_PIXEL,
+                          2 * cf.RESULT_FONT_SIZE // 3))
 
     elif cf.STATE == State.keyset:  # Changement des commandes
         mn.return_button.print(mouse)
@@ -273,28 +272,26 @@ def event_handling(players, event, mouse=None):
                 if event.key == plyr.JUMP_KEYS[i]:  # Saut
                     P.jump()
 
-        elif cf.STATE == State.keyset:
-            if cf.CAPT:
-                if event.key == ut.K_ESCAPE:
-                    cf.CAPT = False
-                else:
-                    if event.key in plyr.JUMP_KEYS:
-                        plyr.JUMP_KEYS[plyr.JUMP_KEYS.index(event.key)] \
-                            = plyr.JUMP_KEYS[cf.CAPT_PLYR]
-                        plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
+        elif cf.STATE == State.keyset and cf.CAPT:
+            if event.key == ut.K_ESCAPE:
+                cf.CAPT = False
+            else:
+                if event.key in plyr.JUMP_KEYS:
+                    plyr.JUMP_KEYS[plyr.JUMP_KEYS.index(event.key)] \
+                        = plyr.JUMP_KEYS[cf.CAPT_PLYR]
                     plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
-                    ky.set_keys(plyr.JUMP_KEYS)
-                    cf.CAPT = False
+                plyr.JUMP_KEYS[cf.CAPT_PLYR] = event.key
+                ky.set_keys(plyr.JUMP_KEYS)
+                cf.CAPT = False
 
-        elif cf.STATE == State.gameover:
-            if cf.CAPT:
-                if event.key == ut.K_RETURN:
-                    scre.PLAYER = mn.player_name_area.input
-                    scre.set_best_score(cf.SECONDS)
-                    cf.CAPT = False
-                    mn.player_name_area.deselect()
-                else:
-                    mn.player_name_area.read(event.key)
+        elif cf.STATE == State.gameover and cf.CAPT:
+            if event.key == ut.K_RETURN:
+                scre.PLAYER = mn.player_name_area.input
+                scre.set_best_score(cf.SECONDS)
+                cf.CAPT = False
+                mn.player_name_area.deselect()
+            else:
+                mn.player_name_area.read(event.key)
 
     if event.type == ut.MOUSEBUTTONDOWN:
 
