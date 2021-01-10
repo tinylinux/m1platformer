@@ -10,12 +10,13 @@
 
 """Gestion des commandes."""
 
+from os.path import join
 import rollnjump.conf as cf
 import rollnjump.utilities as ut
 import rollnjump.menu as mn
 import rollnjump.player as plyr
 
-FILE = "commands.txt"
+FILE = join(cf.CONFDIR, "commands.txt")
 """Fichier des commandes"""
 
 TEXTCAPT = {

@@ -10,12 +10,13 @@
 
 """Gestion de la langue."""
 
+from os.path import join
 import rollnjump.utilities as ut
 import rollnjump.conf as cf
 from rollnjump.conf import State
 import rollnjump.menu as mn
 
-FILE = "lang.txt"
+FILE = join(cf.CONFDIR, "lang.txt")
 """Fichier de langue."""
 AVAILABLE = ["fr", "en"]
 """Langues disponibles."""
