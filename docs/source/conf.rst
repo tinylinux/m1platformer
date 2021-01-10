@@ -54,7 +54,7 @@ Multijoueur
    :annotation:
 
 Capture des touches de saut
-***********
+***************************
 .. autodata:: CAPT
 .. autodata:: CAPT_PLYR
 

@@ -45,7 +45,7 @@ def set_keys(keys):
 
     Parameters :
     ------------
-    keys : array
+    keys : int list
         Liste des commandes
     """
     plyr.JUMP_KEYS = keys

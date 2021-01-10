@@ -73,7 +73,7 @@ Boutons
    :annotation:
 
 Traductions
-*******
+***********
 .. autodata:: NOSCORES
 .. autodata:: MULTIMENU
 .. autodata:: INDICBUTTON
