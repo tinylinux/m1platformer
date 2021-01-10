@@ -21,7 +21,7 @@ Le jeu peut s'installer en téléchargeant via `Releases` ou en clonant le dép�
 pip3 install .
 ```
 
-Le jeu peut ensuite être lancé avec la commande `rollandjump`.
+Le jeu peut ensuite être lancé avec la commande `rollnjump`.
 
 
 La [Documentation](https://tinylinux.github.io/m1platformer/).

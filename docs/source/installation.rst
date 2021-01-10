@@ -20,4 +20,4 @@ Le jeu peut s'installe en téléchargeant ou en clonant le dépôt, puis en util
 
    pip3 install .
 
-Le jeu peut ensuite être lancé avec la commande ``rollandjump``.
+Le jeu peut ensuite être lancé avec la commande ``rollnjump``.
