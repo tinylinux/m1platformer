@@ -136,6 +136,7 @@ class State(Enum):
     langchange = 6
     keyset = 7
     multiplayer_set = 8
+    credits = 9
 
 
 STATE = State.menu
