@@ -77,6 +77,7 @@ def test_main_loop_event():
         players = gml.main_loop(players, (0, 0))
     assert cf.FRAMES == 60
     assert cf.SECONDS == 1
+    assert cf.SPEED == cf.INITIAL_SPEED + cf.ACC
     players[0].pos = ut.Vec(-100, -100)  # Joueur 1 a perdu
     players = gml.main_loop(players, (0, 0))
     assert not players[0].alive
@@ -141,19 +142,6 @@ def test_main_loop_event():
 def test_event():
     """Test pour la fonction event_handling."""
     _, players = main.initialization(False)
-
-    # Test INC_SPEED
-    cf.STATE = cf.State.ingame
-    init_speed = cf.SPEED
-    players = gml.event_handling(players, ut.make_event(ut.INC_SPEED), (0, 0))
-    assert cf.SPEED == init_speed + 0.5
-    players = gml.event_handling(players,
-                                 ut.make_event(ut.KEYDOWN,
-                                               {'key': ut.K_SPACE}),
-                                 (0, 0))
-    assert cf.SPEED == init_speed + 0.5
-
-    players = gml.reset_world()
 
     # Test pour KEY_DOWN
     cf.STATE = cf.State.ingame
