@@ -52,8 +52,8 @@ Vous pouvez sauter à l'aide de la touche choisie (espace par défaut), et faire
 (sauter à nouveau an appuyant sur la touche une fois en l'air).
 
 À un joueur, le but est d'arriver le plus loin possible sans tomber. Votre score s'affiche en
-haut à droite de l'écran. Si vous tombez, vous aurez un écran de fin vous indiquant votre score,
-et vous demandant d'entrer un pseudonyme si vous entre dans le tableau des meilleurs scores.
+haut à gauche de l'écran. Si vous tombez, vous aurez un écran de fin vous indiquant votre score,
+et vous demandant d'entrer un pseudonyme si vous entrez dans le tableau des meilleurs scores.
 Vous pourrez également recommencer directement une partie, mais aussi revenir au menu principal
 avec la flèche en haut à gauche de l'écran.
 
