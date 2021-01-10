@@ -43,8 +43,8 @@ def set_keys(keys):
     """
     Changer les commandes du jeu.
 
-    Parameters :
-    ------------
+    Parameters
+    ----------
     keys : int list
         Liste des commandes
     """

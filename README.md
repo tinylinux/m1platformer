@@ -1,15 +1,25 @@
-[![pylint](https://github.com/tinylinux/m1platformer/workflows/Pylint/badge.svg)](https://github.com/tinylinux/m1platformer/actions?query=workflow%3APylint)
-[![Flake8](https://github.com/tinylinux/m1platformer/workflows/Flake8/badge.svg)](https://github.com/tinylinux/m1platformer/actions?query=workflow%3AFlake8)
-[![Pytest](https://github.com/tinylinux/m1platformer/workflows/Pytest/badge.svg)](https://github.com/tinylinux/m1platformer/actions?query=workflow%3APytest)
+![Pylint & Flake8](https://github.com/tinylinux/m1platformer/workflows/Pylint%20&%20Flake8/badge.svg)
+![Tests et documentation](https://github.com/tinylinux/m1platformer/workflows/Tests%20et%20documentation/badge.svg)
 [![CC0 v1.0](https://img.shields.io/badge/licence-CC0%20v1.0-blue)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 # Roll'n'Jump
-Click and Run game in Python for M1 MPRI - Créé par Samuel Arsac, Hugo Buscemi, Matteo Chancerel et Rida Lali
+Projet de Click and Run pour le M1 MPRI - Créé par Samuel Arsac, Hugo Buscemi, Matteo Chancerel et Rida Lali
 
-[Documentation](https://tinylinux.github.io/m1platformer/)
+## Le jeu
+Vous contrôlez un monocycle sautant de plateforme en plateforme, et votre objectif est de tenir le plus longtemps sans tomber.
+Vous n'avez pas de contrôle sur votre vitesse, vous ne pouvez que choisir quand sauter. Vous trouverez sur votre route des
+objets qui auront des effets sur votre monocycle, qui pourrons vous aider ou vous rendre la tâche plus difficile !
 
-## Installer la dépendance
-Utilisation de la commande `pip` pour installer `pygame`
-```bash
-pip install -r requirements.txt
-```
+![Capture d'écran du jeu](docs/screenshot.png)
+## Installation
+
+L'installation du jeu nécessite `pip3`.
+
+Le jeu peut s'installe en téléchargeant ou en clonant le dépôt, puis en utilisant la commande suivante à sa racine :
+
+```pip3 install .```
+
+Le jeu peut ensuite être lancé avec la commande `rollandjump`.
+
+
+La [Documentation](https://tinylinux.github.io/m1platformer/).

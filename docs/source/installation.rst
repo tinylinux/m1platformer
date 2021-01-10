@@ -11,8 +11,13 @@
 
 Installation
 ============
-Utilisation de la commande ``pip`` pour installer ``pygame``
+
+L'installation du jeu nécessite ``pip3``.
+
+Le jeu peut s'installe en téléchargeant ou en clonant le dépôt, puis en utilisant la commande suivante à sa racine :
 
 .. code-block:: bash
 
-   pip install -r requirements.txt
+   pip3 install .
+
+Le jeu peut ensuite être lancé avec la commande ``rollandjump``.

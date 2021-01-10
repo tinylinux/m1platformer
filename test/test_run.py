@@ -20,22 +20,24 @@ def jump():
 def clic(pos):
     """
     Simule un clic de souris.
+
     Parameters
     ----------
     pos : int * int
         la position de la souris
     """
-    return ut.make_event(ut.MOUSEBUTTONDOWN, {"pos" : pos})
+    return ut.make_event(ut.MOUSEBUTTONDOWN, {"pos": pos})
 
 
 def do_event(players, event):
     """gère l'event simulé."""
-    return gml.event_handling(players, event, (0,0))
+    return gml.event_handling(players, event, (0, 0))
 
 
 def test_run():
     """
     Fais un test de run classique.
+
     Lance le jeu, clique sur jouer,
     et simule des sauts et des doubles sauts
     Parameters
@@ -61,16 +63,17 @@ def test_run():
         if timer == 0 and players[0].FLAG_JUMP_2:
             players = do_event(players, jump())
         else:
-            timer-=1
+            timer -= 1
 
         wrld.update()  # Mise à jour de l'environnement
 
-        players = gml.main_loop(players, (0,0))
+        players = gml.main_loop(players, (0, 0))
 
         assert cf.STATE == cf.State.ingame
     # on est mort
-    players = gml.main_loop(players, (0,0))
+    players = gml.main_loop(players, (0, 0))
     assert cf.STATE == cf.State.gameover
+
 
 if __name__ == "__main__":
     test_run()
