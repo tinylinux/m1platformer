@@ -6,9 +6,9 @@
 Projet de Click and Run pour le M1 MPRI - Créé par Samuel Arsac, Hugo Buscemi, Matteo Chancerel et Rida Lali
 
 ## Le jeu
-Vous contrôlez un monocycle sautant de plateforme en plateforme, votre objectif : tenir le plus longtemps sans tomber.
+Vous contrôlez un monocycle sautant de plateforme en plateforme. Votre objectif : tenir le plus longtemps sans tomber.
 Vous n'avez pas de contrôle sur votre vitesse, vous ne pouvez que choisir quand sauter. Vous trouverez sur votre route des
-objets qui auront des effets sur votre monocycle, qui pourrons vous aider ou vous rendre la tâche plus difficile !
+objets qui auront des effets sur votre monocycle, qui pourront vous aider ou vous rendre la tâche plus difficile !
 
 ![Capture d'écran du jeu](docs/screenshot.png)
 ## Installation
