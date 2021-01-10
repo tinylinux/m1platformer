@@ -124,6 +124,7 @@ def main_loop(players, mouse=None):
         cf.FRAMES += 1
         if cf.FRAMES % cf.FPS == 0:
             cf.SECONDS += 1
+            cf.SPEED += cf.ACC
         scre.score(cf.SECONDS)
 
         nb_player_alive = 0
@@ -261,10 +262,6 @@ def event_handling(players, event, mouse=None):
     """
     if mouse is None:  # pragma: no cover
         mouse = mn.scaled_mouse_pos(ut.mouse_pos())
-
-    if event.type == ut.INC_SPEED:
-        if cf.STATE == State.ingame:  # Si on est in game
-            cf.SPEED += 0.5
 
     if event.type == ut.KEYDOWN:
         if cf.STATE == State.ingame:
