@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Player &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Score" href="score.html" />
+    <link rel="prev" title="Platforms" href="platforms.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Roll 'n' Jump
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Instructions :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Comment jouer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulegen.html">Utilisation du générateur de modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Player</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classe">Classe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Roll 'n' Jump</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Player</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-rollnjump.player">
+<span id="player"></span><h1>Player<a class="headerlink" href="#module-rollnjump.player" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Module de gestion des joueurs.</p>
+<dl class="py data">
+<dt id="rollnjump.player.JUMP_KEYS">
+<code class="sig-prename descclassname">rollnjump.player.</code><code class="sig-name descname">JUMP_KEYS</code><a class="headerlink" href="#rollnjump.player.JUMP_KEYS" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Touches de saut des joueurs.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.player.WINNER">
+<code class="sig-prename descclassname">rollnjump.player.</code><code class="sig-name descname">WINNER</code><a class="headerlink" href="#rollnjump.player.WINNER" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Joueur gagnant.</p>
+</dd></dl>
+
+<div class="section" id="classe">
+<h2>Classe<a class="headerlink" href="#classe" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="rollnjump.player.Player">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.player.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'green'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.player.Player" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code></p>
+<p>Gestion du joueur.</p>
+<dl class="py attribute">
+<dt id="rollnjump.player.Player.images">
+<code class="sig-name descname">images</code><a class="headerlink" href="#rollnjump.player.Player.images" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Liste des images de l’objet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Surface list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.player.Player.img">
+<code class="sig-name descname">img</code><a class="headerlink" href="#rollnjump.player.Player.img" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indice dans la liste d’images</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.player.Player.rect">
+<code class="sig-name descname">rect</code><a class="headerlink" href="#rollnjump.player.Player.rect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Rectangle de collision du joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Rect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.player.Player.pos">
+<code class="sig-name descname">pos</code><a class="headerlink" href="#rollnjump.player.Player.pos" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position du joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Vector2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.player.Player.vel">
+<code class="sig-name descname">vel</code><a class="headerlink" href="#rollnjump.player.Player.vel" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vitesse du joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Vector2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.player.Player.acc">
+<code class="sig-name descname">acc</code><a class="headerlink" href="#rollnjump.player.Player.acc" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accélération du joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Vector2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation du joueur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>str</em><em>, </em><em>optionnel</em>) – La couleur du joueur parmi cf.COLORS</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="rollnjump.player.Player.change_state">
+<code class="sig-name descname">change_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.player.Player.change_state" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Modifie l’état après la prise d’un objet et supprime ce dernier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>item</strong> (<a class="reference internal" href="item.html#rollnjump.item.Item" title="rollnjump.item.Item"><em>Item</em></a>) – L’objet récupéré</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.player.Player.end_item">
+<code class="sig-name descname">end_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.player.Player.end_item" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Retour à l’état normal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.player.Player.in_death_position">
+<code class="sig-name descname">in_death_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.player.Player.in_death_position" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Condition de défaite du joueur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>True si le joueur sort suffisamment de l’écran.</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.player.Player.jump">
+<code class="sig-name descname">jump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.player.Player.jump" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Lance le saut du personnage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.player.Player.move">
+<code class="sig-name descname">move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.player.Player.move" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour pos, vec et acc.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.player.Player.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size1</span></em>, <em class="sig-param"><span class="n">size2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.player.Player.resize" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Change la taille du joueur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size1</strong> (<em>str</em>) – La taille actuelle (parmi « little », « normal », « big »)</p></li>
+<li><p><strong>size2</strong> (<em>str</em>) – La taille à atteindre</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="score.html" class="btn btn-neutral float-right" title="Score" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="platforms.html" class="btn btn-neutral float-left" title="Platforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+  <p xmlns:dct="http://purl.org/dc/terms/">
+    <a rel="license"
+       href="http://creativecommons.org/publicdomain/zero/1.0/">
+      <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+    </a>
+    <br />
+    To the extent possible under law,
+    <span resource="[_:publisher]" rel="dct:publisher">
+      <span property="dct:title">Samuel Arsac, Hugo Buscemi, Matteo Chancerel and Rida Lali</span></span>
+    have waived all copyright and related or neighboring rights to
+    <span property="dct:title">Roll 'n' Jump</span>.
+  </p>
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

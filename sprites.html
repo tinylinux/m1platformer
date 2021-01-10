@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Sprites &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Utilities" href="utilities.html" />
+    <link rel="prev" title="Score" href="score.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Roll 'n' Jump
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Instructions :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Comment jouer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulegen.html">Utilisation du générateur de modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sprites</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions">Fonctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constantes-et-variables">Constantes et variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#images">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dimensions">Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#groupes">Groupes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Roll 'n' Jump</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sprites</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-rollnjump.sprites">
+<span id="sprites"></span><h1>Sprites<a class="headerlink" href="#module-rollnjump.sprites" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Génération des sprites.</p>
+<div class="section" id="fonctions">
+<h2>Fonctions<a class="headerlink" href="#fonctions" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py function">
+<dt id="rollnjump.sprites.listdir">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">listdir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.sprites.listdir" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>os.listdir sans les fichiers cachés.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Chemin de fichier</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>La liste des fichiers visibles de <cite>path</cite></p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>str list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="constantes-et-variables">
+<h2>Constantes et variables<a class="headerlink" href="#constantes-et-variables" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="rollnjump.sprites.Names">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">Names</code><em class="property"> = ['cloud', 'tree', 'item', 'monogreen', 'monopurple', 'monored', 'monowhite']</em><a class="headerlink" href="#rollnjump.sprites.Names" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Liste des noms des différents éléments de décor.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.sprites.img_dict">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">img_dict</code><a class="headerlink" href="#rollnjump.sprites.img_dict" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Dictionnaire associant, pour chaque élément de <cite>Nom</cite>:
+un facteur de taille,
+un nombre d’images
+et la liste de ces images.</p>
+</dd></dl>
+
+<div class="section" id="images">
+<h3>Images<a class="headerlink" href="#images" title="Lien permanent vers ce titre">¶</a></h3>
+<dl class="py data">
+<dt id="rollnjump.sprites.GROUND_IMG">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">GROUND_IMG</code><a class="headerlink" href="#rollnjump.sprites.GROUND_IMG" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Image pour le sol</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.sprites.PLTFRM_IMG">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">PLTFRM_IMG</code><a class="headerlink" href="#rollnjump.sprites.PLTFRM_IMG" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Image pour une plateforme métallique</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.sprites.BAT_IMG">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">BAT_IMG</code><a class="headerlink" href="#rollnjump.sprites.BAT_IMG" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Image pour un bâtiment</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dimensions">
+<h3>Dimensions<a class="headerlink" href="#dimensions" title="Lien permanent vers ce titre">¶</a></h3>
+<dl class="py data">
+<dt id="rollnjump.sprites.GROUND_HEIGHT">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">GROUND_HEIGHT</code><em class="property"> = 657</em><a class="headerlink" href="#rollnjump.sprites.GROUND_HEIGHT" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Hauteur du sol</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.sprites.GROUND_WIDTH">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">GROUND_WIDTH</code><em class="property"> = 576</em><a class="headerlink" href="#rollnjump.sprites.GROUND_WIDTH" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Longueur d’un bloc de sol</p>
+</dd></dl>
+
+</div>
+<div class="section" id="groupes">
+<h3>Groupes<a class="headerlink" href="#groupes" title="Lien permanent vers ce titre">¶</a></h3>
+<dl class="py data">
+<dt id="rollnjump.sprites.ground">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">ground</code><a class="headerlink" href="#rollnjump.sprites.ground" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Groupe des éléments du sol</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.sprites.clouds">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">clouds</code><a class="headerlink" href="#rollnjump.sprites.clouds" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Groupe des nuages</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.sprites.trees">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">trees</code><a class="headerlink" href="#rollnjump.sprites.trees" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Groupe des arbres</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.sprites.items">
+<code class="sig-prename descclassname">rollnjump.sprites.</code><code class="sig-name descname">items</code><a class="headerlink" href="#rollnjump.sprites.items" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Groupe des objets</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="utilities.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="score.html" class="btn btn-neutral float-left" title="Score" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+  <p xmlns:dct="http://purl.org/dc/terms/">
+    <a rel="license"
+       href="http://creativecommons.org/publicdomain/zero/1.0/">
+      <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+    </a>
+    <br />
+    To the extent possible under law,
+    <span resource="[_:publisher]" rel="dct:publisher">
+      <span property="dct:title">Samuel Arsac, Hugo Buscemi, Matteo Chancerel and Rida Lali</span></span>
+    have waived all copyright and related or neighboring rights to
+    <span property="dct:title">Roll 'n' Jump</span>.
+  </p>
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

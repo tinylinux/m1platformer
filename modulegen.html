@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Utilisation du générateur de modules &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Main" href="main.html" />
+    <link rel="prev" title="Comment jouer" href="instructions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Roll 'n' Jump
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Instructions :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Comment jouer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilisation du générateur de modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#le-selecteur-d-obstacle">Le sélecteur d’obstacle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#la-grille-de-creation">La grille de création</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#les-fonctionnalites-tournees-vers-l-exterieur">Les fonctionnalités tournées vers l’extérieur</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Modules :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Roll 'n' Jump</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Utilisation du générateur de modules</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utilisation-du-generateur-de-modules">
+<h1>Utilisation du générateur de modules<a class="headerlink" href="#utilisation-du-generateur-de-modules" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>le module <code class="docutils literal notranslate"><span class="pre">tkinter</span></code> est nécessaire à l’utilisation du générateur de modules</p>
+</div>
+<p>La première fenêtre vous demande le nombre de colonnes de la future grille de création de votre module
+Celui-ci peut être augmenté et diminué avec les boutons à côté du nombre.
+Lorsque ce nombre vous convient, il suffit de valider.</p>
+<p>La seconde fenêtre est la fenêtre principale de création de votre module.
+Elle se décompose en trois zones :</p>
+<ul class="simple">
+<li><p>Le sélecteur d’obstacle</p></li>
+<li><p>La grille de création</p></li>
+<li><p>Les fonctionnalités tournées vers l’extérieur</p></li>
+</ul>
+<div class="section" id="le-selecteur-d-obstacle">
+<h2>Le sélecteur d’obstacle<a class="headerlink" href="#le-selecteur-d-obstacle" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il permet de sélectionner à l’aide du clique gauche le type du prochain obstacle à placer, ou de permettre d’effacer des obstacles.</p>
+</div>
+<div class="section" id="la-grille-de-creation">
+<h2>La grille de création<a class="headerlink" href="#la-grille-de-creation" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Lorsqu’un type d’obstacle est choisi dans le sélecteur, il suffit de délimiter les dimensions et l’emplacement du prochain obstacle à ajouter à l’aide de deux cliques gauches
+sur la grille. À la création de l’obstacle, ses caractéristiques sont affichées dans la console.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Deux obstacles peuvent se toucher mais ne peuvent se pas superposer. Le cas échéant, un message d’erreur « Collision » est affiché dans la console.</p>
+</div>
+<p>Il est aussi possible d’effacer un obstacle en choisissant la fonctionnalité dans le sélecteur et en faisant un clique gauche sur l’obstacle en question.</p>
+</div>
+<div class="section" id="les-fonctionnalites-tournees-vers-l-exterieur">
+<h2>Les fonctionnalités tournées vers l’extérieur<a class="headerlink" href="#les-fonctionnalites-tournees-vers-l-exterieur" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Deux fonctionnalités sont présentes ici. En premier le bouton « Liste obstacles » qui affiche dans la console l’ensemble des caractéristiques des obstacles présents sur la grille.
+En dessous, une zone de texte qui permet de rentrer un nom particulier de module, puis le bouton « Enregistrer »
+qui permet d’enregistrer la grille sous forme d’un fichier <code class="docutils literal notranslate"><span class="pre">y1_y2_nom.mdl</span></code> avec <code class="docutils literal notranslate"><span class="pre">y1</span></code> la hauteur de l’obstacle le plus à gauche,
+<code class="docutils literal notranslate"><span class="pre">y2</span></code> celle de l’obstacle le plus à droite et <code class="docutils literal notranslate"><span class="pre">nom</span></code> le nom du module rentré dans la zone de texte précédente.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="main.html" class="btn btn-neutral float-right" title="Main" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="instructions.html" class="btn btn-neutral float-left" title="Comment jouer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+  <p xmlns:dct="http://purl.org/dc/terms/">
+    <a rel="license"
+       href="http://creativecommons.org/publicdomain/zero/1.0/">
+      <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+    </a>
+    <br />
+    To the extent possible under law,
+    <span resource="[_:publisher]" rel="dct:publisher">
+      <span property="dct:title">Samuel Arsac, Hugo Buscemi, Matteo Chancerel and Rida Lali</span></span>
+    have waived all copyright and related or neighboring rights to
+    <span property="dct:title">Roll 'n' Jump</span>.
+  </p>
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

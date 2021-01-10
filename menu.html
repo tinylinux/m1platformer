@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Menu &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Platforms" href="platforms.html" />
+    <link rel="prev" title="Lang" href="lang.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Roll 'n' Jump
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Instructions :</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Comment jouer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulegen.html">Utilisation du générateur de modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules :</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Menu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constantes">Constantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions">Fonctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boutons">Boutons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score.html">Score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprites.html">Sprites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldgen.html">Worldgen</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Roll 'n' Jump</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Menu</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-rollnjump.menu">
+<span id="menu"></span><h1>Menu<a class="headerlink" href="#module-rollnjump.menu" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Gestion des menus.</p>
+<div class="section" id="constantes">
+<h2>Constantes<a class="headerlink" href="#constantes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="rollnjump.menu.FONT_PIXEL">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">FONT_PIXEL</code><a class="headerlink" href="#rollnjump.menu.FONT_PIXEL" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Chemin vers la police</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.CHARS_LOW">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">CHARS_LOW</code><em class="property"> = 'azertyuiopqsdfghjklmwxcvbn1234567890'</em><a class="headerlink" href="#rollnjump.menu.CHARS_LOW" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Caractères acceptés, en minuscules</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.CHARS_CAP">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">CHARS_CAP</code><em class="property"> = 'AZERTYUIOPQSDFGHJKLMWXCVBN1234567890'</em><a class="headerlink" href="#rollnjump.menu.CHARS_CAP" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Caractères acceptés, en majuscules</p>
+</dd></dl>
+
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="rollnjump.menu.Button">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">Button</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.Button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Boutons pour les menus.</p>
+<dl class="py attribute">
+<dt id="rollnjump.menu.Button.position">
+<code class="sig-name descname">position</code><a class="headerlink" href="#rollnjump.menu.Button.position" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.Button.size">
+<code class="sig-name descname">size</code><a class="headerlink" href="#rollnjump.menu.Button.size" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Taille du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.Button.rect">
+<code class="sig-name descname">rect</code><a class="headerlink" href="#rollnjump.menu.Button.rect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Rectangle du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Rect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="rollnjump.menu.Button.click">
+<code class="sig-name descname">click</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.Button.click" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique si le pointeur de la souris est sur le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>mouse</strong> (<em>int * int</em>) – Position de la souris</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>True si le pointeur est sur le bouton</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="rollnjump.menu.ButtonText">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">ButtonText</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.ButtonText" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="#rollnjump.menu.Button" title="rollnjump.menu.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">rollnjump.menu.Button</span></code></a></p>
+<p>Boutons aillant du texte comme étiquette.</p>
+<dl class="py attribute">
+<dt id="rollnjump.menu.ButtonText.text">
+<code class="sig-name descname">text</code><a class="headerlink" href="#rollnjump.menu.ButtonText.text" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Étiquette du bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.ButtonText.text_position">
+<code class="sig-name descname">text_position</code><a class="headerlink" href="#rollnjump.menu.ButtonText.text_position" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position de l’étiquette</p>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+<li><p><strong>text</strong> (<em>string</em>) – Étiquette du bouton</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="rollnjump.menu.ButtonText.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em>, <em class="sig-param"><span class="n">pushed</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.ButtonText.print" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mouse</strong> (<em>int * int</em>) – Position de la souris</p></li>
+<li><p><strong>pushed</strong> (<em>bool</em><em>, </em><em>optionnel</em>) – Bouton enfoncé</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="rollnjump.menu.ButtonImage">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">ButtonImage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">image_hover</span></em>, <em class="sig-param"><span class="n">lang</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.ButtonImage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="#rollnjump.menu.Button" title="rollnjump.menu.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">rollnjump.menu.Button</span></code></a></p>
+<p>Boutons affichant une image.</p>
+<dl class="py attribute">
+<dt id="rollnjump.menu.ButtonImage.image">
+<code class="sig-name descname">image</code><a class="headerlink" href="#rollnjump.menu.ButtonImage.image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Nom de l’image à afficher quand le bouton est inactif</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.ButtonImage.image_hover">
+<code class="sig-name descname">image_hover</code><a class="headerlink" href="#rollnjump.menu.ButtonImage.image_hover" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Nom de l’image à afficher quand le pointeur est sur le bouton</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.ButtonImage.lang">
+<code class="sig-name descname">lang</code><a class="headerlink" href="#rollnjump.menu.ButtonImage.lang" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Langue à afficher (sous-repertoire à utiliser)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+<li><p><strong>image</strong> (<em>str</em>) – Nom de l’image à afficher quand le bouton est inactif</p></li>
+<li><p><strong>image_hover</strong> (<em>str</em>) – Nom de l’image à afficher quand le pointeur est sur le bouton</p></li>
+<li><p><strong>lang</strong> (<em>str</em><em>, </em><em>optionnel</em>) – Langue à afficher (sous-repertoire à utiliser)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="rollnjump.menu.ButtonImage.changlang">
+<code class="sig-name descname">changlang</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lang</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.ButtonImage.changlang" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Changer la langue du bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>lang</strong> (<em>str</em>) – Langue à utiliser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.menu.ButtonImage.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em>, <em class="sig-param"><span class="n">pushed</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.ButtonImage.print" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mouse</strong> (<em>int * int</em>) – Position du pointeur de la souris</p></li>
+<li><p><strong>pushed</strong> (<em>bool</em><em>, </em><em>optionnel</em>) – Bouton enfoncé</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="rollnjump.menu.InputZone">
+<em class="property">class </em><code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">InputZone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">font</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.InputZone" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <a class="reference internal" href="#rollnjump.menu.Button" title="rollnjump.menu.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">rollnjump.menu.Button</span></code></a></p>
+<p>Zones permettant le saisie de texte.</p>
+<dl class="py attribute">
+<dt id="rollnjump.menu.InputZone.input">
+<code class="sig-name descname">input</code><a class="headerlink" href="#rollnjump.menu.InputZone.input" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Texte inséré dans la zone</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.InputZone.selescted">
+<code class="sig-name descname">selescted</code><a class="headerlink" href="#rollnjump.menu.InputZone.selescted" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique si la zone est sélectionnée</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.InputZone.text_position">
+<code class="sig-name descname">text_position</code><a class="headerlink" href="#rollnjump.menu.InputZone.text_position" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Position du texte par rapport à la zone</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="rollnjump.menu.InputZone.font">
+<code class="sig-name descname">font</code><a class="headerlink" href="#rollnjump.menu.InputZone.font" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>La fonte</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Font</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Initialisation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+<li><p><strong>font</strong> (<em>Font</em><em>, </em><em>optionnel</em>) – La fonte</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="rollnjump.menu.InputZone.deselect">
+<code class="sig-name descname">deselect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.InputZone.deselect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Désactive la sélection de la zone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.menu.InputZone.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.InputZone.print" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche la zone et le texte entré.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.menu.InputZone.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.InputZone.read" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Lit les caractères entrés.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>key</em>) – La touche détectée</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="rollnjump.menu.InputZone.select">
+<code class="sig-name descname">select</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.InputZone.select" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Active la sélection de la zone.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fonctions">
+<h2>Fonctions<a class="headerlink" href="#fonctions" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py function">
+<dt id="rollnjump.menu.scaled_mouse_pos">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">scaled_mouse_pos</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mouse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.scaled_mouse_pos" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie la position de la souris mise à l’échelle de l’image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>mouse</strong> (<em>int * int</em>) – La position réelle de la souris</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>La position mise à l’échelle</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>int * int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rollnjump.menu.mouse_on_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">mouse_on_button</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scaled_mouse</span></em>, <em class="sig-param"><span class="n">button_pos</span></em>, <em class="sig-param"><span class="n">button_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.mouse_on_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Indique si le pointeur de la souris est sur le bouton.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scaled_mouse</strong> (<em>int * int</em>) – Position du pointeur de la souris mise à l’échelle</p></li>
+<li><p><strong>button_pos</strong> (<em>int * int</em>) – Position du bouton</p></li>
+<li><p><strong>button_size</strong> (<em>int * int</em>) – Largeur et hauteur du bouton</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>True si le pointeur est sur le bouton</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rollnjump.menu.print_image">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">print_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.print_image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche une image à une position donnée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>string</em>) – Le chemin vers l’image dans les fichiers</p></li>
+<li><p><strong>position</strong> (<em>int * int</em>) – Les coordonnées de l’image</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – Le facteur d’échelle</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rollnjump.menu.print_text">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">print_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">position_center</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">(255, 255, 255)</span></em>, <em class="sig-param"><span class="n">font</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">bold</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.menu.print_text" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche une surface de texte centrée sur une position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – Le texte à afficher</p></li>
+<li><p><strong>position_center</strong> (<em>int * int</em>) – La position du centre du texte</p></li>
+<li><p><strong>color</strong> (<em>int * int * int</em><em>, </em><em>optionnel</em>) – La couleur du texte</p></li>
+<li><p><strong>font</strong> (<em>Font</em><em>, </em><em>optionnel</em>) – La fonte</p></li>
+<li><p><strong>bold</strong> (<em>bool</em><em>, </em><em>optionnel</em>) – Indique si le texte doit être en gras</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="boutons">
+<h2>Boutons<a class="headerlink" href="#boutons" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py data">
+<dt id="rollnjump.menu.oneplayer_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">oneplayer_button</code><a class="headerlink" href="#rollnjump.menu.oneplayer_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour lancer le jeu à un joueur.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.multiplayer_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">multiplayer_button</code><a class="headerlink" href="#rollnjump.menu.multiplayer_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour lancer le jeu en multijoueur.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.settings_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">settings_button</code><a class="headerlink" href="#rollnjump.menu.settings_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton des réglages.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.records_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">records_button</code><a class="headerlink" href="#rollnjump.menu.records_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton des meilleurs scores.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.credits_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">credits_button</code><a class="headerlink" href="#rollnjump.menu.credits_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton des crédits.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.restart_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">restart_button</code><a class="headerlink" href="#rollnjump.menu.restart_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour recommencer le jeu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.return_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">return_button</code><a class="headerlink" href="#rollnjump.menu.return_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour revenir au menu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.language_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">language_button</code><a class="headerlink" href="#rollnjump.menu.language_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour changer la langue dans les paramètres.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.commands_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">commands_button</code><a class="headerlink" href="#rollnjump.menu.commands_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour changer les touches.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.sound_button">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">sound_button</code><a class="headerlink" href="#rollnjump.menu.sound_button" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bouton pour couper ou remettre la musique.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="rollnjump.menu.flagbutton">
+<code class="sig-prename descclassname">rollnjump.menu.</code><code class="sig-name descname">flagbutton</code><a class="headerlink" href="#rollnjump.menu.flagbutton" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Liste des boutons pour les langues.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="platforms.html" class="btn btn-neutral float-right" title="Platforms" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="lang.html" class="btn btn-neutral float-left" title="Lang" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+  <p xmlns:dct="http://purl.org/dc/terms/">
+    <a rel="license"
+       href="http://creativecommons.org/publicdomain/zero/1.0/">
+      <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+    </a>
+    <br />
+    To the extent possible under law,
+    <span resource="[_:publisher]" rel="dct:publisher">
+      <span property="dct:title">Samuel Arsac, Hugo Buscemi, Matteo Chancerel and Rida Lali</span></span>
+    have waived all copyright and related or neighboring rights to
+    <span property="dct:title">Roll 'n' Jump</span>.
+  </p>
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
