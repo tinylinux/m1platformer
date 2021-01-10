@@ -52,6 +52,8 @@ INITIAL_SPEED = 5
 """Vitesse initiale de défilement du sol."""
 SPEED = INITIAL_SPEED
 """Vitesse de défilement du monde."""
+ACC = 0.5
+"""Accélération de SPEED"""
 
 V_JMP = 15
 """Vitesse initiale lors d'un saut."""
@@ -134,6 +136,7 @@ class State(Enum):
     langchange = 6
     keyset = 7
     multiplayer_set = 8
+    credits = 9
 
 
 STATE = State.menu

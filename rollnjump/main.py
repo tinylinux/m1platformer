@@ -23,7 +23,7 @@ import rollnjump.gameloop as gml  # noqa: E402
 # pylint: enable=wrong-import-position
 
 
-def initialization(graphical, music=False):
+def initialization(graphical, music=False):  # pragma: no cover
     """
     Initialisation des variables et des surfaces.
 
@@ -77,7 +77,7 @@ def initialization(graphical, music=False):
     return(FramePerSec, players)
 
 
-def main():
+def main():  # pragma: no cover
     """Fonction principale du jeu."""
     FramePerSec, players = initialization(True, True)
 
@@ -97,5 +97,5 @@ def main():
         FramePerSec.tick(cf.FPS)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

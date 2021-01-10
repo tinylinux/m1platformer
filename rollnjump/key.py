@@ -43,9 +43,9 @@ def set_keys(keys):
     """
     Changer les commandes du jeu.
 
-    Parameters :
-    ------------
-    keys : array
+    Parameters
+    ----------
+    keys : int list
         Liste des commandes
     """
     plyr.JUMP_KEYS = keys

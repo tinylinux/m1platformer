@@ -30,6 +30,7 @@ Bienvenue dans la documentation de Roll \'n\' Jump
    conf
    gameloop
    item
+   key
    lang
    menu
    platforms

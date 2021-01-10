@@ -19,6 +19,7 @@ import rollnjump.utilities as ut
 import rollnjump.player as plyr
 import rollnjump.gameloop as gml
 import rollnjump.item as it
+import rollnjump.platforms as plt
 
 
 # Test du saut du joueur
@@ -88,6 +89,11 @@ def test_move(velx, vely):
     player.move()
     assert player.state != "normal"
 
+    player.state = 'delay'
+    player.timer = 1
+    player.move()
+    assert player.state == "big"
+
 
 def test_change_state():
     """Test pour la méthode change_state."""
@@ -108,8 +114,16 @@ def test_end_item():
     player.end_item()
     assert player.width, player.height == cf.SIZE["normal"]
     assert player.vel.x == 0
+
     player.vel.x = cf.V_ITEM['slow']
     player.change_state('big')
     player.end_item()
     assert player.width, player.height == cf.SIZE["normal"]
     assert player.vel.x == 0
+
+    # Délai en cas d'obstacle
+    plat = plt.Platform(player.pos, (1, 1))
+    ut.add_to_group(plat, spt.ground)
+    player.state = 'little'
+    player.end_item()
+    assert player.width, player.height == cf.SIZE["little"]

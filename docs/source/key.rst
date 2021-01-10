@@ -10,8 +10,16 @@
    <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 Key
-====
+===
 
 .. automodule:: rollnjump.key
-   :members:
-   :show-inheritance:
+
+.. autodata:: FILE
+   :annotation:
+
+.. autodata:: modifybutton
+   :annotation:
+
+.. autofunction:: init_com
+.. autofunction:: set_keys
+.. autofunction:: get_keys
