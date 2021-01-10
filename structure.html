@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Key &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
+  <title>Stucture de l’application &mdash; Documentation Roll &#39;n&#39; Jump 1.0</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Lang" href="lang.html" />
-    <link rel="prev" title="Item" href="item.html" /> 
+    <link rel="next" title="Main" href="main.html" />
+    <link rel="prev" title="Utilisation du générateur de modules" href="modulegen.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,13 +93,13 @@
 </ul>
 <p class="caption"><span class="caption-text">Modules :</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="structure.html">Stucture de l’application</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stucture de l’application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conf.html">Conf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gameloop.html">Gameloop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="item.html">Item</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Key</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key.html">Key</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lang.html">Lang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="menu.html">Menu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="platforms.html">Platforms</a></li>
@@ -156,7 +156,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Key</li>
+      <li>Stucture de l’application</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -173,44 +173,91 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-rollnjump.key">
-<span id="key"></span><h1>Key<a class="headerlink" href="#module-rollnjump.key" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Gestion des commandes.</p>
-<dl class="py data">
-<dt id="rollnjump.key.FILE">
-<code class="sig-prename descclassname">rollnjump.key.</code><code class="sig-name descname">FILE</code><a class="headerlink" href="#rollnjump.key.FILE" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fichier des commandes</p>
-</dd></dl>
-
-<dl class="py data">
-<dt id="rollnjump.key.modifybutton">
-<code class="sig-prename descclassname">rollnjump.key.</code><code class="sig-name descname">modifybutton</code><a class="headerlink" href="#rollnjump.key.modifybutton" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Liste des boutons de modification.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="rollnjump.key.init_com">
-<code class="sig-prename descclassname">rollnjump.key.</code><code class="sig-name descname">init_com</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.key.init_com" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Initialiser le fichier des commandes.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="rollnjump.key.set_keys">
-<code class="sig-prename descclassname">rollnjump.key.</code><code class="sig-name descname">set_keys</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">keys</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.key.set_keys" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Changer les commandes du jeu.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>keys</strong> (<em>int list</em>) – Liste des commandes</p>
+  <div class="section" id="stucture-de-l-application">
+<h1>Stucture de l’application<a class="headerlink" href="#stucture-de-l-application" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Voici les différents modules python utilisés par l’application <strong>Roll “n” Jump</strong> :</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">main.py</span></code> :</dt><dd><p>Fichier principal de lancement et d’initialisation de l’application.</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="rollnjump.key.get_keys">
-<code class="sig-prename descclassname">rollnjump.key.</code><code class="sig-name descname">get_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rollnjump.key.get_keys" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Récupère les commandes sauvegardées par les utilisateurs.</p>
-</dd></dl>
-
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">background.py</span></code> :</dt><dd><p>Gère les objets de décors tels que les nuages et les arbres.
+Contient les classes des nuages et des arbres.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">conf.py</span></code> :</dt><dd><p>Rassemble l’ensemble des variables configurables et accessibles à tous les fichiers.
+<em>Ne doit pas importer ``utilities``.</em></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gameloop.py</span></code> :</dt><dd><p>Contient la boucle générale du jeu.
+Gère la mise à jour du jeu et les événements provenant de l’utilisateur.
+C’est ici que les différentes phases et menus du jeu sont détéctés, via la variable <code class="docutils literal notranslate"><span class="pre">cf.STATE</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">item.py</span></code> :</dt><dd><p>Gère les objets <code class="docutils literal notranslate"><span class="pre">item</span></code>. Contient la classe des items.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">key.py</span></code> :</dt><dd><p>Gère la capture de touche pour configurer les saut des joueurs.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">lang.py</span></code> :</dt><dd><p>Gère les différentes langues mise en place, ainsi que sa configuration.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">menu.py</span></code> :</dt><dd><p>Gère les différents boutons et menus du jeu. Contient les classes des bouttons avec image ou texte,
+ainsi que celle des zones de saisie. Y sont définis tous les bouttons des différents menus.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">platforms.py</span></code> :</dt><dd><p>Contient les classes des objets sur lesquels roulent les joueurs. Ces objets sont le sol
+(celui pendant entre autre le menu principal) et les plateformes (plateformes flottantes et bâtiments).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">player.py</span></code> :</dt><dd><p>Gère la classe des joueurs.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">score.py</span></code> :</dt><dd><p>Gère le score et le tableau des records.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sprites.py</span></code> :</dt><dd><p>Définie les différents objet à l’écran. On y trouve le chargement des images attachées
+aux objets et les dimensions des plateformes du sol.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">utilities.py</span></code>  :</dt><dd><p>Rassemble l’ensemble des fonctions provenant de pygame,
+et d’autres fonctions utiles et non spécifiques à un fichier.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worldgen.py</span></code> :</dt><dd><p>Permet la génération du monde et des sections de monde appelées modules
+et stockées dans le dossier <code class="docutils literal notranslate"><span class="pre">modules</span></code>. Permet le préchargement de ces modules
+et met à jour l’ensemble des objets mouvants.</p>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 
 
@@ -219,8 +266,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="lang.html" class="btn btn-neutral float-right" title="Lang" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="item.html" class="btn btn-neutral float-left" title="Item" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="main.html" class="btn btn-neutral float-right" title="Main" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modulegen.html" class="btn btn-neutral float-left" title="Utilisation du générateur de modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 
   <hr/>
