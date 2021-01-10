@@ -362,6 +362,7 @@ def event_handling(players, event, mouse=None):
                 cf.STATE == State.gameover_multi:
             if mn.return_button.click(mouse):
                 # Clic de la souris sur le bouton "Retour"
+                cf.NB_PLAYERS = 1
                 players = reset_world()
                 cf.STATE = State.menu
             if mn.restart_button.click(mouse):
