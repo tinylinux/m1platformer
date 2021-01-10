@@ -1,4 +1,4 @@
-"""Fichier de test d'un run"""
+"""Fichier de test d'un run."""
 
 import os
 import rollnjump.main as main
@@ -13,12 +13,13 @@ open(cf.SCORES, 'w').close()
 
 
 def jump():
-    """Simule un saut"""
+    """Simule un saut."""
     return ut.make_event(ut.KEYDOWN, {'key': ut.K_SPACE})
+
 
 def clic(pos):
     """
-    Simule un clic de souris
+    Simule un clic de souris.
     Parameters
     ----------
     pos : int * int
@@ -26,9 +27,11 @@ def clic(pos):
     """
     return ut.make_event(ut.MOUSEBUTTONDOWN, {"pos" : pos})
 
+
 def do_event(players, event):
-    """gère l'event simulé"""
+    """gère l'event simulé."""
     return gml.event_handling(players, event, (0,0))
+
 
 def test_run():
     """
@@ -59,9 +62,6 @@ def test_run():
             players = do_event(players, jump())
         else:
             timer-=1
-
-        for event in ut.get_events():  # Gestion des événements
-            players = do_event(players, event)
 
         wrld.update()  # Mise à jour de l'environnement
 
