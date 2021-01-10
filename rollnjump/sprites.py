@@ -37,6 +37,7 @@ Names = ["cloud", "tree", "item"]
 """Liste des noms des différents éléments de décor."""
 for color in cf.COLORS:
     Names.append('mono' + color)
+    
 img_dict = {}
 """
 Dictionnaire associant, pour chaque élément de `Nom` :

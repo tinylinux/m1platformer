@@ -19,19 +19,20 @@ import rollnjump.conf as cf
 
 pygame.init()
 
+# Classes
 Vec = pygame.math.Vector2
 """Classe des vecteurs de dimension 2."""
-
-# le +1 sert à avoir un nouvel ID
-INC_SPEED = pygame.USEREVENT + 1
-"""Événement d'augmentation de la vitesse."""
-
-# Toutes les secondes on augmente la vitesse
-pygame.time.set_timer(INC_SPEED, 1000)
-
 Sprite = pygame.sprite.Sprite
 """Classe des sprites."""
 
+# Évènements
+# le +1 sert à avoir un nouvel ID
+INC_SPEED = pygame.USEREVENT + 1
+"""Événement d'augmentation de la vitesse."""
+# Toutes les secondes on augmente la vitesse
+pygame.time.set_timer(INC_SPEED, 1000)
+
+# Les touches
 KEYDOWN = pygame.KEYDOWN
 """Événement "touche enfoncée"."""
 K_ESCAPE = pygame.K_ESCAPE

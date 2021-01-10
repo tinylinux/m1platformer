@@ -353,11 +353,6 @@ records_button = ButtonImage(
 )
 """Bouton des meilleurs scores."""
 
-NOSCORES = {
-    "fr": "Pas de scores",
-    "en": "No scores"
-}
-
 Credits_pos = (674, 460)
 Credits_size = (250, 75)
 Credits_idle = 'credits.png'
@@ -478,7 +473,7 @@ Multi_pos = [(cf.SCREEN_WIDTH // 8 + (i + 1) * cf.SCREEN_WIDTH // 4 - 50, 150)
 Multi_idle = [str(i + 2) + ".png" for i in range(cf.NB_PLAYERS_MAX)]
 Multi_hover = [str(i + 2) + "pushed.png" for i in range(cf.NB_PLAYERS_MAX)]
 multi_button = []
-"""Boutons pour choisir le nombre de joueurs"""
+"""Liste des boutons pour choisir le nombre de joueurs"""
 for i in range(cf.NB_PLAYERS_MAX - 1):
     multi_button.append(
         ButtonImage(
@@ -490,6 +485,8 @@ for i in range(cf.NB_PLAYERS_MAX - 1):
     )
 
 Multi_nb_pos = (cf.SCREEN_WIDTH // 2, 70)
+
+# Traductions
 MULTIMENU = {
     "fr": "Nombre de joueurs :",
     "en": "Number of players:"
@@ -500,6 +497,13 @@ INDICBUTTON = {
     "fr": "Pour sauter, appuyer sur ",
     "en": "To jump, press "
 }
+"""Dictionnaire pour traduire l'instruction de saut."""
+
+NOSCORES = {
+    "fr": "Pas de scores",
+    "en": "No scores"
+}
+"""Dictionnaire pour traduire qu'il n'y a pas de scores."""
 
 Player_pos = (490, 350)
 Player_size = (300, 50)

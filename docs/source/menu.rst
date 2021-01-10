@@ -57,6 +57,8 @@ Boutons
    :annotation:
 .. autodata:: restart_button
    :annotation:
+.. autodata:: start_button
+   :annotation:
 .. autodata:: return_button
    :annotation:
 .. autodata:: language_button
@@ -67,3 +69,11 @@ Boutons
    :annotation:
 .. autodata:: flagbutton
    :annotation:
+.. autodata:: multi_button
+   :annotation:
+
+Traductions
+*******
+.. autodata:: NOSCORES
+.. autodata:: MULTIMENU
+.. autodata:: INDICBUTTON

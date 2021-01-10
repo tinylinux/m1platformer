@@ -9,24 +9,9 @@
    with this software. If not, see
    <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-Worldgen
-========
+Key
+====
 
-.. automodule:: rollnjump.worldgen
-
-Constantes
-**********
-
-.. autodata:: modules
-   :annotation:
-.. autodata:: MAX_JUMP
-
-Fonctions
-*********
-
-.. autofunction:: init_modules
-.. autofunction:: platform_creation
-.. autofunction:: initgen
-.. autofunction:: genere_module
-.. autofunction:: stop_ground
-.. autofunction:: update
+.. automodule:: rollnjump.key
+   :members:
+   :show-inheritance:

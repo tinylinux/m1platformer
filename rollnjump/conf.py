@@ -33,6 +33,7 @@ MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 SCORES = os.path.join(os.path.dirname(__file__), '..', 'score.txt')
 """Chemin vers le fichier contenant les scores."""
 MODULES = os.path.join(os.path.dirname(__file__), '..', 'rollnjump', 'modules')
+"""Chemin vers le fichier contenant les modules."""
 
 HIGHSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores."""
@@ -44,9 +45,6 @@ INPUT_FONT_SIZE = 35
 """Taille des fontes pour les entrées."""
 TEXT_FONT_SIZE = 25
 """Taille des fontes pour le texte."""
-
-FLAG_MUSIC = True
-"""Drapeau indiquant s'il y a de la musique ou non"""
 
 INITIAL_SPEED = 5
 """Vitesse initiale de défilement du sol."""
@@ -63,19 +61,11 @@ NB_PLAYERS_MAX = 4
 NB_PLAYERS = 3
 """Nombre de joueurs."""
 
-COLORS = ["green", "purple", "red", "white"]
-"""Couleurs des joueurs."""
-COLORSTRAD = {
-    "fr": ["vert", "violet", "rouge", "blanc"],
-    "en": ["green", "purple", "red", "white"]
-}
-"""Dictionnaire pour la traduction des couleurs."""
-
-FLAG_ITEM = False
-"""
-Drapeau indiquant un objet à l'écran ou un effet d'objet.
-A pour effet d'empêcher l'apparition d'objets.
-"""
+# Capture des touches de saut
+CAPT = False
+"""En cours de capture de touches."""
+CAPT_PLYR = 0
+"""Numéro du joueur en cours pour changer sa commande."""
 
 NEW_ITEM_TIME = 5
 """Le nombre de secondes avant le prochain objet."""
@@ -96,11 +86,14 @@ SIZE_FACTOR = {'little': 1, 'normal': 3, 'big': 8}
 SIZE = {'little': (0, 0), 'normal': (0, 0), 'big': (0, 0)}
 """Les différentes dimensions du joueur (normal, big, little)."""
 
-# Capture des commandes
-CAPT = False
-"""En cours de capture de touches."""
-CAPT_PLYR = 0
-"""Numéro du joueur en cours pour changer sa commande."""
+FLAG_MUSIC = True
+"""Drapeau indiquant s'il y a de la musique ou non"""
+
+FLAG_ITEM = False
+"""
+Drapeau indiquant un objet à l'écran ou un effet d'objet.
+A pour effet d'empêcher l'apparition d'objets.
+"""
 
 # Couleurs
 BLACK = (0, 0, 0)
@@ -115,6 +108,9 @@ IDLE = (170, 170, 170)
 """Couleur d'un bouton inactif."""
 HOVER = (100, 100, 100)
 """Couleur d'un bouton sur lequel le pointeur est situé."""
+
+COLORS = ["green", "purple", "red", "white"]
+"""Couleurs des joueurs."""
 
 SECONDS = 0
 """Compteur de secondes pour le score."""
@@ -143,6 +139,11 @@ STATE = State.menu
 
 LANG = "NONE"
 """Langue du jeu."""
+COLORSTRAD = {
+    "fr": ["vert", "violet", "rouge", "blanc"],
+    "en": ["green", "purple", "red", "white"]
+}
+"""Dictionnaire pour la traduction des couleurs."""
 
 DISPLAYSURF = None
 """Surface sur laquelle le jeu est créé."""

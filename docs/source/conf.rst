@@ -18,6 +18,8 @@ Conf
 
 Chemins de fichier
 ******************
+.. autodata:: SRC
+   :annotation:
 .. autodata:: ASSETS
    :annotation:
 .. autodata:: UI
@@ -25,6 +27,8 @@ Chemins de fichier
 .. autodata:: MUSIC
    :annotation:
 .. autodata:: SCORES
+   :annotation:
+.. autodata:: MODULES
    :annotation:
 
 Tailles des fontes
@@ -48,6 +52,11 @@ Multijoueur
 .. autodata:: NB_PLAYERS_MAX
 .. autodata:: NB_PLAYERS
    :annotation:
+
+Capture des touches de saut
+***********
+.. autodata:: CAPT
+.. autodata:: CAPT_PLYR
 
 Objets
 ******

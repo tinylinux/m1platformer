@@ -34,12 +34,26 @@ class Player(ut.Sprite):
         Indice dans la liste d'images
     rect : Rect
         Rectangle de collision du joueur
+    width : int
+        largeur du joueur
+    height : int
+        hauteur du joueur
+    alive : bool
+        True si le joueur est vivant
     pos : Vector2
         Position du joueur
     vel : Vector2
         Vitesse du joueur
     acc : Vector2
         Accélération du joueur
+    FLAG_JUMP : bool
+        drapeau de saut
+    FLAG_JUMP_2 : bool
+        drapeau pour le double saut
+    state : str
+        état du joueur, est modifié par la prise d'item
+    timer : int
+        durée des effets d'un item
     """
 
     # pylint: disable=too-many-instance-attributes
@@ -88,7 +102,7 @@ class Player(ut.Sprite):
         self.FLAG_JUMP_2 = False
 
         # état dans lequel est le joueur, est modifié par la prise d'item.
-        # normal, fast, slow, little, big
+        # normal, fast, slow, little, big, delay
         self.state = "normal"
 
         # Lorsqu'on prend un item, ça a une durée limitée

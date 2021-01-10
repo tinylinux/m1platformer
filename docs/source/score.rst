@@ -18,6 +18,10 @@ Constantes
 **********
 .. autodata:: PLAYER
 
+Traduction
+**********
+.. autodata:: NAMEASK
+
 Fonctions
 *********
 .. autofunction:: init_best_score
