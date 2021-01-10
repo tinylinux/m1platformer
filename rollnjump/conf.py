@@ -60,7 +60,7 @@ G = 0.8
 
 NB_PLAYERS_MAX = 4
 """Nombre maximal de joueurs."""
-NB_PLAYERS = 3
+NB_PLAYERS = 1
 """Nombre de joueurs."""
 
 COLORS = ["green", "purple", "red", "white"]

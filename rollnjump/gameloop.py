@@ -44,6 +44,7 @@ def main_loop(players, mouse=None):
         mouse = mn.scaled_mouse_pos(ut.mouse_pos())
 
     if cf.STATE == State.menu:  # On est dans le menu
+        cf.NB_PLAYERS = 1
         cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
                             "title.png")), (357, 132))
         for P in rd.sample(players, len(players)):
