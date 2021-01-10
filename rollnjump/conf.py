@@ -24,15 +24,18 @@ FPS = 60
 
 SRC = os.path.join(os.path.dirname(__file__), '..', 'rollnjump')
 """Chemin vers le dossier src."""
+CONFDIR = os.path.join(os.path.dirname(__file__), '..')
+"""Chemein vers le dossier contenant les configurations."""
 ASSETS = os.path.join(os.path.dirname(__file__), '..', 'rollnjump/assets')
 """Chemin vers le dossier assets."""
 UI = os.path.join(ASSETS, 'img', 'ui')
 """Chemin vers le dossier des images de l'interface."""
 MUSIC = os.path.join(ASSETS, 'music', 'monozik.ogg')
 """Chemin vers la musique."""
-SCORES = os.path.join(os.path.dirname(__file__), '..', 'score.txt')
+SCORES = os.path.join(CONFDIR, 'score.txt')
 """Chemin vers le fichier contenant les scores."""
 MODULES = os.path.join(os.path.dirname(__file__), '..', 'rollnjump', 'modules')
+"""Chemin vers le dossier contenant les modules."""
 
 HIGHSCORES_FONT_SIZE = 36
 """Taille des fontes pour les meilleurs scores."""
