@@ -142,17 +142,6 @@ def test_event():
     """Test pour la fonction event_handling."""
     _, players = main.initialization(False)
 
-    # Test INC_SPEED
-    cf.STATE = cf.State.ingame
-    init_speed = cf.SPEED
-    players = gml.event_handling(players, ut.make_event(ut.INC_SPEED), (0, 0))
-    assert cf.SPEED == init_speed + 0.5
-    players = gml.event_handling(players,
-                                 ut.make_event(ut.KEYDOWN,
-                                               {'key': ut.K_SPACE}),
-                                 (0, 0))
-    assert cf.SPEED == init_speed + 0.5
-
     players = gml.reset_world()
 
     # Test pour KEY_DOWN
