@@ -64,7 +64,6 @@ def initialization(graphical, music=False):
     ky.get_keys()
 
     # Initialisation du joueur
-    cf.NB_PLAYERS = 1
     players = [plyr.Player(cf.COLORS[i]) for i in range(cf.NB_PLAYERS)]
 
     # Initialisation du monde
