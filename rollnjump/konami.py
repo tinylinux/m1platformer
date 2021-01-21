@@ -6,6 +6,9 @@ import rollnjump.utilities as ut
 
 
 def pos(t):
+    """
+    Donne la position de l'image en x en fonction du temps d'écran.
+    """
     return (t - 100)**3 // 1000
 
 
