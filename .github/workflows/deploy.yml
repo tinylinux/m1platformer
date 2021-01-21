@@ -1,7 +1,11 @@
 name: Tests et documentation
 on:
   push:
+    branches:
+    - main
   workflow_dispatch:
+    branches:
+      - main
     inputs:
       logLevel:
         description: 'Log level'     
