@@ -22,6 +22,7 @@ import rollnjump.lang as lg
 import rollnjump.score as scre
 import rollnjump.sprites as spt
 import rollnjump.key as ky
+import rollnjump.konami as konami
 
 
 def main_loop(players, mouse=None):
@@ -192,9 +193,12 @@ def main_loop(players, mouse=None):
 
     elif cf.STATE == State.credits:  # Affichage des credits
 
-        cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
+        if cf.KONAMISTATE:
+            konami.konamicredits()
+        else:
+            cf.DISPLAYSURF.blit(ut.load_image(os.path.join(cf.UI,
                                                        cf.LANG,
-                            "credits.png")), (0, 0))
+                                                       "credits.png")), (0, 0))
         mn.return_button.print(mouse)
 
     elif cf.STATE == State.highscore:  # Affichage des meilleurs scores
@@ -271,6 +275,8 @@ def event_handling(players, event, mouse=None):
         mouse = mn.scaled_mouse_pos(ut.mouse_pos())
 
     if event.type == ut.KEYDOWN:
+        konami.konamibutton(event)
+
         if cf.STATE == State.ingame:
             for i, P in enumerate(players):
                 if event.key == plyr.JUMP_KEYS[i]:  # Saut
@@ -394,6 +400,8 @@ def event_handling(players, event, mouse=None):
         elif cf.STATE == State.credits and\
                 mn.return_button.click(mouse):
             # Clic de la souris sur le bouton "Retour"
+            if cf.KONAMISTATE:
+                cf.BlueSky = (190, 0, 0)
             cf.STATE = State.menu
 
         elif cf.STATE == State.menu and\

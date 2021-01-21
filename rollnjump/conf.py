@@ -142,6 +142,13 @@ class State(Enum):
 STATE = State.menu
 """État du jeu."""
 
+KONAMISTATE = False
+"""Activation du Konami Code."""
+KONAMISTEP = 0
+"""État des touches du Konami Code."""
+KONAMICAN = 0
+"""Etat pour l'animation des credits."""
+
 LANG = "NONE"
 """Langue du jeu."""
 COLORSTRAD = {
