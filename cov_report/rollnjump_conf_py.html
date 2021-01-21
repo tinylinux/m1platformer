@@ -22,8 +22,8 @@
         </h1>
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
         <h2 class="stats">
-            63 statements &nbsp;
-            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">63 run</button>
+            66 statements &nbsp;
+            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">66 run</button>
             <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">0 missing</button>
             <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
         </h2>
@@ -196,18 +196,25 @@
     <p id="t142" class="run"><span class="n"><a href="#t142">142</a></span><span class="t"><span class="nam">STATE</span> <span class="op">=</span> <span class="nam">State</span><span class="op">.</span><span class="nam">menu</span>&nbsp;</span><span class="r"></span></p>
     <p id="t143" class="pln"><span class="n"><a href="#t143">143</a></span><span class="t"><span class="str">"""&#201;tat du jeu."""</span>&nbsp;</span><span class="r"></span></p>
     <p id="t144" class="pln"><span class="n"><a href="#t144">144</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p id="t145" class="run"><span class="n"><a href="#t145">145</a></span><span class="t"><span class="nam">LANG</span> <span class="op">=</span> <span class="str">"NONE"</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t146" class="pln"><span class="n"><a href="#t146">146</a></span><span class="t"><span class="str">"""Langue du jeu."""</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t147" class="run"><span class="n"><a href="#t147">147</a></span><span class="t"><span class="nam">COLORSTRAD</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t148" class="pln"><span class="n"><a href="#t148">148</a></span><span class="t">    <span class="str">"fr"</span><span class="op">:</span> <span class="op">[</span><span class="str">"vert"</span><span class="op">,</span> <span class="str">"violet"</span><span class="op">,</span> <span class="str">"rouge"</span><span class="op">,</span> <span class="str">"blanc"</span><span class="op">]</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t149" class="pln"><span class="n"><a href="#t149">149</a></span><span class="t">    <span class="str">"en"</span><span class="op">:</span> <span class="op">[</span><span class="str">"green"</span><span class="op">,</span> <span class="str">"purple"</span><span class="op">,</span> <span class="str">"red"</span><span class="op">,</span> <span class="str">"white"</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t150" class="pln"><span class="n"><a href="#t150">150</a></span><span class="t"><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t151" class="pln"><span class="n"><a href="#t151">151</a></span><span class="t"><span class="str">"""Dictionnaire pour la traduction des couleurs."""</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t152" class="pln"><span class="n"><a href="#t152">152</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p id="t153" class="run"><span class="n"><a href="#t153">153</a></span><span class="t"><span class="nam">DISPLAYSURF</span> <span class="op">=</span> <span class="key">None</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t154" class="pln"><span class="n"><a href="#t154">154</a></span><span class="t"><span class="str">"""Surface sur laquelle le jeu est cr&#233;&#233;."""</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t155" class="run"><span class="n"><a href="#t155">155</a></span><span class="t"><span class="nam">WINDOWSURF</span> <span class="op">=</span> <span class="key">None</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t156" class="run"><span class="n"><a href="#t156">156</a></span><span class="t"><span class="str">"""Surface sur laquelle le jeu sera affich&#233;."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t145" class="run"><span class="n"><a href="#t145">145</a></span><span class="t"><span class="nam">KONAMISTATE</span> <span class="op">=</span> <span class="key">False</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t146" class="pln"><span class="n"><a href="#t146">146</a></span><span class="t"><span class="str">"""Activation du Konami Code."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t147" class="run"><span class="n"><a href="#t147">147</a></span><span class="t"><span class="nam">KONAMISTEP</span> <span class="op">=</span> <span class="num">0</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t148" class="pln"><span class="n"><a href="#t148">148</a></span><span class="t"><span class="str">"""&#201;tat des touches du Konami Code."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t149" class="run"><span class="n"><a href="#t149">149</a></span><span class="t"><span class="nam">KONAMICAN</span> <span class="op">=</span> <span class="num">0</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t150" class="pln"><span class="n"><a href="#t150">150</a></span><span class="t"><span class="str">"""Etat pour l'animation des credits."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t151" class="pln"><span class="n"><a href="#t151">151</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t152" class="run"><span class="n"><a href="#t152">152</a></span><span class="t"><span class="nam">LANG</span> <span class="op">=</span> <span class="str">"NONE"</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t153" class="pln"><span class="n"><a href="#t153">153</a></span><span class="t"><span class="str">"""Langue du jeu."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t154" class="run"><span class="n"><a href="#t154">154</a></span><span class="t"><span class="nam">COLORSTRAD</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t155" class="pln"><span class="n"><a href="#t155">155</a></span><span class="t">    <span class="str">"fr"</span><span class="op">:</span> <span class="op">[</span><span class="str">"vert"</span><span class="op">,</span> <span class="str">"violet"</span><span class="op">,</span> <span class="str">"rouge"</span><span class="op">,</span> <span class="str">"blanc"</span><span class="op">]</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t156" class="pln"><span class="n"><a href="#t156">156</a></span><span class="t">    <span class="str">"en"</span><span class="op">:</span> <span class="op">[</span><span class="str">"green"</span><span class="op">,</span> <span class="str">"purple"</span><span class="op">,</span> <span class="str">"red"</span><span class="op">,</span> <span class="str">"white"</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t157" class="pln"><span class="n"><a href="#t157">157</a></span><span class="t"><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t158" class="pln"><span class="n"><a href="#t158">158</a></span><span class="t"><span class="str">"""Dictionnaire pour la traduction des couleurs."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t159" class="pln"><span class="n"><a href="#t159">159</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t160" class="run"><span class="n"><a href="#t160">160</a></span><span class="t"><span class="nam">DISPLAYSURF</span> <span class="op">=</span> <span class="key">None</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t161" class="pln"><span class="n"><a href="#t161">161</a></span><span class="t"><span class="str">"""Surface sur laquelle le jeu est cr&#233;&#233;."""</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t162" class="run"><span class="n"><a href="#t162">162</a></span><span class="t"><span class="nam">WINDOWSURF</span> <span class="op">=</span> <span class="key">None</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t163" class="run"><span class="n"><a href="#t163">163</a></span><span class="t"><span class="str">"""Surface sur laquelle le jeu sera affich&#233;."""</span>&nbsp;</span><span class="r"></span></p>
 </div>
 <div id="footer">
     <div class="content">
